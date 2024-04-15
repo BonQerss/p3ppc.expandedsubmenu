@@ -1,13 +1,16 @@
-
 [msg SquareMenuConfig]
 [s][clr 1]Custom Sub Menu Setup[clr 0]
 [n]Please select the features you would like to use.
-[n]The recommended options are enabled by default.[n][w][e]
-
+[n]The recommended options are enabled by default.
+[n] 
+[n] 
+[n][w][e]
 [s][clr 1]Custom Sub Menu Setup[clr 0]
 [n]If you change your mind later, don't worry!
 [n]These settings can be changed at any time
-[n]during normal gameplay.[n][w][e]
+[n]during normal gameplay.
+[n] 
+[n][w][e]
 
 [sel ToggleMenu]
 [s]On[e]
