@@ -1,0 +1,184 @@
+C:\Users\airin\source\repos\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.csproj.AssemblyReference.cache
+C:\Users\airin\source\repos\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\airin\source\repos\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.AssemblyInfoInputs.cache
+C:\Users\airin\source\repos\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.AssemblyInfo.cs
+C:\Users\airin\source\repos\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.csproj.CoreCompileInputs.cache
+C:\Users\airin\source\repos\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.sourcelink.json
+C:\Users\airin\Downloads\Release\Mods\p3ppc.expandedsubmenu\Preview.png
+C:\Users\airin\Downloads\Release\Mods\p3ppc.expandedsubmenu\ModConfig.json
+C:\Users\airin\Downloads\Release\Mods\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu.deps.json
+C:\Users\airin\Downloads\Release\Mods\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu.dll
+C:\Users\airin\Downloads\Release\Mods\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu.pdb
+C:\Users\airin\source\repos\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.ex.C4F0B8E7.Up2Date
+C:\Users\airin\source\repos\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.dll
+C:\Users\airin\source\repos\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\refint\p3ppc.expandedsubmenu.dll
+C:\Users\airin\source\repos\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.pdb
+C:\Users\airin\source\repos\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\ref\p3ppc.expandedsubmenu.dll
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\BF\HideModMenu.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\BF\ShowModMenu.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\e812_002.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\e812_302.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\Enums.json
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\field.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\field.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h06_01.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h06_02.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h06_03.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h06_03.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h06_04.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h06_05.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h06_07.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h06_11.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h06_16.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h06_20.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_01.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_01.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_02.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_02.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_03.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_03.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_04.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_04.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_05.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_05.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_06.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_06.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_09.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_09.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_14.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_19.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_19.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_20.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h07_20.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h08_01.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h08_01.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h08_02.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h08_02.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h08_09.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h08_09.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h08_10.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h08_10.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h09_01.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h09_01.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h09_02.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h09_02.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h09_08.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h09_08.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h09_09.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h09_09.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h10_01.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h10_01.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h10_02.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h10_02.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h12_01.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h12_01.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_02.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_03.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_06.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_07.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_08.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_09.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_10.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_11.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_12.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_13.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_14.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_15.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h14_16.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h15_18.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h35_03.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\h37_02.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\ModMenu\ModMenu.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\ModMenu\ModMenu.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\ModMenu\Utilities.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\ModMenu\Utilities.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\OtherMods\DungeonMods\AutoHeal.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\OtherMods\DungeonMods\ClockAnywhere.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\OtherMods\DungeonMods\ClockAnywhere.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\OtherMods\DungeonMods\OrganizeParty.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\OtherMods\DungeonMods\OrganizeParty.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\OtherMods\FindAFriend.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\OtherMods\FindAFriend.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\OtherMods\QuickTravelPlus.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\OtherMods\QuickTravelPlus.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\OtherMods\SkipLunchInvites.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\OtherMods\VRGameOverSkip.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\scheduler_04.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\Setup\FirstTimeSetup.flow
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\BF\Setup\FirstTimeSetup.msg
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b06_01.abin\h06_01.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b06_02.abin\h06_02.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b06_03.abin\h06_03.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b06_04.abin\h06_04.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b06_05.abin\h06_05.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b06_07.abin\h06_07.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b06_11.abin\h06_11.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b06_16.abin\h06_16.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b06_20.abin\h06_20.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b07_01.abin\h07_01.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b07_02.abin\h07_02.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b07_03.abin\h07_03.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b07_04.abin\h07_04.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b07_05.abin\h07_05.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b07_06.abin\h07_06.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b07_09.abin\h07_09.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b07_19.abin\h07_19.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b07_20.abin\h07_20.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b08_01.abin\h08_01.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b08_02.abin\h08_02.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b08_09.abin\h08_09.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b08_10.abin\h08_10.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b09_01.abin\h09_01.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b09_02.abin\h09_02.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b09_08.abin\h09_08.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b09_09.abin\h09_09.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b10_01.abin\h10_01.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b10_02.abin\h10_02.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b12_01.abin\h12_01.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b14_02.abin\h14_02.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b14_03.abin\h14_03.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b14_06.abin\h14_06.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b14_07.abin\h14_07.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b14_08.abin\h14_08.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b14_09.abin\h14_09.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b14_10.abin\h14_10.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b14_11.abin\h14_11.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b14_12.abin\h14_12.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b14_13.abin\h14_13.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b14_14.abin\h14_14.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b14_16.abin\h14_16.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b15_18.abin\h15_18.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b35_03.abin\h35_03.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\bg\b37_02.abin\h37_02.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\field2d\p07_02.bin\bg\b07_02.abin\h07_02.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\init_free.bin\battle\MSG.TBL
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\FEmulator\PAK\init_free.bin\field\script\field.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\event\e810\e812_002.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\event\e810\e812_302.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\scheduler\scheduler_01.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\scheduler\scheduler_03.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\scheduler\scheduler_04.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\scheduler\scheduler_05.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\scheduler\scheduler_06.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\scheduler\scheduler_07.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\scheduler\scheduler_08.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\scheduler\scheduler_09.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\scheduler\scheduler_10.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\scheduler\scheduler_11.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\P5REssentials\CPK\CSM\scheduler\scheduler_12.bf
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\Preview.png
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\ModConfig.json
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu.deps.json
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu.dll
+C:\Users\Brawler\Desktop\Persona\Persona Modding\Reloaded-II\Mods\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu.pdb
+C:\Users\Brawler\Documents\GitHub\PersonaModConfigs\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.csproj.AssemblyReference.cache
+C:\Users\Brawler\Documents\GitHub\PersonaModConfigs\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Brawler\Documents\GitHub\PersonaModConfigs\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.AssemblyInfoInputs.cache
+C:\Users\Brawler\Documents\GitHub\PersonaModConfigs\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.AssemblyInfo.cs
+C:\Users\Brawler\Documents\GitHub\PersonaModConfigs\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.csproj.CoreCompileInputs.cache
+C:\Users\Brawler\Documents\GitHub\PersonaModConfigs\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.sourcelink.json
+C:\Users\Brawler\Documents\GitHub\PersonaModConfigs\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.csproj.CopyComplete
+C:\Users\Brawler\Documents\GitHub\PersonaModConfigs\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.dll
+C:\Users\Brawler\Documents\GitHub\PersonaModConfigs\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\refint\p3ppc.expandedsubmenu.dll
+C:\Users\Brawler\Documents\GitHub\PersonaModConfigs\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\p3ppc.expandedsubmenu.pdb
+C:\Users\Brawler\Documents\GitHub\PersonaModConfigs\p3ppc.expandedsubmenu\p3ppc.expandedsubmenu\obj\Debug\ref\p3ppc.expandedsubmenu.dll

@@ -1,11 +1,11 @@
 {
   "ModId": "p3ppc.expandedsubmenu",
   "ModName": "Expanded Sub Menu",
-  "ModAuthor": "Dexxtrip, Dniwe, moddaman",
+  "ModAuthor": "Dexxtrip, Dniwe, moddaman, Brawler",
   "ModVersion": "0.1.0",
   "ModDescription": "Expands the sub menu with customizable options tailored to improve Persona 3 Portable.",
   "ModDll": "p3ppc.expandedsubmenu.dll",
-  "ModIcon": "expanded sub menu r2-Recovered.png",
+  "ModIcon": "Preview.png",
   "ModR2RManagedDll32": "x86/p3ppc.expandedsubmenu.dll",
   "ModR2RManagedDll64": "x64/p3ppc.expandedsubmenu.dll",
   "ModNativeDll32": "",
