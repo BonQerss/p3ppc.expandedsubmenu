@@ -70,6 +70,8 @@ namespace p3ppc.expandedsubmenu
                 _bfEmulator.AddFile(flowFile, Path.GetFileName(flowRoute));
             }
 
+            _bfEmulator.AddFile(flowFile, "field.flow");
+            _bfEmulator.AddFile(flowFile, "scheduler_04.flow");
         }
 
         #region Standard Overrides
