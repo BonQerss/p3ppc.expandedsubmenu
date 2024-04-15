@@ -56,13 +56,13 @@ namespace p3ppc.expandedsubmenu
             var bfEmulatorController = _modLoader.GetController<IBfEmulator>();
             if (bfEmulatorController == null || !bfEmulatorController.TryGetTarget(out _bfEmulator))
             {
-                _logger.WriteLine($"Unable to get controller for BF Emulator, p3ppc.expandedsubmenu won't work :(");
+                _logger.WriteLine($"Unable to get controller for BF Emulator, p3ppc.expandedsubmenu won't work :(", System.Drawing.Color.Red);
                 return;
             }
 
             // Set whether mod menu should be shown or hidden
             var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId);
-            var flowFile = Path.Combine(modDir,  "BF", $"{(_configuration.ShowModMenu ? "Show" : "Hide")}ModMenu.flow");
+            var flowFile = Path.Combine(modDir, "BF", $"{(_configuration.ShowModMenu ? "Show" : "Hide")}ModMenu.flow");
             foreach (var flowRoute in Directory.EnumerateFiles(modDir, "h*_*.flow", SearchOption.AllDirectories))
             {
                 _logger.WriteLine($"{flowFile}, {Path.GetFileName(flowRoute)}");
