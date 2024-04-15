@@ -16,7 +16,7 @@ void HealingClock() {
     SEL_DEFKEY(PadButton.Circle, 4);
     // Hide "Save" option if save anywhere is disabled?
     // I'm assuming that would be how we'd handle it but idk... @moddaman
-    FUNCTION_0006(BIT_CHK(6326));
+    FUNCTION_0006(!BIT_CHK(6326));
     int saveSel = SEL(SAVE_OR_HEAL);
     MSG_WND_CLS();
     
