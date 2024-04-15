@@ -52,46 +52,17 @@ void FirstTimeSetup()
     MenuOptions();
 }
 
-bool ToggleOption(int startMsg, int startFlag, int selection, bool subOption) {
+int ToggleOption(int startMsg, int startFlag, int selection) {
     MSG_WND_DSP();
     MSG(startMsg + selection); // about section for each mod
     SEL_DEFKEY(PadButton.Circle, 2);
     int sel = SEL(ToggleMenu);
     MSG_WND_CLS();
-    switch (sel) {
-        case 0: // On: if you select this, then you get sub options
-            if (selection == 8) // only needed because flags aren't in order
-                BIT_ON(6340);
-            else
-                BIT_ON(startFlag + selection);
-            if (selection == 3 && !subOption) {
-                DungeonOptionsToggle();
-            }
-            else if (selection == 4) {
-                FindAFriendOptionsToggle();
-            }
-            break;
-        case 1: // Off: if you select off for sub selections, all are off
-            if (selection == 8)
-                BIT_OFF(6340);
-            else
-                BIT_OFF(startFlag + selection);
-            if (selection == 3 && !subOption) {
-                BIT_OFF(6330);
-                BIT_OFF(6331);
-                BIT_OFF(6332);
-                BIT_OFF(6333);
-            }
-            else if (selection == 9) {
-                BIT_OFF(6350);
-                BIT_OFF(6351);
-                BIT_OFF(6352);
-                BIT_OFF(6353);
-            }
-            break;
-        // TODO: I don't think this is needed...
-        case 2: // Back
-            break;
+    if (sel == 0) { // 0 == On
+        BIT_ON(startFlag + selection);
+    }
+    else if (sel == 1) { // 1 == Off
+        BIT_OFF(startFlag + selection);
     }
     return sel;
 }
@@ -155,26 +126,45 @@ void MenuOptions()
 
             // Toggle selection or read more about it
             int selection = MSG_SELECT(SquareMenuOptions_Text + pageNum, SquareMenuOptions, mask);
-            if (selection < 9)
-            {
-                ToggleOption(ModMenu_About, 6321, selection, false); // mod menu about is 0, that would be any number + 0
+            if (selection == 8) {
+                ToggleOption(RemoveLunchtimeInvites_About, 6340, 0);
             }
-            else if (selection == 9 || selection == 10)
-            {
+            else if ((selection != 8) && (selection < 9)) {
+                int smSel = ToggleOption(ModMenu_About, 6321, selection); // mod menu about is 0, that would be any number + 0
+                if (smSel == 0) {
+                    if (selection == 3) {
+                        DungeonOptionsToggle();
+                    }
+                    else if (selection == 4) {
+                        FindAFriendOptionsToggle();
+                    }
+                }
+                else if (smSel == 1) {
+                    if (selection == 3) {
+                        BIT_OFF(6330);
+                        BIT_OFF(6331);
+                        BIT_OFF(6332);
+                        BIT_OFF(6333);
+                    }
+                    /*else if (selection == 9) { selection 9 is next page... what is this?
+                        BIT_OFF(6350);
+                        BIT_OFF(6351);
+                        BIT_OFF(6352);
+                        BIT_OFF(6353);
+                    }*/
+                }
+            }
+            else if (selection == 9 || selection == 10) {
                 pageNum = !pageNum;
             }
-            else
-            {
+            else {
                 done = true;
-                if (!ModMenuEnabled())
-                {
+                if (!ModMenuEnabled()) {
                     MSG_WND_DSP();
                     MSG(OptionsWarning);
                 }
-                if (BIT_CHK(6321))
-                {
-                    if (!BIT_CHK(6372))
-                    {
+                if (BIT_CHK(6321)) {
+                    if (!BIT_CHK(6372)) {
                         MSG_WND_DSP();
                         MSG(ModMenuWarning);
                         MSG(ModMenuWarning_2);
@@ -226,25 +216,26 @@ void DungeonOptionsToggle() {
         for (int i = 0; i < 7; i++) {
             SET_MSG_VAR(i, 576 + BIT_CHK(6330 + i), 6);
         }
-        SEL_DEFKEY(PadButton.Circle, 4);
-        SEL_DEFKEY(PadButton.Square, 4);
+        SEL_DEFKEY(PadButton.Circle, 7);
+        SEL_DEFKEY(PadButton.Square, 7);
         // Toggle selection or read more about it
         int selection = MSG_SELECT(DungeonOptions_Text, DungeonOptions, 0);
         if (selection == 7) {
             break;
         }
-        bool optionSel = ToggleOption(ShowTheClock_About, 6330, selection, true); // message call (adv_sel), sel + flag 
+        bool optionSel = ToggleOption(ShowTheClock_About, 6330, selection); // message call (adv_sel), sel + flag
+        // TODO: Implement sub-options for other dungeon options if applicable
         // If call the clock was selected
         if (selection == 0) {
-            // Call the clock uses traesto flag if call the clock was turned off
-            if (optionSel == 1) { // use Traesto
+            // If call the clock was disabled, disable Traesto Gem flag
+            if (optionSel == 1) {
                 BIT_OFF(6360);
             }
-            else if (optionSel == 0) {
+            else { // Ask to use Traesto Gem if call the clock was enabled
                 while (true) {
                     // If call the clock was turned on, show selection for
-                    // whether calling the fox should use a traesto
-                    SET_MSG_VAR(0, 577 - BIT_CHK(6360), 6);
+                    // whether calling the clock should use a traesto
+                    SET_MSG_VAR(0, 576 + BIT_CHK(6360), 6);
                     SEL_DEFKEY(PadButton.Circle, 1);
                     SEL_DEFKEY(PadButton.Square, 1);
                     MSG_WND_DSP();
@@ -256,14 +247,14 @@ void DungeonOptionsToggle() {
                     SET_MSG_VAR(2, 1313, 5);
                     MSG_WND_DSP();
                     MSG(ShowClock_Traesto);
-                    SEL_DEFKEY(14, 2);
-                    SEL_DEFKEY(15, 2);
+                    SEL_DEFKEY(PadButton.Circle, 2);
+                    SEL_DEFKEY(PadButton.Square, 2);
                     int traestoSel = SEL(ToggleMenu);
                     if (traestoSel == 0) {
-                        BIT_OFF(6360);
+                        BIT_ON(6360);
                     }
                     else if (traestoSel == 1) {
-                        BIT_ON(6360);
+                        BIT_OFF(6360);
                     }
                     MSG_WND_CLS();
                 }
