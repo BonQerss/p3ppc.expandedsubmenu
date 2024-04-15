@@ -1,7 +1,7 @@
 import("ModMenu/ModMenu.flow");
 import("Setup/FirstTimeSetup.flow");
-// import("OtherMods/FindAFriend.flow");
-// import("OtherMods/QuickTravelPlus.flow");
+import("OtherMods/FindAFriend.flow");
+import("OtherMods/QuickTravelPlus.flow");
 import("h07_02.msg");
 
 global bool isFieldBf;
@@ -21,112 +21,44 @@ void dormitory_shortcut_hook()
         return;
     }
 
-    int fldMinor = FLD_GET_MINOR();
-    int dormMask;
-    // bit id (0) + (21) = 21
-    // bit id (((0) + (1024)) + (2048)) + (520) = 3592
-    // bit id (0) + (21) = 21
-    // bit id (0) + (21) = 21
-    // bit id (0) + (21) = 21
-
-    if (fldMinor == 2) {   
-        if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
-            dormMask = 73;
-        }
-        else if (BIT_CHK(3592)) {
-            dormMask = 119;
-        }
-        else {
-            dormMask = 81;
-        }
-    }
-    else if (fldMinor == 3) {
-        if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
-            dormMask = 74;
-        }
-        else {
-            dormMask = 82;
-        }
-    }
-    else if (fldMinor == 4) {
-        if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
-            dormMask = 76;
-        }
-        else {
-            dormMask = 84;
-        }
-    }
-    else if (fldMinor == 5) {
-        dormMask = 88;
-    }
-    else if (fldMinor == 6) {
-        dormMask = 88;
-    }
-    else if (fldMinor == 9) {
-        return;
-    }
-    else if ((fldMinor == 19) || (fldMinor == 20)) {
-        if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
-            dormMask = 42;
-        }
-        else {
-            dormMask = 50;
-        }
-    }
-    else {
-        return;
-    }
-
-    SEL_DEFKEY(PadButton.Circle, 8);
-    int dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, dormMask);
-    // bit id (((0) + (1024)) + (2048)) + (520) = 3592
-    // bit id (((0) + (1024)) + (2048)) + (520) = 3592
-    // bit id (0) + (21) = 21
-    // bit id (0) + (22) = 22
-    // bit id ((0) + (1024)) + (1538) = 2562
-    
-    if (dormSel == 0) {
+    SEL_DEFKEY(PadButton.Circle, 13); // Cancel button on ○
+    SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
+    int dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask());
+    if (dormSel <= 4) {
         FADE(FadeEffects.CircleWipe, 20);
         FUNCTION_000F();
-        CALL_FIELD(7, 2, 1, 0);
-    }
-    else if (dormSel == 1) {
-        FADE(FadeEffects.CircleWipe, 20);
-        FUNCTION_000F();
-        CALL_FIELD(7, 3, 0, 0);
-    }
-    else if (dormSel == 2) {
-        FADE(FadeEffects.CircleWipe, 20);
-        FUNCTION_000F();
-        CALL_FIELD(7, 4, 0, 0);
-    }
-    else if (dormSel == 3) {
-        if (BIT_CHK(3592)) {
-            BIT_OFF(3592);
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_EVENT(129, 1);
-            EVT_FUNCTION_0004(1);
-            BIT_ON(21);
-            CALL_DARK_HOUR();
-            FCL_FUNCTION_0017();
-            CALL_EVENT(130, 1);
-            BIT_ON(22);
-            BIT_ON(2562);
-            FCL_FUNCTION_0018();
-            NEXT_TIME();
-            return;
+        switch (dormSel) {
+            case 0:
+                CALL_FIELD(7, 2, 1, 0);
+                return;
+            case 1:
+                CALL_FIELD(7, 3, 0, 0);
+                return;
+            case 2:
+                CALL_FIELD(7, 4, 0, 0);
+                return;
+            case 3:
+                if (BIT_CHK(3592)) {
+                    BIT_OFF(3592);
+                    CALL_EVENT(129, 1);
+                    EVT_FUNCTION_0004(1);
+                    BIT_ON(21);
+                    CALL_DARK_HOUR();
+                    FCL_FUNCTION_0017();
+                    CALL_EVENT(130, 1);
+                    BIT_ON(22);
+                    BIT_ON(2562);
+                    FCL_FUNCTION_0018();
+                    NEXT_TIME();
+                }
+                else {
+                    CALL_FIELD(7, 5, 0, 0);
+                }
+                return;
+            case 4:
+                CALL_FIELD(7, 6, 0, 0);
+                return;
         }
-        else {
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(7, 5, 0, 0);
-        }
-    }
-    else if (dormSel == 4) {
-        FADE(FadeEffects.CircleWipe, 20);
-        FUNCTION_000F();
-        CALL_FIELD(7, 6, 0, 0);
     }
     else if (dormSel == 5) {
         call_midnight_myroom();
@@ -138,10 +70,59 @@ void dormitory_shortcut_hook()
         gVar140 = 0;
         goout_dormitory();
     }
-    else {
-        MSG_WND_CLS();
-        return;
+    else if (dormSel == 8) {
+        QuickTravelPlus();
     }
+    else if (dormSel == 9) {
+        CALL_CALENDAR();
+    }
+    else if (dormSel == 10) {
+        HangOut();
+    }
+    else if (dormSel == 11) {
+        SAVE_MENU();
+    }
+    else if (dormSel == 12) {
+        ModMenuInit();
+    }
+    else if (dormSel == 99) {
+        MenuOptions();
+    }
+}
+
+int create_dorm_mask() {
+    int mask = 0;
+    
+    if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
+        mask += 73; // 0b0100_1001
+    }
+    else if (BIT_CHK(3592)) {
+        mask += 119; // 0b0111_0111
+    }
+    else {
+        mask += 81; // 0b0101_0001
+    }
+    
+    if (!BIT_CHK(6322)) { // Quick Travel
+        mask += 0x100; // 0b0001_0000_0000
+    }
+    
+    if (!BIT_CHK(6323)) { // View Calendar
+        mask += 0x200; // 0b0010_0000_0000
+    }
+    
+    if (!BIT_CHK(6325)) { // Find a Friend
+        mask += 0x400; //0b0100_0000_0000
+    }
+    
+    if (!BIT_CHK(6326)) { // Save Anywhere
+        mask += 0x800; //0b1000_0000_0000
+    }
+    
+    if (!BIT_CHK(6321)) { // Mod Menu
+        mask += 0x1000; // 0b0001_0000_0000_0000
+    }
+    return mask;
 }
 
 /*void myroom_mybed_hook()
@@ -152,5 +133,5 @@ void dormitory_shortcut_hook()
 
 void CallOriginalSquareMenu()
 {
-    dormitory_shortcut_unhooked();
+    dormitory_shortcut();
 }

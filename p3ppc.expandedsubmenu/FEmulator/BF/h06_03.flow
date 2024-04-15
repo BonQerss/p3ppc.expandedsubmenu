@@ -131,11 +131,11 @@ void f006_003_shortcut_hook()
             break;
     }
 
-    if ( !BIT_CHK( 6322 ))// Quick Travel
+    if ( !BIT_CHK( 6322 )) // Quick Travel
     {
         schoolMask = ( schoolMask - var6 );
     }
-    else if ( BIT_CHK( 6322 ))// Quick Travel
+    else if ( BIT_CHK( 6322 )) // Quick Travel
     {
         schoolMask = ( schoolMask - 1024 );
     }
