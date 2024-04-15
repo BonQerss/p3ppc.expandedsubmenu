@@ -20,14 +20,46 @@ void dormitory_shortcut_hook()
         MSG_WND_CLS();
         return;
     }
+    
+    bool onPage = false;
+    while (true) {
+        int dormSel = 0;
+        SEL_DEFKEY(PadButton.Circle, 15); // Cancel button on ○
+        SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
+        if (!onPage) {
+            if (BIT_CHK(6321) || BIT_CHK(6323) || BIT_CHK(6325) || BIT_CHK(6326)) {
+                SEL_DEFKEY(PadButton.Left, 13); // Prev Page on <
+                SEL_DEFKEY(PadButton.Right, 14); // Next Page on >
+                dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x4000);
+            }
+            else {
+                dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x6000);
+            }
+        }
+        else {
+            // We don't do the same bitchecks for if we do pagination here, since
+            // this path will only run if we have 2nd page options to begin with
+            SEL_DEFKEY(PadButton.Left, 13); // Prev Page on <
+            SEL_DEFKEY(PadButton.Right, 14); // Next Page on >
+            dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x2000);
+        }
+        if ((dormSel == 13) || (dormSel == 14)) {
+            onPage = !onPage;
+        }
+        else if (dormSel == 15) {
+            break;
+        }
+        else {
+            shortcut_select(dormSel);
+        }
+    }
+}
 
-    SEL_DEFKEY(PadButton.Circle, 13); // Cancel button on ○
-    SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
-    int dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask());
-    if (dormSel <= 4) {
+void shortcut_select(int selection) {
+    if (selection <= 4) {
         FADE(FadeEffects.CircleWipe, 20);
         FUNCTION_000F();
-        switch (dormSel) {
+        switch (selection) {
             case 0:
                 CALL_FIELD(7, 2, 1, 0);
                 return;
@@ -60,70 +92,76 @@ void dormitory_shortcut_hook()
                 return;
         }
     }
-    else if (dormSel == 5) {
+    else if (selection == 5) {
         call_midnight_myroom();
     }
-    else if (dormSel == 6) {
+    else if (selection == 6) {
         myroom_mybed();
     }
-    else if (dormSel == 7) {
+    else if (selection == 7) {
         gVar140 = 0;
         goout_dormitory();
     }
-    else if (dormSel == 8) {
+    else if (selection == 8) {
         QuickTravelPlus();
     }
-    else if (dormSel == 9) {
+    else if (selection == 9) {
         CALL_CALENDAR();
     }
-    else if (dormSel == 10) {
+    else if (selection == 10) {
         HangOut();
     }
-    else if (dormSel == 11) {
+    else if (selection == 11) {
+        FADE(FadeEffects.FadeOut, 10);
         SAVE_MENU();
+        FUNCTION_000D(0);
     }
-    else if (dormSel == 12) {
+    else if (selection == 12) {
         ModMenuInit();
     }
-    else if (dormSel == 99) {
+    else if (selection == 99) {
         MenuOptions();
     }
 }
 
-int create_dorm_mask() {
-    int mask = 0;
+int create_dorm_mask(bool page) {
+    int mask = 0x1FFF; // 0b0001_1111_1111_1111
     
-    if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
-        mask += 73; // 0b0100_1001
-    }
-    else if (BIT_CHK(3592)) {
-        mask += 119; // 0b0111_0111
+    if (!page) {
+        if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
+            mask -= 182; // (0x1FFF - 0b1011_0110) = 0b0001_1111_0100_1001
+        }
+        else if (BIT_CHK(3592)) {
+            mask -= 136; // (0x1FFF - 0b1000_1000) = 0b0001_1111_0111_0111
+        }
+        else {
+            mask -= 174; // (0x1FFF - 0b1010_1110) = 0b0001_1111_0101_0001
+        }
     }
     else {
-        mask += 81; // 0b0101_0001
+        // Currently, QuickTravelPlus.flow doesn't have any real support for
+        // the dorms, so for now we'll just always mask it out until then
+        /*if (!BIT_CHK(6322)) { // Quick Travel
+            mask += 0x100; // (0x1FFF - 0b0001_0000_0000) = 0b0001_1110_1111_1111
+        }*/
+        
+        if (BIT_CHK(6323)) { // View Calendar
+            mask -= 0x200; // (0x1FFF - 0b0010_0000_0000) = 0b0001_1101_1111_1111
+        }
+        
+        if (BIT_CHK(6325)) { // Find a Friend
+            mask -= 0x400; // (0x1FFF - 0b0100_0000_0000) = 0b0001_1011_1111_1111
+        }
+        
+        if (BIT_CHK(6326)) { // Save Anywhere
+            mask -= 0x800; // (0x1FFF - 0b1000_0000_0000) = 0b0001_0111_1111_1111
+        }
+        
+        if (BIT_CHK(6321)) { // Mod Menu
+            mask -= 0x1000; // (0x1FFF - 0b0001_0000_0000_0000) = 0b0000_1111_1111_1111
+        }
     }
     
-    // if (!BIT_CHK(6322)) { // Quick Travel
-    // Currently, QuickTravelPlus.flow doesn't have any real support for
-    // the dorms, so for now we'll just always mask it out until then
-    mask += 0x100; // 0b0001_0000_0000
-    // }
-    
-    if (!BIT_CHK(6323)) { // View Calendar
-        mask += 0x200; // 0b0010_0000_0000
-    }
-    
-    if (!BIT_CHK(6325)) { // Find a Friend
-        mask += 0x400; //0b0100_0000_0000
-    }
-    
-    if (!BIT_CHK(6326)) { // Save Anywhere
-        mask += 0x800; //0b1000_0000_0000
-    }
-    
-    if (!BIT_CHK(6321)) { // Mod Menu
-        mask += 0x1000; // 0b0001_0000_0000_0000
-    }
     return mask;
 }
 

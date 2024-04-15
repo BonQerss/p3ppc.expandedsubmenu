@@ -12,4 +12,6 @@
 [s]Spend time with...[e]
 [s]Save[e]
 [s]Mod Menu[e]
+[s]Next[e]
+[s]Previous[e]
 [s]Cancel[e]
