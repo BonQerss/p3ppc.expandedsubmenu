@@ -1,0 +1,11 @@
+[sel DORMITORY_SHOTCUTSELL top]
+[s]Iwatodai Dorm[e]
+[s]Town Map[e]
+[s]Social Links[e]
+[s]Cancel[e]
+
+[sel DORMITORY_SHOTCUTSELL_2 top]
+[s]Iwatodai Dorm[e]
+[s]Town Map[e]
+[s]Social Links[e]
+[s]Cancel[e]

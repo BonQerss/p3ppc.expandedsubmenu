@@ -1,0 +1,337 @@
+// 
+// Imports
+// 
+
+import("ModMenu/ModMenu.flow");
+import("OtherMods/DungeonMods/OrganizeParty.flow");
+import("OtherMods/DungeonMods/ClockAnywhere.flow");
+import("field.msg");
+
+// 
+// Variable declarations
+// 
+
+// Party related global vars (gVar)
+// Documented gVar names that aren't used in this script; could be useful for others
+// gVar23 = hasYukari
+// gVar24 = hasAigis
+// gVar25 = hasMitsuru
+// gVar26 = hasJunpei
+// gVar27 = hasAkihiko
+// gVar28 = hasKen
+// gVar29 = hasShinjiro
+// gVar30 = hasKoromaru
+// gVar31 = memberSelMask
+// gVar33 = tiredAllyCount
+// gVar100 = distantAllyCount
+// global(21) int allyCount;
+global(22) int deadAllyCount;
+// global(37) int currentFloor;
+
+// Dynamic MSGs
+global(60) int naviBup;
+global(61) int itemYukariMSG;
+global(62) int itemAigisMSG;
+global(63) int itemMitsuruMSG;
+global(64) int itemJunpeiMSG;
+global(65) int itemAkihikoMSG;
+global(66) int itemKenMSG;
+global(67) int itemShinjiMSG;
+global(68) int itemKoromaruMSG;
+global(69) int itemMultipleMSG;
+global(70) int itemSingleMSG;
+global(71) int stayGroupMSG;
+global(72) int noEnemyMSG;
+global(73) int nobodyOrderMSG;
+global(74) int whatOrderMSG;
+global(75) int regroupMSG;
+global(76) int spreadMSG;
+global(77) int avoidBattleMSG;
+global(79) int findBattleMSG;
+global(80) int adviseReturnMSG;
+global(82) int moneyMSG;
+
+// Navi stuff?
+global(96) int naviCutin;
+
+global bool isFieldBf;
+
+// 
+// Procedure declarations
+// 
+
+void field_order_party_hook() {
+    isFieldBf = true;
+    field_order_party_unhooked();
+}
+
+void CallOriginalSquareMenu() {
+    field_order_party_unhooked();
+}
+
+void tartaros_order_party_hook() {
+    // initialize global variables w/ message ids
+    // 42 - 48
+    itemYukariMSG = ITEM_TRANSFER_YUKARI;
+    itemAigisMSG = ITEM_TRANSFER_AEGIS;
+    itemMitsuruMSG = ITEM_TRANSFER_MITSURU;
+    itemJunpeiMSG = ITEM_TRANSFER_JUNPEI;
+    itemAkihikoMSG = ITEM_TRANSFER_SANADA;
+    itemKenMSG = ITEM_TRANSFER_AMADA;
+    itemShinjiMSG = ITEM_TRANSFER_ARAGAKI;
+    // 50 - 53
+    itemKoromaruMSG = ITEM_TRANSFER_KOROMARU;
+    itemSingleMSG = ITEM_TRANSFER_MONO;
+    itemMultipleMSG = ITEM_TRANSFER_POLY;
+    moneyMSG = MONEY_TRANSFER;
+    whatOrderMSG = ORDER_OK; // 17
+    // use fuuka ids if fuuka unlocked, else mitsuru
+    // bit id (((0) + (1024)) + (2048)) + (51) = 3123
+    if (BIT_CHK(3123)) {
+        naviCutin = 6;
+        naviBup = naviCutin;
+        gVar97 = 4;
+        stayGroupMSG = HUKA_CANT_ORDER_BATTLE; // 36
+        noEnemyMSG = HUKA_CANT_ORDER_NO_BATTL; // 37
+        nobodyOrderMSG = HUKA_CANT_ORDER_2; // 26
+        regroupMSG = HUKA_GATHER; // 38
+        spreadMSG = HUKA_DISPERSION; // 39
+        avoidBattleMSG = HUKA_NO_BATTLE; // 40
+        findBattleMSG = HUKA_GO_BATTLE; // 41
+        adviseReturnMSG = HUKA_RETURN_ADVICE; // 35
+    }
+    else {
+        naviCutin = 4;
+        naviBup = naviCutin;
+        gVar97 = naviCutin;
+        stayGroupMSG = MITSURU_CANT_ORDER_BATTL; // 20
+        noEnemyMSG = MITSURU_CANT_ORDER_NO_BA; // 21
+        nobodyOrderMSG = MITSURU_CANT_ORDER; // 18
+        regroupMSG = MITSURU_GATHER; // 22
+        spreadMSG = MITSURU_DISPERSION; // 23
+        avoidBattleMSG = MITSURU_NO_BATTLE; // 24
+        findBattleMSG = MITSURU_GO_BATTLE; // 25
+        adviseReturnMSG = MITSURU_RETURN_ADVICE; // 19
+    }
+    
+    // create mask for what options are available in order prompt
+    int orderMask = 0;
+    currentFloor = FLD_FUNCTION_0004();
+    check_party_member();
+    // bit id (((0) + (1024)) + (2048)) + (499) = 3571
+    if (BIT_CHK(3571)) { // party is split up 
+        orderMask = (orderMask + 2); // 0b0010
+    }
+    else {
+        orderMask = (orderMask + 1); // 0b0001
+    }
+
+    // bit id (((0) + (1024)) + (2048)) + (500) = 3572
+    if (!BIT_CHK(3572)) { // party is locating enemies
+        orderMask = (orderMask + 4); // 0b0100
+    }
+    else {
+        orderMask = (orderMask + 8); // 0b1000
+    }
+
+    if (BIT_CHK(3123)) { // hide/show fuuka only options
+        // Only show BGM request if fuuka hasn't learned escape route,
+        // else show "Ask fuuka for something" if she has learned it
+        if (!FLD_FUNCTION_0031(6, 339)) {
+            orderMask = (orderMask + 0x20); // 0b0010_0000
+        }
+        else {
+            orderMask = (orderMask + 0x10); // 0b0001_0000
+        }
+    }
+    else {
+        orderMask = (orderMask + 0x30); // 0b0011_0000
+    }
+
+    // bit id (((0) + (1024)) + (2048)) + (993) = 4065
+    if (!BIT_CHK(4065)) { // debug flag
+        orderMask = (orderMask + 0x400); // 0b0100_0000_0000
+    }
+
+    // bit id (((0) + (1024)) + (2048)) + (495) = 3567
+    if (BIT_CHK(3567)) {
+        order_stop();
+        return;
+    }
+    else if (allyCount == deadAllyCount) {
+        FUNCTION_0064(0, 0, 0, naviCutin, 2, 0, 0);
+        MSG_WND_DSP();
+        MSG(nobodyOrderMSG);
+        order_for_huka();
+        return;
+    }
+    else {
+        MSG_WND_DSP();
+        MSG(whatOrderMSG);
+    }
+
+    if ( !BIT_CHK( 6321 )) // Mod Menu
+    {
+        orderMask = (orderMask + 256 );
+    }
+    
+    SEL_DEFKEY(14, 9);
+    FUNCTION_0006(orderMask);
+    int orderChoice = SEL(ORDER_SEL);
+    MSG_WND_CLS();
+    // bit id (((0) + (1024)) + (2048)) + (50) = 3122
+    if (orderChoice == 0) {
+        BIT_OFF(3571);
+        FLD_FUNCTION_0013(0);
+        FLD_START_SUPPORT_MSG(naviCutin, regroupMSG);
+    }
+    else if (orderChoice == 1) {
+        BIT_ON(3571);
+        FLD_FUNCTION_0013(1);
+        FLD_START_SUPPORT_MSG(naviCutin, spreadMSG);
+    }
+    else if (orderChoice == 2) {
+        BIT_ON(3572);
+        FLD_FUNCTION_0014(1);
+        FLD_START_SUPPORT_MSG(naviCutin, avoidBattleMSG);
+    }
+    else if (orderChoice == 3) {
+        if (!BIT_CHK(3122)) {
+            BIT_ON(3122);
+            FUNCTION_002D(ORDER_STANCE_HELP);
+        }
+        BIT_ON(3572);
+        FLD_FUNCTION_0014(0);
+        FLD_START_SUPPORT_MSG(naviCutin, findBattleMSG);
+    }
+    else if ((orderChoice == 4) || (orderChoice == 5)) { // change bgm or ask fuuka for something
+        FUNCTION_0064(0, 0, 0, naviCutin, 0, 0, 0);
+        MSG_WND_DSP();
+        if (orderChoice == 4) { // change bgm, else ask fuuka
+            order_to_change_bgm();
+            return;
+        }
+        MSG(HUKA_ORDER);
+        order_for_huka();
+    }
+    else if (orderChoice == 6) {
+        MSG_WND_DSP();
+        change_party();
+    }
+    else if (orderChoice == 7) {
+        try_call_clock();
+    }
+    else if (orderChoice == 8) {
+        ModMenuInit();
+    }
+    else if (orderChoice == 10) {
+        debug_mode();
+    }
+}
+
+void order_for_huka_hook() { // used when fuuka is unlocked + empty party + other situations???
+    FUUKA_RESTART:
+    int fuukaMask = 0;
+    // bit id (((0) + (1024)) + (2048)) + (51) = 3123
+    if (!BIT_CHK(3123)) { // hide fuuka options when mitsuru
+        fuukaMask = 3; // 0b0011
+    } else {
+        if (!FLD_FUNCTION_0031(6, 339)) {
+            fuukaMask = 1; // 0b0001
+        }
+    }
+
+    // bit id (((0) + (1024)) + (2048)) + (993) = 4065
+    if (!BIT_CHK(4065)) { // hide debug option
+        fuukaMask = (fuukaMask + 0x40); // 0b0100_0000
+    }
+    
+    if (!BIT_CHK(6321)) // Mod Menu
+    {
+        fuukaMask = (fuukaMask + 0x10);
+    }
+    
+    SEL_DEFKEY(14, 5);
+    FUNCTION_0006(fuukaMask);
+    int fuukaOrder = SEL(HUKA_OREDER_SEL);
+    // bit id ((((0) + (1024)) + (2048)) + (1024)) + (8) = 4104
+    // bit id (((0) + (1024)) + (2048)) + (121) = 3193
+    
+    if (fuukaOrder == 0) {
+        MSG(HUKA_ORDER_ESCAPE);
+        SEL_DEFKEY(14, 1);
+        
+        if (BIT_CHK(4104) || FLD_FUNCTION_0046()) {
+            fuukaOrder = SEL(ESCAPE_SEL);
+        }
+        else {
+            fuukaOrder = SEL(ESCAPE_SEL_G);
+        }
+        if (fuukaOrder == 0) {
+            MSG(HUKA_ORDER_ESCAPE_GO);
+            MSG_WND_CLS();
+            FUNCTION_0065(0);
+            BIT_ON(3193);
+            return_to_entrance();
+            return;
+        }
+
+        MSG(HUKA_ORDER_RESTART);
+        goto FUUKA_RESTART;
+    }
+    else if (fuukaOrder == 1) {
+        order_to_change_bgm();
+        return;
+    }
+    else if (fuukaOrder == 2) {
+        MSG_WND_CLS();
+        FUNCTION_0065(0);
+        MSG_WND_DSP();
+        change_party();
+        return;
+    }
+    else if (fuukaOrder == 3) {
+        MSG_WND_CLS();
+        FUNCTION_0065(0);
+        try_call_clock();
+        return;
+    }
+    else if (fuukaOrder == 4) {
+        MSG_WND_CLS();
+        FUNCTION_0065(0);
+        ModMenuInit();
+        return;
+    }
+    else if (fuukaOrder == 6) {
+        debug_mode();
+        return;
+    }
+
+    MSG_WND_CLS();
+    FUNCTION_0065(0);
+}
+
+void try_call_clock() {
+    if (BIT_CHK(6360)) {
+        int numTraesto = GET_ITEM_NUM(0x500 + 33);
+        MSG_WND_DSP();
+        SET_MSG_VAR(0, 0x500 + 33, 5);
+        if (numTraesto >= 1) {
+            SET_MSG_VAR(1, numTraesto, 0);
+            MSG(CALL_CLOCK_TRAESTO);
+            if (SEL(MISSING_PERSON_SEL) == 0) {
+                MSG_WND_CLS();
+                SET_ITEM_NUM(0x500 + 33, numTraesto - 1);
+                HealingClock();
+            }
+        }
+        else {
+            MSG(NO_TRAESTO);
+            MSG_WND_CLS();
+        }
+    }
+    else if (!BIT_CHK(6360) || FLD_FUNCTION_0031(6, 339)) {
+        // IDEA: Would it be a good idea to add a lead-in message or just instantly show the clock lol
+        HealingClock();
+    }
+}

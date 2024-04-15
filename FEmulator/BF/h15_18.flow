@@ -1,0 +1,41 @@
+import( "ModMenu/ModMenu.flow" );
+import("OtherMods/DungeonMods/ClockAnywhere.flow");
+
+global bool isFieldBf;
+
+void f015_018_shortcut_hook() {
+    isFieldBf = false;
+    ModMenuInit();
+}
+
+void CallOriginalSquareMenu() {
+    f015_018_shortcut_unhooked();
+}
+
+// we hook the original clock function to use the ClockAnywhere reimplmentations
+// where applicable; this ensures that the functionality is always consistent
+void HIT_SCRIPT_255_hook() {
+    MSG_WND_DSP();
+    MSG(WHAT_DO_YOU_WANT);
+    SEL_DEFKEY(14, 4);
+    int clockSel = SEL(SAVE_OR_HEAL);
+    MSG_WND_CLS();
+    
+    if (clockSel == 0) {
+        FADE(1, 10);
+        FUNCTION_000F();
+        SAVE_MENU();
+        FUNCTION_000D(0);
+        FUNCTION_000F();
+        return;
+    }
+    else if (clockSel == 1) {
+        HealParty();
+    }
+    else if (clockSel == 2) {
+        HealEveryone();
+    }
+    else if (clockSel == 3) {
+        BattleTutorials();
+    }
+}

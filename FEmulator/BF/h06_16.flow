@@ -1,0 +1,243 @@
+
+
+import( "ModMenu/ModMenu.flow" );
+import( "Setup/FirstTimeSetup.flow" );
+import( "OtherMods/FindAFriend.flow" );
+import( "OtherMods/QuickTravelPlus.flow" );
+import( "h06_03.msg" );
+
+
+global bool isFieldBf;
+
+void f006_016_shortcut_hook()
+{
+    isFieldBf = false;
+
+    restart: 
+
+    int var5;
+    int var6;
+    int var7;
+    int schoolMask = 65535;
+
+
+    if (!BIT_CHK(6320))
+    {
+        MenuOptions();
+        //TurnOnAllOptions();
+        goto restart;
+    }
+    
+    if ( BIT_CHK( 3680 ) )
+    {
+        MSG_WND_DSP();
+        
+        if ( BIT_CHK( 4104 ) || BIT_CHK( 311 ) )
+        {
+            MSG( STOP_2F );
+        }
+        else 
+        {
+            MSG( STOP_2F_SANADA );
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+
+    var6 = 0;
+    var5 = FLD_GET_MINOR();
+    switch ( var5 )
+    {
+        case 1:
+            if ( GET_DAY( 4, 7 ) )
+            {
+                var6 += 2;
+                break;
+            }
+            else 
+            {
+                var6 += 2;
+                var6 += 4;
+                var6 += 32;
+                var6 += 64;
+                var6 += 512;
+                break;
+            }
+        case 2:
+            var6 += 2;
+            var6 += 4;
+            var6 += 32;
+            var6 += 64;
+            var6 += 512;
+            break;
+        case 3:
+            var6 += 2;
+            var6 += 4;
+            var6 += 32;
+            var6 += 512;
+            break;
+        case 4:
+            var6 += 2;
+            var6 += 4;
+            var6 += 64;
+            var6 += 512;
+            break;
+        case 5:
+            var6 += 2;
+            var6 += 4;
+            var6 += 32;
+            var6 += 64;
+            var6 += 512;
+            break;
+        case 7:
+            if ( GET_DAY( 4, 7 ) )
+            {
+                var6 += 1;
+                break;
+            }
+            else 
+            {
+                var6 += 4;
+                var6 += 32;
+                var6 += 64;
+                var6 += 512;
+                break;
+            }
+        case 11:
+            var6 += 2;
+            var6 += 32;
+            var6 += 64;
+            var6 += 512;
+            break;
+        case 16:
+            var6 += 2;
+            var6 += 4;
+            var6 += 32;
+            var6 += 64;
+            var6 += 512;
+            break;
+        case 20:
+            var6 += 2;
+            var6 += 4;
+            var6 += 32;
+            var6 += 64;
+            var6 += 512;
+            break;
+    }
+
+    if ( !BIT_CHK( 6322 ))// Quick Travel
+    {
+        schoolMask = ( schoolMask - var6 );
+    }
+    else if ( BIT_CHK( 6322 ))// Quick Travel
+    {
+        schoolMask = ( schoolMask - 1024 );
+    }
+    
+    if ( BIT_CHK(6323) ) // View Calendar
+    {
+        schoolMask = (schoolMask - 2048 );
+    }
+
+    if ( BIT_CHK(6325) ) // Find a Friend
+    {
+        schoolMask = (schoolMask - 4096 );
+    }
+
+    if ( BIT_CHK(6326) ) // Save Anywhere
+    {
+        if ( !BIT_CHK( 6321 ))
+        {
+            schoolMask = (schoolMask - 8192 );
+        }
+    }
+
+    if ( BIT_CHK( 6321 )) // Mod Menu
+    {
+        schoolMask = (schoolMask - 32768 );
+    }
+    
+    SEL_DEFKEY( 14, 16 ); // Back & Cancel
+    SEL_DEFKEY( 12, 99 ); // Triangle && Configure
+    
+    int selection = MSG_SELECT( FLD_ORDER, SCHOOL_SHOTCUTSELL, schoolMask );
+    switch ( selection )
+    {
+    case 0:
+        FADE( 3, 20 );
+        FUNCTION_000F();
+        CALL_FIELD( 6, 1, 1, 0 );
+        break;
+    case 1:
+        FADE( 3, 20 );
+        FUNCTION_000F();
+        CALL_FIELD( 6, 7, 1, 0 );
+        break;
+    case 2:
+        FADE( 3, 20 );
+        FUNCTION_000F();
+        CALL_FIELD( 6, 11, 1, 0 );
+        break;
+    case 3:
+        FADE( 3, 20 );
+        FUNCTION_000F();
+        CALL_FIELD( 6, 0x10, 1, 0 );
+        break;
+    case 4:
+        FADE( 3, 20 );
+        FUNCTION_000F();
+        CALL_FIELD( 6, 20, 0, 0 );
+        break;
+    case 5:
+        FADE( 3, 20 );
+        FUNCTION_000F();
+        CALL_FIELD( 6, 4, 2, 0 );
+        break;
+    case 6:
+        FADE( 3, 20 );
+        FUNCTION_000F();
+        CALL_FIELD( 6, 3, 0, 0 );
+        break;
+    case 7:
+        FADE( 3, 20 );
+        FUNCTION_000F();
+        CALL_FIELD( 6, 5, 0, 0 );
+        break;
+    case 8:
+        FADE( 3, 20 );
+        FUNCTION_000F();
+        CALL_FIELD( 6, 2, 1, 0 );
+        break;
+    case 9:
+        get_out_here();
+        break;
+    case 10:
+        QuickTravelPlus();
+        break;
+    case 11:
+        CALL_CALENDAR();
+        break;
+    case 12:
+        HangOut();
+        break;
+    case 13:
+        SAVE_MENU();
+        break;
+    case 15:
+        ModMenuInit();
+        break;
+    case 16:
+        MSG_WND_CLS();
+        break;
+    case 99:
+        MenuOptions();
+        break;
+    }
+    FUNCTION_003B();
+}
+
+void CallOriginalSquareMenu()
+{
+    f006_016_shortcut_hook();
+} 

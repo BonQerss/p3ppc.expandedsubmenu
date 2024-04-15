@@ -1,0 +1,6 @@
+[sel SHOP_SHOTCUTSELL top]
+[s]Iwatodai Station[e]
+[s]Strip Mall, 1F[e]
+[s]Town Map[e]
+[s]Social Links[e]
+[s]Cancel[e]

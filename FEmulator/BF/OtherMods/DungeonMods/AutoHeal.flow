@@ -1,0 +1,69 @@
+bool ally_in_party(int id) {
+	for (int i = 0; i < 3; i++) {
+		if (FUNCTION_0042(i) == id) {
+			return true;
+		}
+	}
+	return false;
+}
+
+int heal_mc() {
+	maxhealth = GET_MAXHP( 1 );
+	maxsp = GET_MAXSP( 1 );
+	currenthealth = GET_HP( 1 );
+	currentsp = GET_SP( 1 );
+
+	HPtoheal = ( ( ( maxhealth - currenthealth ) / 4 ) * 0.20 );
+
+	SP_Lost = ( currentsp - HPtoheal );
+	if ( HPtoheal >= currentsp )
+	{
+		setsp = ( currentsp - currentsp );
+		sethp = ( currenthealth + ( currentsp * 4 ) );
+		SET_HP( 1, sethp );
+		SET_SP( 1, setsp );
+	}
+	else 
+	{
+		SET_HP( 1, maxhealth );
+		SET_SP( 1, SP_Lost );
+	}
+	
+}
+
+
+int heal_avail_party() {
+	int cAllyID;
+	// loop through 2-9 for char bitflag ids
+	for (int i = 2; i < 10; i++) {
+		// adjust for actual character ids
+		if (i >= 6) {
+			cAllyID = (i + 1);
+		}
+		else {
+			cAllyID = i;
+		}
+		if (BIT_CHK(320 + i) && ally_in_party(cAllyID)) {
+			maxhealth = GET_MAXHP( cAllyID );
+			maxsp = GET_MAXSP( cAllyID );
+			currenthealth = GET_HP( cAllyID );
+			currentsp = GET_SP( cAllyID );
+
+			HPtoheal = ( ( ( maxhealth - currenthealth ) / 4 ) * 0.20 );
+
+			SP_Lost = ( currentsp - HPtoheal );
+			if ( HPtoheal >= currentsp )
+			{
+				setsp = ( currentsp - currentsp );
+				sethp = ( currenthealth + ( currentsp * 4 ) );
+				SET_HP( cAllyID, sethp );
+				SET_SP( cAllyID, setsp );
+			}
+			else 
+			{
+				SET_HP( cAllyID, maxhealth );
+				SET_SP( cAllyID, SP_Lost );
+			}
+		}
+	}
+}

@@ -1,0 +1,12 @@
+
+[sel DORMITORY_SHOTCUTSELL top]
+[s]1F, Lounge[e]
+[s]2F, Hallway[e]
+[s]3F, Hallway[e]
+[s]4F, Hallway[e]
+[s]Command Room[e]
+[s]Your Room[e]
+[s]Bed[e]
+[s]Town Map[e]
+[s]Social Links[e]
+[s]Cancel[e]

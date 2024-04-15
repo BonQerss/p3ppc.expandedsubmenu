@@ -1,0 +1,289 @@
+// Source Path: umd0.cpk/field2d/bg/b15_18.abin/h15_18.bf
+
+// 
+// Imports
+// 
+
+import("ClockAnywhere.msg");
+
+//
+// Procedure declarations
+// 
+
+void HealingClock() {
+    MSG_WND_DSP();
+    MSG(WHAT_DO_YOU_WANT);
+    SEL_DEFKEY(PadButton.Circle, 4);
+    // Hide "Save" option if save anywhere is disabled?
+    // I'm assuming that would be how we'd handle it but idk... @moddaman
+    FUNCTION_0006(BIT_CHK(6326));
+    int saveSel = SEL(SAVE_OR_HEAL);
+    MSG_WND_CLS();
+    
+    if (saveSel == 0) {
+        FADE(FadeEffects.FadeOut, 10);
+        FUNCTION_000F();
+        SAVE_MENU();
+        FUNCTION_000D(0);
+        FUNCTION_000F();
+    }
+    else if (saveSel == 1) {
+        HealParty();
+    }
+    else if (saveSel == 2) {
+        HealEveryone();
+    }
+    else if (saveSel == 3) {
+        BattleTutorials();
+    }
+}
+
+void HealParty() {
+    // Initialize vars for calculating party's combined current and maximum SP & HP
+    int partySP = GET_SP(PartyMember.Protagonist);       // Initialize to Player's current SP
+    int partyMaxSP = GET_MAXSP(PartyMember.Protagonist); // Initialize to Player's maximum SP
+    int partyHP = GET_HP(PartyMember.Protagonist);       // Initialize to Player's current HP
+    int partyMaxHP = GET_MAXHP(PartyMember.Protagonist); // Initialize to Player's maximum HP
+    for (int i = 0; i < 3; i++) {
+        int allyID = FUNCTION_0042(i);
+        if (allyID != 0) {
+            partySP += GET_SP(allyID);
+            partyMaxSP += GET_MAXSP(allyID);
+            partyHP += GET_HP(allyID);
+            partyMaxHP += GET_MAXHP(allyID);
+        }
+    }
+    
+    // Initialize "base" cost of healing; increases as player progresses through the game
+    int baseCost = GetBaseCost();
+
+    // Calculate cost of healing, based around amount of HP/SP needed to heal and scaled by the base cost
+    int finalCost = (((partyMaxSP - partySP) * baseCost) / 10);
+    finalCost += (((partyMaxHP - partyHP) * baseCost) / 100);
+    
+    // Limit cost of healing to 9999999
+    if (finalCost > 9999999) {
+        finalCost = 9999999;
+    }
+    else if (finalCost == 0) { // Party is already at maximum HP and SP
+        MSG_WND_DSP();
+        MSG(HEAL_NOMORE);
+        MSG_WND_CLS();
+        return;
+    }
+
+    // If player is on Beginner difficulty, make healing 50% cheaper
+    // bit id ((((0) + (1024)) + (2048)) + (1024)) + (795) = 4891
+    if (BIT_CHK(4891)) {
+        finalCost /= 2;
+    }
+
+    int playerMoney = ADD_PC_MONEY(0); // Get how much money the player has
+    MSG_WND_DSP();
+    SET_MSG_VAR(0, finalCost, 0);
+    SET_MSG_VAR(1, playerMoney, 0);
+    MSG(HEAL_REQUIRE);
+    SEL_DEFKEY(PadButton.Circle, 1);
+    if (SEL(HEAL_OK) == 0) {
+        if (finalCost > playerMoney) {
+            MSG(HEAL_NOMONEY);
+        }
+        else {
+            finalCost *= -1;
+            ADD_PC_MONEY(finalCost);
+            MSG_WND_CLS();
+            RecoverParty();
+            MSG_WND_DSP();
+            MSG(HEAL_DONE_PT);
+        }
+    }
+    MSG_WND_CLS();
+}
+
+void RecoverParty() {
+    // Heal protagonist first, setting SP & HP to max values
+    SET_SP(PartyMember.Protagonist, GET_MAXSP(PartyMember.Protagonist));
+    SET_HP(PartyMember.Protagonist, GET_MAXHP(PartyMember.Protagonist));
+    // Play sound effect & fade screen
+    FUNCTION_0020(2, 20);
+    FUNCTION_0010(FadeEffects.FadeOut, 5, 255, 255, 255);
+    FUNCTION_000F();
+    FUNCTION_000D(15);
+    FUNCTION_000F();
+    // Heal all current party members
+    for (int i = 0; i < 3; i++) {
+        int allyID = FUNCTION_0042(i);
+        SET_SP(allyID, GET_MAXSP(allyID));
+        SET_HP(allyID, GET_MAXHP(allyID));
+    }
+}
+
+void HealEveryone() {
+    // Initialize vars for calculating combined current and maximum SP & HP of all allies
+    int allySP = GET_SP(PartyMember.Protagonist);       // Initialize to Player's current SP
+    int allyMaxSP = GET_MAXSP(PartyMember.Protagonist); // Initialize to Player's maximum SP
+    int allyHP = GET_HP(PartyMember.Protagonist);       // Initialize to Player's current HP
+    int allyMaxHP = GET_MAXHP(PartyMember.Protagonist); // Initialize to Player's maximum HP
+
+    // Check that party member(s) has been unlocked before checking if they need healing
+    // bit id (((0) + (1024)) + (2048)) + (27) = 3099
+    if (BIT_CHK(3099)) {
+        allySP += GET_SP(PartyMember.Junpei);
+        allyMaxSP += GET_MAXSP(PartyMember.Junpei);
+        allyHP += GET_HP(PartyMember.Junpei);
+        allyMaxHP += GET_MAXHP(PartyMember.Junpei);
+    }
+    // bit id (((0) + (1024)) + (2048)) + (24) = 3096    
+    if (BIT_CHK(3096)) {
+        allySP += GET_SP(PartyMember.Yukari);
+        allyMaxSP += GET_MAXSP(PartyMember.Yukari);
+        allyHP += GET_HP(PartyMember.Yukari);
+        allyMaxHP += GET_MAXHP(PartyMember.Yukari);
+    }
+    // bit id (((0) + (1024)) + (2048)) + (28) = 3100
+    if (BIT_CHK(3100)) {
+        allySP += GET_SP(PartyMember.Akihiko);
+        allyMaxSP += GET_MAXSP(PartyMember.Akihiko);
+        allyHP += GET_HP(PartyMember.Akihiko);
+        allyMaxHP += GET_MAXHP(PartyMember.Akihiko);
+    }
+    // bit id (((0) + (1024)) + (2048)) + (26) = 3098
+    // bit id (((0) + (1024)) + (2048)) + (51) = 3123
+    if (BIT_CHK(3098) && BIT_CHK(3123)) {
+        allySP += GET_SP(PartyMember.Mitsuru);
+        allyMaxSP += GET_MAXSP(PartyMember.Mitsuru);
+        allyHP += GET_HP(PartyMember.Mitsuru);
+        allyMaxHP += GET_MAXHP(PartyMember.Mitsuru);
+    }
+    // bit id (((0) + (1024)) + (2048)) + (25) = 3097
+    if (BIT_CHK(3097)) {
+        allySP += GET_SP(PartyMember.Aigis);
+        allyMaxSP += GET_MAXSP(PartyMember.Aigis);
+        allyHP += GET_HP(PartyMember.Aigis);
+        allyMaxHP += GET_MAXHP(PartyMember.Aigis);
+    }
+    // bit id (((0) + (1024)) + (2048)) + (29) = 3101
+    if (BIT_CHK(3101)) {
+        allySP += GET_SP(PartyMember.Ken);
+        allyMaxSP += GET_MAXSP(PartyMember.Ken);
+        allyHP += GET_HP(PartyMember.Ken);
+        allyMaxHP += GET_MAXHP(PartyMember.Ken);
+    }
+    // bit id (((0) + (1024)) + (2048)) + (30) = 3102
+    if (BIT_CHK(3102)) {
+        allySP += GET_SP(PartyMember.Shinjiro);
+        allyMaxSP += GET_MAXSP(PartyMember.Shinjiro);
+        allyHP += GET_HP(PartyMember.Shinjiro);
+        allyMaxHP += GET_MAXHP(PartyMember.Shinjiro);
+    }
+    // bit id (((0) + (1024)) + (2048)) + (31) = 3103
+    if (BIT_CHK(3103)) {
+        allySP += GET_SP(PartyMember.Koromaru);
+        allyMaxSP += GET_MAXSP(PartyMember.Koromaru);
+        allyHP += GET_HP(PartyMember.Koromaru);
+        allyMaxHP += GET_MAXHP(PartyMember.Koromaru);
+    }
+    
+    // Initialize "base" cost of healing; increases as player progresses through the game
+    int baseCost = GetBaseCost();
+    
+    // Calculate cost of healing, based around amount of HP/SP needed to heal and scaled by the base cost
+    int finalCost = (((allyMaxSP - allySP) * baseCost) / 10);
+    finalCost += (((allyMaxHP - allyHP) * baseCost) / 100);
+    
+    // Limit cost of healing to 9999999
+    if (finalCost > 9999999) {
+        finalCost = 9999999;
+    }
+    else if (finalCost == 0) { // Party is already at maximum HP and SP
+        MSG_WND_DSP();
+        MSG(HEAL_NOMORE);
+        MSG_WND_CLS();
+        return;
+    }
+
+    // If player is on Beginner difficulty, make healing 50% cheaper
+    // bit id ((((0) + (1024)) + (2048)) + (1024)) + (795) = 4891
+    if (BIT_CHK(4891)) {
+        finalCost /= 2;
+    }
+    
+    int playerMoney = ADD_PC_MONEY(0); // Get how much money the player has
+    MSG_WND_DSP();
+    SET_MSG_VAR(0, finalCost, 0);
+    SET_MSG_VAR(1, playerMoney, 0);
+    MSG(HEAL_REQUIRE);
+    SEL_DEFKEY(PadButton.Circle, 1);
+    if (SEL(HEAL_OK) == 0) {
+        if (finalCost > playerMoney) {
+            MSG(HEAL_NOMONEY);
+        }
+        else {
+            finalCost = (finalCost * -1);
+            ADD_PC_MONEY(finalCost);
+            MSG_WND_CLS();
+            FUNCTION_0020(2, 20);
+            FUNCTION_0010(FadeEffects.FadeOut, 5, 255, 255, 255);
+            FUNCTION_000F();
+            FUNCTION_000D(15);
+            FUNCTION_000F();
+            FUNCTION_0049(); // Heals all alies to full HP & SP
+            MSG_WND_DSP();
+            MSG(HEAL_DONE);
+        }
+    }
+    MSG_WND_CLS();
+}
+
+int GetBaseCost() {
+    if (CHK_DAYS_STARTEND(Month.April, 1, Month.May, 9)) {
+        return 75;
+    }
+    else if (CHK_DAYS_STARTEND(Month.May, 10, Month.June, 12)) {
+        return 100;
+    }
+    else if (CHK_DAYS_STARTEND(Month.June, 13, Month.July, 8)) {
+        return 150;
+    }
+    else if (CHK_DAYS_STARTEND(Month.July, 9, Month.August, 7)) {
+        return 230;
+    }
+    else if (CHK_DAYS_STARTEND(Month.August, 8, Month.September, 9)) {
+        return 480;
+    }
+    else if (CHK_DAYS_STARTEND(Month.September, 10, Month.October, 5)) {
+        return 780;
+    }
+    else if (CHK_DAYS_STARTEND(Month.October, 6, Month.November, 5)) {
+        return 1500;
+    }
+    else if (CHK_DAYS_STARTEND(Month.November, 6, Month.December, 31)) {
+        return 3100;
+    }
+    return 5350;
+}
+
+void BattleTutorials() {
+    while (true) {
+        MSG_WND_DSP();
+        MSG(SYS_TUTORIAL_FIRST);
+        SEL_DEFKEY(PadButton.Circle, 4);
+        int tutSel = SEL(SYS_TUTORIAL_SEL);
+        MSG_WND_CLS();
+        if (tutSel == 0) {
+            FUNCTION_002D(SYS_TUTORIAL_01);
+        }
+        else if (tutSel == 1) {
+            FUNCTION_002D(SYS_TUTORIAL_02);
+        }
+        else if (tutSel == 2) {
+            FUNCTION_002D(SYS_TUTORIAL_03);
+        }
+        else if (tutSel == 3) {
+            FUNCTION_002D(SYS_TUTORIAL_04);
+        }
+        else if (tutSel == 4) {
+            return;
+        }
+    }
+}

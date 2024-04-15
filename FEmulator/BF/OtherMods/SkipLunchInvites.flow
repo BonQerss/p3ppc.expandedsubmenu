@@ -1,0 +1,6 @@
+
+
+int SkipLunchCheck()
+{
+    return BIT_CHK( 6340 );
+}

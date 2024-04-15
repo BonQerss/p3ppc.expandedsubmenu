@@ -1,0 +1,202 @@
+// 
+// Imports
+// 
+
+import("OrganizeParty.msg");
+
+
+// 
+// Variable declarations
+// 
+
+global(21) int allyCount;
+global(32) int removeAlly;
+global(37) int currentFloor;
+
+// Non-global script vars
+bool partyChanged;
+
+// 
+// Procedure declarations
+// 
+
+// get bit-mask values that correspond to the line in PARTY_MEMBERS sel
+int get_ally_mask(int id) {
+	switch (id) {
+		case PartyMember.Yukari:
+			return 1;
+		case PartyMember.Aigis:
+			return 2;
+		case PartyMember.Mitsuru:
+			return 4;
+		case PartyMember.Junpei:
+			return 8;
+		case PartyMember.Akihiko:
+			return 16;
+		case PartyMember.Ken:
+			return 32;
+		case PartyMember.Shinjiro:
+			return 64;
+		case PartyMember.Koromaru:
+			return 128;
+		default:
+			break;
+	}
+	return 0; // return nothing if char id is invalid
+}
+
+// checks for if a character is in party
+// TODO: is there a library function/field.bf procedure that does this already that i don't know about?
+bool ally_in_party(int id) {
+	for (int i = 0; i < 3; i++) {
+		if (FUNCTION_0042(i) == id) {
+			return true;
+		}
+	}
+	return false;
+}
+
+// gets mask that will only show current party
+int get_party_mask() {
+	// init mask to 1111_1111, which only shows Cancel
+	int maskVal = 0xFF;
+	for (int i = 0; i < 3; i++) {
+		// subtract options based on chars you have
+		maskVal = (maskVal - get_ally_mask(FUNCTION_0042(i)));
+	}
+	return maskVal;
+}
+
+// gets mask that only shows available party members
+// (unlocked & not in the current party)
+int get_avail_mask() {
+	int maskVal = 0xFF;
+	int cAllyID;
+	// loop through 2-9 for char bitflag ids
+	for (int i = 2; i < 10; i++) {
+		// adjust for actual character ids
+		if (i >= 6) {
+			cAllyID = (i + 1);
+		}
+		else {
+			cAllyID = i;
+		}
+		// if party member has been unlocked & we don't
+		// have them in the party, the mask will show them
+		if (BIT_CHK(320 + i) && !ally_in_party(cAllyID)) {
+			maskVal = (maskVal - get_ally_mask(cAllyID));
+		}
+	}
+	return maskVal;
+}
+
+void member_add(int id) {
+	if (id == 0) { // Yukari
+		PARTY_IN(PartyMember.Yukari);
+	}
+	else if (id == 1) { // Aigis
+		PARTY_IN(PartyMember.Aigis);
+	}
+	else if (id == 2) { // Mitsuru
+		PARTY_IN(PartyMember.Mitsuru);
+	}
+	else if (id == 3) { // Junpei
+		PARTY_IN(PartyMember.Junpei);
+	}
+	else if (id == 4) { // Akihiko
+		PARTY_IN(PartyMember.Akihiko);
+	}
+	else if (id == 5) { // Ken
+		PARTY_IN(PartyMember.Ken);
+	}
+	else if (id == 6) { // Shinjiro
+		PARTY_IN(PartyMember.Shinjiro);
+	}
+	else if (id == 7) { // Koromaru
+		PARTY_IN(PartyMember.Koromaru);
+	}
+}
+
+void add_members() {
+	int allyMask;
+	int allyChoice;
+	int removeChoice;
+	ADD_ANOTHER:
+	allyMask = get_avail_mask();
+	if ((allyCount >= 3) || (allyMask == 0xFF)) { // no party members available to switch/party is full
+		if (allyCount >= 3) {
+			MSG(FULL_PARTY);			
+		}
+		else {
+			MSG(NOBODY_AVAIL);
+		}
+		return;
+	}
+	MSG(WHO_TO_ADD);
+	SEL_DEFKEY(14, 8);
+	// only show party members that are available
+	FUNCTION_0006(allyMask);
+	allyChoice = SEL(PARTY_MEMBERS);
+	if (allyChoice >= 8) { // Cancel/out-of-range options
+		return;
+	} else {
+		member_add(allyChoice);
+	}
+	MSG_WND_CLS();
+	allyCount = (allyCount + 1); // inc allyCount
+	partyChanged = true;
+	MSG_WND_DSP();
+	goto ADD_ANOTHER;
+}
+
+void remove_members() {
+	REMOVE_ANOTHER:
+	if (allyCount <= 0) {
+		MSG(EMPTY_PARTY);
+		// reset count to zero; if it can even get below zero that's bad too but this at least mitigates any damage
+		allyCount = 0;
+		return;
+	}
+	MSG(REMOVE);
+	SEL_DEFKEY(14, 8);
+	FUNCTION_0006(get_party_mask());
+	removeAlly = SEL(PARTY_MEMBERS);
+	if (removeAlly >= 8) { // Stop
+		return;
+	}
+	else {
+		member_change();
+	}
+	MSG_WND_CLS();
+	allyCount = (allyCount - 1); // dec allyCount
+	partyChanged = true;
+	MSG_WND_DSP();
+	goto REMOVE_ANOTHER;
+}
+
+void change_party() {
+	int editResponse;
+	RESTART:
+	MSG(REMOVE_OR_ADD);
+	SEL_DEFKEY(14, 2);
+	editResponse = SEL(REMOVE_OR_ADD_SEL);
+	if (editResponse == 0) {
+		add_members();
+		MSG_WND_CLS();
+		MSG_WND_DSP();
+		goto RESTART;
+	}
+	else if (editResponse == 1) {
+		remove_members();
+		MSG_WND_CLS();
+		MSG_WND_DSP();
+		goto RESTART;
+	}
+	MSG_WND_CLS();
+	if (partyChanged) {		
+		FADE(3, 20);
+		FUNCTION_000F();
+		FCL_FUNCTION_0004(currentFloor);
+		partyChanged = false;
+	}
+}

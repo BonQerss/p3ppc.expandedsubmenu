@@ -1,0 +1,30 @@
+void died_in_tartaros_hook()
+{
+    int var7;
+    int var8;
+    FUNCTION_0037( 0 );
+	
+	if (!BIT_CHK(6336))
+	{
+		CALL_EVENT( 80, 1 );
+	}
+    FUNCTION_0037( 1 );
+    var7 = HD_FLD_FUNCTION_006F();
+    
+    if ( var7 != 0 )
+    {
+        MSG_WND_DSP();
+        MSG( RETRY_CHECK );
+        var8 = SEL( RETRY_SEL );
+        MSG_WND_CLS();
+        
+        if ( var8 == 0 )
+        {
+            HD_FLD_FUNCTION_006E();
+            return;
+        }
+
+    }
+
+    CALL_TITLE();
+}

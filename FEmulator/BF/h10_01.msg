@@ -1,0 +1,6 @@
+[sel STATION_SHOTCUTSELL top]
+[s]Station Outskirts[e]
+[s]Tatsumi Port Island Station[e]
+[s]Town Map[e]
+[s]Social Links[e]
+[s]Cancel[e]

@@ -1,0 +1,2302 @@
+import( "FindAFriend.msg" );
+
+// Procedure Index: 27
+void HangOut()
+{
+    if (BIT_CHK(4104))
+    {
+    AEGIS_END:
+        int var17;
+        int var43;
+        int var48;
+        var43 = EVT_FUNCTION_002A(0);
+        var48 = EVT_FUNCTION_002A(1);
+        int gVar76 = 524287;
+        int fieldMajor;
+        int fieldMinor;
+		int var5;
+		int var2;
+		int var98;
+		int var1;
+		int var6;
+		int var7;
+		var5 = GET_COUNT( 90 );
+		var6 = GET_COUNT( 91 );
+		var7 = GET_COUNT( 92 );
+        fieldMajor = FLD_GET_MAJOR();
+        fieldMinor = FLD_GET_MINOR();
+		
+		
+		if ( !BIT_CHK(5678) )
+		{
+			if ((CMM_GET_LV(2) == 0) && BIT_CHK(1985) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) ) // Kenji
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 4096);
+                SET_MSG_VAR(13, CMM_GET_LV(2), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(3) == 0) && BIT_CHK(1986) && CHK_DAYS_STARTEND( 4, 27, 1, 23 ) ) // Hidetoshi
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 256);
+                SET_MSG_VAR(9, CMM_GET_LV(3), 0);
+            }
+			}
+			
+			if ( ( CMM_GET_LV(4) == 0) && BIT_CHK(1987) && CHK_DAYS_STARTEND( 4, 25, 1, 23 ) ) // Old Couple
+			{
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 512);
+                SET_MSG_VAR(10, CMM_GET_LV(4), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(5) == 0) && BIT_CHK(1988) && CHK_DAYS_STARTEND( 7, 28, 1, 23 ) ) // Yukari
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 128);
+                SET_MSG_VAR(8, CMM_GET_LV(5), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(6) == 0) && BIT_CHK(1989) && CMM_GET_LV(var48) >= 1 ) // Fuuka
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 32);
+                SET_MSG_VAR(6, CMM_GET_LV(6), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(7) == 0) && BIT_CHK(1990) && CHK_DAYS_STARTEND( 11, 21, 1, 23 ) ) // Mitsuru
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 2);
+                SET_MSG_VAR(2, CMM_GET_LV(7), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(8) == 1) && BIT_CHK(1991) && CHK_DAYS_STARTEND( 12, 30, 1, 23 ) ) // Aigis
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 64);
+                SET_MSG_VAR(7, CMM_GET_LV(8), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(9) == 0) && BIT_CHK(1992) && CHK_DAYS_STARTEND( 4, 28, 1, 23 ) && CMM_GET_LV(var43) == 3 ) // Yuko
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 4);
+                SET_MSG_VAR(3, CMM_GET_LV(9), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(10) == 0) && BIT_CHK(1993) && CHK_DAYS_STARTEND( 5, 28, 1, 23 ) ) // Chihiro
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 8);
+                SET_MSG_VAR(4, CMM_GET_LV(10), 0);
+            }
+			}
+			
+			if (((CMM_GET_LV(var43) == 0) && BIT_CHK(1994) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) )  || ((CMM_GET_LV(var43) == 0) && BIT_CHK(1995) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) ) || ((CMM_GET_LV(var43) == 0) && BIT_CHK(1996) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) ) ) // Kazushi
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 1024);
+                SET_MSG_VAR(11, CMM_GET_LV(var43), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(14) == 0) && BIT_CHK(1997) && CHK_DAYS_STARTEND( 4, 29, 1, 23 ) ) // Maya
+			{
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 32768);
+                SET_MSG_VAR(16, CMM_GET_LV(14), 0);
+            }
+			}
+			
+			if (((CMM_GET_LV(var48) == 0) && BIT_CHK(1998) && CHK_DAYS_STARTEND( 6, 17, 1, 23 ) ) || ((CMM_GET_LV(var48) == 0) && BIT_CHK(1999) && CHK_DAYS_STARTEND( 6, 17, 1, 23 ) ) || ((CMM_GET_LV(var48) == 0) && BIT_CHK(2000) && CHK_DAYS_STARTEND( 6, 17, 1, 23 ) ) ) // Keisuke
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 16384);
+                SET_MSG_VAR(15, CMM_GET_LV(var48), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(18) == 0) && BIT_CHK(2001) && CHK_DAYS_STARTEND( 5, 9, 1, 23 ) )  // Maiko
+			{
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 2048);
+                SET_MSG_VAR(12, CMM_GET_LV(18), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(20) == 0) && BIT_CHK(2003) && CHK_DAYS_STARTEND( 5, 29, 1, 23 ) ) // Bebe
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 16);
+                SET_MSG_VAR(5, CMM_GET_LV(20), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(21) == 0) && BIT_CHK(2004) && CHK_DAYS_STARTEND( 6, 23, 1, 23 ) )  // Tanaka
+			{
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 65536);
+                SET_MSG_VAR(17, CMM_GET_LV(21), 0);
+            }
+            else
+            {
+            }
+			}
+			
+			if ((CMM_GET_LV(22) == 0) && BIT_CHK(2005) && CMM_GET_LV((9) == 4 ) || ((CMM_GET_LV(22) == 0) && BIT_CHK(2005) && CMM_GET_LV((var43) == 3 ) ) ) // Mutatsu
+			{
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 131072);
+                SET_MSG_VAR(18, CMM_GET_LV(22), 0);
+            }
+            else
+            {
+            }
+			}
+			
+			if ((CMM_GET_LV(23) == 0) && BIT_CHK(2006) && CHK_DAYS_STARTEND( 8, 9, 1, 23 ) )  // Mamoru
+			{
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 8192);
+                SET_MSG_VAR(14, CMM_GET_LV(23), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(24) == 0) && BIT_CHK(2007) && CHK_DAYS_STARTEND( 9, 7, 1, 23 ) ) // Nozomi
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 262144);
+                SET_MSG_VAR(19, CMM_GET_LV(24), 0);
+            }
+			}
+			
+			if ((CMM_GET_LV(25) == 0) && BIT_CHK(2008) && CHK_DAYS_STARTEND( 8, 8, 1, 23 ) ) // Akinari
+			{
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 1);
+                SET_MSG_VAR(1, CMM_GET_LV(25), 0);
+            }
+			}
+			
+		}
+
+        if ((CMM_CHK_LVUP(2) == 1) && BIT_CHK(1985)) // Kenji
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 4096);
+				SET_MSG_VAR(20, 8, 6);
+                SET_MSG_VAR(13, CMM_GET_LV(2), 0);
+            }
+        }
+		
+		else if ((CMM_CHK_LVUP(2) == 0 ) && BIT_CHK(1985) && CMM_GET_LV(2) != 0 && CMM_GET_LV(2) != 10)  // Kenji
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 4096);
+                SET_MSG_VAR(13, CMM_GET_LV(2), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(3) == 1) && BIT_CHK(1986)) // Hidetoshi
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 256);
+				SET_MSG_VAR(21, 8, 6);
+                SET_MSG_VAR(9, CMM_GET_LV(3), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(3) == 0) && BIT_CHK(1986) && CMM_GET_LV(3) != 0 && CMM_GET_LV(3) != 10)  // Hidetoshi
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 256);
+                SET_MSG_VAR(9, CMM_GET_LV(3), 0);
+            }
+        }
+
+        if (( CMM_CHK_LVUP(4) == 1) && BIT_CHK(1987) ) // Old Couple
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 512);
+				SET_MSG_VAR(22, 8, 6);
+                SET_MSG_VAR(10, CMM_GET_LV(4), 0);
+            }
+        }
+		
+		
+		
+		else if ( ( CMM_CHK_LVUP(4) == 0) && BIT_CHK(1987) && CMM_GET_LV(4) != 0 && CMM_GET_LV(4) != 10 ) // Old Couple
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 512);
+                SET_MSG_VAR(10, CMM_GET_LV(4), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(5) == 1) && BIT_CHK(1988)) // Yukari
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 128);
+				SET_MSG_VAR(23, 8, 6);
+                SET_MSG_VAR(8, CMM_GET_LV(5), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(5) == 0) && BIT_CHK(1988) && CMM_GET_LV(5) != 0 && CMM_GET_LV(5) != 10)  // Yukari
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 128);
+                SET_MSG_VAR(8, CMM_GET_LV(5), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(6) == 1) && BIT_CHK(1989)) // Fuuka
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 32);
+				SET_MSG_VAR(24, 8, 6);
+                SET_MSG_VAR(6, CMM_GET_LV(6), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(6) == 0) && BIT_CHK(1989) && CMM_GET_LV(6) != 0 && CMM_GET_LV(6) != 10)  // Fuuka
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 32);
+                SET_MSG_VAR(6, CMM_GET_LV(6), 0);
+            }
+        }
+		
+        if ((CMM_CHK_LVUP(7) == 1) && BIT_CHK(1990)) // Mitsuru
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 2);
+				SET_MSG_VAR(25, 8, 6);
+                SET_MSG_VAR(2, CMM_GET_LV(7), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(7) == 0) && BIT_CHK(1990) && CMM_GET_LV(7) != 0 && CMM_GET_LV(7) != 10)  // Mitsuru
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 2);
+                SET_MSG_VAR(2, CMM_GET_LV(7), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(8) == 1) && BIT_CHK(1991)) // Aigis
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 64);
+				SET_MSG_VAR(26, 8, 6);
+                SET_MSG_VAR(7, CMM_GET_LV(8), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(8) == 0) && BIT_CHK(1991) && CMM_GET_LV(8) != 0 && CMM_GET_LV(8) != 10)  // Aigis
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 64);
+                SET_MSG_VAR(7, CMM_GET_LV(8), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(9) == 1) && BIT_CHK(1992)) // Yuko
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 4);
+				SET_MSG_VAR(20, 8, 6);
+                SET_MSG_VAR(3, CMM_GET_LV(9), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(9) == 0) && BIT_CHK(1992) && CMM_GET_LV(9) != 0 && CMM_GET_LV(9) != 10)  // Yuko
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 4);
+                SET_MSG_VAR(3, CMM_GET_LV(9), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(10) == 1) && BIT_CHK(1993)) // Chihiro
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 8);
+				SET_MSG_VAR(28, 8, 6);
+                SET_MSG_VAR(4, CMM_GET_LV(10), 0);
+            }
+        }
+		
+		
+		
+		// else if (((var5 == 10) || (var6 == 10) || (var7 == 10)) && (FUNCTION_0033() != 5) && (FUNCTION_0033() == 3) && (!BIT_CHK(3065))) // Chihiro
+		// {
+		//	var2 = 40;
+		//	var98 = 10;
+		//	gVar76 = (gVar76 - 8);
+		//	SET_MSG_VAR(4, CMM_GET_LV(10), 0);
+    	//	}
+
+		
+		else if ((CMM_CHK_LVUP(10) == 0) && BIT_CHK(1993) && CMM_GET_LV(10) != 0 && CMM_GET_LV(10) != 10) // Chihiro
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 8);
+                SET_MSG_VAR(4, CMM_GET_LV(10), 0);
+            }
+        }
+
+        if (((CMM_CHK_LVUP(var43) == 1) && BIT_CHK(1994)) || ((CMM_CHK_LVUP(var43) == 1) && BIT_CHK(1995)) || ((CMM_CHK_LVUP(var43) == 1) && BIT_CHK(1996))) // Kazushi
+        {
+			if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 1024);
+				SET_MSG_VAR(29, 8, 6);
+                SET_MSG_VAR(11, CMM_GET_LV(var43), 0);
+            }
+        }
+		
+		
+		
+		else if (((CMM_CHK_LVUP(var43) == 0) && BIT_CHK(1994) && CMM_GET_LV(var43) != 0 && CMM_GET_LV(var43) != 10)  || ((CMM_CHK_LVUP(var43) == 0) && BIT_CHK(1995) && CMM_GET_LV(var43) != 0 && CMM_GET_LV(var43) != 10)  || ((CMM_CHK_LVUP(var43) == 0) && BIT_CHK(1996) && CMM_GET_LV(var43) != 0 && CMM_GET_LV(var43) != 10) ) // Kazushi
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 1024);
+                SET_MSG_VAR(11, CMM_GET_LV(var43), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(14) == 1) && BIT_CHK(1997)) // Maya
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 32768);
+				SET_MSG_VAR(21, 8, 6);
+                SET_MSG_VAR(16, CMM_GET_LV(14), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(14) == 0) && BIT_CHK(1997) && CMM_GET_LV(14) != 0 && CMM_GET_LV(14) != 10)  // Maya
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 32768);
+                SET_MSG_VAR(16, CMM_GET_LV(14), 0);
+            }
+        }
+
+        if (((CMM_CHK_LVUP(var48) == 1) && BIT_CHK(1998)) || ((CMM_CHK_LVUP(var48) == 1) && BIT_CHK(1999)) || ((CMM_CHK_LVUP(var48) == 1) && BIT_CHK(2000))) // Keisuke
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 16384);
+				SET_MSG_VAR(24, 8, 6);
+                SET_MSG_VAR(15, CMM_GET_LV(var48), 0);
+            }
+        }
+		
+		
+		
+		else if (((CMM_CHK_LVUP(var48) == 0) && BIT_CHK(1998) && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10)  || ((CMM_CHK_LVUP(var48) == 0) && BIT_CHK(1999) && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10)  || ((CMM_CHK_LVUP(var48) == 1) && BIT_CHK(2000) && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10) ) // Keisuke
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 16384);
+                SET_MSG_VAR(15, CMM_GET_LV(var48), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(18) == 1) && BIT_CHK(2001)) // Maiko
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 2048);
+				SET_MSG_VAR(31, 8, 6);
+                SET_MSG_VAR(12, CMM_GET_LV(18), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(18) == 0) && BIT_CHK(2001) && CMM_GET_LV(18) != 0 && CMM_GET_LV(18) != 10) // Maiko
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 2048);
+                SET_MSG_VAR(12, CMM_GET_LV(18), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(20) == 1) && BIT_CHK(2003)) // Bebe
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 16);
+				SET_MSG_VAR(0, 8, 6);
+                SET_MSG_VAR(5, CMM_GET_LV(20), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(20) == 0) && BIT_CHK(2003) && CMM_GET_LV(20) != 0 && CMM_GET_LV(20) != 10)  // Bebe
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 16);
+                SET_MSG_VAR(5, CMM_GET_LV(20), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(21) == 1) && BIT_CHK(2004)) // Tanaka
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 65536);
+				SET_MSG_VAR(23, 8, 6);
+                SET_MSG_VAR(17, CMM_GET_LV(21), 0);
+            }
+            else
+            {
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(21) == 0) && BIT_CHK(2004) && CMM_GET_LV(21) != 0 && CMM_GET_LV(21) != 10)  // Tanaka
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 65536);
+                SET_MSG_VAR(17, CMM_GET_LV(21), 0);
+            }
+            else
+            {
+            }
+        }
+
+        if ((CMM_CHK_LVUP(22) == 1) && BIT_CHK(2005)) // Mutatsu
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 131072);
+				SET_MSG_VAR(22, 8, 6);
+                SET_MSG_VAR(18, CMM_GET_LV(22), 0);
+            }
+            else
+            {
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(22) == 0) && BIT_CHK(2005) && CMM_GET_LV(22) != 0 && CMM_GET_LV(22) != 10)  // Mutatsu
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 131072);
+                SET_MSG_VAR(18, CMM_GET_LV(22), 0);
+            }
+            else
+            {
+            }
+        }
+
+        if ((CMM_CHK_LVUP(23) == 1) && BIT_CHK(2006)) // Mamoru
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 8192);
+				SET_MSG_VAR(30, 8, 6);
+                SET_MSG_VAR(14, CMM_GET_LV(23), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(23) == 0) && BIT_CHK(2006) && CMM_GET_LV(23) != 0 && CMM_GET_LV(23) != 10) // Mamoru
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 8192);
+                SET_MSG_VAR(14, CMM_GET_LV(23), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(24) == 1) && BIT_CHK(2007)) // Nozomi
+			{
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 262144);
+				SET_MSG_VAR(27, 8, 6);
+                SET_MSG_VAR(19, CMM_GET_LV(24), 0);
+            }
+			}
+		
+		
+		
+		else if ((CMM_CHK_LVUP(24) == 0) && BIT_CHK(2007) && CMM_GET_LV(24) != 0 && CMM_GET_LV(24) != 10) // Nozomi
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 262144);
+                SET_MSG_VAR(19, CMM_GET_LV(24), 0);
+            }
+        }
+		
+        if ((CMM_CHK_LVUP(25) == 1) && BIT_CHK(2008)) // Akinari
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 1);
+				SET_MSG_VAR(26, 8, 6);
+                SET_MSG_VAR(1, CMM_GET_LV(25), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(25) == 0) && BIT_CHK(2008) && CMM_GET_LV(25) != 0 && CMM_GET_LV(25) != 10) // Akinari
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 1);
+                SET_MSG_VAR(1, CMM_GET_LV(25), 0);
+            }
+        }
+
+        MSG_WND_DSP();
+        SEL_DEFKEY(14, 20);
+        FUNCTION_0006(gVar76);
+
+        if (gVar76 == 524287)
+        {
+            MSG(NO_ONE);
+        }
+        else
+        {
+
+            MSG(WHO_HANG_WITH);
+            var17 = SEL(LIST_OF_PEOPLE);
+
+            if (var17 == 0) // Akinari
+            {
+                if (fieldMajor == 12 && fieldMinor == 1)
+                {
+                    MSG(NARI_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(12, 1, 0, 0);
+                }
+            }
+
+            if (var17 == 1) // Mitsuru
+            {
+                if (fieldMajor == 6 && fieldMinor == 7)
+                {
+                    MSG(MITS_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 7, 1, 0);
+                }
+            }
+
+            if (var17 == 2) // Yuko
+            {
+                if (fieldMajor == 6 && fieldMinor == 4)
+                {
+                    MSG(YUKO_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 4, 3, 0);
+                }
+            }
+
+            if (var17 == 3) // Chihiro
+			{
+                if (fieldMajor == 6 && fieldMinor == 4)
+                {
+                    MSG(CHIH_NEARBY);
+                    goto AEGIS_END;
+                }
+                // else if ((var5 == 10) || (var6 == 10) || (var7 == 10))
+                /// {
+                //	FUNCTION_0024( 25 );
+                //	WAIT( 10 );
+                //	FUNCTION_0024( 70 );
+                //	WAIT( 10 );
+                //	MSG(CHANGED_MIND_CHIH);
+                //	FUNCTION_0024( 319 );
+                //	WAIT( 10 );
+                //	FUNCTION_0024( 235 );
+                //	if (CMM_GET_LV(10) == 3)
+                //	{
+                //		BIT_ON(1813);
+                //		MSG_WND_CLS();
+                //		FADE( 3, 20 );
+                //		FUNCTION_000F();
+                //		CALL_EVENT( 850, 4 );
+                //		NEXT_TIME();
+                //	}
+                //	if (CMM_GET_LV(10) == 2)
+                //	{
+                //		BIT_ON(1813);
+                //		MSG_WND_CLS();
+                //		FADE( 3, 20 );
+                //		FUNCTION_000F();
+                //		CALL_EVENT( 850, 3 );
+                //		NEXT_TIME();
+                //	}
+                //	if (( CMM_GET_LV(10) == 5) || (CMM_GET_LV(10) == 6))
+                //	{
+                //		BIT_ON(1813);
+                //		MSG_WND_CLS();
+                //		FADE( 3, 20 );
+                //		FUNCTION_000F();
+                //		CALL_EVENT( 840, 31 );
+                //		NEXT_TIME();
+                //	}
+                else
+                {
+                    MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 4, 3, 0);
+                }
+            }
+
+            if (var17 == 4) // Bebe
+            {
+                if (CMM_GET_LV(20) == 0)
+				{
+					if (fieldMajor == 6 && fieldMinor == 11)
+					{
+						MSG(BEBE_NEARBY);
+						goto AEGIS_END_0;
+					}
+					else
+					{
+						MSG_WND_CLS();
+						FADE(3, 20);
+						FUNCTION_000F();
+						CALL_FIELD(6, 11, 0, 0);
+					}
+                }
+                else if (fieldMajor == 6 && fieldMinor == 4)
+                {
+                    MSG(BEBE_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 4, 0, 0);
+                }
+            }
+
+            if (var17 == 5) // Fuuka
+            {
+                if (fieldMajor == 6 && fieldMinor == 4)
+                {
+                    MSG(FUCK_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 4, 2, 0);
+                }
+            }
+
+            if (var17 == 6) // Aigis
+            {
+                if (fieldMajor == 6 && fieldMinor == 3)
+                {
+                    MSG(AIG_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 3, 0, 0);
+                }
+            }
+
+            if (var17 == 7) // Yukari
+            {
+                if (fieldMajor == 6 && fieldMinor == 3)
+                {
+                    MSG(YUK_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 3, 0, 0);
+                }
+            }
+
+            if (var17 == 8) // Hidetoshi
+            {
+                if (fieldMajor == 6 && fieldMinor == 4)
+                {
+                    MSG(HIDE_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 4, 2, 0);
+                }
+            }
+
+            if (var17 == 9) // Old Couple
+            {
+                if (fieldMajor == 9 && fieldMinor == 1)
+                {
+                    MSG(BOOK_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(9, 1, 6, 0);
+                }
+            }
+
+            if (var17 == 10) // Kazushi
+            {
+                if (fieldMajor == 6 && fieldMinor == 3)
+                {
+                    SET_COUNT( 1, 769 );
+					BGM( 769 );
+					return;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 3, 0, 0);
+                }
+            }
+
+            if (var17 == 11) // Maiko
+            {
+                if (fieldMajor == 12 && fieldMinor == 1)
+                {
+                    MSG(MAIK_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(12, 1, 0, 0);
+                }
+            }
+
+            if (var17 == 12) // Kenji
+            {
+                if (fieldMajor == 6 && fieldMinor == 3)
+                {
+                    MSG(KEN_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 3, 0, 0);
+                }
+            }
+
+            if (var17 == 13) // Mamoru
+            {
+                if (fieldMajor == 9 && fieldMinor == 1)
+                {
+                    MSG(MAMO_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(9, 1, 6, 0);
+                }
+            }
+
+            if (var17 == 14) // Keisuke
+            {
+                if (fieldMajor == 6 && fieldMinor == 11)
+                {
+                    MSG(KEIS_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 11, 0, 0);
+                }
+            }
+
+            if (var17 == 15) // Maya
+            {
+                if (fieldMajor == 7 && fieldMinor == 19)
+                {
+                    MSG(MAYA_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(7, 19, 0, 0);
+                }
+            }
+
+            if (var17 == 16) // Tanaka
+            {
+                if (fieldMajor == 8 && fieldMinor == 1)
+                {
+                    MSG(TANA_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(8, 1, 0, 0);
+                }
+            }
+
+            if (var17 == 17) // Mutatsu
+            {
+                if (fieldMajor == 8 && fieldMinor == 2)
+                {
+                    MSG(MUTA_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(8, 2, 0, 0);
+                }
+            }
+
+            if (var17 == 18) // Nozomi
+            {
+                if (fieldMajor == 8 && fieldMinor == 1)
+                {
+                    MSG(NOZO_NEARBY);
+                    goto AEGIS_END;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(8, 1, 0, 0);
+                }
+            }
+
+            if (var17 == 19)
+            {
+				MSG_WND_CLS();
+                return;
+            }
+        }
+    }
+    else if (BIT_CHK(4103))
+    {
+    AEGIS_END_0:
+        int var17;
+        int var43;
+        int var48;
+		int var56;
+		int var51;
+		int var80;
+        int gVar76 = 524287;
+        int fieldMajor;
+        int fieldMinor;
+		var43 = EVT_FUNCTION_002A(0); // Rio
+        var48 = EVT_FUNCTION_002A(1); // Saori
+		var51 = EVT_FUNCTION_0023( 14); // Ryoji
+		var56 = EVT_FUNCTION_0023( 0x10 ); // Ken
+		var80 = EVT_FUNCTION_0023( 23 ); // Akihiko
+        fieldMajor = FLD_GET_MAJOR();
+        fieldMinor = FLD_GET_MINOR();
+		
+		
+		if ( !BIT_CHK(5678) )
+		{
+            if ((CMM_GET_LV(2) == 0) && BIT_CHK(1985) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) ) // Junpei
+            {
+                if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 1);
+                    SET_MSG_VAR(1, CMM_GET_LV(2), 0);
+                }
+            }
+            
+            if ((CMM_GET_LV(3) == 0) && BIT_CHK(1986) && CHK_DAYS_STARTEND( 4, 27, 1, 23 ) ) // Hidetoshi
+            {
+                if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 2);
+                    SET_MSG_VAR(2, CMM_GET_LV(3), 0);
+                }
+            }
+            
+            if ((CMM_GET_LV(4) == 0) && BIT_CHK(1987) && CHK_DAYS_STARTEND( 4, 25, 1, 23 ) ) // Old Couple
+            {
+                if (FUNCTION_0033() == 5)
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 4);
+                    SET_MSG_VAR(3, CMM_GET_LV(4), 0);
+                }
+            }
+            
+            if ((CMM_GET_LV(5) == 0) && BIT_CHK(1988) && CHK_DAYS_STARTEND( 7, 28, 1, 23 ) ) // Yukari
+            {
+                if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 8);
+                    SET_MSG_VAR(4, CMM_GET_LV(5), 0);
+                }
+            }
+            
+            if ((CMM_GET_LV(6) == 0) && BIT_CHK(1989) && CHK_DAYS_STARTEND( 6, 15, 1, 23 ) )  // Fuuka
+            {
+                if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 16);
+                    SET_MSG_VAR(5, CMM_GET_LV(6), 0);
+                }
+            }
+            
+            if ((CMM_GET_LV(7) == 0) && BIT_CHK(1990) && CHK_DAYS_STARTEND( 11, 21, 1, 23 ) )  // Mitsuru
+            {
+                if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 32);
+                    SET_MSG_VAR(6, CMM_GET_LV(7), 0);
+                }
+            }
+            
+            if ((CMM_GET_LV(8) == 0) && BIT_CHK(1991) && CHK_DAYS_STARTEND( 12, 30, 1, 23 ) ) // Aigis
+            {
+                if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 64);
+                    SET_MSG_VAR(7, CMM_GET_LV(8), 0);
+                }
+            }
+            
+            if ((( CMM_GET_LV(var48) == 0) && BIT_CHK(1993) && CHK_DAYS_STARTEND( 5, 8, 1, 23 ) ) || ((CMM_GET_LV(var48) == 0) && BIT_CHK(1992) && CHK_DAYS_STARTEND( 5, 8, 1, 23 ) ))  // Saori Library
+            {
+                if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 262144);
+                    SET_MSG_VAR(20, CMM_GET_LV(var48), 0);
+                }
+            }
+            
+            if (( CMM_GET_LV(var43) == 0 && BIT_CHK(1994) && CHK_DAYS_STARTEND( 4, 24, 1, 31 )) || ((CMM_GET_LV(var43) == 0) && BIT_CHK(1995) && CHK_DAYS_STARTEND( 4, 24, 1, 31 ) ))  // Rio
+            {
+                if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 128);
+                    SET_MSG_VAR(9, CMM_GET_LV(var43), 0);
+                }
+            }
+            
+            if ((CMM_GET_LV(13) == 0) && BIT_CHK(1996) && CHK_DAYS_STARTEND( 8, 15, 1, 31 ) ) // Koromaru
+            {
+                if (FUNCTION_0033() == 5)
+                {
+                    gVar76 = (gVar76 - 256);
+                    SET_MSG_VAR(10, CMM_GET_LV(13), 0);
+                }
+                else
+                {
+                }
+            }
+            
+            if (((CMM_GET_LV(var51) == 0) && BIT_CHK(1997) && CHK_DAYS_STARTEND( 11, 9, 1, 31 )) || ((CMM_GET_LV(var51) == 0) && BIT_CHK(1998) && CHK_DAYS_STARTEND( 11, 9, 1, 31 ) )) // Ryoji
+            {
+                if (FUNCTION_0033() == 5)
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 512);
+                    SET_MSG_VAR(11, CMM_GET_LV(var51), 0);
+                }
+            }
+            
+            if ((( CMM_GET_LV(var56) == 0) && BIT_CHK(1999) && CHK_DAYS_STARTEND( 9, 1, 1, 31 ) || ((CMM_GET_LV(var56) == 0) && BIT_CHK(2000) && CHK_DAYS_STARTEND( 9, 1, 1, 31 ) ) ) )// Ken
+            {
+                if (FUNCTION_0033() == 5)
+                {
+                    gVar76 = (gVar76 - 1024);
+                    SET_MSG_VAR(12, CMM_GET_LV(var56), 0);
+                }
+                else
+                {
+                }
+            }
+            
+            if ((CMM_GET_LV(18) == 0) && BIT_CHK(2001) && CHK_DAYS_STARTEND( 5, 11, 1, 31 ) ) // Maiko
+            {
+                if (FUNCTION_0033() == 5)
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 2048);
+                    SET_MSG_VAR(13, CMM_GET_LV(18), 0);
+                }
+            }
+            
+            if ((CMM_GET_LV(20) == 0) && BIT_CHK(2003) && CHK_DAYS_STARTEND( 5, 29, 1, 31 ) )  // Bebe
+            {
+                if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 4096);
+                    SET_MSG_VAR(0, 8, 6);
+                    SET_MSG_VAR(14, CMM_GET_LV(20), 0);
+                }
+            }
+            
+            if ((CMM_GET_LV(21) == 0) && BIT_CHK(2004) && CHK_DAYS_STARTEND( 6, 23, 1, 23 ) )  // Tanaka
+            {
+                if (FUNCTION_0033() == 5)
+                {
+                    gVar76 = (gVar76 - 8192);
+                    SET_MSG_VAR(15, CMM_GET_LV(21), 0);
+                }
+                else
+                {
+                }
+            }
+            
+            if ((CMM_GET_LV(22) == 0) && BIT_CHK(2005) && CMM_GET_LV((9) == 4 ) || ((CMM_GET_LV(22) == 0) && BIT_CHK(2005) && CMM_GET_LV((var43) == 3 ) ) )  // Mutatsu
+            {
+                if (FUNCTION_0033() == 5)
+                {
+                    gVar76 = (gVar76 - 16384);
+                    SET_MSG_VAR(16, CMM_GET_LV(22), 0);
+                }
+                else
+                {
+                }
+            }
+            
+            if ((CMM_GET_LV(25) == 0) && BIT_CHK(2008) && CHK_DAYS_STARTEND( 8, 8, 1, 23 ) )  // Akinari
+            {
+                if (FUNCTION_0033() == 5)
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 65536);
+                    SET_MSG_VAR(18, CMM_GET_LV(25), 0);
+                }
+            }
+            
+            if ((CMM_GET_LV(27) == 0) && BIT_CHK(2010) && CHK_DAYS_STARTEND( 9, 7, 1, 23 ) ) // Shinjiro
+            {
+                if (FUNCTION_0033() == 5)
+                {
+                    gVar76 = (gVar76 -  131072 );
+                    SET_MSG_VAR(30, 8, 6);
+                    SET_MSG_VAR(19, CMM_GET_LV(27), 0);
+                }
+                else
+                {
+                }
+            }
+
+            if (((CMM_GET_LV(var80) == 0) && BIT_CHK(2006) && CHK_DAYS_STARTEND( 5, 25, 1, 31 )) || ((CMM_GET_LV(var80) == 0) && BIT_CHK(2007) && CHK_DAYS_STARTEND( 5, 25, 1, 31 ) )) // Ryoji
+            {
+                if ( ( FUNCTION_0033() == 5 ) || BIT_CHK(3065) )
+                {
+                }
+                else
+                {
+                    gVar76 = (gVar76 - 32768);
+                    SET_MSG_VAR(17, CMM_GET_LV(var80), 0);
+                    SET_MSG_VAR(29, 8, 6);
+                }
+            }
+		}
+
+        if ((CMM_CHK_LVUP(2) == 1) && BIT_CHK(1985)) // Junpei
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 1);
+				SET_MSG_VAR(24, 8, 6);
+                SET_MSG_VAR(1, CMM_GET_LV(2), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(2) == 0) && BIT_CHK(1985) && CMM_GET_LV(2) != 0 && CMM_GET_LV(2) != 10 ) // Junpei
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 1);
+                SET_MSG_VAR(1, CMM_GET_LV(2), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(3) == 1) && BIT_CHK(1986)) // Hidetoshi
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 2);
+				SET_MSG_VAR(21, 8, 6);
+                SET_MSG_VAR(2, CMM_GET_LV(3), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(3) == 0) && BIT_CHK(1986) && CMM_GET_LV(3) != 0 && CMM_GET_LV(3) != 10 )  // Hidetoshi
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 2);
+                SET_MSG_VAR(2, CMM_GET_LV(3), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(4) == 1) && BIT_CHK(1987)) // Old Couple
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 4);
+				SET_MSG_VAR(22, 8, 6);
+                SET_MSG_VAR(3, CMM_GET_LV(4), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(4) == 0) && BIT_CHK(1987) && CMM_GET_LV(4) != 0 && CMM_GET_LV(4) != 10 ) // Old Couple
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 4);
+                SET_MSG_VAR(3, CMM_GET_LV(4), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(5) == 1) && BIT_CHK(1988)) // Yukari
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 8);
+				SET_MSG_VAR(23, 8, 6);
+                SET_MSG_VAR(4, CMM_GET_LV(5), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(5) == 0) && BIT_CHK(1988) && CMM_GET_LV(5) != 0 && CMM_GET_LV(5) != 10 ) // Yukari
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 8);
+                SET_MSG_VAR(4, CMM_GET_LV(5), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(6) == 1) && BIT_CHK(1989)) // Fuuka
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 16);
+				SET_MSG_VAR(23, 8, 6);
+                SET_MSG_VAR(5, CMM_GET_LV(6), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(6) == 0) && BIT_CHK(1989) && CMM_GET_LV(6) != 0 && CMM_GET_LV(6) != 10 ) // Fuuka
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 16);
+                SET_MSG_VAR(5, CMM_GET_LV(6), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(7) == 1) && BIT_CHK(1990)) // Mitsuru
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 32);
+				SET_MSG_VAR(21, 8, 6);
+                SET_MSG_VAR(6, CMM_GET_LV(7), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(7) == 0) && BIT_CHK(1990) && CMM_GET_LV(7) != 0 && CMM_GET_LV(7) != 10 ) // Mitsuru
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 32);
+                SET_MSG_VAR(6, CMM_GET_LV(7), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(8) == 1) && BIT_CHK(1991)) // Aigis
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 64);
+				SET_MSG_VAR(26, 8, 6);
+                SET_MSG_VAR(7, CMM_GET_LV(8), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(8) == 0) && BIT_CHK(1991) && CMM_GET_LV(8) != 0 && CMM_GET_LV(8) != 10 ) // Aigis
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 64);
+                SET_MSG_VAR(7, CMM_GET_LV(8), 0);
+            }
+        }
+
+        if (((CMM_CHK_LVUP(var48) == 1) && BIT_CHK(1993) ) || ((CMM_CHK_LVUP(var48) == 1) && BIT_CHK(1992) ) ) // Saori Library
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 262144);
+				SET_MSG_VAR(25, 8, 6);
+                SET_MSG_VAR(20, CMM_GET_LV(var48), 0);
+            }
+        }
+		
+		
+		
+		else if (((CMM_CHK_LVUP(var48) == 0) && BIT_CHK(1993) && CMM_GET_LV(10) != 0 && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10 ) || ((CMM_CHK_LVUP(var48) == 0) && BIT_CHK(1992) && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10 )) // Saori Library
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 262144);
+				SET_MSG_VAR(20, CMM_GET_LV(var48), 0);
+            }
+        }
+
+        if (((CMM_CHK_LVUP(var43) == 1) && BIT_CHK(1994) ) || ((CMM_CHK_LVUP(var43) == 1) && BIT_CHK(1995) ) ) // Rio
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 128);
+				SET_MSG_VAR(25, 8, 6);
+                SET_MSG_VAR(9, CMM_GET_LV(var43), 0);
+            }
+        }
+		
+		
+		
+		else if (((CMM_CHK_LVUP(var43) == 0) && BIT_CHK(1994) && CMM_GET_LV(var43) != 0 && CMM_GET_LV(11) != 10 ) || ((CMM_CHK_LVUP(var43) == 0) && BIT_CHK(1995) && CMM_GET_LV(var43) != 0 ) && CMM_GET_LV(var43) != 10 ) // Rio
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 128);
+                SET_MSG_VAR(9, CMM_GET_LV(var43), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(13) == 1) && BIT_CHK(1996)) // Koromaru
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 256);
+				SET_MSG_VAR(21, 8, 6);
+                SET_MSG_VAR(10, CMM_GET_LV(13), 0);
+            }
+            else
+            {
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(13) == 0) && BIT_CHK(1996) && CMM_GET_LV(13) != 0 && CMM_GET_LV(13) != 10 ) // Koromaru
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 256);
+                SET_MSG_VAR(10, CMM_GET_LV(13), 0);
+            }
+            else
+            {
+            }
+        }
+
+        if (((CMM_CHK_LVUP(var51) == 1) && BIT_CHK(1997)) || ((CMM_CHK_LVUP(var51) == 1) && BIT_CHK(1998))) // Ryoji
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 512);
+                SET_MSG_VAR(11, CMM_GET_LV(var51), 0);
+            }
+        }
+		
+		
+		
+		else if (((CMM_CHK_LVUP(var51) == 0) && BIT_CHK(1997) && CMM_GET_LV(14) != 0 && CMM_GET_LV(var51) != 10 ) || ((CMM_CHK_LVUP(var51) == 0) && BIT_CHK(1998) && CMM_GET_LV(var51) != 0 && CMM_GET_LV(var51) != 10 )) // Ryoji
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 512);
+                SET_MSG_VAR(11, CMM_GET_LV(var51), 0);
+            }
+        }
+
+        if (((CMM_CHK_LVUP(var56) == 1) && BIT_CHK(1999)) || ((CMM_CHK_LVUP(var56) == 1) && BIT_CHK(2000))) // Ken
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 1024);
+				SET_MSG_VAR(25, 8, 6);
+                SET_MSG_VAR(12, CMM_GET_LV(var56), 0);
+            }
+            else
+            {
+            }
+        }
+		
+		
+		
+		else if (((CMM_CHK_LVUP(var56) == 0) && BIT_CHK(1999) && CMM_GET_LV(var56) != 0 && CMM_GET_LV(var56) != 10 ) || ((CMM_CHK_LVUP(var56) == 0) && BIT_CHK(2000) && CMM_GET_LV(var56) != 0 && CMM_GET_LV(var56) != 10 ) ) // Ken
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 1024);
+                SET_MSG_VAR(12, CMM_GET_LV(var56), 0);
+            }
+            else
+            {
+            }
+        }
+
+        if ((CMM_CHK_LVUP(18) == 1) && BIT_CHK(2001)) // Maiko
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 2048);
+				SET_MSG_VAR(27, 8, 6);
+                SET_MSG_VAR(13, CMM_GET_LV(18), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(18) == 0) && BIT_CHK(2001) && CMM_GET_LV(18) != 0 && CMM_GET_LV(18) != 10 ) // Maiko
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 2048);
+                SET_MSG_VAR(13, CMM_GET_LV(18), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(20) == 1) && BIT_CHK(2003)) // Bebe
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 4096);
+				SET_MSG_VAR(0, 8, 6);
+                SET_MSG_VAR(14, CMM_GET_LV(20), 0);
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(20) == 0) && BIT_CHK(2003) && CMM_GET_LV(20) != 0 && CMM_GET_LV(20) != 10 ) // Bebe
+        {
+            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 4096);
+                SET_MSG_VAR(14, CMM_GET_LV(20), 0);
+            }
+        }
+
+        if ((CMM_CHK_LVUP(21) == 1) && BIT_CHK(2004)) // Tanaka
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 8192);
+				SET_MSG_VAR(23, 8, 6);
+                SET_MSG_VAR(15, CMM_GET_LV(21), 0);
+            }
+            else
+            {
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(21) == 1) && BIT_CHK(2004) && CMM_GET_LV(21) != 0 && CMM_GET_LV(21) != 10 ) // Tanaka
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 8192);
+                SET_MSG_VAR(15, CMM_GET_LV(21), 0);
+            }
+            else
+            {
+            }
+        }
+
+        if ((CMM_CHK_LVUP(22) == 1) && BIT_CHK(2005)) // Mutatsu
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 16384);
+				SET_MSG_VAR(22, 8, 6);
+                SET_MSG_VAR(16, CMM_GET_LV(22), 0);
+            }
+            else
+            {
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(22) == 0) && BIT_CHK(2005) && CMM_GET_LV(22) != 0 && CMM_GET_LV(22) != 10 ) // Mutatsu
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 - 16384);
+                SET_MSG_VAR(16, CMM_GET_LV(22), 0);
+            }
+            else
+            {
+            }
+        }
+		
+
+		if ( ( BIT_CHK(2006) && (CMM_CHK_LVUP(var80) == 1)) || (BIT_CHK(2007) && (CMM_CHK_LVUP(var80) == 1)) )
+        {	
+			if ( FUNCTION_0033() != 5 && !BIT_CHK(3065))
+			{
+				gVar76 = (gVar76 - 32768);
+				SET_MSG_VAR(17, CMM_GET_LV(var80), 0);
+			}
+
+			if (CMM_CHK_LVUP(var80) == 1)
+			{
+				SET_MSG_VAR(29, 8, 6);
+			}
+		}
+
+        else if (( ( BIT_CHK(2006) && CMM_CHK_LVUP(var80) == 0 && CMM_GET_LV(var80) != 0 && CMM_GET_LV(var80) != 10) ) || ( ( BIT_CHK(2007) && CMM_CHK_LVUP(var80) == 0 && CMM_GET_LV(var80) != 0 && CMM_GET_LV(var80) != 10) ) ) // Akihiko
+        {	
+			if ( FUNCTION_0033() != 5 && !BIT_CHK(3065))
+			{
+				gVar76 = (gVar76 - 32768);
+				SET_MSG_VAR(17, CMM_GET_LV(var80), 0);
+			}
+
+			if (CMM_CHK_LVUP(var80) == 1)
+			{
+				SET_MSG_VAR(29, 8, 6);
+			}
+		}
+
+        if ((CMM_CHK_LVUP(25) == 1) && BIT_CHK(2008)) // Akinari
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 65536);
+				SET_MSG_VAR(26, 8, 6);
+                SET_MSG_VAR(18, CMM_GET_LV(25), 0);
+            }
+        }
+		
+		else if ((CMM_CHK_LVUP(25) == 0) && BIT_CHK(2008) && CMM_GET_LV(25) != 0 && CMM_GET_LV(25) != 10 )  // Akinari
+        {
+            if (FUNCTION_0033() == 5)
+            {
+            }
+            else
+            {
+                gVar76 = (gVar76 - 65536);
+                SET_MSG_VAR(18, CMM_GET_LV(25), 0);
+            }
+        }
+		
+        if ((CMM_CHK_LVUP(27) == 1) && BIT_CHK(2010)) // Shinjiro
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 -  131072 );
+				SET_MSG_VAR(30, 8, 6);
+                SET_MSG_VAR(19, CMM_GET_LV(27), 0);
+            }
+            else
+            {
+            }
+        }
+		
+		
+		
+		else if ((CMM_CHK_LVUP(27) == 0) && BIT_CHK(2010) && CMM_GET_LV(27) != 0 && CMM_GET_LV(27) != 10 ) // Shinjiro
+        {
+            if (FUNCTION_0033() == 5)
+            {
+                gVar76 = (gVar76 -  131072);
+                SET_MSG_VAR(19, CMM_GET_LV(27), 0);
+            }
+            else
+            {
+            }
+        }
+
+        MSG_WND_DSP();
+        SEL_DEFKEY(14, 19);
+        FUNCTION_0006(gVar76);
+
+        if (gVar76 == 524287)
+        {
+            MSG(NO_ONE);
+        }
+        else
+        {
+            MSG(WHO_HANG_WITH);
+            var17 = SEL(LIST_OF_PEOPLE_F);
+
+            if (var17 == 0) // Junpei
+            {
+                if (fieldMajor == 6 && fieldMinor == 3)
+                {
+                    MSG(JUN_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 3, 0, 0);
+                }
+            }
+
+            if (var17 == 1) // Hidetoshi
+            {
+                if (fieldMajor == 6 && fieldMinor == 4)
+                {
+                    MSG(HIDE_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 4, 2, 0);
+                }
+            }
+
+            if (var17 == 2) // Old Couple
+            {
+                if (fieldMajor == 9 && fieldMinor == 1)
+                {
+                    MSG(BOOK_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(9, 1, 6, 0);
+                }
+            }
+
+            if (var17 == 3) // Yukari
+            {
+                if (fieldMajor == 6 && fieldMinor == 3)
+                {
+                    MSG(YUK_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 3, 0, 0);
+                }
+            }
+
+            if (var17 == 4) // Fuuka
+            {
+                if (fieldMajor == 6 && fieldMinor == 4)
+                {
+                    MSG(FUCK_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 4, 2, 0);
+                }
+            }
+
+            if (var17 == 5) // Mitsuru
+            {
+                if (fieldMajor == 6 && fieldMinor == 7)
+                {
+                    MSG(MITS_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 7, 1, 0);
+                }
+            }
+
+            if (var17 == 6) // Aigis
+            {
+                if (fieldMajor == 6 && fieldMinor == 3)
+                {
+                    MSG(AIG_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 3, 0, 0);
+                }
+            }
+
+            if (var17 == 7) // Rio
+            {
+				if ( CMM_GET_LV(var43) == 0 )
+				{
+					if ( fieldMajor == 6 && fieldMinor == 20)
+					{
+						MSG(RIO_NEARBY);
+						goto AEGIS_END_0;
+					}
+					else
+					{
+						MSG_WND_CLS();
+						FADE(3, 20);
+						FUNCTION_000F();
+						CALL_FIELD(6, 20, 0, 0);
+					}
+				}
+					
+                else if (fieldMajor == 6 && fieldMinor == 4)
+                {
+                    MSG(RIO_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 4, 3, 0);
+                }
+            }
+
+            if (var17 == 8) // Koromaru
+            {
+                if (fieldMajor == 7 && fieldMinor == 2)
+                {
+                    MSG(KORO_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(7, 2, 0, 0);
+                }
+            }
+
+            if (var17 == 9) // Ryoji
+            {
+                if (fieldMajor == 6 && fieldMinor == 3)
+                {
+                    MSG(RYOJ_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();  
+					FADE(3, 20);                
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 3, 0, 0);
+                }
+            }
+
+            if (var17 == 10) // Ken
+            {
+                if (fieldMajor == 7 && fieldMinor == 2)
+                {
+                    MSG(KENCOOL_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(7, 2, 0, 0);
+                }
+            }
+
+            if (var17 == 11) // Maiko
+            {
+                if (fieldMajor == 12 && fieldMinor == 1)
+                {
+                    MSG(MAIK_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(12, 1, 0, 0);
+                }
+            }
+
+            if (var17 == 12) // Bebe
+            {
+				if (CMM_GET_LV(20) == 0)
+				{
+					if (fieldMajor == 6 && fieldMinor == 11)
+					{
+						MSG(BEBE_NEARBY);
+						goto AEGIS_END_0;
+					}
+					else
+					{
+						MSG_WND_CLS();
+						FADE(3, 20);
+						FUNCTION_000F();
+						CALL_FIELD(6, 11, 0, 0);
+					}
+                }
+					
+                if (fieldMajor == 6 && fieldMinor == 4)
+                {
+                    MSG(BEBE_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 4, 3, 0);
+                }
+            }
+
+            if (var17 == 13) // Tanaka
+            {
+                if (fieldMajor == 8 && fieldMinor == 1)
+                {
+                    MSG(TANA_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(8, 1, 0, 0);
+                }
+            }
+
+            if (var17 == 14) // Mutatsu
+            {
+                if (fieldMajor == 8 && fieldMinor == 2)
+                {
+                    MSG(MUTA_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(8, 2, 0, 0);
+                }
+            }
+
+            if (var17 == 15) // Akihiko
+            {
+                if (fieldMajor == 6 && fieldMinor == 11)
+                {
+                    MSG(AKIH_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 11, 0, 0);
+                }
+            }
+
+            if (var17 == 16) // Akinari
+            {
+                if (fieldMajor == 12 && fieldMinor == 1)
+                {
+                    MSG(NARI_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(12, 1, 0, 0);
+                }
+            }
+
+            if (var17 == 17) // Shinjiro
+            {
+                if (fieldMajor == 7 && fieldMinor == 2)
+                {
+                    MSG(GET_IN_THE_EVA_SHINJI);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(7, 2, 0, 0);
+                }
+            }
+
+            if (var17 == 18) // Saori Library
+            {
+				if ( BIT_CHK(1993) )
+				{
+					if (fieldMajor == 6 && fieldMinor == 7)
+                {
+                    MSG(SAOR_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 7, 1, 0);
+                }
+				}
+				if ( BIT_CHK(1992) )
+				{
+					if (fieldMajor == 6 && fieldMinor == 4)
+                {
+                    MSG(SAOR_NEARBY);
+                    goto AEGIS_END_0;
+                }
+                else
+                {
+					MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(6, 4, 3, 0);
+                }
+				}
+
+            }
+
+            if (var17 == 19)
+            {
+				MSG_WND_CLS();
+                return;
+            }
+        }
+        }
+}

@@ -1,0 +1,5 @@
+[sel MALL_SHORTCUTT top]
+[s]Paulownia Mall[e]
+[s]Town Map[e]
+[s]Social Links[e]
+[s]Cancel[e]
