@@ -127,8 +127,8 @@
 [n]reached via a new sub menu option.[e]
 
 [msg TraestoGems_About[Use Traesto Gems (Dexxtrip)]]
-[s]Allows you to instantly use a Traesto gem from the sub menu 
-[n]for easier escaping of Tartarus.[e]
+[s]Allows you to instantly use a Traesto gem from the
+[n]sub menu for easier escaping of Tartarus.[e]
 
 [msg DefaultDirectCommands_About[Default Direct Commands (Dexxtrip)]]
 [s]Sets all party members tactics to direct
