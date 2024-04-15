@@ -28,8 +28,9 @@ void dormitory_shortcut_hook()
         SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
         if (!onPage) {
             if (BIT_CHK(6321) || BIT_CHK(6323) || BIT_CHK(6325) || BIT_CHK(6326)) {
-                SEL_DEFKEY(PadButton.Left, 13); // Prev Page on <
-                SEL_DEFKEY(PadButton.Right, 14); // Next Page on >
+                // Change page on < & >
+                SEL_DEFKEY(PadButton.Left, 13);
+                SEL_DEFKEY(PadButton.Right, 13);
                 dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x4000);
             }
             else {
@@ -39,8 +40,9 @@ void dormitory_shortcut_hook()
         else {
             // We don't do the same bitchecks for if we do pagination here, since
             // this path will only run if we have 2nd page options to begin with
-            SEL_DEFKEY(PadButton.Left, 13); // Prev Page on <
-            SEL_DEFKEY(PadButton.Right, 14); // Next Page on >
+            // Change page on < & >
+            SEL_DEFKEY(PadButton.Left, 14);
+            SEL_DEFKEY(PadButton.Right, 14);
             dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x2000);
         }
         if ((dormSel == 13) || (dormSel == 14)) {
@@ -51,6 +53,7 @@ void dormitory_shortcut_hook()
         }
         else {
             shortcut_select(dormSel);
+            break;
         }
     }
 }
