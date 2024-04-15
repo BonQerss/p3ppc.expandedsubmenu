@@ -70,7 +70,7 @@ void field_order_party_hook() {
 }
 
 void CallOriginalSquareMenu() {
-    field_order_party_unhooked();
+    field_order_party();
 }
 
 void tartaros_order_party_hook() {
