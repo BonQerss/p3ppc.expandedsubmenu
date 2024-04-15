@@ -3,6 +3,7 @@
 // 
 
 import("ModMenu/ModMenu.flow");
+import("Setup/FirstTimeSetup.flow");
 import("OtherMods/DungeonMods/OrganizeParty.flow");
 import("OtherMods/DungeonMods/ClockAnywhere.flow");
 import("field.msg");
@@ -62,6 +63,9 @@ global bool isFieldBf;
 
 void field_order_party_hook() {
     isFieldBf = true;
+    if (!BIT_CHK(6320)) {
+        FirstTimeSetup();
+    }
     field_order_party_unhooked();
 }
 
@@ -120,37 +124,37 @@ void tartaros_order_party_hook() {
     check_party_member();
     // bit id (((0) + (1024)) + (2048)) + (499) = 3571
     if (BIT_CHK(3571)) { // party is split up 
-        orderMask = (orderMask + 2); // 0b0010
+        orderMask += 2; // 0b0010
     }
     else {
-        orderMask = (orderMask + 1); // 0b0001
+        orderMask += 1; // 0b0001
     }
 
     // bit id (((0) + (1024)) + (2048)) + (500) = 3572
     if (!BIT_CHK(3572)) { // party is locating enemies
-        orderMask = (orderMask + 4); // 0b0100
+        orderMask += 4; // 0b0100
     }
     else {
-        orderMask = (orderMask + 8); // 0b1000
+        orderMask += 8; // 0b1000
     }
 
     if (BIT_CHK(3123)) { // hide/show fuuka only options
         // Only show BGM request if fuuka hasn't learned escape route,
         // else show "Ask fuuka for something" if she has learned it
         if (!FLD_FUNCTION_0031(6, 339)) {
-            orderMask = (orderMask + 0x20); // 0b0010_0000
+            orderMask += 0x20; // 0b0010_0000
         }
         else {
-            orderMask = (orderMask + 0x10); // 0b0001_0000
+            orderMask += 0x10; // 0b0001_0000
         }
     }
     else {
-        orderMask = (orderMask + 0x30); // 0b0011_0000
+        orderMask += 0x30; // 0b0011_0000
     }
 
     // bit id (((0) + (1024)) + (2048)) + (993) = 4065
     if (!BIT_CHK(4065)) { // debug flag
-        orderMask = (orderMask + 0x400); // 0b0100_0000_0000
+        orderMask += 0x400; // 0b0100_0000_0000
     }
 
     // bit id (((0) + (1024)) + (2048)) + (495) = 3567
@@ -170,12 +174,20 @@ void tartaros_order_party_hook() {
         MSG(whatOrderMSG);
     }
 
-    if ( !BIT_CHK( 6321 )) // Mod Menu
-    {
-        orderMask = (orderMask + 256 );
+    if (!BIT_CHK(6321)) { // Mod Menu
+        orderMask += 0x100; // 0b0001_0000_0000
     }
     
-    SEL_DEFKEY(14, 9);
+    if (!BIT_CHK(6330)) { // Call the Clock
+        orderMask += 0x80; // 0b1000_0000
+    }
+    
+    if (!BIT_CHK(6332)) { // Organize Party
+        orderMask += 0x40; // 0b0100_0000
+    }
+    
+    SEL_DEFKEY(PadButton.Circle, 9); // Cancel button on ○
+    SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
     FUNCTION_0006(orderMask);
     int orderChoice = SEL(ORDER_SEL);
     MSG_WND_CLS();
@@ -227,6 +239,9 @@ void tartaros_order_party_hook() {
     else if (orderChoice == 10) {
         debug_mode();
     }
+    else if (orderChoice == 99) {
+        MenuOptions();
+    }
 }
 
 void order_for_huka_hook() { // used when fuuka is unlocked + empty party + other situations???
@@ -234,24 +249,32 @@ void order_for_huka_hook() { // used when fuuka is unlocked + empty party + othe
     int fuukaMask = 0;
     // bit id (((0) + (1024)) + (2048)) + (51) = 3123
     if (!BIT_CHK(3123)) { // hide fuuka options when mitsuru
-        fuukaMask = 3; // 0b0011
+        fuukaMask += 3; // 0b0011
     } else {
         if (!FLD_FUNCTION_0031(6, 339)) {
-            fuukaMask = 1; // 0b0001
+            fuukaMask += 1; // 0b0001
         }
     }
 
     // bit id (((0) + (1024)) + (2048)) + (993) = 4065
     if (!BIT_CHK(4065)) { // hide debug option
-        fuukaMask = (fuukaMask + 0x40); // 0b0100_0000
+        fuukaMask += 0x40; // 0b0100_0000
     }
     
-    if (!BIT_CHK(6321)) // Mod Menu
-    {
-        fuukaMask = (fuukaMask + 0x10);
+    if (!BIT_CHK(6321)) { // Mod Menu
+        fuukaMask += 0x10; // 0b0001_0000
     }
     
-    SEL_DEFKEY(14, 5);
+    if (!BIT_CHK(6330)) { // Call the Clock
+        fuukaMask += 8; // 0b1000
+    }
+    
+    if (!BIT_CHK(6332)) { // Organize Party
+        fuukaMask += 4; // 0b0100
+    }
+    
+    SEL_DEFKEY(PadButton.Circle, 5); // Cancel button on ○
+    SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
     FUNCTION_0006(fuukaMask);
     int fuukaOrder = SEL(HUKA_OREDER_SEL);
     // bit id ((((0) + (1024)) + (2048)) + (1024)) + (8) = 4104
@@ -259,7 +282,7 @@ void order_for_huka_hook() { // used when fuuka is unlocked + empty party + othe
     
     if (fuukaOrder == 0) {
         MSG(HUKA_ORDER_ESCAPE);
-        SEL_DEFKEY(14, 1);
+        SEL_DEFKEY(PadButton.Circle, 1);
         
         if (BIT_CHK(4104) || FLD_FUNCTION_0046()) {
             fuukaOrder = SEL(ESCAPE_SEL);
@@ -306,13 +329,23 @@ void order_for_huka_hook() { // used when fuuka is unlocked + empty party + othe
         debug_mode();
         return;
     }
+    else if (fuukaOrder == 99) {
+        MSG_WND_CLS();
+        FUNCTION_0065(0);
+        MenuOptions();
+        return;
+    }
 
     MSG_WND_CLS();
     FUNCTION_0065(0);
 }
 
 void try_call_clock() {
-    if (BIT_CHK(6360)) {
+    if (!BIT_CHK(6360) || FLD_FUNCTION_0031(6, 339)) {
+        // IDEA: Would it be a good idea to add a lead-in message or just instantly show the clock lol
+        HealingClock();
+    }
+    else if (BIT_CHK(6360)) {
         int numTraesto = GET_ITEM_NUM(0x500 + 33);
         MSG_WND_DSP();
         SET_MSG_VAR(0, 0x500 + 33, 5);
@@ -329,9 +362,5 @@ void try_call_clock() {
             MSG(NO_TRAESTO);
             MSG_WND_CLS();
         }
-    }
-    else if (!BIT_CHK(6360) || FLD_FUNCTION_0031(6, 339)) {
-        // IDEA: Would it be a good idea to add a lead-in message or just instantly show the clock lol
-        HealingClock();
     }
 }
