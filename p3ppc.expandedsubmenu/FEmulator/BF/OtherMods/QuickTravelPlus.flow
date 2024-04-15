@@ -3,43 +3,42 @@ import( "QuickTravelPlus.msg" );
 
 void QuickTravelPlus()
 {
-int CurFldMajor = FLD_GET_MAJOR();
-int CurFldMinor = FLD_GET_MINOR();
+    int CurFldMajor = FLD_GET_MAJOR();
+    // int CurFldMinor = FLD_GET_MINOR();
 
-if ( CurFldMajor == 6 ) // Gekkoukan High
-{
-    schoolQT();
-}
+    if ( CurFldMajor == 6 ) // Gekkoukan High
+    {
+        schoolQT();
+    }
 
-if ( CurFldMajor == 7 ) // Dorm
-{
-    dormQT();
-}
-if ( CurFldMajor == 8 ) // Paulownia Mall
-{
-    mallQT();
-}
-if ( CurFldMajor == 9 ) // Strip Mall
-{
-    stripmallQT();
-}
-if ( CurFldMajor == 10 ) // Port Island Station
-{
-    stationQT();
-}
-if ( CurFldMajor == 12 ) // Shrine
-{
-    shrineQT();
-}
-if ( CurFldMajor == 14 ) // Godaiga
-{
-    godaigaQT();
-}
-if ( CurFldMajor == 15 ) // Tartarus
-{
-    tartarusQT();
-}
-
+    if ( CurFldMajor == 7 ) // Dorm
+    {
+        dormQT();
+    }
+    if ( CurFldMajor == 8 ) // Paulownia Mall
+    {
+        mallQT();
+    }
+    if ( CurFldMajor == 9 ) // Strip Mall
+    {
+        stripmallQT();
+    }
+    if ( CurFldMajor == 10 ) // Port Island Station
+    {
+        stationQT();
+    }
+    if ( CurFldMajor == 12 ) // Shrine
+    {
+        shrineQT();
+    }
+    if ( CurFldMajor == 14 ) // Godaiga
+    {
+        godaigaQT();
+    }
+    if ( CurFldMajor == 15 ) // Tartarus
+    {
+        tartarusQT();
+    }
 }
 
 void dormQT()
@@ -114,56 +113,6 @@ void schoolQT()
     switch ( school )
     {
         case 0:
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 6, 1, 1, 0 );
-        break;
-    case 1:
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 6, 7, 1, 0 );
-        break;
-    case 2:
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 6, 11, 1, 0 );
-        break;
-    case 3:
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 6, 0x10, 1, 0 );
-        break;
-    case 4:
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 6, 20, 0, 0 );
-        break;
-    case 5:
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 6, 4, 2, 0 );
-        break;
-    case 6:
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 6, 3, 0, 0 );
-        break;
-    case 7:
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 6, 5, 0, 0 );
-        break;
-    case 8:
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 6, 2, 1, 0 );
-        break;
-    case 9:
-        SEL_DEFKEY(14, 12);
-        int school2 = MSG_SELECT( QuickTravelPlus_Text, SCHOOL_SHOTCUTSEL, schoolMaskP2 );
-        switch ( school2 )
-        {
-            case 0:
             FADE( 3, 20 );
             FUNCTION_000F();
             CALL_FIELD( 6, 1, 1, 0 );
@@ -209,110 +158,158 @@ void schoolQT()
             CALL_FIELD( 6, 2, 1, 0 );
             break;
         case 9:
-            break;
+            SEL_DEFKEY(14, 12);
+            int school2 = MSG_SELECT( QuickTravelPlus_Text, SCHOOL_SHOTCUTSEL, schoolMaskP2 );
+            switch ( school2 )
+            {
+                case 0:
+                    FADE( 3, 20 );
+                    FUNCTION_000F();
+                    CALL_FIELD( 6, 1, 1, 0 );
+                    break;
+                case 1:
+                    FADE( 3, 20 );
+                    FUNCTION_000F();
+                    CALL_FIELD( 6, 7, 1, 0 );
+                    break;
+                case 2:
+                    FADE( 3, 20 );
+                    FUNCTION_000F();
+                    CALL_FIELD( 6, 11, 1, 0 );
+                    break;
+                case 3:
+                    FADE( 3, 20 );
+                    FUNCTION_000F();
+                    CALL_FIELD( 6, 0x10, 1, 0 );
+                    break;
+                case 4:
+                    FADE( 3, 20 );
+                    FUNCTION_000F();
+                    CALL_FIELD( 6, 20, 0, 0 );
+                    break;
+                case 5:
+                    FADE( 3, 20 );
+                    FUNCTION_000F();
+                    CALL_FIELD( 6, 4, 2, 0 );
+                    break;
+                case 6:
+                    FADE( 3, 20 );
+                    FUNCTION_000F();
+                    CALL_FIELD( 6, 3, 0, 0 );
+                    break;
+                case 7:
+                    FADE( 3, 20 );
+                    FUNCTION_000F();
+                    CALL_FIELD( 6, 5, 0, 0 );
+                    break;
+                case 8:
+                    FADE( 3, 20 );
+                    FUNCTION_000F();
+                    CALL_FIELD( 6, 2, 1, 0 );
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    goto schoolBack;
+                case 11:
+                    ElseWhere();
+                    break;
+                case 12:
+                    MSG_WND_CLS();
+                    return;
+            }
         case 10:
-            goto schoolBack;
-        case 11:
-            ElseWhere();
             break;
+        case 11: 
+                ElseWhere();
+                break;
         case 12:
-            MSG_WND_CLS();
-            return;
-        }
-    case 10:
-        break;
-    case 11: 
-            ElseWhere();
-            break;
-    case 12:
-            MSG_WND_CLS();
-            return;
+                MSG_WND_CLS();
+                return;
     }
 }
 
 void ElseWhere()
 {
+    int CurFldMajor = FLD_GET_MAJOR();
+    int CurFldMinor = FLD_GET_MINOR();
+    int dayTime = FUNCTION_0033();
 
-int CurFldMajor = FLD_GET_MAJOR();
-int CurFldMinor = FLD_GET_MINOR();
-int dayTime = FUNCTION_0033();
+    int mapMask = 0;
 
-int mapMask = 0;
+    switch ( CurFldMajor )
+    {
+        case 0: // School
+            mapMask = mapMask + 1;
+            break;
+        case 1: // Dorm
+            mapMask = mapMask + 2;
+            break;
+        case 2: // Paulownia Mall
+            mapMask = mapMask + 4;
+            break;
+        case 3: // Strip Mall
+            mapMask = mapMask + 8;
+            break;
+        case 4: // Port Island Station
+            mapMask = mapMask + 16;
+            break;
+        case 5: // Shrine
+            mapMask = mapMask + 32;
+            break;
+    }
 
-switch ( CurFldMajor )
-{
-    case 0: // School
-        mapMask = mapMask + 1;
-        break;
-    case 1: // Dorm
-        mapMask = mapMask + 2;
-        break;
-    case 2: // Paulownia Mall
-        mapMask = mapMask + 4;
-        break;
-    case 3: // Strip Mall
-        mapMask = mapMask + 8;
-        break;
-    case 4: // Port Island Station
-        mapMask = mapMask + 16;
-        break;
-    case 5: // Shrine
-        mapMask = mapMask + 32;
-        break;
-}
-
-switch ( dayTime )
-{
-    case 0:
-        mapMask = mapMask + 0;
-        break;
-    case 3:
-        mapMask = mapMask + 1;
-        break;
-    case 5:
-        mapMask = mapMask + 58;
-        break;
-}
+    switch ( dayTime )
+    {
+        case 0:
+            mapMask = mapMask + 0;
+            break;
+        case 3:
+            mapMask = mapMask + 1;
+            break;
+        case 5:
+            mapMask = mapMask + 58;
+            break;
+    }
 
 
-SEL_DEFKEY( 14, 6);
-int map = MSG_SELECT( QuickTravelPlus_Text, MAP_SHOTCUTSEL, mapMask );
+    SEL_DEFKEY( 14, 6);
+    int map = MSG_SELECT( QuickTravelPlus_Text, MAP_SHOTCUTSEL, mapMask );
 
-switch ( map )
-{
-    case 0:// School
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 6, 2, 1, 0 );
-        break;
-    case 1:// Dorm
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 7, 9, 1, 0 );
-        break;
-    case 2://Paulownia Mall
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 8, 1, 1, 0 );
-        break;
-    case 3://Strip Mall
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 9, 1, 1, 0 );
-        break;
-    case 4://Port Island Station
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 10, 1, 1, 0 );
-        break;
-    case 5://Shrine
-        FADE( 3, 20 );
-        FUNCTION_000F();
-        CALL_FIELD( 12, 1, 1, 0 );
-        break;
-    case 6://Cancel
-        MSG_WND_CLS();
-        return;
-}
-
+    switch ( map )
+    {
+        case 0: // School
+            FADE( 3, 20 );
+            FUNCTION_000F();
+            CALL_FIELD( 6, 2, 1, 0 );
+            break;
+        case 1: // Dorm
+            FADE( 3, 20 );
+            FUNCTION_000F();
+            CALL_FIELD( 7, 9, 1, 0 );
+            break;
+        case 2: // Paulownia Mall
+            FADE( 3, 20 );
+            FUNCTION_000F();
+            CALL_FIELD( 8, 1, 1, 0 );
+            break;
+        case 3: // Strip Mall
+            FADE( 3, 20 );
+            FUNCTION_000F();
+            CALL_FIELD( 9, 1, 1, 0 );
+            break;
+        case 4: // Port Island Station
+            FADE( 3, 20 );
+            FUNCTION_000F();
+            CALL_FIELD( 10, 1, 1, 0 );
+            break;
+        case 5: // Shrine
+            FADE( 3, 20 );
+            FUNCTION_000F();
+            CALL_FIELD( 12, 1, 1, 0 );
+            break;
+        case 6: // Cancel
+            MSG_WND_CLS();
+            return;
+    }
 }

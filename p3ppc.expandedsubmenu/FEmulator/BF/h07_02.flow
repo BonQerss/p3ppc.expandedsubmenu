@@ -103,9 +103,11 @@ int create_dorm_mask() {
         mask += 81; // 0b0101_0001
     }
     
-    if (!BIT_CHK(6322)) { // Quick Travel
-        mask += 0x100; // 0b0001_0000_0000
-    }
+    // if (!BIT_CHK(6322)) { // Quick Travel
+    // Currently, QuickTravelPlus.flow doesn't have any real support for
+    // the dorms, so for now we'll just always mask it out until then
+    mask += 0x100; // 0b0001_0000_0000
+    // }
     
     if (!BIT_CHK(6323)) { // View Calendar
         mask += 0x200; // 0b0010_0000_0000

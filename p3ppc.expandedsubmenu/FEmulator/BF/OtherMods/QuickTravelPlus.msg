@@ -1,4 +1,3 @@
-
 [sel SCHOOL_SHOTCUTSEL top]
 [s]1F, Main Lobby[e]
 [s]1F, Faculty Office Hallway[e]
@@ -14,7 +13,7 @@
 [s]Elsewhere[e]
 [s]Cancel[e]
 
-[sel DORMITORY_SHOTCUTSEL top]
+[sel DORMITORY_SHOTCUTSELL top]
 [s]1F, Lounge[e]
 [s]2F, Hallway[e]
 [s]3F, Hallway[e]
@@ -75,9 +74,3 @@
 [s]Strip Mall, 2F[e]
 [s]Town Map[e]
 [s]Cancel[e]
-
-
-
-
-
-
