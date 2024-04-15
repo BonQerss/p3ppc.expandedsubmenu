@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("p3ppc.expandedsubmenu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b370f21bc3da53b8deb93574a3a63342f5004980")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+62471e93728f2be0a96bebc8958143fde42fa718")]
 [assembly: System.Reflection.AssemblyProductAttribute("p3ppc.expandedsubmenu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("p3ppc.expandedsubmenu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
