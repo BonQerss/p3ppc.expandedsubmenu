@@ -352,8 +352,10 @@ void try_call_clock() {
         if (numTraesto >= 1) {
             SET_MSG_VAR(1, numTraesto, 0);
             MSG(CALL_CLOCK_TRAESTO);
+            SEL_DEFKEY(PadButton.Circle, 1);
             if (SEL(MISSING_PERSON_SEL) == 0) {
                 MSG_WND_CLS();
+                // IDEA: Add fade and/or SFX to better show item use?
                 SET_ITEM_NUM(0x500 + 33, numTraesto - 1);
                 HealingClock();
             }
