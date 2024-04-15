@@ -52,7 +52,7 @@
 
 [msg ModMenuWarning_2]
 [s]If you choose to use it as a cheating tool and
-[n]irreversibly mess up your game. You will not 
+[n]irreversibly mess up your game, you will not 
 [n]receive any support. You have been warned.[f 1 1][e]
 
 [msg ModMenu_About[Mod Menu (DniweTamp)]]
