@@ -1,0 +1,218 @@
+import("ModMenu/ModMenu.flow");
+import("Setup/FirstTimeSetup.flow");
+import("OtherMods/FindAFriend.flow");
+import("OtherMods/QuickTravelPlus.flow");
+import("DormsCommon.msg");
+
+void dormitory_shortcut_hook() {
+    if (!BIT_CHK(6320)) {
+        FirstTimeSetup();
+    }
+
+    if (GET_DAY(Month.April, 6) || GET_DAY(Month.April, 9)) {
+        MSG_WND_DSP();
+        MSG(FIRST_DAY);
+        MSG_WND_CLS();
+        return;
+    }
+
+    int onPage = FLD_GET_MINOR();
+    bool esmAvail = (BIT_CHK(6321) || BIT_CHK(6323) || BIT_CHK(6325) || BIT_CHK(6326));
+    if ((onPage != 2) || (onPage != 3) || (onPage != 4) || (onPage != 5) || (onPage != 6) || (onPage != 9) || (onPage != 19) || (onPage != 20)) {
+        onPage = -1;
+    }
+    else {
+        onPage = 0;
+    }
+    while (true) {
+        int dormSel = 0;
+        SEL_DEFKEY(PadButton.Circle, 15); // Cancel button on ○
+        SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
+        if (onPage == 0) {
+            if (esmAvail) {
+                // Change page on < & >
+                SEL_DEFKEY(PadButton.Left, 13);
+                SEL_DEFKEY(PadButton.Right, 13);
+                dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x4000);
+            }
+            else {
+                dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x6000);
+            }
+        }
+        else if (onPage == 1) {
+            // We don't do the same bitchecks for if we do pagination here, since
+            // this path will only run if we have 2nd page options to begin with
+            // Change page on < & >
+            SEL_DEFKEY(PadButton.Left, 14);
+            SEL_DEFKEY(PadButton.Right, 14);
+            dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x2000);
+        }
+        else {
+            if (esmAvail) {             
+                dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x6000);
+            }
+            else {
+                // Force player into ESM configuration to account for the situation
+                // where someone has disabled all of the relevant options here,
+                // which would force them to change fields to one with a valid sub-menu to fix it
+                MenuOptions();
+                break;
+            }
+        }
+        if ((dormSel == 13) || (dormSel == 14)) {
+            onPage = !onPage;
+        }
+        else if (dormSel == 15) {
+            break;
+        }
+        else {
+            shortcut_select(dormSel);
+            break;
+        }
+    }
+}
+
+void shortcut_select(int selection) {
+    if (selection <= 4) {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_000F();
+        switch (selection) {
+            case 0:
+                CALL_FIELD(7, 2, 1, 0);
+                return;
+            case 1:
+                CALL_FIELD(7, 3, 0, 0);
+                return;
+            case 2:
+                CALL_FIELD(7, 4, 0, 0);
+                return;
+            case 3:
+                if (BIT_CHK(3592)) {
+                    BIT_OFF(3592);
+                    CALL_EVENT(129, 1);
+                    EVT_FUNCTION_0004(1);
+                    BIT_ON(21);
+                    CALL_DARK_HOUR();
+                    FCL_FUNCTION_0017();
+                    CALL_EVENT(130, 1);
+                    BIT_ON(22);
+                    BIT_ON(2562);
+                    FCL_FUNCTION_0018();
+                    NEXT_TIME();
+                }
+                else {
+                    CALL_FIELD(7, 5, 0, 0);
+                }
+                return;
+            case 4:
+                CALL_FIELD(7, 6, 0, 0);
+                return;
+        }
+    }
+    else if (selection == 5) {
+        call_midnight_myroom();
+    }
+    else if (selection == 6) {
+        myroom_mybed();
+    }
+    else if (selection == 7) {
+        gVar140 = 0;
+        goout_dormitory();
+    }
+    else if (selection == 8) {
+        QuickTravelPlus();
+    }
+    else if (selection == 9) {
+        CALL_CALENDAR();
+    }
+    else if (selection == 10) {
+        HangOut();
+    }
+    else if (selection == 11) {
+        FADE(FadeEffects.FadeOut, 10);
+        SAVE_MENU();
+        FUNCTION_000D(0);
+    }
+    else if (selection == 12) {
+        ModMenuInit();
+    }
+    else if (selection == 99) {
+        MenuOptions();
+    }
+}
+
+int create_dorm_mask(bool page) {
+    int mask = 0x1FFF; // 0b0001_1111_1111_1111
+
+    if (!page) {
+        switch (FLD_GET_MINOR()) {
+            case 2:
+                if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
+                    mask -= 182; // (0x1FFF - 0b1011_0110) = 0b0001_1111_0100_1001
+                }
+                else if (BIT_CHK(3592)) {
+                    mask -= 136; // (0x1FFF - 0b1000_1000) = 0b0001_1111_0111_0111
+                }
+                else {
+                    mask -= 174; // (0x1FFF - 0b1010_1110) = 0b0001_1111_0101_0001
+                }
+                break;
+            case 3:
+                if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
+                    mask -= 181; // (0x1FFF - 0b1011_0101) = 0b0001_1111_0100_1010
+                }
+                else {
+                    mask -= 173; // (0x1FFF - 0b1010_1101) = 0b0001_1111_0101_0010
+                }
+                break;
+            case 4:
+                if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
+                    mask -= 179; // (0x1FFF - 0b1011_0011) = 0b0001_1111_0100_1100
+                }
+                else {
+                    mask -= 171; // (0x1FFF - 0b1010_1011) = 0b0001_1111_0101_0100
+                }
+                break;
+            case 5:
+            case 6:
+                mask -= 167; // (0x1FFF - 0b1010_0111) = 0b0001_1111_0101_1000
+                break;
+            case 19:
+            case 20:
+                if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
+                    mask -= 213; // (0x1FFF - 0b1101_0101) = 0b0001_1111_0010_1010
+                }
+                else {
+                    mask -= 205; // (0x1FFF - 0b1100_1101) = 0b0001_1111_0011_0010
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    else {
+        // Currently, QuickTravelPlus.flow doesn't have any real support for
+        // the dorms, so for now we'll just always mask it out until then
+        /*if (!BIT_CHK(6322)) { // Quick Travel
+            mask += 0x100; // (0x1FFF - 0b0001_0000_0000) = 0b0001_1110_1111_1111
+        }*/
+        
+        if (BIT_CHK(6323)) { // View Calendar
+            mask -= 0x200; // (0x1FFF - 0b0010_0000_0000) = 0b0001_1101_1111_1111
+        }
+        
+        if (BIT_CHK(6325)) { // Find a Friend
+            mask -= 0x400; // (0x1FFF - 0b0100_0000_0000) = 0b0001_1011_1111_1111
+        }
+        
+        if (BIT_CHK(6326)) { // Save Anywhere
+            mask -= 0x800; // (0x1FFF - 0b1000_0000_0000) = 0b0001_0111_1111_1111
+        }
+        
+        if (BIT_CHK(6321)) { // Mod Menu
+            mask -= 0x1000; // (0x1FFF - 0b0001_0000_0000_0000) = 0b0000_1111_1111_1111
+        }
+    }
+
+    return mask;
+}
