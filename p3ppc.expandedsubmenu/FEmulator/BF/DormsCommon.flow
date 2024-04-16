@@ -18,7 +18,7 @@ void dormitory_shortcut_hook() {
 
     int onPage = FLD_GET_MINOR();
     bool esmAvail = (BIT_CHK(6321) || BIT_CHK(6323) || BIT_CHK(6325) || BIT_CHK(6326));
-    if ((onPage != 2) || (onPage != 3) || (onPage != 4) || (onPage != 5) || (onPage != 6) || (onPage != 9) || (onPage != 19) || (onPage != 20)) {
+    if ((onPage != 2) && (onPage != 3) && (onPage != 4) && (onPage != 5) && (onPage != 6) && (onPage != 9) && (onPage != 19) && (onPage != 20)) {
         onPage = -1;
     }
     else {
