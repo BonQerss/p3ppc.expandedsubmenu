@@ -27,7 +27,7 @@ void f007_009_shortcut_hook() {
     if (BIT_CHK(6321)) {
         mask -= 0x40; // 0b0100_0000
     }
-    SEL_DEFKEY(PadButton.Circle, 2);
+    SEL_DEFKEY(PadButton.Circle, 7);
     SEL_DEFKEY(PadButton.Triangle, 99);
     int dormSel = MSG_SELECT(FLD_ORDER_2, DORMITORY_SHOTCUTSEL_2, mask);
     
