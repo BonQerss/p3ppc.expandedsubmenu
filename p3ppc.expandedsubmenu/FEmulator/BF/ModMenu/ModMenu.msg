@@ -30,7 +30,60 @@
 
 [sel BattleSelect]
 [s]Manual Input[e]
+[s]Tartarus Guardian Select[e]
 [s]Boss Select[e]
+
+[msg TAR_SEL1_Text]
+[s]Block Select[e]
+
+[msg TAR_SEL2_Text]
+[s]Battle Select[e]
+
+[sel BlockSelect]
+[s]Block 1[e]
+[s]Block 2[e]
+[s]Block 3[e]
+[s]Block 4[e]
+[s]Block 5[e]
+[s]Block 6[e]
+
+[sel TarTarSelect_1]
+[s]Venus Eagle[e]
+[s]Dancing Hand[e]
+[s]Rampage Drive[e]
+
+[sel TarTarSelect_2]
+[s]Crying Table[e]
+[s]Change Relic[e]
+[s]Golden Beetles[e]
+[s]Intrepid Knight[e]
+[s]Furious Gigas[e]
+
+[sel TarTarSelect_3]
+[s]Fanatic Tower[e]
+[s]Magical Magus[e]
+[s]Neutral Dancer[e]
+
+[sel TarTarSelect_4]
+[s]Arcane Turrets[e]
+[s]Sleeping Table[e]
+[s]Hell Knights[e]
+[s]Mythical Gigas[e]
+
+[sel TarTarSelect_5]
+[s]Judgement Swords[e]
+[s]Stasis Giant[e]
+[s]Phantom King[e]
+[s]Royal Dancers[e]
+[s]Reckoning Dice[e]
+
+[sel TarTarSelect_6]
+[s]Noble Seeker[e]
+[s]Carnal Snakes[e]
+[s]World Balance[e]
+[s]Fierce Cyclops[e]
+[s]Jotun of Grief[e]
+
 
 [msg BOSS_SEL1_Text]
 [s]Boss Select (Page 1/3)[e]
@@ -203,6 +256,8 @@
 [s]Disable all flags[e]
 [s]Enable all flags[e]
 [s]Complete all quests[e]
+[s]Enable all Tartarus guardians[e]
+[s]Enable all warps[e]
 [s]Swap enabled/disabled flags[e]
 [s]Toggle range of flags[e]
 
