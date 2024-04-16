@@ -1,10 +1,61 @@
-import("DormsCommon.flow");
+import("ModMenu/ModMenu.flow");
+import("Setup/FirstTimeSetup.flow");
+import("OtherMods/FindAFriend.flow");
+// import("OtherMods/QuickTravelPlus.flow");
+import("h07_09.msg");
 
 global bool isFieldBf;
 
 void f007_009_shortcut_hook() {
     isFieldBf = false;
-    f007_009_shortcut_unhooked();
+    
+    if (!BIT_CHK(6320)) {
+        FirstTimeSetup();
+    }
+    
+    int mask = 0x7C; // 0b0111_1100
+    // TODO: Add QT+ bitcheck + mask removal
+    if (BIT_CHK(6323)) {
+        mask -= 8; // 0b0000_1000
+    }
+    if (BIT_CHK(6325)) {
+        mask -= 0x10; // 0b0001_0000
+    }
+    if (BIT_CHK(6326)) {
+        mask -= 0x20; // 0b0010_0000
+    }
+    if (BIT_CHK(6321)) {
+        mask -= 0x40; // 0b0100_0000
+    }
+    SEL_DEFKEY(PadButton.Circle, 2);
+    SEL_DEFKEY(PadButton.Triangle, 99);
+    int dormSel = MSG_SELECT(FLD_ORDER_2, DORMITORY_SHOTCUTSEL_2, mask);
+    
+    if (dormSel == 0)
+    {
+        HIT_SCRIPT_01();
+    }
+    else if (dormSel == 1)
+    {
+        HIT_SCRIPT_00();
+    }
+    else if (dormSel == 3) {
+        CALL_CALENDAR();
+    }
+    else if (dormSel == 4) {
+        HangOut();
+    }
+    else if (dormSel == 5) {
+        FADE(FadeEffects.FadeOut, 10);
+        SAVE_MENU();
+        FUNCTION_000D(0);
+    }
+    else if (dormSel == 6) {
+        ModMenuInit();
+    }
+    else if (dormSel == 99) {
+        MenuOptions();
+    }
 }
 
 void CallOriginalSquareMenu() {
