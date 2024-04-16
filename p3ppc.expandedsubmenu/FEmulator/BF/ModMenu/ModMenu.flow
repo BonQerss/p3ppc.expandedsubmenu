@@ -122,9 +122,279 @@ void CallBattle()
                     return;
                 }
                 break; // break if Encounter == -1, return to BattleSelect
-            case 1: // Boss Select
+            case 1://Tartarus Select
+                CallTarTar();
+                break;
+            case 2: // Boss Select
                 CallBattle_B();
                 break;
+        }
+    }
+}
+
+void CallTarTar()
+{
+    int FldCurMaj = FLD_GET_MAJOR();
+    int FldCurMin = FLD_GET_MINOR();
+    SEL_DEFKEY( 14, 999 );
+    while ( keepMenus )
+    {
+        int bossSel = MSG_SELECT( TAR_SEL1_Text, BlockSelect, 0 );
+        switch (bossSel)
+        {
+            case 999: // Cancel
+                return;
+            case 0: //Priestess
+                CALL_BATTLE( 416 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 1: //Emperor/Empress
+                CALL_BATTLE( 417 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 2: // Hierophant
+                CALL_BATTLE( 418 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 3: //Lovers
+                CALL_BATTLE( 419 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 4: // Chariot/Justice
+                CALL_BATTLE( 420 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 5: //Hermit
+                CALL_BATTLE( 421 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+        }
+    }
+}
+
+void CallTarTar_1()
+{
+    int FldCurMaj = FLD_GET_MAJOR();
+    int FldCurMin = FLD_GET_MINOR();
+    SEL_DEFKEY( 14, 999 );
+    while ( keepMenus )
+    {
+        int bossSel = MSG_SELECT( TAR_SEL2_Text, TarTarSelect_1, 0 );
+        switch (bossSel)
+        {
+            case 999: // Cancel
+                return;
+            case 0: //Venus Eagle
+                CALL_BATTLE( 490 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 1: //Dancing Hand
+                CALL_BATTLE( 462 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 2: // Rampage Drive
+                CALL_BATTLE( 463 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+        }
+    }
+}
+
+void CallTarTar_2()
+{
+    int FldCurMaj = FLD_GET_MAJOR();
+    int FldCurMin = FLD_GET_MINOR();
+    SEL_DEFKEY( 14, 999 );
+    while ( keepMenus )
+    {
+        int bossSel = MSG_SELECT( TAR_SEL2_Text, TarTarSelect_2, 0 );
+        switch (bossSel)
+        {
+            case 999: // Cancel
+                return;
+            case 0: //Crying Table
+                CALL_BATTLE( 464 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 1: //Change Relic
+                CALL_BATTLE( 465 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 2: // Golden Beetle
+                CALL_BATTLE( 470 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 3: // Intrepid Knight
+                CALL_BATTLE( 471 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 4: // Furious Gigas
+                CALL_BATTLE( 472 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+        }
+    }
+}
+
+void CallTarTar_3()
+{
+    int FldCurMaj = FLD_GET_MAJOR();
+    int FldCurMin = FLD_GET_MINOR();
+    SEL_DEFKEY( 14, 999 );
+    while ( keepMenus )
+    {
+        int bossSel = MSG_SELECT( TAR_SEL2_Text, TarTarSelect_3, 0 );
+        switch (bossSel)
+        {
+            case 999: // Cancel
+                return;
+            case 0: //Fanatic Tower
+                CALL_BATTLE( 473 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 1: //Magical Magus
+                CALL_BATTLE( 474 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 2: // Neutral Dancer
+                CALL_BATTLE( 475 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+        }
+    }
+}
+
+void CallTarTar_4()
+{
+    int FldCurMaj = FLD_GET_MAJOR();
+    int FldCurMin = FLD_GET_MINOR();
+    SEL_DEFKEY( 14, 999 );
+    while ( keepMenus )
+    {
+        int bossSel = MSG_SELECT( TAR_SEL2_Text, TarTarSelect_4, 0 );
+        switch (bossSel)
+        {
+            case 999: // Cancel
+                return;
+            case 0: //Arcane Turret
+                CALL_BATTLE( 476 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 1: //Sleeping Table
+                CALL_BATTLE( 477 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 2: //Hell Knight
+                CALL_BATTLE( 478 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 3: //Mythical Gigas
+                CALL_BATTLE( 479 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+        }
+    }
+}
+
+void CallTarTar_5()
+{
+    int FldCurMaj = FLD_GET_MAJOR();
+    int FldCurMin = FLD_GET_MINOR();
+    SEL_DEFKEY( 14, 999 );
+    while ( keepMenus )
+    {
+        int bossSel = MSG_SELECT( TAR_SEL2_Text, TarTarSelect_5, 0 );
+        switch (bossSel)
+        {
+            case 999: // Cancel
+                return;
+            case 0: //Judgement Sword
+                CALL_BATTLE( 480 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 1: //Stasis Giant
+                CALL_BATTLE( 481 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 2: //Phantom King
+                CALL_BATTLE( 482 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 3: //Royal Dancer
+                CALL_BATTLE( 483 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 4: //Reckoning Dice
+                CALL_BATTLE( 484 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+        }
+    }
+}
+
+void CallTarTar_6()
+{
+    int FldCurMaj = FLD_GET_MAJOR();
+    int FldCurMin = FLD_GET_MINOR();
+    SEL_DEFKEY( 14, 999 );
+    while ( keepMenus )
+    {
+        int bossSel = MSG_SELECT( TAR_SEL2_Text, TarTarSelect_6, 0 );
+        switch (bossSel)
+        {
+            case 999: // Cancel
+                return;
+            case 0: //Noble Seeker
+                CALL_BATTLE( 485 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 1: //Carnal Snakes
+                CALL_BATTLE( 486 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 2: //World Balance
+                CALL_BATTLE( 487 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 3: //Fierce Cyclops
+                CALL_BATTLE( 488 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
+            case 4: //Jotun of Grief
+                CALL_BATTLE( 489 );
+                WAIT_BATTLE();
+                CALL_FIELD( FldCurMaj, FldCurMin, 0, 0 );
+                return;
         }
     }
 }
@@ -682,7 +952,21 @@ void FlagMassEditor()
                         BIT_ON( i );
                 }
                 break;
-            case 3://Swap enabled/disabled flags
+            case 3://Enable all tartarus guardians
+                for (int i = 3536; i < 3562; i++)
+                {
+                    if ( i != 3561 && i != 3560 )
+                        BIT_ON( i );
+                }
+                break;
+            case 4://Enable all warp points
+                for (int i = 3501; i < 3535; i++)
+                {
+                    if ( ( i > 3528 || i < 3519 ) && ( i > 3504 || i < 3501 ) )
+                        BIT_ON( i );
+                }
+                break;
+            case 5://Swap enabled/disabled flags
                 for ( int i = 0; i < 0x1600; i++ )
                 {
                     if ( BIT_CHK( i ) )
@@ -691,7 +975,7 @@ void FlagMassEditor()
                         BIT_ON( i );
                 }
                 break;
-            case 4://Toggle range of flags
+            case 6://Toggle range of flags
                 ToggleRange();
                 break;
         }
