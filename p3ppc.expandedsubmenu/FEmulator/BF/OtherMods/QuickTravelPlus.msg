@@ -1,4 +1,4 @@
-[sel SCHOOL_SHOTCUTSEL top]
+[sel SCHOOL_QTSEL top]
 [s]1F, Main Lobby[e]
 [s]1F, Faculty Office Hallway[e]
 [s]1F, Laboratory Hallway[e]
@@ -13,7 +13,7 @@
 [s]Elsewhere[e]
 [s]Cancel[e]
 
-[sel DORMITORY_SHOTCUTSELL top]
+[sel DORMITORY_QTSEL top]
 [s]1F, Lounge[e]
 [s]2F, Hallway[e]
 [s]3F, Hallway[e]
@@ -24,7 +24,7 @@
 [s]Elsewhere[e]
 [s]Cancel[e]
 
-[sel MAP_SHOTCUTSEL top]
+[sel MAP_QTSEL top]
 [s]Gekkoukan High[e]
 [s]Dorm[e]
 [s]Paulownia Mall[e]
@@ -36,7 +36,7 @@
 [msg QuickTravelPlus_Text]
 [s]Where to?[e]
 
-[sel MALL_SHORTCUTT top]
+[sel MALL_QTSEL top]
 [s]Tatsumi East Police Station[e]
 [s]Blue Beard Pharmacy[e]
 [s]Antique Shop[e]
@@ -45,7 +45,7 @@
 [s]Elsewhere[e]
 [s]Cancel[e]
 
-[sel TARTAROS_SHORTCUT top]
+[sel TARTAROS_QTSEL top]
 [s]Tartarus[e]
 [s]Velvet Room[e]
 [s]Teleporter[e]
@@ -53,23 +53,23 @@
 [s]Outside[e]
 [s]Cancel[e]
 
-[sel KYOTO_SHOTCUTSEL top]
+[sel KYOTO_QTSEL top]
 [s]1F Lobby[e]
 [s]2F Hallway[e]
 [s]3F Hallway[e]
 [s]Cancel[e]
 
-[sel TEMPLE_SHOTCUTSEL top]
+[sel TEMPLE_QTSEL top]
 [s]Town Map[e]
 [s]Cancel[e]
 
-[sel STATION_SHOTCUTSEL top]
+[sel STATION_QTSEL top]
 [s]Station Outskirts[e]
 [s]Tatsumi Port Island Station[e]
 [s]Town Map[e]
 [s]Cancel[e]
 
-[sel SHOP_SHOTCUTSEL top]
+[sel SHOP_QTSEL top]
 [s]Iwatodai Station[e]
 [s]Strip Mall, 2F[e]
 [s]Town Map[e]

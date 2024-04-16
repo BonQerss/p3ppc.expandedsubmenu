@@ -1,4 +1,4 @@
-import( "QuickTravelPlus.msg" );
+import("QuickTravelPlus.msg");
 
 
 void QuickTravelPlus()
@@ -6,37 +6,29 @@ void QuickTravelPlus()
     int CurFldMajor = FLD_GET_MAJOR();
     // int CurFldMinor = FLD_GET_MINOR();
 
-    if ( CurFldMajor == 6 ) // Gekkoukan High
-    {
+    if (CurFldMajor == 6) { // Gekkoukan High
         schoolQT();
     }
 
-    if ( CurFldMajor == 7 ) // Dorm
-    {
+    if (CurFldMajor == 7) { // Dorm
         dormQT();
     }
-    if ( CurFldMajor == 8 ) // Paulownia Mall
-    {
+    if (CurFldMajor == 8) { // Paulownia Mall
         mallQT();
     }
-    if ( CurFldMajor == 9 ) // Strip Mall
-    {
+    if (CurFldMajor == 9) { // Strip Mall
         stripmallQT();
     }
-    if ( CurFldMajor == 10 ) // Port Island Station
-    {
+    if (CurFldMajor == 10) { // Port Island Station
         stationQT();
     }
-    if ( CurFldMajor == 12 ) // Shrine
-    {
+    if (CurFldMajor == 12) { // Shrine
         shrineQT();
     }
-    if ( CurFldMajor == 14 ) // Godaiga
-    {
+    if (CurFldMajor == 14) { // Godaiga
         godaigaQT();
     }
-    if ( CurFldMajor == 15 ) // Tartarus
-    {
+    if (CurFldMajor == 15) { // Tartarus
         tartarusQT();
     }
 }
@@ -77,8 +69,7 @@ void schoolQT()
     int schoolMaskP1 = 1264;
     int schoolMaskP2 = 527;
 
-    switch ( CurFldMinor )
-    {
+    switch (CurFldMinor) {
         case 1:
             schoolMaskP1 = schoolMaskP1 + 1;
             break;
@@ -107,105 +98,103 @@ void schoolQT()
             break;
     }
     schoolBack:
-    SEL_DEFKEY(14, 12);
-    int school = MSG_SELECT( QuickTravelPlus_Text, SCHOOL_SHOTCUTSEL, schoolMaskP1 );
+    SEL_DEFKEY(PadButton.Circle, 12);
+    int school = MSG_SELECT(QuickTravelPlus_Text, SCHOOL_QTSEL, schoolMaskP1);
 
-    switch ( school )
-    {
+    switch (school) {
         case 0:
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 6, 1, 1, 0 );
+            CALL_FIELD(6, 1, 1, 0);
             break;
         case 1:
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 6, 7, 1, 0 );
+            CALL_FIELD(6, 7, 1, 0);
             break;
         case 2:
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 6, 11, 1, 0 );
+            CALL_FIELD(6, 11, 1, 0);
             break;
         case 3:
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 6, 0x10, 1, 0 );
+            CALL_FIELD(6, 0x10, 1, 0);
             break;
         case 4:
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 6, 20, 0, 0 );
+            CALL_FIELD(6, 20, 0, 0);
             break;
         case 5:
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 6, 4, 2, 0 );
+            CALL_FIELD(6, 4, 2, 0);
             break;
         case 6:
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 6, 3, 0, 0 );
+            CALL_FIELD(6, 3, 0, 0);
             break;
         case 7:
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 6, 5, 0, 0 );
+            CALL_FIELD(6, 5, 0, 0);
             break;
         case 8:
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 6, 2, 1, 0 );
+            CALL_FIELD(6, 2, 1, 0);
             break;
         case 9:
-            SEL_DEFKEY(14, 12);
-            int school2 = MSG_SELECT( QuickTravelPlus_Text, SCHOOL_SHOTCUTSEL, schoolMaskP2 );
-            switch ( school2 )
-            {
+            SEL_DEFKEY(PadButton.Circle, 12);
+            int school2 = MSG_SELECT(QuickTravelPlus_Text, SCHOOL_QTSEL, schoolMaskP2);
+            switch (school2) {
                 case 0:
-                    FADE( 3, 20 );
+                    FADE(FadeEffects.CircleWipe, 20);
                     FUNCTION_000F();
-                    CALL_FIELD( 6, 1, 1, 0 );
+                    CALL_FIELD(6, 1, 1, 0);
                     break;
                 case 1:
-                    FADE( 3, 20 );
+                    FADE(FadeEffects.CircleWipe, 20);
                     FUNCTION_000F();
-                    CALL_FIELD( 6, 7, 1, 0 );
+                    CALL_FIELD(6, 7, 1, 0);
                     break;
                 case 2:
-                    FADE( 3, 20 );
+                    FADE(FadeEffects.CircleWipe, 20);
                     FUNCTION_000F();
-                    CALL_FIELD( 6, 11, 1, 0 );
+                    CALL_FIELD(6, 11, 1, 0);
                     break;
                 case 3:
-                    FADE( 3, 20 );
+                    FADE(FadeEffects.CircleWipe, 20);
                     FUNCTION_000F();
-                    CALL_FIELD( 6, 0x10, 1, 0 );
+                    CALL_FIELD(6, 0x10, 1, 0);
                     break;
                 case 4:
-                    FADE( 3, 20 );
+                    FADE(FadeEffects.CircleWipe, 20);
                     FUNCTION_000F();
-                    CALL_FIELD( 6, 20, 0, 0 );
+                    CALL_FIELD(6, 20, 0, 0);
                     break;
                 case 5:
-                    FADE( 3, 20 );
+                    FADE(FadeEffects.CircleWipe, 20);
                     FUNCTION_000F();
-                    CALL_FIELD( 6, 4, 2, 0 );
+                    CALL_FIELD(6, 4, 2, 0);
                     break;
                 case 6:
-                    FADE( 3, 20 );
+                    FADE(FadeEffects.CircleWipe, 20);
                     FUNCTION_000F();
-                    CALL_FIELD( 6, 3, 0, 0 );
+                    CALL_FIELD(6, 3, 0, 0);
                     break;
                 case 7:
-                    FADE( 3, 20 );
+                    FADE(FadeEffects.CircleWipe, 20);
                     FUNCTION_000F();
-                    CALL_FIELD( 6, 5, 0, 0 );
+                    CALL_FIELD(6, 5, 0, 0);
                     break;
                 case 8:
-                    FADE( 3, 20 );
+                    FADE(FadeEffects.CircleWipe, 20);
                     FUNCTION_000F();
-                    CALL_FIELD( 6, 2, 1, 0 );
+                    CALL_FIELD(6, 2, 1, 0);
                     break;
                 case 9:
                     break;
@@ -229,16 +218,14 @@ void schoolQT()
     }
 }
 
-void ElseWhere()
-{
+void ElseWhere() {
     int CurFldMajor = FLD_GET_MAJOR();
     int CurFldMinor = FLD_GET_MINOR();
     int dayTime = FUNCTION_0033();
 
     int mapMask = 0;
 
-    switch ( CurFldMajor )
-    {
+    switch (CurFldMajor) {
         case 0: // School
             mapMask = mapMask + 1;
             break;
@@ -259,8 +246,7 @@ void ElseWhere()
             break;
     }
 
-    switch ( dayTime )
-    {
+    switch (dayTime) {
         case 0:
             mapMask = mapMask + 0;
             break;
@@ -272,41 +258,39 @@ void ElseWhere()
             break;
     }
 
+    SEL_DEFKEY(PadButton.Circle, 6);
+    int map = MSG_SELECT(QuickTravelPlus_Text, MAP_QTSEL, mapMask);
 
-    SEL_DEFKEY( 14, 6);
-    int map = MSG_SELECT( QuickTravelPlus_Text, MAP_SHOTCUTSEL, mapMask );
-
-    switch ( map )
-    {
+    switch (map) {
         case 0: // School
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 6, 2, 1, 0 );
+            CALL_FIELD(6, 2, 1, 0);
             break;
         case 1: // Dorm
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 7, 9, 1, 0 );
+            CALL_FIELD(7, 9, 1, 0);
             break;
         case 2: // Paulownia Mall
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 8, 1, 1, 0 );
+            CALL_FIELD(8, 1, 1, 0);
             break;
         case 3: // Strip Mall
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 9, 1, 1, 0 );
+            CALL_FIELD(9, 1, 1, 0);
             break;
         case 4: // Port Island Station
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 10, 1, 1, 0 );
+            CALL_FIELD(10, 1, 1, 0);
             break;
         case 5: // Shrine
-            FADE( 3, 20 );
+            FADE(FadeEffects.CircleWipe, 20);
             FUNCTION_000F();
-            CALL_FIELD( 12, 1, 1, 0 );
+            CALL_FIELD(12, 1, 1, 0);
             break;
         case 6: // Cancel
             MSG_WND_CLS();
