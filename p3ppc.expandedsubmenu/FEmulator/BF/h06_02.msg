@@ -1,0 +1,8 @@
+[sel SCHOOL_SHOTCUTSEL_02 top]
+[s]1F, Main Lobby[e]
+[s]Town Map[e]
+[s]View calendar[e]
+[s]Spend time with...[e]
+[s]Save[e]
+[s]Mod Menu[e]
+[s]Cancel[e]
