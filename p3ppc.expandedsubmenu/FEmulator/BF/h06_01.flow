@@ -9,16 +9,8 @@ global bool isFieldBf;
 void f006_001_shortcut_hook() {
     isFieldBf = false;
 
-    restart: 
-
-    int var5;
-    int var6;
-    int var7;
-    int schoolMask = 65535;
-
     if (!BIT_CHK(6320)) {
         FirstTimeSetup();
-        goto restart;
     }
     
     if (BIT_CHK(3680)) {
@@ -34,106 +26,67 @@ void f006_001_shortcut_hook() {
         MSG_WND_CLS();
         return;
     }
+    
+    int schoolMask = 0xFFFF; // 0b1111_1111_1111_1111
 
-    var6 = 0;
-    var5 = FLD_GET_MINOR();
-    switch (var5) {
-        case 1:
-            if (GET_DAY(Month.April, 7)) {
-                var6 += 2;
+    if (!BIT_CHK(6322)) { // Quick Travel = OFF
+        int var6 = 0;
+        switch (FLD_GET_MINOR()) {
+            case 1:
+                if (GET_DAY(Month.April, 7)) {
+                    var6 += 2;
+                    break;
+                }
+                else {
+                    var6 += 614; // 0b0010_0110_0110
+                    break;
+                }
+            case 3:
+                var6 += 550; // 0b0010_0010_0110
                 break;
-            }
-            else {
-                var6 += 2;
-                var6 += 4;
-                var6 += 32;
-                var6 += 64;
-                var6 += 512;
+            case 4:
+                var6 += 582; // 0b0010_0100_0110
                 break;
-            }
-        case 2:
-            var6 += 2;
-            var6 += 4;
-            var6 += 32;
-            var6 += 64;
-            var6 += 512;
-            break;
-        case 3:
-            var6 += 2;
-            var6 += 4;
-            var6 += 32;
-            var6 += 512;
-            break;
-        case 4:
-            var6 += 2;
-            var6 += 4;
-            var6 += 64;
-            var6 += 512;
-            break;
-        case 5:
-            var6 += 2;
-            var6 += 4;
-            var6 += 32;
-            var6 += 64;
-            var6 += 512;
-            break;
-        case 7:
-            if (GET_DAY(Month.April, 7)) {
-                var6 += 1;
+            case 7:
+                if (GET_DAY(Month.April, 7)) {
+                    var6 += 1;
+                    break;
+                }
+                else {
+                    var6 += 612; // 0b0010_0110_0100
+                    break;
+                }
+            case 11:
+                var6 += 610; // 0b0010_0110_0010
                 break;
-            }
-            else {
-                var6 += 4;
-                var6 += 32;
-                var6 += 64;
-                var6 += 512;
+            case 2:
+            case 5:
+            case 16:
+            case 20:
+                var6 += 614; // 0b0010_0110_0110
                 break;
-            }
-        case 11:
-            var6 += 2;
-            var6 += 32;
-            var6 += 64;
-            var6 += 512;
-            break;
-        case 16:
-            var6 += 2;
-            var6 += 4;
-            var6 += 32;
-            var6 += 64;
-            var6 += 512;
-            break;
-        case 20:
-            var6 += 2;
-            var6 += 4;
-            var6 += 32;
-            var6 += 64;
-            var6 += 512;
-            break;
-    }
+        }
 
-    if (!BIT_CHK(6322)) { // Quick Travel
         schoolMask = (schoolMask - var6);
     }
-    else if (BIT_CHK(6322)) { // Quick Travel
-        schoolMask = (schoolMask - 1024);
+    else { // Quick Travel = ON
+        schoolMask = (schoolMask - 0x400); // 0b0100_0000_0000
     }
     
     if (BIT_CHK(6323)) { // View Calendar
-        schoolMask = (schoolMask - 2048);
+        schoolMask = (schoolMask - 0x800); // 0b1000_0000_0000
     }
 
     if (BIT_CHK(6325)) { // Find a Friend
-        schoolMask = (schoolMask - 4096);
+        schoolMask = (schoolMask - 0x1000); // 0b0001_0000_0000_0000
     }
 
-    if (BIT_CHK(6326)) { // Save Anywhere
-        if (!BIT_CHK(6321)) {
-            schoolMask = (schoolMask - 8192);
-        }
+    if (BIT_CHK(6326) && !BIT_CHK(6321)) { // Save Anywhere (Mod Menu = OFF)
+        schoolMask = (schoolMask - 0x2000); // 0b0010_0000_0000_0000
     }
 
     if (BIT_CHK(6321)) { // Mod Menu
-        schoolMask = (schoolMask - 32768);
+        schoolMask = (schoolMask - 0x8000); // 0b1000_0000_0000_0000
     }
     
     SEL_DEFKEY(PadButton.Circle, 16); // Back & Cancel
@@ -199,7 +152,9 @@ void f006_001_shortcut_hook() {
             HangOut();
             break;
         case 13:
+            FADE(FadeEffects.FadeOut, 10);
             SAVE_MENU();
+            FUNCTION_000D(0);
             break;
         case 15:
             ModMenuInit();
