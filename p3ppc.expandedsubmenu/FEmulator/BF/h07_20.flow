@@ -1,15 +1,12 @@
-
-import( "ModMenu/ModMenu.flow" );
+import("DormsCommon.flow");
 
 global bool isFieldBf;
 
-void f007_020_shortcut_hook()
-{
+void f007_020_shortcut_hook() {
     isFieldBf = false;
-    ModMenuInit();
+    f007_020_shortcut_unhooked();
 }
 
-void CallOriginalSquareMenu()
-{
-    f007_020_shortcut_unhooked();
+void CallOriginalSquareMenu() {
+    f007_020_shortcut();
 } 
