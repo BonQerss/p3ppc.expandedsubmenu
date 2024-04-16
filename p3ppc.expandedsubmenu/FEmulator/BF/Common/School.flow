@@ -1,0 +1,153 @@
+import("../ModMenu/ModMenu.flow");
+import("../Setup/FirstTimeSetup.flow");
+import("../OtherMods/FindAFriend.flow");
+import("../OtherMods/QuickTravelPlus.flow");
+import("School.msg");
+
+void school_shortcut_hook() {
+    if (!BIT_CHK(6320)) {
+        FirstTimeSetup();
+    }
+
+    if (BIT_CHK(3680)) {
+        MSG_WND_DSP();
+
+        if (BIT_CHK(4104) || BIT_CHK(311)) {
+            MSG(STOP_2F);
+        }
+        else {
+            MSG(STOP_2F_SANADA);
+        }
+
+        MSG_WND_CLS();
+        return;
+    }
+
+    shortcut_select();
+
+    FUNCTION_003B();
+}
+
+void shortcut_select() {
+    SEL_DEFKEY(PadButton.Circle, 15); // Back & Cancel
+    SEL_DEFKEY(PadButton.Triangle, 99); // Triangle && Configure
+    int selection = MSG_SELECT(FLD_ORDER, SCHOOL_SHOTCUTSEL, create_school_mask());
+    if (selection <= 8) {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_000F();
+        switch (selection) {
+            case 0:
+                CALL_FIELD(6, 1, 1, 0);
+                return;
+            case 1:
+                CALL_FIELD(6, 7, 1, 0);
+                return;
+            case 2:
+                CALL_FIELD(6, 11, 1, 0);
+                return;
+            case 3:
+                CALL_FIELD(6, 0x10, 1, 0);
+                return;
+            case 4:
+                CALL_FIELD(6, 20, 0, 0);
+                return;
+            case 5:
+                CALL_FIELD(6, 4, 2, 0);
+                return;
+            case 6:
+                CALL_FIELD(6, 3, 0, 0);
+                return;
+            case 7:
+                CALL_FIELD(6, 5, 0, 0);
+                return;
+            case 8:
+                CALL_FIELD(6, 2, 1, 0);
+                return;
+        }
+    }
+    else if (selection == 9) {
+        get_out_here();
+    }
+    else if (selection == 10) {
+        QuickTravelPlus();
+    }
+    else if (selection == 11) {
+        CALL_CALENDAR();
+    }
+    else if (selection == 12) {
+        HangOut();
+    }
+    else if (selection == 13) {
+        FADE(FadeEffects.FadeOut, 10);
+        SAVE_MENU();
+        FUNCTION_000D(0);
+    }
+    else if (selection == 14) {
+        ModMenuInit();
+    }
+    else if (selection == 99) {
+        MenuOptions();
+    }
+}
+
+int create_school_mask() {
+    int mask = 0xFFFF; // 0b1111_1111_1111_1111
+
+    if (!BIT_CHK(6322)) { // Quick Travel = OFF
+        int var6 = 0;
+        switch (FLD_GET_MINOR()) {
+            case 1:
+                if (GET_DAY(Month.April, 7)) {
+                    var6 += 2; // (0xFFFF - 0b0010) = 0b1111_1111_1111_1101
+                    break;
+                }
+                else {
+                    var6 += 614; // (0xFFFF - 0b0010_0110_0110) = 0b1111_1101_1001_1001
+                    break;
+                }
+            case 3:
+                var6 += 550; // (0xFFFF - 0b0010_0010_0110) = 0b1111_1101_1101_1001
+                break;
+            case 4:
+                var6 += 582; // (0xFFFF - 0b0010_0100_0110) = 0b1111_1101_1011_1001
+                break;
+            case 7:
+                if (GET_DAY(Month.April, 7)) {
+                    var6 += 1; // (0xFFFF - 0b0001) = 0b1111_1111_1111_1110
+                    break;
+                }
+                else {
+                    var6 += 612; // (0xFFFF - 0b0010_0110_0100) = 0b1111_1101_1001_1011
+                    break;
+                }
+            case 11:
+                var6 += 610; // (0xFFFF - 0b0010_0110_0010) = 0b1111_1101_1001_1101
+                break;
+            case 2:
+            case 5:
+            case 16:
+            case 20:
+                var6 += 614; // (0xFFFF - 0b0010_0110_0110) = 0b1111_1101_1001_1001
+                break;
+        }
+
+        mask -= var6;
+    }
+    else { // Quick Travel = ON
+        mask -= 0x400; // 0b0000_0100_0000_0000
+    }
+
+    if (BIT_CHK(6323)) { // View Calendar
+        mask -= 0x800; // 0b0000_1000_0000_0000
+    }
+    if (BIT_CHK(6325)) { // Find a Friend
+        mask -= 0x1000; // 0b0001_0000_0000_0000
+    }
+    if (BIT_CHK(6326) && !BIT_CHK(6321)) { // Save Anywhere (Mod Menu = OFF)
+        mask -= 0x2000; // 0b0010_0000_0000_0000
+    }
+    if (BIT_CHK(6321)) { // Mod Menu
+        mask -= 0x4000; // 0b0100_0000_0000_0000
+    }
+    return mask;
+}
