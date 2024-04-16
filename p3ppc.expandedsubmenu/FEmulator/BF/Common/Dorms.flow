@@ -1,8 +1,8 @@
-import("ModMenu/ModMenu.flow");
-import("Setup/FirstTimeSetup.flow");
-import("OtherMods/FindAFriend.flow");
-import("OtherMods/QuickTravelPlus.flow");
-import("DormsCommon.msg");
+import("../ModMenu/ModMenu.flow");
+import("../Setup/FirstTimeSetup.flow");
+import("../OtherMods/FindAFriend.flow");
+import("../OtherMods/QuickTravelPlus.flow");
+import("Dorms.msg");
 
 void dormitory_shortcut_hook() {
     if (!BIT_CHK(6320)) {

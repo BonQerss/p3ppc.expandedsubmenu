@@ -1,4 +1,4 @@
-import("DormsCommon.flow");
+import("Common/Dorms.flow");
 
 global bool isFieldBf;
 
