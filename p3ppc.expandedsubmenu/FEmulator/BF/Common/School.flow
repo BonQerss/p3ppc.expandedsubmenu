@@ -29,7 +29,7 @@ void school_shortcut_hook() {
 }
 
 void shortcut_select() {
-    SEL_DEFKEY(PadButton.Circle, 15); // Back & Cancel
+    SEL_DEFKEY(PadButton.Circle, 98); // Back & Cancel
     SEL_DEFKEY(PadButton.Triangle, 99); // Triangle && Configure
     int selection = MSG_SELECT(FLD_ORDER, SCHOOL_SHOTCUTSEL, create_school_mask());
     if (selection <= 8) {
