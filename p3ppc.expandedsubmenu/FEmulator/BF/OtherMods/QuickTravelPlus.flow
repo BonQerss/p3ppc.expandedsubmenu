@@ -1,5 +1,5 @@
+import("QuickTravelHooks.flow");
 import("QuickTravelPlus.msg");
-
 int CurFldMajor;
 int CurFldMinor;
 
@@ -40,8 +40,90 @@ void QuickTravelPlus() {
     }
 }
 
-void dormQT()
-{
+void dormQT() {
+    int dormMask = 0;
+    if (!BIT_CHK(3592)) {
+        // Hide Command Room if it hasn't been unlocked,
+        // it's March, or you're already in there
+        if (!BIT_CHK(21) || (FUNCTION_0030() == 3) || (CurFldMinor == 6)) {
+            dormMask += 0x10; // 0b0001_0000
+        }
+        switch (CurFldMinor) {
+            case 2:
+                dormMask += 1;
+                break;
+            case 3:
+                dormMask += 2;
+                break;
+            case 4:
+                dormMask += 4; // 0b0100
+                break;
+            case 5:
+                dormMask += 8; // 0b1000
+                break;
+            case 9:
+                dormMask += 0x40; // 0b0100_0000
+                break;
+            case 19:
+            case 20:
+                dormMask += 0x20; //0b0010_0000
+                break;
+        }
+    }
+    else { // Player has to go to 4F to learn abt SEES
+        dormMask += 119; // 0b0111_0111
+    }
+    SEL_DEFKEY(PadButton.Circle, 9);
+    int dormSel = MSG_SELECT(QuickTravelPlus_Text, DORMITORY_QTSEL, dormMask);
+    if (dormSel <= 4) {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_000F();
+        switch (dormSel) {
+            case 0:
+                CALL_FIELD(7, 2, 1, 0);
+                return;
+            case 1:
+                CALL_FIELD(7, 3, 0, 0);
+                return;
+            case 2:
+                CALL_FIELD(7, 4, 0, 0);
+                return;
+            case 3:
+                if (BIT_CHK(3592)) {
+                    BIT_OFF(3592);
+                    CALL_EVENT(129, 1);
+                    EVT_FUNCTION_0004(1);
+                    BIT_ON(21);
+                    CALL_DARK_HOUR();
+                    FCL_FUNCTION_0017();
+                    CALL_EVENT(130, 1);
+                    BIT_ON(22);
+                    BIT_ON(2562);
+                    FCL_FUNCTION_0018();
+                    NEXT_TIME();
+                }
+                else {
+                    CALL_FIELD(7, 5, 0, 0);
+                }
+                return;
+            case 4:
+                CALL_FIELD(7, 6, 0, 0);
+                return;
+        }
+    }
+    else if (dormSel == 5) {
+        call_midnight_myroom_hook();
+    }
+    else if (dormSel == 6) {
+        myroom_mybed_hook();
+    }
+    else if (dormSel == 7) {
+        leaveType = 1;
+        goout_dormitory_hook();
+    }
+    else if (dormSel == 8) {
+        ElseWhere();
+    }
 }
 
 void stripmallQT()

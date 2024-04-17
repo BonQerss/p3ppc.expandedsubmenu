@@ -1,0 +1,383 @@
+global(140) int leaveType;
+
+void call_midnight_myroom_hook() {
+    // bit id (((0) + (1024)) + (2048)) + (14) = 3086
+    if (CHK_DAYS_STARTEND(Month.April, 21, Month.March, 5) && !BIT_CHK(3086)) {
+        BIT_ON(3086);
+    }
+
+    // bit id (0) + (669) = 669
+    // bit id (0) + (195) = 195
+    if (GET_DAY(Month.April, 7)) {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_001E(3, 2);
+        CALL_EVENT(117, 1);
+        BIT_ON((0 + 669));
+        NEXT_TIME();
+        return;
+    }
+    else if (GET_DAY(Month.November, 5) && !BIT_CHK(195)) {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_001E(3, 2);
+        CALL_EVENT(295, 1);
+        BIT_ON(195);
+    }
+    else if (GET_DAY(Month.January, 31) && (FUNCTION_0033() == 5)) {
+        MSG_WND_DSP();
+        MSG(STOP_INTO_MYROOM_LAST_DA_2);
+        MSG_WND_CLS();
+        return;
+    }
+    else {
+        FADE(FadeEffects.FadeOut, 20);
+        FUNCTION_001E(3, 2);
+    }
+
+    // bit id ((((0) + (1024)) + (2048)) + (1024)) + (8) = 4104
+    if (BIT_CHK(4104)) {
+        CALL_FIELD(7, 19, 0, 0);
+    }
+    else {
+        CALL_FIELD(7, 20, 0, 0);
+    }
+}
+
+void myroom_mybed_hook() {
+    if (GET_DAY(Month.April, 6)) {
+        MSG_WND_DSP();
+        MSG(FIRST_DAY);
+        SEL_DEFKEY(PadButton.Circle, 1);
+        if (SEL(BEDIN_SEL) == 0) {
+            MSG_WND_CLS();
+            FADE(FadeEffects.FadeOut, 30);
+            NEXT_TIME();
+        }
+    }
+    else if (GET_DAY(Month.April, 9)) {
+        MSG_WND_DSP();
+        MSG(FIRST_DAY);
+        SEL_DEFKEY(PadButton.Circle, 1);
+        if (SEL(BEDIN_SEL) == 1) {
+            MSG_WND_CLS();
+            return;
+        }
+        MSG_WND_CLS();
+        BGM_STOP(30);
+        FADE(FadeEffects.FadeOut, 30);
+        CALL_DARK_HOUR();
+        FCL_FUNCTION_0017();
+        CALL_EVENT(119, 1);
+        CALL_EVENT(120, 1);
+        CALL_EVENT(121, 1);
+        CALL_EVENT(122, 1);
+        // bit id ((((0) + (1024)) + (2048)) + (1024)) + (791) = 4887
+        BIT_ON(4887);
+        CALL_EVENT(123, 1);
+        CALL_EVENT(124, 1);
+        FUNCTION_001E(4, 0);
+        FUNCTION_004B();
+        FUNCTION_004C();
+        CALL_BATTLE(454);
+        WAIT_BATTLE();
+        CALL_EVENT(124, 3);
+        FUNCTION_001E(4, 0);
+        FUNCTION_004B();
+        FUNCTION_004C();
+        CALL_BATTLE(456);
+        WAIT_BATTLE();
+        CALL_EVENT(125, 1);
+        CALL_EVENT(126, 1);
+        // bit id (0) + (11) = 11
+        // bit id (0) + (12) = 12
+        // bit id (0) + (13) = 13
+        // bit id (0) + (14) = 14
+        // bit id (0) + (15) = 15
+        // bit id (0) + (16) = 16
+        BIT_ON(11);
+        BIT_ON(12);
+        BIT_ON(13);
+        BIT_ON(14);
+        BIT_ON(15);
+        BIT_ON(0x10);
+        // bit id (0) + (288) = 288
+        // bit id (0) + (289) = 289
+        // bit id (0) + (290) = 290
+        BIT_ON(288);
+        BIT_ON(289);
+        BIT_ON(290);
+        // bit id (0) + (17) = 17
+        // bit id (0) + (18) = 18
+        BIT_ON(17);
+        BIT_ON(18);
+        FCL_FUNCTION_0018();
+        FUNCTION_0036(Month.April, 19, 3);
+        NEXT_TIME();
+        return;
+    }
+    else if (FUNCTION_0033() == 5) {
+        MSG_WND_DSP();
+        MSG(NIGHT_BED);
+        SEL_DEFKEY(PadButton.Circle, 1);
+        if (SEL(YESNO_SEL_2) == 0) {
+            MSG_WND_CLS();
+            BGM_STOP(30);
+            FADE(FadeEffects.FadeOut, 30);
+            FUNCTION_000F();
+            
+            // bit id ((0) + (1024)) + (1694) = 2718
+            // bit id ((0) + (1024)) + (1658) = 2682
+            if (CHECK_TIREDNESS(PartyMember.Protagonist) >= 3) {
+                BIT_ON(2718);
+            }
+            else {
+                BIT_ON(2682);
+            }
+            
+            // bit id (((0) + (1024)) + (2048)) + (142) = 3214
+            if (BIT_CHK(3214)) {
+                BIT_OFF(3214);
+                midnight_event_hook();
+            }
+
+            if (GET_DAY(Month.November, 22) == 0) {
+                NEXT_TIME();
+            }
+        }
+        MSG_WND_CLS();
+    }
+    else {
+        FUNCTION_001A(FUNCTION_0018(49, 0));
+    }
+}
+
+void midnight_event_hook() {
+    CALL_DARK_HOUR();
+    FCL_FUNCTION_0017();
+    
+    // bit id (0) + (685) = 685
+    // bit id (0) + (260) = 260
+    // bit id (0) + (64) = 64
+    // bit id (0) + (666) = 666
+    // bit id (0) + (667) = 667
+    // bit id (0) + (83) = 83
+    // bit id (0) + (89) = 89
+    // bit id (0) + (91) = 91
+    // bit id (0) + (104) = 104
+    // bit id (0) + (277) = 277
+    // bit id (0) + (126) = 126
+    // bit id (0) + (127) = 127
+    // bit id (0) + (261) = 261
+    // bit id (0) + (134) = 134
+    // bit id (0) + (262) = 262
+    // bit id (0) + (159) = 159
+    // bit id ((((0) + (1024)) + (2048)) + (1024)) + (521) = 4617
+    // bit id (0) + (287) = 287
+    // bit id (0) + (263) = 263
+    // bit id (0) + (176) = 176
+    // bit id (0) + (264) = 264
+    // bit id (0) + (193) = 193
+    // bit id (((0) + (1024)) + (2048)) + (39) = 3111
+    // bit id (0) + (282) = 282
+    // bit id (0) + (206) = 206
+    // bit id (0) + (215) = 215
+    // bit id (0) + (216) = 216
+    // bit id (0) + (217) = 217
+    if (GET_DAY(Month.May, 2)) {
+        CALL_EVENT(141, 2);
+        BIT_ON(685);
+        BIT_ON(260);
+    }
+    else if (GET_DAY(Month.June, 1)) {
+        CALL_EVENT(169, 1);
+        BIT_ON(0x40);
+    }
+    else if (GET_DAY(Month.June, 12)) {
+        CALL_EVENT(188, 1);
+        EVT_FUNCTION_0004(19);
+        BIT_OFF(666);
+        BIT_ON(667);
+        BIT_ON(83);
+    }
+    else if (GET_DAY(Month.June, 22)) {
+        CALL_EVENT(194, 1);
+        BIT_ON(89);
+    }
+    else if (GET_DAY(Month.June, 30)) {
+        CALL_EVENT(196, 1);
+        BIT_ON(91);
+    }
+    else if (GET_DAY(Month.July, 12)) {
+        CALL_EVENT(209, 1);
+        BIT_ON(104);
+    }
+    else if (GET_DAY(Month.July, 29)) {
+        CALL_EVENT(230, 2);
+        CALL_EVENT(231, 1);
+        CALL_EVENT(232, 1);
+        BIT_ON(277);
+        BIT_ON(126);
+        BIT_ON(127);
+    }
+    else if (GET_DAY(Month.July, 30)) {
+        CALL_EVENT(229, 2);
+        BIT_ON(261);
+    }
+    else if (GET_DAY(Month.August, 7)) {
+        CALL_EVENT(239, 1);
+        BIT_ON(134);
+    }
+    else if (GET_DAY(Month.August, 29)) {
+        CALL_EVENT(246, 2);
+        BIT_ON(262);
+    }
+    else if (GET_DAY(Month.September, 12)) {
+        CALL_EVENT(262, 1);
+        BIT_ON(159);
+    }
+    else if (GET_DAY(Month.September, 18)) {
+        CALL_EVENT(263, 3);
+        BIT_ON(4617);
+        BIT_ON(287);
+    }
+    else if (GET_DAY(Month.September, 27)) {
+        CALL_EVENT(263, 2);
+        BIT_ON(263);
+    }
+    else if (GET_DAY(Month.October, 6)) {
+        CALL_EVENT(276, 1);
+        BIT_ON(176);
+    }
+    else if (GET_DAY(Month.October, 27)) {
+        CALL_EVENT(279, 2);
+        BIT_ON(264);
+    }
+    else if (GET_DAY(Month.November, 5)) {
+        CALL_EVENT(293, 1);
+        BIT_ON(193);
+    }
+    else if (GET_DAY(Month.November, 22)) {
+        CALL_EVENT(304, 2);
+        CALL_EVENT(305, 1);
+        BIT_ON(3111);
+        BIT_ON(282);
+        BIT_ON(206);
+        CALL_FIELD(7, 6, 0, 0);
+        return;
+    }
+    else if (GET_DAY(Month.December, 2)) {
+        CALL_EVENT(310, 2);
+        CALL_EVENT(311, 1);
+        CALL_EVENT(311, 2);
+        BIT_ON(215);
+        BIT_ON(216);
+        BIT_ON(217);
+    }
+
+    FCL_FUNCTION_0018();
+}
+
+void goout_dormitory_hook() {
+    // bit id ((0) + (1024)) + (1934) = 2958
+    // bit id ((0) + (1024)) + (1934) = 2958
+    // bit id (((0) + (1024)) + (2048)) + (22) = 3094
+    // bit id (((0) + (1024)) + (2048)) + (22) = 3094
+    // bit id (((0) + (1024)) + (2048)) + (18) = 3090
+    if (GET_DAY(Month.April, 7) || GET_DAY(Month.April, 9)) {
+        MSG_WND_DSP();
+        if (FLD_GET_MINOR() == 2) {
+            MSG(STOP_GO_OUT_MITSURU);
+        }
+        else {
+            MSG(STOP_GO_OUT);
+        }
+        MSG_WND_CLS();
+    }
+    else if (GET_DAY(Month.April, 8) || GET_DAY(Month.April, 19)) {
+        MSG_WND_DSP();
+        if (FLD_GET_MINOR() == 2) {
+            MSG(STOP_GO_OUT_YUKARI);
+        }
+        else {
+            MSG(STOP_GO_OUT);
+        }
+        MSG_WND_CLS();
+    }
+    else if ((FUNCTION_0033() == 3) && GET_DAY(Month.April, 19)) {
+        MSG_WND_DSP();
+        if (FLD_GET_MINOR() == 2) {
+            MSG(STOP_GO_OUT_MITSURU_0419);
+        }
+        else {
+            MSG(STOP_GO_OUT);
+        }
+        MSG_WND_CLS();
+    }
+    else if (GET_DAY(Month.April, 18)) {
+        MSG_WND_DSP();
+        MSG(STOP_GO_OUT);
+        MSG_WND_CLS();
+    }
+    else if (GET_DAY(Month.April, 20)) {
+        MSG_WND_DSP();
+        MSG(STOP_INTO_MYROOM_2);
+        MSG_WND_CLS();
+    }
+    else if ((FUNCTION_0033() == 5) && GET_DAY(Month.September, 18)) {
+        MSG_WND_DSP();
+        MSG(STORM_COMING);
+        MSG_WND_CLS();
+        if (FLD_GET_MINOR() == 2) {
+            MSG_WND_DSP();
+            MSG(STORM_COMING_JUNPEI);
+            MSG_WND_CLS();
+        }
+    }
+    else if (GET_DAY(Month.March, 4)) {
+        MSG_WND_DSP();
+        if (BIT_CHK(2958)) {
+            MSG(STOP_GOOD_0304);
+        }
+        else {
+            MSG(STOP_BAD_0304);
+        }
+        MSG_WND_CLS();
+    }
+    else if (FUNCTION_0030() == 3) {
+        MSG_WND_DSP();
+        if (BIT_CHK(2958)) {
+            MSG(STOP_GOOD_0303);
+        }
+        else {
+            MSG(STOP_BAD_0303);
+        }
+        MSG_WND_CLS();
+    }
+    else {   
+        if (FUNCTION_0033() == 3) {
+            if (!BIT_CHK(3094)) {
+                FUNCTION_002D(GO_OUT_OK_HELP);
+                MSG_WND_DSP();
+                MSG(GO_OUT_OK);
+                SEL_DEFKEY(PadButton.Circle, 1);
+                if (SEL(GOOUT_SEL) == 1) {
+                    MSG_WND_CLS();
+                    return;
+                }
+                BIT_ON(3094);
+                MSG_WND_CLS();
+            }
+        }
+
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_001E(3, 2);
+        
+        if (gVar140 == 1) {
+            CALL_FIELD(7, 9, 1, 0);
+        }
+        else {
+            BIT_ON(3090);
+            FLD_SEL_EX(5);
+        }
+    }
+}
+
