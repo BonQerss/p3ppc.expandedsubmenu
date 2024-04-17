@@ -1,3 +1,4 @@
+import("QuickTravelHooks.msg");
 global(140) int leaveType;
 
 void call_midnight_myroom_hook() {
