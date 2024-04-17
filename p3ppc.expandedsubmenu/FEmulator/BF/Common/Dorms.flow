@@ -147,6 +147,8 @@ int create_dorm_mask() {
             case 20:
                 mask -= 0x40; // (0x1FFF - 0b0100_0000) = 0b0001_1110_1011_1111
                 break;
+            default:
+                break;
         }
     }
     if (BIT_CHK(6323)) { // View Calendar

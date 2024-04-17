@@ -1,7 +1,7 @@
 import("QuickTravelHooks.msg");
 global(140) int leaveType;
 
-void call_midnight_myroom_hook() {
+void call_midnight_myroom_reim() {
     // bit id (((0) + (1024)) + (2048)) + (14) = 3086
     if (CHK_DAYS_STARTEND(Month.April, 21, Month.March, 5) && !BIT_CHK(3086)) {
         BIT_ON(3086);
@@ -43,7 +43,7 @@ void call_midnight_myroom_hook() {
     }
 }
 
-void goout_dormitory_hook() {
+void goout_dormitory_reim() {
     // bit id ((0) + (1024)) + (1934) = 2958
     // bit id ((0) + (1024)) + (1934) = 2958
     // bit id (((0) + (1024)) + (2048)) + (22) = 3094
@@ -138,7 +138,7 @@ void goout_dormitory_hook() {
         FADE(FadeEffects.CircleWipe, 20);
         FUNCTION_001E(3, 2);
         
-        if (gVar140 == 1) {
+        if (leaveType == 1) {
             CALL_FIELD(7, 9, 1, 0);
         }
         else {

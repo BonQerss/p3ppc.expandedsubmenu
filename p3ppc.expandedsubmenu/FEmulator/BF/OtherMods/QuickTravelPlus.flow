@@ -112,11 +112,11 @@ void dormQT() {
         }
     }
     else if (dormSel == 5) {
-        call_midnight_myroom_hook();
+        call_midnight_myroom_reim();
     }
     else if (dormSel == 6) {
         leaveType = 1;
-        goout_dormitory_hook();
+        goout_dormitory_reim();
     }
     else if (dormSel == 7) {
         ElseWhere();
