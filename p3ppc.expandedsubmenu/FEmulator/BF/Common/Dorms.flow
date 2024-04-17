@@ -141,6 +141,13 @@ int create_dorm_mask() {
     }
     else {
         mask -= 0x100; // (0x1FFF - 0b0001_0000_0000) = 0b0001_1110_1111_1111
+        // If we're in the player's room, show the option to use the bed as well
+        switch (FLD_GET_MINOR()) {
+            case 19:
+            case 20:
+                mask -= 0x40; // (0x1FFF - 0b0100_0000) = 0b0001_1110_1011_1111
+                break;
+        }
     }
     if (BIT_CHK(6323)) { // View Calendar
         mask -= 0x200; // (0x1FFF - 0b0010_0000_0000) = 0b0001_1101_1111_1111

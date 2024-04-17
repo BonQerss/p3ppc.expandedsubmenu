@@ -73,7 +73,7 @@ void dormQT() {
     else { // Player has to go to 4F to learn abt SEES
         dormMask += 119; // 0b0111_0111
     }
-    SEL_DEFKEY(PadButton.Circle, 9);
+    SEL_DEFKEY(PadButton.Circle, 8);
     int dormSel = MSG_SELECT(QuickTravelPlus_Text, DORMITORY_QTSEL, dormMask);
     if (dormSel <= 4) {
         FADE(FadeEffects.CircleWipe, 20);
@@ -115,13 +115,10 @@ void dormQT() {
         call_midnight_myroom_hook();
     }
     else if (dormSel == 6) {
-        myroom_mybed_hook();
-    }
-    else if (dormSel == 7) {
         leaveType = 1;
         goout_dormitory_hook();
     }
-    else if (dormSel == 8) {
+    else if (dormSel == 7) {
         ElseWhere();
     }
 }

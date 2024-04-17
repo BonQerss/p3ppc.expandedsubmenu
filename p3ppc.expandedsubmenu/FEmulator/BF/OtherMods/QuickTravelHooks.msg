@@ -2,24 +2,6 @@
 [s]> You must go to Tartarus...
 [n][w][e]
 
-[msg FIRST_DAY]
-[s]> You are tired today...
-[n][w][e]
-[s]> You should go to bed early...
-[n][w][e]
-
-[sel BEDIN_SEL top]
-[s]Sleep[e]
-[s]Don't sleep yet[e]
-
-[msg NIGHT_BED]
-[s]> Go to bed early?
-[n][w][e]
-
-[sel YESNO_SEL_2 top]
-[s]Yes[e]
-[s]No[e]
-
 [msg STOP_GO_OUT_YUKARI [Yukari]]
 [s][bup 2 1 65535 0]You're not allowed to go out,
 [n]since it's past curfew.
