@@ -927,38 +927,38 @@ void FlagMassEditor()
         int selection = MSG_SELECT( ModMenuName, FlagMassEditor, 0 );
         switch ( selection )
         {
-            case 999://Cancel
+            case 999: // Cancel
                 return;
-            case 0://Disable all flags
+            case 0: // Disable all flags
                 for ( int i = 0; i < 0x1600; i++ )
                     BIT_OFF( i );
                 break;
-            case 1://Enable all flags
+            case 1: // Enable all flags
                 for ( int i = 0; i < 0x1600; i++ )
                     BIT_ON( i );
                 break;
-            case 2://Complete All Quests
+            case 2: // Complete All Quests
                 for (int i = 4465; i < 4563; i++)
                 {
                     if ( i != 4548 && ( i > 4542 || i < 4525 ) )
                         BIT_ON( i );
                 }
                 break;
-            case 3://Enable all tartarus guardians
+            case 3: // Enable all tartarus guardians
                 for (int i = 3536; i < 3562; i++)
                 {
                     if ( i != 3561 && i != 3560 )
                         BIT_ON( i );
                 }
                 break;
-            case 4://Enable all warp points
+            case 4: // Enable all warp points
                 for (int i = 3501; i < 3535; i++)
                 {
                     if ( ( i > 3528 || i < 3519 ) && ( i > 3504 || i < 3501 ) )
                         BIT_ON( i );
                 }
                 break;
-            case 5://Swap enabled/disabled flags
+            case 5: // Swap enabled/disabled flags
                 for ( int i = 0; i < 0x1600; i++ )
                 {
                     if ( BIT_CHK( i ) )
@@ -967,7 +967,7 @@ void FlagMassEditor()
                         BIT_ON( i );
                 }
                 break;
-            case 6://Toggle range of flags
+            case 6: // Toggle range of flags
                 ToggleRange();
                 break;
         }
