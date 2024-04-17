@@ -16,60 +16,9 @@ void dormitory_shortcut_hook() {
         return;
     }
 
-    int onPage = FLD_GET_MINOR();
-    bool esmAvail = (BIT_CHK(6321) || BIT_CHK(6323) || BIT_CHK(6325) || BIT_CHK(6326));
-    if ((onPage != 2) && (onPage != 3) && (onPage != 4) && (onPage != 5) && (onPage != 6) && (onPage != 19) && (onPage != 20)) {
-        onPage = -1;
-    }
-    else {
-        onPage = 0;
-    }
-    while (true) {
-        int dormSel = 0;
-        SEL_DEFKEY(PadButton.Circle, 15); // Cancel button on ○
-        SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
-        if (onPage == 0) {
-            if (esmAvail) {
-                // Change page on < & >
-                SEL_DEFKEY(PadButton.Left, 13);
-                SEL_DEFKEY(PadButton.Right, 13);
-                dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x4000);
-            }
-            else {
-                dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x6000);
-            }
-        }
-        else if (onPage == 1) {
-            // We don't do the same bitchecks for if we do pagination here, since
-            // this path will only run if we have 2nd page options to begin with
-            // Change page on < & >
-            SEL_DEFKEY(PadButton.Left, 14);
-            SEL_DEFKEY(PadButton.Right, 14);
-            dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x2000);
-        }
-        else {
-            if (esmAvail) {             
-                dormSel = MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask(onPage) + 0x6000);
-            }
-            else {
-                // Force player into ESM configuration to account for the situation
-                // where someone has disabled all of the relevant options here,
-                // which would force them to change fields to one with a valid sub-menu to fix it
-                MenuOptions();
-                break;
-            }
-        }
-        if ((dormSel == 13) || (dormSel == 14)) {
-            onPage = !onPage;
-        }
-        else if (dormSel == 15) {
-            break;
-        }
-        else {
-            shortcut_select(dormSel);
-            break;
-        }
-    }
+    SEL_DEFKEY(PadButton.Circle, 98); // Cancel button on ○
+    SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
+    shortcut_select(MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask()));
 }
 
 void shortcut_select(int selection) {
@@ -141,10 +90,10 @@ void shortcut_select(int selection) {
     }
 }
 
-int create_dorm_mask(bool page) {
+int create_dorm_mask() {
     int mask = 0x1FFF; // 0b0001_1111_1111_1111
 
-    if (!page) {
+    if (!BIT_CHK(6322)) { // Quick Travel = OFF
         switch (FLD_GET_MINOR()) {
             case 2:
                 if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
@@ -191,27 +140,19 @@ int create_dorm_mask(bool page) {
         }
     }
     else {
-        // Currently, QuickTravelPlus.flow doesn't have any real support for
-        // the dorms, so for now we'll just always mask it out until then
-        /*if (!BIT_CHK(6322)) { // Quick Travel
-            mask += 0x100; // (0x1FFF - 0b0001_0000_0000) = 0b0001_1110_1111_1111
-        }*/
-        
-        if (BIT_CHK(6323)) { // View Calendar
-            mask -= 0x200; // (0x1FFF - 0b0010_0000_0000) = 0b0001_1101_1111_1111
-        }
-        
-        if (BIT_CHK(6325)) { // Find a Friend
-            mask -= 0x400; // (0x1FFF - 0b0100_0000_0000) = 0b0001_1011_1111_1111
-        }
-        
-        if (BIT_CHK(6326)) { // Save Anywhere
-            mask -= 0x800; // (0x1FFF - 0b1000_0000_0000) = 0b0001_0111_1111_1111
-        }
-        
-        if (BIT_CHK(6321)) { // Mod Menu
-            mask -= 0x1000; // (0x1FFF - 0b0001_0000_0000_0000) = 0b0000_1111_1111_1111
-        }
+        mask -= 0x100; // (0x1FFF - 0b0001_0000_0000) = 0b0001_1110_1111_1111
+    }
+    if (BIT_CHK(6323)) { // View Calendar
+        mask -= 0x200; // (0x1FFF - 0b0010_0000_0000) = 0b0001_1101_1111_1111
+    }
+    if (BIT_CHK(6325)) { // Find a Friend
+        mask -= 0x400; // (0x1FFF - 0b0100_0000_0000) = 0b0001_1011_1111_1111
+    }
+    if (BIT_CHK(6326)) { // Save Anywhere
+        mask -= 0x800; // (0x1FFF - 0b1000_0000_0000) = 0b0001_0111_1111_1111
+    }
+    if (BIT_CHK(6321)) { // Mod Menu
+        mask -= 0x1000; // (0x1FFF - 0b0001_0000_0000_0000) = 0b0000_1111_1111_1111
     }
 
     return mask;
