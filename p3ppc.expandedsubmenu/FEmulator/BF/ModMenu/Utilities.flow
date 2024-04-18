@@ -407,20 +407,22 @@ void SetUpFavorites()
     else
         SEL_DEFKEY( 9, 998 );
     int selection = SEL( SelectFavorites );
+    if (selection != 998) {
+        MSG_WND_CLS();
+    }
     switch ( selection )
     {
         case 999://Cancel
-            MSG_WND_CLS();
             break;
         case 998://Next Page
             SetUpFavorites1();
             break;
-        case 0: MSG_WND_CLS(); SET_COUNT( 24, SelectNumber(4) ); break;
-        case 1: MSG_WND_CLS(); SET_COUNT( 25, SelectNumber(4) ); break;
-        case 2: MSG_WND_CLS(); SET_COUNT( 26, SelectNumber(4) ); break;
-        case 3: MSG_WND_CLS(); SET_COUNT( 27, SelectNumber(4) ); break;
-        case 4: MSG_WND_CLS(); SET_COUNT( 28, SelectNumber(4) ); break;
-        case 5: MSG_WND_CLS(); SET_COUNT( 29, SelectNumber(4) ); break;
+        case 0: SET_COUNT( 24, SelectNumber(4) ); break;
+        case 1: SET_COUNT( 25, SelectNumber(4) ); break;
+        case 2: SET_COUNT( 26, SelectNumber(4) ); break;
+        case 3: SET_COUNT( 27, SelectNumber(4) ); break;
+        case 4: SET_COUNT( 28, SelectNumber(4) ); break;
+        case 5: SET_COUNT( 29, SelectNumber(4) ); break;
     }
 }
 
@@ -442,24 +444,25 @@ void SetUpFavorites1()
         else
             SEL_DEFKEY( 8, 997 );
     int selection = SEL( SelectFavorites1 );
+    if (selection != 998) {
+        MSG_WND_CLS();
+    }
     switch ( selection )
     {
         case 999://Cancel
-            MSG_WND_CLS();
             break;
         case 998://Next Page
             SetUpFavorites2();
             break;
         case 997://Previous Page
-            MSG_WND_CLS();
             SetUpFavorites();
             break;
-        case 0: MSG_WND_CLS(); SET_COUNT( 30, SelectNumber(4) ); break;
-        case 1: MSG_WND_CLS(); SET_COUNT( 31, SelectNumber(4) ); break;
-        case 2: MSG_WND_CLS(); SET_COUNT( 32, SelectNumber(4) ); break;
-        case 3: MSG_WND_CLS(); SET_COUNT( 33, SelectNumber(4) ); break;
-        case 4: MSG_WND_CLS(); SET_COUNT( 34, SelectNumber(4) ); break;
-        case 5: MSG_WND_CLS(); SET_COUNT( 35, SelectNumber(4) ); break;
+        case 0: SET_COUNT( 30, SelectNumber(4) ); break;
+        case 1: SET_COUNT( 31, SelectNumber(4) ); break;
+        case 2: SET_COUNT( 32, SelectNumber(4) ); break;
+        case 3: SET_COUNT( 33, SelectNumber(4) ); break;
+        case 4: SET_COUNT( 34, SelectNumber(4) ); break;
+        case 5: SET_COUNT( 35, SelectNumber(4) ); break;
     }
 }
 
@@ -477,20 +480,22 @@ void SetUpFavorites2()
         else
             SEL_DEFKEY( 8, 997 );
     int selection = SEL( SelectFavorites2 );
+    if (selection != 997) {
+        MSG_WND_CLS();
+    }
     switch ( selection )
     {
         case 999://Cancel
-            MSG_WND_CLS();
             break;
         case 997://Previous Page
             SetUpFavorites1();
             break;
-        case 0: MSG_WND_CLS(); SET_COUNT( 36, SelectNumber(4) ); break;
-        case 1: MSG_WND_CLS(); SET_COUNT( 37, SelectNumber(4) ); break;
-        case 2: MSG_WND_CLS(); SET_COUNT( 38, SelectNumber(4) ); break;
-        case 3: MSG_WND_CLS(); SET_COUNT( 39, SelectNumber(4) ); break;
-        case 4: MSG_WND_CLS(); SET_COUNT( 40, SelectNumber(4) ); break;
-        case 5: MSG_WND_CLS(); SET_COUNT( 41, SelectNumber(4) ); break;
+        case 0: SET_COUNT( 36, SelectNumber(4) ); break;
+        case 1: SET_COUNT( 37, SelectNumber(4) ); break;
+        case 2: SET_COUNT( 38, SelectNumber(4) ); break;
+        case 3: SET_COUNT( 39, SelectNumber(4) ); break;
+        case 4: SET_COUNT( 40, SelectNumber(4) ); break;
+        case 5: SET_COUNT( 41, SelectNumber(4) ); break;
     }
 }
 
