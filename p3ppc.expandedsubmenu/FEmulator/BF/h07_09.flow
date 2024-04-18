@@ -34,12 +34,10 @@ void f007_009_shortcut_hook() {
     SEL_DEFKEY(PadButton.Triangle, 99);
     int dormSel = MSG_SELECT(FLD_ORDER_2, DORMITORY_SHOTCUTSEL_2, mask);
     
-    if (dormSel == 0)
-    {
+    if (dormSel == 0) {
         HIT_SCRIPT_01();
     }
-    else if (dormSel == 1)
-    {
+    else if (dormSel == 1) {
         HIT_SCRIPT_00();
     }
     else if (dormSel == 2) {
