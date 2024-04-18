@@ -68,6 +68,8 @@ void dormQT() {
             case 20:
                 dormMask += 0x20; //0b0010_0000
                 break;
+            default:
+                break;
         }
     }
     else { // Player has to go to 4F to learn abt SEES
