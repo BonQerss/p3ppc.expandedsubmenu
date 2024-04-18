@@ -37,17 +37,7 @@ void shortcut_select(int selection) {
                 return;
             case 3:
                 if (BIT_CHK(3592)) {
-                    BIT_OFF(3592);
-                    CALL_EVENT(129, 1);
-                    EVT_FUNCTION_0004(1);
-                    BIT_ON(21);
-                    CALL_DARK_HOUR();
-                    FCL_FUNCTION_0017();
-                    CALL_EVENT(130, 1);
-                    BIT_ON(22);
-                    BIT_ON(2562);
-                    FCL_FUNCTION_0018();
-                    NEXT_TIME();
+                    call_sees_event();
                 }
                 else {
                     CALL_FIELD(7, 5, 0, 0);
@@ -69,7 +59,7 @@ void shortcut_select(int selection) {
         goout_dormitory();
     }
     else if (selection == 8) {
-        QuickTravelPlus();
+        dorm_quick_travel();
     }
     else if (selection == 9) {
         CALL_CALENDAR();
@@ -87,6 +77,95 @@ void shortcut_select(int selection) {
     }
     else if (selection == 99) {
         MenuOptions();
+    }
+}
+
+void call_sees_event() {
+    BIT_OFF(3592);
+    CALL_EVENT(129, 1);
+    EVT_FUNCTION_0004(1);
+    BIT_ON(21);
+    CALL_DARK_HOUR();
+    FCL_FUNCTION_0017();
+    CALL_EVENT(130, 1);
+    BIT_ON(22);
+    BIT_ON(2562);
+    FCL_FUNCTION_0018();
+    NEXT_TIME();
+}
+
+void dorm_quick_travel() {
+    int qtMask = 0;
+    if (!BIT_CHK(3592)) {
+        // Hide Command Room if it hasn't been unlocked,
+        // it's March, or you're already in there
+        if (!BIT_CHK(21) || (FUNCTION_0030() == 3) || (CurFldMinor == 6)) {
+            qtMask += 0x10; // 0b0001_0000
+        }
+        switch (CurFldMinor) {
+            case 2:
+                qtMask += 1;
+                break;
+            case 3:
+                qtMask += 2;
+                break;
+            case 4:
+                qtMask += 4; // 0b0100
+                break;
+            case 5:
+                qtMask += 8; // 0b1000
+                break;
+            case 9:
+                qtMask += 0x40; // 0b0100_0000
+                break;
+            case 19:
+            case 20:
+                qtMask += 0x20; //0b0010_0000
+                break;
+            default:
+                break;
+        }
+    }
+    else { // Player has to go to 4F to learn abt SEES
+        qtMask += 119; // 0b0111_0111
+    }
+    SEL_DEFKEY(PadButton.Circle, 8);
+    int qtSel = MSG_SELECT(QuickTravelPlus_Text, DORMITORY_QTSEL, qtMask);
+    if (qtSel <= 4) {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_000F();
+        switch (qtSel) {
+            case 0:
+                CALL_FIELD(7, 2, 1, 0);
+                return;
+            case 1:
+                CALL_FIELD(7, 3, 0, 0);
+                return;
+            case 2:
+                CALL_FIELD(7, 4, 0, 0);
+                return;
+            case 3:
+                if (BIT_CHK(3592)) {
+                    call_sees_event();
+                }
+                else {
+                    CALL_FIELD(7, 5, 0, 0);
+                }
+                return;
+            case 4:
+                CALL_FIELD(7, 6, 0, 0);
+                return;
+        }
+    }
+    else if (qtSel == 5) {
+        call_midnight_myroom();
+    }
+    else if (qtSel == 6) {
+        leaveType = 1;
+        goout_dormitory();
+    }
+    else if (qtSel == 7) {
+        ElseWhere();
     }
 }
 
