@@ -1,7 +1,7 @@
 import("ModMenu/ModMenu.flow");
 import("Setup/FirstTimeSetup.flow");
 import("OtherMods/FindAFriend.flow");
-// import("OtherMods/QuickTravelPlus.flow");
+import("OtherMods/QuickTravelPlus.flow");
 import("h07_09.msg");
 
 global bool isFieldBf;
@@ -14,14 +14,17 @@ void f007_009_shortcut_hook() {
     }
     
     int mask = 0x7C; // 0b0111_1100
-    // TODO: Add QT+ bitcheck + mask removal
+    if (BIT_CHK(6322)) { // Quick Travel Plus
+        mask -= 4; // 0b0100
+        mask += 3; // 0b0011
+    }
     if (BIT_CHK(6323)) {
         mask -= 8; // 0b0000_1000
     }
-    if (BIT_CHK(6325)) {
+    if (BIT_CHK(6325)) { // Find a Friend
         mask -= 0x10; // 0b0001_0000
     }
-    if (BIT_CHK(6326)) {
+    if (BIT_CHK(6326) && !BIT_CHK(6321)) { // Save Anywhere (Mod Menu = OFF)
         mask -= 0x20; // 0b0010_0000
     }
     if (BIT_CHK(6321)) {
@@ -38,6 +41,9 @@ void f007_009_shortcut_hook() {
     else if (dormSel == 1)
     {
         HIT_SCRIPT_00();
+    }
+    else if (dormSel == 2) {
+        QuickTravelPlus();
     }
     else if (dormSel == 3) {
         CALL_CALENDAR();

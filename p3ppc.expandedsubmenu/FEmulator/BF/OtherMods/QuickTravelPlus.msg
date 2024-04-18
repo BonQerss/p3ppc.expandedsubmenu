@@ -20,7 +20,7 @@
 [s]4F, Hallway[e]
 [s]Command Room[e]
 [s]Your Room[e]
-[s]Bed[e]
+[s]Entrance[e]
 [s]Elsewhere[e]
 [s]Cancel[e]
 

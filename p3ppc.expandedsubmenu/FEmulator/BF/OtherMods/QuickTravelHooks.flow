@@ -1,0 +1,150 @@
+import("QuickTravelHooks.msg");
+global(140) int leaveType;
+
+void call_midnight_myroom_reim() {
+    // bit id (((0) + (1024)) + (2048)) + (14) = 3086
+    if (CHK_DAYS_STARTEND(Month.April, 21, Month.March, 5) && !BIT_CHK(3086)) {
+        BIT_ON(3086);
+    }
+
+    // bit id (0) + (669) = 669
+    // bit id (0) + (195) = 195
+    if (GET_DAY(Month.April, 7)) {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_001E(3, 2);
+        CALL_EVENT(117, 1);
+        BIT_ON((0 + 669));
+        NEXT_TIME();
+        return;
+    }
+    else if (GET_DAY(Month.November, 5) && !BIT_CHK(195)) {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_001E(3, 2);
+        CALL_EVENT(295, 1);
+        BIT_ON(195);
+    }
+    else if (GET_DAY(Month.January, 31) && (FUNCTION_0033() == 5)) {
+        MSG_WND_DSP();
+        MSG(STOP_INTO_MYROOM_LAST_DA_2);
+        MSG_WND_CLS();
+        return;
+    }
+    else {
+        FADE(FadeEffects.FadeOut, 20);
+        FUNCTION_001E(3, 2);
+    }
+
+    // bit id ((((0) + (1024)) + (2048)) + (1024)) + (8) = 4104
+    if (BIT_CHK(4104)) {
+        CALL_FIELD(7, 19, 0, 0);
+    }
+    else {
+        CALL_FIELD(7, 20, 0, 0);
+    }
+}
+
+void goout_dormitory_reim() {
+    // bit id ((0) + (1024)) + (1934) = 2958
+    // bit id ((0) + (1024)) + (1934) = 2958
+    // bit id (((0) + (1024)) + (2048)) + (22) = 3094
+    // bit id (((0) + (1024)) + (2048)) + (22) = 3094
+    // bit id (((0) + (1024)) + (2048)) + (18) = 3090
+    if (GET_DAY(Month.April, 7) || GET_DAY(Month.April, 9)) {
+        MSG_WND_DSP();
+        if (FLD_GET_MINOR() == 2) {
+            MSG(STOP_GO_OUT_MITSURU);
+        }
+        else {
+            MSG(STOP_GO_OUT);
+        }
+        MSG_WND_CLS();
+    }
+    else if (GET_DAY(Month.April, 8) || GET_DAY(Month.April, 19)) {
+        MSG_WND_DSP();
+        if (FLD_GET_MINOR() == 2) {
+            MSG(STOP_GO_OUT_YUKARI);
+        }
+        else {
+            MSG(STOP_GO_OUT);
+        }
+        MSG_WND_CLS();
+    }
+    else if ((FUNCTION_0033() == 3) && GET_DAY(Month.April, 19)) {
+        MSG_WND_DSP();
+        if (FLD_GET_MINOR() == 2) {
+            MSG(STOP_GO_OUT_MITSURU_0419);
+        }
+        else {
+            MSG(STOP_GO_OUT);
+        }
+        MSG_WND_CLS();
+    }
+    else if (GET_DAY(Month.April, 18)) {
+        MSG_WND_DSP();
+        MSG(STOP_GO_OUT);
+        MSG_WND_CLS();
+    }
+    else if (GET_DAY(Month.April, 20)) {
+        MSG_WND_DSP();
+        MSG(STOP_INTO_MYROOM_2);
+        MSG_WND_CLS();
+    }
+    else if ((FUNCTION_0033() == 5) && GET_DAY(Month.September, 18)) {
+        MSG_WND_DSP();
+        MSG(STORM_COMING);
+        MSG_WND_CLS();
+        if (FLD_GET_MINOR() == 2) {
+            MSG_WND_DSP();
+            MSG(STORM_COMING_JUNPEI);
+            MSG_WND_CLS();
+        }
+    }
+    else if (GET_DAY(Month.March, 4)) {
+        MSG_WND_DSP();
+        if (BIT_CHK(2958)) {
+            MSG(STOP_GOOD_0304);
+        }
+        else {
+            MSG(STOP_BAD_0304);
+        }
+        MSG_WND_CLS();
+    }
+    else if (FUNCTION_0030() == 3) {
+        MSG_WND_DSP();
+        if (BIT_CHK(2958)) {
+            MSG(STOP_GOOD_0303);
+        }
+        else {
+            MSG(STOP_BAD_0303);
+        }
+        MSG_WND_CLS();
+    }
+    else {   
+        if (FUNCTION_0033() == 3) {
+            if (!BIT_CHK(3094)) {
+                FUNCTION_002D(GO_OUT_OK_HELP);
+                MSG_WND_DSP();
+                MSG(GO_OUT_OK);
+                SEL_DEFKEY(PadButton.Circle, 1);
+                if (SEL(GOOUT_SEL) == 1) {
+                    MSG_WND_CLS();
+                    return;
+                }
+                BIT_ON(3094);
+                MSG_WND_CLS();
+            }
+        }
+
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_001E(3, 2);
+        
+        if (leaveType == 1) {
+            CALL_FIELD(7, 9, 1, 0);
+        }
+        else {
+            BIT_ON(3090);
+            FLD_SEL_EX(5);
+        }
+    }
+}
+

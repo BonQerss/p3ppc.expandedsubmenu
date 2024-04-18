@@ -1,40 +1,126 @@
+import("QuickTravelHooks.flow");
 import("QuickTravelPlus.msg");
+int CurFldMajor;
+int CurFldMinor;
 
-
-void QuickTravelPlus()
-{
-    int CurFldMajor = FLD_GET_MAJOR();
-    // int CurFldMinor = FLD_GET_MINOR();
+void QuickTravelPlus() {
+    CurFldMajor = FLD_GET_MAJOR();
+    CurFldMinor = FLD_GET_MINOR();
+    
+    // TODO: Some of these fields normally hide the option
+    // to travel to specific locations if the story mandates
+    // only going to one place within the area; we'll need to figure
+    // out how to properly account for this so that the player doesn't
+    // potentially put themself somewhere they aren't supposed to be, which
+    // in the worst case could lead to softlocks/broken save files
 
     if (CurFldMajor == 6) { // Gekkoukan High
         schoolQT();
     }
-
-    if (CurFldMajor == 7) { // Dorm
+    else if (CurFldMajor == 7) { // Dorm
         dormQT();
     }
-    if (CurFldMajor == 8) { // Paulownia Mall
+    else if (CurFldMajor == 8) { // Paulownia Mall
         mallQT();
     }
-    if (CurFldMajor == 9) { // Strip Mall
+    else if (CurFldMajor == 9) { // Strip Mall
         stripmallQT();
     }
-    if (CurFldMajor == 10) { // Port Island Station
+    else if (CurFldMajor == 10) { // Port Island Station
         stationQT();
     }
-    if (CurFldMajor == 12) { // Shrine
+    else if (CurFldMajor == 12) { // Shrine
         shrineQT();
     }
-    if (CurFldMajor == 14) { // Godaiga
+    else if (CurFldMajor == 14) { // Godaiga
         godaigaQT();
     }
-    if (CurFldMajor == 15) { // Tartarus
+    else if (CurFldMajor == 15) { // Tartarus
         tartarusQT();
     }
 }
 
-void dormQT()
-{
+void dormQT() {
+    int dormMask = 0;
+    if (!BIT_CHK(3592)) {
+        // Hide Command Room if it hasn't been unlocked,
+        // it's March, or you're already in there
+        if (!BIT_CHK(21) || (FUNCTION_0030() == 3) || (CurFldMinor == 6)) {
+            dormMask += 0x10; // 0b0001_0000
+        }
+        switch (CurFldMinor) {
+            case 2:
+                dormMask += 1;
+                break;
+            case 3:
+                dormMask += 2;
+                break;
+            case 4:
+                dormMask += 4; // 0b0100
+                break;
+            case 5:
+                dormMask += 8; // 0b1000
+                break;
+            case 9:
+                dormMask += 0x40; // 0b0100_0000
+                break;
+            case 19:
+            case 20:
+                dormMask += 0x20; //0b0010_0000
+                break;
+        }
+    }
+    else { // Player has to go to 4F to learn abt SEES
+        dormMask += 119; // 0b0111_0111
+    }
+    SEL_DEFKEY(PadButton.Circle, 8);
+    int dormSel = MSG_SELECT(QuickTravelPlus_Text, DORMITORY_QTSEL, dormMask);
+    if (dormSel <= 4) {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_000F();
+        switch (dormSel) {
+            case 0:
+                CALL_FIELD(7, 2, 1, 0);
+                return;
+            case 1:
+                CALL_FIELD(7, 3, 0, 0);
+                return;
+            case 2:
+                CALL_FIELD(7, 4, 0, 0);
+                return;
+            case 3:
+                if (BIT_CHK(3592)) {
+                    BIT_OFF(3592);
+                    CALL_EVENT(129, 1);
+                    EVT_FUNCTION_0004(1);
+                    BIT_ON(21);
+                    CALL_DARK_HOUR();
+                    FCL_FUNCTION_0017();
+                    CALL_EVENT(130, 1);
+                    BIT_ON(22);
+                    BIT_ON(2562);
+                    FCL_FUNCTION_0018();
+                    NEXT_TIME();
+                }
+                else {
+                    CALL_FIELD(7, 5, 0, 0);
+                }
+                return;
+            case 4:
+                CALL_FIELD(7, 6, 0, 0);
+                return;
+        }
+    }
+    else if (dormSel == 5) {
+        call_midnight_myroom_reim();
+    }
+    else if (dormSel == 6) {
+        leaveType = 1;
+        goout_dormitory_reim();
+    }
+    else if (dormSel == 7) {
+        ElseWhere();
+    }
 }
 
 void stripmallQT()
@@ -61,11 +147,7 @@ void mallQT()
 {
 }
 
-void schoolQT()
-{
-    int CurFldMajor = FLD_GET_MAJOR();
-    int CurFldMinor = FLD_GET_MINOR();
-
+void schoolQT() {
     int schoolMaskP1 = 1264;
     int schoolMaskP2 = 527;
 
@@ -219,8 +301,6 @@ void schoolQT()
 }
 
 void ElseWhere() {
-    int CurFldMajor = FLD_GET_MAJOR();
-    int CurFldMinor = FLD_GET_MINOR();
     int dayTime = FUNCTION_0033();
 
     int mapMask = 0;
