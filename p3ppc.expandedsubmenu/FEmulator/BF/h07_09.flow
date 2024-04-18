@@ -5,28 +5,34 @@ import("OtherMods/QuickTravelPlus.flow");
 import("h07_09.msg");
 
 global bool isFieldBf;
+int qtDestField;
 
 void f007_009_shortcut_hook() {
     isFieldBf = false;
+    qtDestField = -1;
 
     if (!BIT_CHK(6320)) {
         FirstTimeSetup();
     }
 
-    int mask = 0x3C; // 0b0011_1100
-    if (BIT_CHK(6323)) { // View Calendar
+    int mask = 0x7C; // 0b0111_1100
+    if (BIT_CHK(6322)) { // Quick Travel = ON
+        mask += 3; // 0b0011
         mask -= 4; // 0b0100
     }
-    if (BIT_CHK(6325)) { // Find a Friend
+    if (BIT_CHK(6323)) { // View Calendar
         mask -= 8; // 0b1000
     }
-    if (BIT_CHK(6326) && !BIT_CHK(6321)) { // Save Anywhere (Mod Menu = OFF)
-        mask -= 0x10; // 0b0001_0000
+    if (BIT_CHK(6325)) { // Find a Friend
+        mask -= 0x10; // 0b0001_000
     }
-    if (BIT_CHK(6321)) { // Mod Menu
+    if (BIT_CHK(6326) && !BIT_CHK(6321)) { // Save Anywhere (Mod Menu = OFF)
         mask -= 0x20; // 0b0010_0000
     }
-    SEL_DEFKEY(PadButton.Circle, 6);
+    if (BIT_CHK(6321)) { // Mod Menu
+        mask -= 0x40; // 0b0100_0000
+    }
+    SEL_DEFKEY(PadButton.Circle, 7);
     SEL_DEFKEY(PadButton.Triangle, 99);
     int dormSel = MSG_SELECT(FLD_ORDER_2, DORMITORY_SHOTCUTSEL_2, mask);
 
@@ -37,17 +43,20 @@ void f007_009_shortcut_hook() {
         HIT_SCRIPT_00();
     }
     else if (dormSel == 2) {
-        CALL_CALENDAR();
+        ent_quicktravel();
     }
     else if (dormSel == 3) {
-        HangOut();
+        CALL_CALENDAR();
     }
     else if (dormSel == 4) {
+        HangOut();
+    }
+    else if (dormSel == 5) {
         FADE(FadeEffects.FadeOut, 10);
         SAVE_MENU();
         FUNCTION_000D(0);
     }
-    else if (dormSel == 5) {
+    else if (dormSel == 6) {
         ModMenuInit();
     }
     else if (dormSel == 99) {
@@ -55,61 +64,164 @@ void f007_009_shortcut_hook() {
     }
 }
 
-void CallOriginalSquareMenu() {
-    f007_009_shortcut();
-} 
+void ent_quicktravel() {
+    int qtMask = 0;
+    if (!BIT_CHK(3592)) {
+        // Hide Command Room if it hasn't been unlocked or it's March
+        if (!BIT_CHK(21) || (FUNCTION_0030() == 3)) {
+            qtMask += 0x10; // 0b0001_0000
+        }
+        qtMask += 0x40; // 0b0100_0000
+    }
+    else { // Player has to go to 4F to learn abt SEES
+        qtMask += 119; // 0b0111_0111
+    }
+    SEL_DEFKEY(PadButton.Circle, 8);
+    qtDestField = MSG_SELECT(QuickTravelPlus_Text, DORMITORY_QTSEL, qtMask);
+    if (qtDestField == 7) {
+        ElseWhere();
+    }
+	else if (qtDestField != 8) {
+        HIT_SCRIPT_01();
+    }
+}
 
-void HIT_SCRIPT_01_hook()
-{
-    int var0;
-    var0 = 0;
+void HIT_SCRIPT_01_hook() {
+    bool advTime = false;
     
-    if ( GET_DAY(4, 22) && !BIT_CHK(257) )
-    {
+    if (GET_DAY(Month.April, 22) && !BIT_CHK(257)) {
         MSG_WND_DSP();
         MSG(SANADA_CALLING);
         MSG_WND_CLS();
         return;
     }
-    else if ((!BIT_CHK(5679)) || (FUNCTION_0033() == 4))
-    {
-        var0 = 1;
-        
-        if (CHK_DAYS_STARTEND(4, 21, 1, 31) && !BIT_CHK(3085))
-        {
+    else if ((!BIT_CHK(5679) && (FUNCTION_0033() == 3)) || (FUNCTION_0033() == 4)) {
+        advTime = true;
+        if (CHK_DAYS_STARTEND(Month.April, 21, Month.January, 31) && !BIT_CHK(3085)) {
             MSG_WND_DSP();
             MSG(GOINTO_HOME);
             MSG_WND_CLS();
-            FUNCTION_002D(3);
+            FUNCTION_002D(HELP_GOINTO_HOME);
             MSG_WND_DSP();
             MSG(GOINTO_HOME_OK);
-            SEL_DEFKEY(14, 1);
-            
-            if (SEL(INTO_HOME_SEL) != 0)
-            {
+            SEL_DEFKEY(PadButton.Circle, 1);
+            if (SEL(INTO_HOME_SEL) != 0) {
                 MSG_WND_CLS();
                 return;
             }
-
             MSG_WND_CLS();
             BIT_ON(3085);
         }
     }
-    
 
-    
-    if (var0 == 1)
-    {
-        FADE(1, 20);
+    if (advTime) {
+        FADE(FadeEffects.FadeOut, 20);
         FUNCTION_000F();
         FUNCTION_001E(3, 2);
         NEXT_TIME();
+        if (qtDestField != -1) {
+            call_quick_travel();
+        }
     }
-    else 
-    {
-        FADE(3, 20);
+    else {
+        FADE(FadeEffects.CircleWipe, 20);
         FUNCTION_000F();
         FUNCTION_001E(3, 2);
-        CALL_FIELD(7, 2, 0, 0);
+        if (qtDestField != -1) {
+            call_quick_travel();
+        }
+        else {
+            CALL_FIELD(7, 2, 0, 0);
+        }
     }
+}
+
+void call_quick_travel() {
+    switch (qtDestField) {
+        case 0:
+            CALL_FIELD(7, 2, 0, 0);
+            return;
+        case 1:
+            CALL_FIELD(7, 3, 0, 0);
+            return;
+        case 2:
+            CALL_FIELD(7, 4, 0, 0);
+            return;
+        case 3:
+            if (BIT_CHK(3592)) {
+                call_sees_event();
+            }
+            else {
+                CALL_FIELD(7, 5, 0, 0);
+            }
+            return;
+        case 4:
+            CALL_FIELD(7, 6, 0, 0);
+            return;
+        case 5:
+            call_midnight_myroom();
+            return;
+        default:
+            return;
+    }
+}
+
+void call_midnight_myroom() {
+    // bit id (((0) + (1024)) + (2048)) + (14) = 3086
+    if (CHK_DAYS_STARTEND(Month.April, 21, Month.March, 5) && !BIT_CHK(3086)) {
+        BIT_ON(3086);
+    }
+
+    // bit id (0) + (669) = 669
+    // bit id (0) + (195) = 195
+    if (GET_DAY(Month.April, 7)) {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_001E(3, 2);
+        CALL_EVENT(117, 1);
+        BIT_ON(669);
+        NEXT_TIME();
+        return;
+    }
+    else if (GET_DAY(Month.November, 5) && !BIT_CHK(195)) {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_001E(3, 2);
+        CALL_EVENT(295, 1);
+        BIT_ON(195);
+    }
+    else if (GET_DAY(Month.January, 31) && (FUNCTION_0033() == 5)) {
+        MSG_WND_DSP();
+        MSG(STOP_INTO_MYROOM_LAST_DA_2);
+        MSG_WND_CLS();
+        return;
+    }
+    else {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_001E(3, 2);
+    }
+
+    // bit id ((((0) + (1024)) + (2048)) + (1024)) + (8) = 4104
+    if (BIT_CHK(4104)) {
+        CALL_FIELD(7, 19, 0, 0);
+    }
+    else {
+        CALL_FIELD(7, 20, 0, 0);
+    }
+}
+
+void call_sees_event() {
+    BIT_OFF(3592);
+    CALL_EVENT(129, 1);
+    EVT_FUNCTION_0004(1);
+    BIT_ON(21);
+    CALL_DARK_HOUR();
+    FCL_FUNCTION_0017();
+    CALL_EVENT(130, 1);
+    BIT_ON(22);
+    BIT_ON(2562);
+    FCL_FUNCTION_0018();
+    NEXT_TIME();
+}
+
+void CallOriginalSquareMenu() {
+    f007_009_shortcut();
 }

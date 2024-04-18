@@ -37,6 +37,7 @@
 [s]Save Everyday: [f 2 4 6][e]
 [s]Remove Filler Events: [f 2 4 7][e]
 [s]Remove Lunch Invites: [f 2 4 8][e]
+[s]Go Back Home Easily: [f 2 4 9][e]
 [s]Next[e]
 [s]Previous[e]
 
@@ -97,6 +98,10 @@
 [n]link is ready to rank up will be skipped.
 [n]Recommend enabling with Find a Friend.[e]
 
+[msg GBHE_About[Go Back Home Easily (Dexxtrip)]]
+[s]When enabled, returning to the dorm on days off
+[n]will not progress time forward.[e]
+
 [msg DungeonOptions_Text]
 [s]Dungeon Options[e]
 
@@ -143,17 +148,6 @@
 
 [msg FindAFriendOptions_Text]
 [s]Find A Friend Options[e]
-
-[msg QuickTravelPlusOptions_Text]
-[s]QT+ Options[e]
-
-[sel QuickTravelPlusOptions]
-[s]Go Back Home Easily: [f 2 4 0][e]
-[s]Done[e]
-
-[msg GBHE_TOGGLE[Go Back Home Easily (Dexxtrip)]]
-[s]If "On", returning to the dorm on days off will
-[n]not progress time forward.[e]
 
 [sel FindAFriendOptions]
 [s]Spoiler-Free Mode: [f 2 4 0][e]

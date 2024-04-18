@@ -92,36 +92,37 @@ void MenuOptions()
                 SET_MSG_VAR(i, 576 + BIT_CHK(6321 + i), 6); // 0 or 1, no or yes
             }
             SET_MSG_VAR(8, 576 + BIT_CHK(6340), 6);
+            SET_MSG_VAR(9, 576 + BIT_CHK(5679), 6);
             SEL_DEFKEY(PadButton.Circle, 18);
             SEL_DEFKEY(PadButton.Square, 18);
 
             if (!pageNum)
             {
-                mask = 1504;
+                mask = 3040; // 0b1011_1110_0000
                 if(!ModMenuShown())
                 {
                     // Hide mod menu option
                     mask += 1;
                     // Show save anywhere on first page
-                    mask -= 32;
-                }
-                SEL_DEFKEY(10, 9);
-                SEL_DEFKEY(11, 9);
-                SEL_DEFKEY(PadButton.Right, 9);
-                SEL_DEFKEY(PadButton.Left, 9);
-            }
-            else
-            {
-                mask = 543;
-                if(!ModMenuShown())
-                {
-                    // Hide save anywhere on second page
-                    mask += 32;
+                    mask -= 32; // 0b0010_0000
                 }
                 SEL_DEFKEY(10, 10);
                 SEL_DEFKEY(11, 10);
                 SEL_DEFKEY(PadButton.Right, 10);
                 SEL_DEFKEY(PadButton.Left, 10);
+            }
+            else
+            {
+                mask = 1055; // 0b0100_0001_1111
+                if(!ModMenuShown())
+                {
+                    // Hide save anywhere on second page
+                    mask += 32; // 0b0010_0000
+                }
+                SEL_DEFKEY(10, 11);
+                SEL_DEFKEY(11, 11);
+                SEL_DEFKEY(PadButton.Right, 11);
+                SEL_DEFKEY(PadButton.Left, 11);
             }
 
             // Toggle selection or read more about it
@@ -129,14 +130,13 @@ void MenuOptions()
             if (selection == 8) {
                 ToggleOption(RemoveLunchtimeInvites_About, 6340, 0);
             }
-            else if ((selection != 8) && (selection < 9)) {
+            else if (selection == 9) {
+                ToggleOption(GBHE_About, 5679, 0);
+            }
+            else if (((selection != 8) || (selection != 9)) && (selection < 10)) {
                 int smSel = ToggleOption(ModMenu_About, 6321, selection); // mod menu about is 0, that would be any number + 0
                 if (smSel == 0) {
-                    if ( selection == 1 )
-                    {
-                        QuickTravelPlusToggle();
-                    }
-                    else if (selection == 3) {
+                    if (selection == 3) {
                         DungeonOptionsToggle();
                     }
                     else if (selection == 4) {
@@ -158,7 +158,7 @@ void MenuOptions()
                     }*/
                 }
             }
-            else if (selection == 9 || selection == 10) {
+            else if (selection == 10 || selection == 11) {
                 pageNum = !pageNum;
             }
             else {
@@ -204,38 +204,6 @@ void FindAFriendOptionsToggle()
                 BIT_ON(5678);
             else if (sel == 1)
                 BIT_OFF(5678);
-            MSG_WND_CLS();
-        }
-        else
-        {
-            done = true;
-        }
-    }
-}
-
-void QuickTravelPlusToggle()
-{
-    // Toggle options until done
-    bool done = false;
-    while (!done)
-    {
-        // Set message variables for menu options
-        SET_MSG_VAR(0, 576 + BIT_CHK(5679), 6); // Go Back Home Easily
-        SET_MSG_VAR(1, 576 + BIT_CHK(6322), 6); // enable it or not
-        SEL_DEFKEY(PadButton.Circle, 2);
-        SEL_DEFKEY(PadButton.Square, 2);
-        // Toggle selection or read more about it
-        int selection = MSG_SELECT(QuickTravelPlusOptions_Text, QuickTravelPlusOptions, 0); 
-        if (selection == 0)
-        {
-            MSG_WND_DSP();
-            MSG(GBHE_TOGGLE);
-            SEL_DEFKEY(14, 1);
-            int sel = SEL(ToggleMenu);
-            if (sel == 0)
-                BIT_ON(5679);
-            else if (sel == 1)
-                BIT_OFF(5679);
             MSG_WND_CLS();
         }
         else

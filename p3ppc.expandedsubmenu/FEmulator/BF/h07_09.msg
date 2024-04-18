@@ -1,8 +1,12 @@
 [sel DORMITORY_SHOTCUTSEL_2 top]
 [s]Iwatodai Dorm[e]
 [s]Town Map[e]
+[s]Quick Travel[e]
 [s]View calendar[e]
 [s]Spend time with...[e]
 [s]Save[e]
 [s]Mod Menu[e]
 [s]Cancel[e]
+
+[msg STOP_INTO_MYROOM_LAST_DA_2]
+[s]> You must go to Tartarus...[n][w][e]
