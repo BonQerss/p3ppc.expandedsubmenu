@@ -9,14 +9,20 @@ int qtDestField;
 
 void f007_009_shortcut_hook() {
     isFieldBf = false;
-    qtDestField = -1;
-
+    
     if (!BIT_CHK(6320)) {
         FirstTimeSetup();
     }
 
     int mask = 0x7C; // 0b0111_1100
-    if (BIT_CHK(6322)) { // Quick Travel = ON
+    // TODO: Attempting to call NEXT_TIME while doing Quick Travel
+    // doesn't work; time just won't pass, and you get taken directly
+    // to the field, even if you have GBHE disabled
+    // This forces the Quick Travel menu to only appear if GBHE can
+    // be used as a quick fix to prevent possible issues until and
+    // unless a way to work around this issue is found
+    // Only show Quick Travel if QT = On, and either time won't pass when entering, or it will but GBHE = On
+    if (BIT_CHK(6322) && ((FUNCTION_0033() > 4) || ((FUNCTION_0033() == 3) && BIT_CHK(5679)))) { // Quick Travel = ON
         mask += 3; // 0b0011
         mask -= 4; // 0b0100
     }
@@ -77,11 +83,11 @@ void ent_quicktravel() {
         qtMask += 119; // 0b0111_0111
     }
     SEL_DEFKEY(PadButton.Circle, 8);
-    qtDestField = MSG_SELECT(QuickTravelPlus_Text, DORMITORY_QTSEL, qtMask);
-    if (qtDestField == 7) {
+    qtDestField = (MSG_SELECT(QuickTravelPlus_Text, DORMITORY_QTSEL, qtMask) + 1);
+    if (qtDestField == 8) {
         ElseWhere();
     }
-	else if (qtDestField != 8) {
+    else if (qtDestField != 9) {
         HIT_SCRIPT_01();
     }
 }
@@ -119,7 +125,7 @@ void HIT_SCRIPT_01_hook() {
         FUNCTION_000F();
         FUNCTION_001E(3, 2);
         NEXT_TIME();
-        if (qtDestField != -1) {
+        if (qtDestField != 0) {
             call_quick_travel();
         }
     }
@@ -127,7 +133,7 @@ void HIT_SCRIPT_01_hook() {
         FADE(FadeEffects.CircleWipe, 20);
         FUNCTION_000F();
         FUNCTION_001E(3, 2);
-        if (qtDestField != -1) {
+        if (qtDestField != 0) {
             call_quick_travel();
         }
         else {
@@ -138,16 +144,16 @@ void HIT_SCRIPT_01_hook() {
 
 void call_quick_travel() {
     switch (qtDestField) {
-        case 0:
+        case 1:
             CALL_FIELD(7, 2, 0, 0);
             return;
-        case 1:
+        case 2:
             CALL_FIELD(7, 3, 0, 0);
             return;
-        case 2:
+        case 3:
             CALL_FIELD(7, 4, 0, 0);
             return;
-        case 3:
+        case 4:
             if (BIT_CHK(3592)) {
                 call_sees_event();
             }
@@ -155,10 +161,10 @@ void call_quick_travel() {
                 CALL_FIELD(7, 5, 0, 0);
             }
             return;
-        case 4:
+        case 5:
             CALL_FIELD(7, 6, 0, 0);
             return;
-        case 5:
+        case 6:
             call_midnight_myroom();
             return;
         default:
