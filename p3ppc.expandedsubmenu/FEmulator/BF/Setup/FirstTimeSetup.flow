@@ -132,7 +132,11 @@ void MenuOptions()
             else if ((selection != 8) && (selection < 9)) {
                 int smSel = ToggleOption(ModMenu_About, 6321, selection); // mod menu about is 0, that would be any number + 0
                 if (smSel == 0) {
-                    if (selection == 3) {
+                    if ( selection == 1 )
+                    {
+                        QuickTravelPlusToggle();
+                    }
+                    else if (selection == 3) {
                         DungeonOptionsToggle();
                     }
                     else if (selection == 4) {
@@ -200,6 +204,38 @@ void FindAFriendOptionsToggle()
                 BIT_ON(5678);
             else if (sel == 1)
                 BIT_OFF(5678);
+            MSG_WND_CLS();
+        }
+        else
+        {
+            done = true;
+        }
+    }
+}
+
+void QuickTravelPlusToggle()
+{
+    // Toggle options until done
+    bool done = false;
+    while (!done)
+    {
+        // Set message variables for menu options
+        SET_MSG_VAR(0, 576 + BIT_CHK(5679), 6); // Go Back Home Easily
+        SET_MSG_VAR(1, 576 + BIT_CHK(6322), 6); // enable it or not
+        SEL_DEFKEY(PadButton.Circle, 2);
+        SEL_DEFKEY(PadButton.Square, 2);
+        // Toggle selection or read more about it
+        int selection = MSG_SELECT(QuickTravelPlusOptions_Text, QuickTravelPlusOptions, 0); 
+        if (selection == 0)
+        {
+            MSG_WND_DSP();
+            MSG(GBHE_TOGGLE);
+            SEL_DEFKEY(14, 1);
+            int sel = SEL(ToggleMenu);
+            if (sel == 0)
+                BIT_ON(5679);
+            else if (sel == 1)
+                BIT_OFF(5679);
             MSG_WND_CLS();
         }
         else

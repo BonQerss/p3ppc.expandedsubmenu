@@ -144,6 +144,17 @@
 [msg FindAFriendOptions_Text]
 [s]Find A Friend Options[e]
 
+[msg QuickTravelPlusOptions_Text]
+[s]QT+ Options[e]
+
+[sel QuickTravelPlusOptions]
+[s]Go Back Home Easily: [f 2 4 0][e]
+[s]Done[e]
+
+[msg GBHE_TOGGLE[Go Back Home Easily (Dexxtrip)]]
+[s]If "On", returning to the dorm on days off will
+[n]not progress time forward.[e]
+
 [sel FindAFriendOptions]
 [s]Spoiler-Free Mode: [f 2 4 0][e]
 [s]Done[e]
