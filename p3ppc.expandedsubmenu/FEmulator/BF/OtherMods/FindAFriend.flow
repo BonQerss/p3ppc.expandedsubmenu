@@ -20,9 +20,6 @@ void HangOut()
 		int var1;
 		int var6;
 		int var7;
-		var5 = GET_COUNT( 90 );
-		var6 = GET_COUNT( 91 );
-		var7 = GET_COUNT( 92 );
         fieldMajor = FLD_GET_MAJOR();
         fieldMinor = FLD_GET_MINOR();
 		
@@ -1009,9 +1006,8 @@ void HangOut()
             {
                 if (fieldMajor == 6 && fieldMinor == 3)
                 {
-                    SET_COUNT( 1, 769 );
-					BGM( 769 );
-					return;
+                    MSG(KAZ_NEARBY);
+                    goto AEGIS_END;
                 }
                 else
                 {

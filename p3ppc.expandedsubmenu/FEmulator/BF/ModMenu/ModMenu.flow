@@ -562,10 +562,28 @@ void PlayerEditorDisplay()
             case 3: // Party Edit
                 PartyEditorDisplay();
                 break;
-            case 4: // Next Page
+            case 4: // Count Editor
+                CountEditorDisplay();
+                break;
+            case 5: // Next Page
                 PlayerEditorDisplay2();
                 break;
         }
+    }
+}
+
+void CountEditorDisplay()
+{
+    while ( keepMenus )
+    {
+        int count = SelectNumberPrompt( TimeTravel, 4 );
+        if ( count == -1 )
+            break;
+        int value = SelectNumberPrompt( TimeTravel2, 4 );
+        if ( value == -1 )
+            break;
+        SET_COUNT( count, value );
+        return;
     }
 }
 

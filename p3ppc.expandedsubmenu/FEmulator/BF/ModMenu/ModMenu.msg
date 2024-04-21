@@ -26,6 +26,7 @@
 [s]Social Stats[e]
 [s]Items[e]
 [s]Party Edit[e]
+[s]Count Edit[e]
 [s]Next Page[e]
 
 [sel BattleSelect]
@@ -219,6 +220,12 @@
 
 [msg TimeTravel2 [Time Travel]]
 [s]Choose the last 2 digits of[n]the day to load.[n][w][e]
+
+[msg CountEdit [Count Edit]]
+[s]Choose the first 4 digits of[n]the count to load.[n][w][e]
+
+[msg CountEdit2 [Count Edit]]
+[s]Choose the last 4 digits of[n]the count value to modify.[n][w][e]
 
 [sel FacilityMenu]
 [s]Town map[e]

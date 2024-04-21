@@ -3,6 +3,7 @@ import("FirstTimeSetup.msg");
 void TurnOnRecommended()
 {
     BIT_ON(5678);  // Enable Spoiler-free find a friend
+    BIT_ON(5679);  // Enable Go Back Home Easily
     BIT_ON(6320);  // Disable First Time Setup
     BIT_OFF(6321); // Disable Mod Menu
     BIT_ON(6322);  // Enable QuickTravelPlus

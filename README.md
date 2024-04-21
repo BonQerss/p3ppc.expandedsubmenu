@@ -1,4 +1,4 @@
-# This is the current work in progress github page for the Expand Sub Menu project for P3P.
+# This is the current work in progress github page for the Expanded Sub Menu project for P3P.
 
 ## What is planned and what is implemented?
 
