@@ -609,9 +609,9 @@ void SLinkDisplay()
     int SLink = SelectSLink();
     if ( SLink != -1 )
     {
-        EVT_FUNCTION_000C( 0, SLink );
-        CMM_SET_LV( SLink, ( CMM_GET_LV(SLink) + 1 ), 9999 );
-        EVT_FUNCTION_0007( SLink );
+        EVT_FUNCTION_000C( 0, SLink ); // Setting to 0 or 1 does absolutely nothing that I can tell, setting to anything higher causes a game crash
+        CMM_SET_LV( SLink, ( CMM_GET_LV(SLink) + 1 ), 9999 ); // Unsure of what the 3rd param does, seemingly useless as the function is purely visual.
+        EVT_FUNCTION_0007( SLink ); // Actually handles setting the rank to be +1, cannot get it to advance any higher after that, TODO: More research.
     }
     return;
 }
