@@ -18,7 +18,7 @@
 [n]back to the dorm, it will become
 [n]nighttime.
 [n][w][e]
-[s](This can be changed by enabling
+[s](This can be changed by toggling
 [n]Go Back Home Easily from the
-[n]Custom Sub Menu configuration.)
+[n]Expanded Sub Menu configuration.)
 [n][w][e]
