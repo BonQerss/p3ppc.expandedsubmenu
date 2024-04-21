@@ -42,6 +42,8 @@ Potentially add support for redoing Sunday hangouts, if declined, to Find a Frie
 
 Finish adding square menu code to the rest of the fields.
 
+Change all bit flags and bit flag mentions to use in bounds bit flags.
+
 ## How can I contribute?
 
 Make a fork, make your changes, and open a pull request! We're open to suggestions and ideas.

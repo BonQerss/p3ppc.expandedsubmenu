@@ -117,6 +117,7 @@
   },
   "IsUniversalMod": false,
   "ModDependencies": [
+    "BGME.Framework",
     "crifs.v2.hook",
     "p5rpc.modloader",
     "reloaded.sharedlib.hooks",

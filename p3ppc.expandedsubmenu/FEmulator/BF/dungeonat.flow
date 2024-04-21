@@ -1,0 +1,70 @@
+import("OtherMods/DungeonMods/AutoHeal.flow");
+
+
+// Procedure Index: 22
+void tartaros_upstair_hook()
+{
+    gVar37 = FLD_FUNCTION_0004();
+    check_party_member();
+    
+    if ( ( gVar100 >= 1 ) || ( gVar22 >= 1 ) )
+    {
+        MSG_WND_DSP();
+        FUNCTION_0064( 0, 0, 0, gVar96, 2, 0, 0 );
+        
+        if ( ( gVar22 >= 1 ) && ( gVar100 >= 1 ) )
+        {
+            MSG( gVar71 );
+        }
+        else if ( gVar100 >= 1 )
+        {
+            MSG( gVar72 );
+        }
+        else if ( gVar22 >= 1 )
+        {
+            MSG( gVar73 );
+        }
+
+        SEL_DEFKEY( 14, 1 );
+        
+        if ( SEL( gVar79 ) != 0 )
+        {
+            FUNCTION_0065( 0 );
+            MSG_WND_CLS();
+            return;
+        }
+
+        MSG( gVar77 );
+        FUNCTION_0065( 0 );
+        MSG_WND_CLS();
+    }
+    else if ( FLD_FUNCTION_005B() != -1 )
+    {
+        MSG_WND_DSP();
+        FUNCTION_0064( 0, 0, 0, gVar96, 2, 0, 0 );
+        MSG( gVar74 );
+        SEL_DEFKEY( 14, 1 );
+        
+        if ( SEL( gVar79 ) != 0 )
+        {
+            FUNCTION_0065( 0 );
+            MSG_WND_CLS();
+            return;
+        }
+
+        MSG( gVar75 );
+        FUNCTION_0065( 0 );
+        MSG_WND_CLS();
+    }
+
+    leave_member_partyout();
+    item_transfer_all();
+    FADE( 3, 20 );
+    FUNCTION_000F();
+    if ( BIT_CHK(6331))
+    {
+        heal_mc();
+        heal_avail_party();
+    }
+    call_next_level();
+}

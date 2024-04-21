@@ -11,7 +11,7 @@ void HangOut()
         int var48;
         var43 = EVT_FUNCTION_002A(0);
         var48 = EVT_FUNCTION_002A(1);
-        int gVar76 = 524287;
+        int whosAroundMask = 524287;
         int fieldMajor;
         int fieldMinor;
 		int var5;
@@ -33,7 +33,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 4096);
+                whosAroundMask = (whosAroundMask - 4096);
                 SET_MSG_VAR(13, CMM_GET_LV(2), 0);
             }
 			}
@@ -45,7 +45,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 256);
+                whosAroundMask = (whosAroundMask - 256);
                 SET_MSG_VAR(9, CMM_GET_LV(3), 0);
             }
 			}
@@ -57,7 +57,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 512);
+                whosAroundMask = (whosAroundMask - 512);
                 SET_MSG_VAR(10, CMM_GET_LV(4), 0);
             }
 			}
@@ -69,7 +69,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 128);
+                whosAroundMask = (whosAroundMask - 128);
                 SET_MSG_VAR(8, CMM_GET_LV(5), 0);
             }
 			}
@@ -81,7 +81,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 32);
+                whosAroundMask = (whosAroundMask - 32);
                 SET_MSG_VAR(6, CMM_GET_LV(6), 0);
             }
 			}
@@ -93,7 +93,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 2);
+                whosAroundMask = (whosAroundMask - 2);
                 SET_MSG_VAR(2, CMM_GET_LV(7), 0);
             }
 			}
@@ -105,7 +105,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 64);
+                whosAroundMask = (whosAroundMask - 64);
                 SET_MSG_VAR(7, CMM_GET_LV(8), 0);
             }
 			}
@@ -117,7 +117,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 4);
+                whosAroundMask = (whosAroundMask - 4);
                 SET_MSG_VAR(3, CMM_GET_LV(9), 0);
             }
 			}
@@ -129,7 +129,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 8);
+                whosAroundMask = (whosAroundMask - 8);
                 SET_MSG_VAR(4, CMM_GET_LV(10), 0);
             }
 			}
@@ -141,7 +141,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 1024);
+                whosAroundMask = (whosAroundMask - 1024);
                 SET_MSG_VAR(11, CMM_GET_LV(var43), 0);
             }
 			}
@@ -153,7 +153,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 32768);
+                whosAroundMask = (whosAroundMask - 32768);
                 SET_MSG_VAR(16, CMM_GET_LV(14), 0);
             }
 			}
@@ -165,7 +165,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 16384);
+                whosAroundMask = (whosAroundMask - 16384);
                 SET_MSG_VAR(15, CMM_GET_LV(var48), 0);
             }
 			}
@@ -177,7 +177,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 2048);
+                whosAroundMask = (whosAroundMask - 2048);
                 SET_MSG_VAR(12, CMM_GET_LV(18), 0);
             }
 			}
@@ -189,7 +189,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 16);
+                whosAroundMask = (whosAroundMask - 16);
                 SET_MSG_VAR(5, CMM_GET_LV(20), 0);
             }
 			}
@@ -198,7 +198,7 @@ void HangOut()
 			{
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 65536);
+                whosAroundMask = (whosAroundMask - 65536);
                 SET_MSG_VAR(17, CMM_GET_LV(21), 0);
             }
             else
@@ -210,7 +210,7 @@ void HangOut()
 			{
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 131072);
+                whosAroundMask = (whosAroundMask - 131072);
                 SET_MSG_VAR(18, CMM_GET_LV(22), 0);
             }
             else
@@ -225,7 +225,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 8192);
+                whosAroundMask = (whosAroundMask - 8192);
                 SET_MSG_VAR(14, CMM_GET_LV(23), 0);
             }
 			}
@@ -237,7 +237,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 262144);
+                whosAroundMask = (whosAroundMask - 262144);
                 SET_MSG_VAR(19, CMM_GET_LV(24), 0);
             }
 			}
@@ -249,7 +249,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 1);
+                whosAroundMask = (whosAroundMask - 1);
                 SET_MSG_VAR(1, CMM_GET_LV(25), 0);
             }
 			}
@@ -263,7 +263,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 4096);
+                whosAroundMask = (whosAroundMask - 4096);
 				SET_MSG_VAR(20, 8, 6);
                 SET_MSG_VAR(13, CMM_GET_LV(2), 0);
             }
@@ -276,7 +276,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 4096);
+                whosAroundMask = (whosAroundMask - 4096);
                 SET_MSG_VAR(13, CMM_GET_LV(2), 0);
             }
         }
@@ -288,7 +288,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 256);
+                whosAroundMask = (whosAroundMask - 256);
 				SET_MSG_VAR(21, 8, 6);
                 SET_MSG_VAR(9, CMM_GET_LV(3), 0);
             }
@@ -303,7 +303,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 256);
+                whosAroundMask = (whosAroundMask - 256);
                 SET_MSG_VAR(9, CMM_GET_LV(3), 0);
             }
         }
@@ -315,7 +315,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 512);
+                whosAroundMask = (whosAroundMask - 512);
 				SET_MSG_VAR(22, 8, 6);
                 SET_MSG_VAR(10, CMM_GET_LV(4), 0);
             }
@@ -330,7 +330,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 512);
+                whosAroundMask = (whosAroundMask - 512);
                 SET_MSG_VAR(10, CMM_GET_LV(4), 0);
             }
         }
@@ -342,7 +342,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 128);
+                whosAroundMask = (whosAroundMask - 128);
 				SET_MSG_VAR(23, 8, 6);
                 SET_MSG_VAR(8, CMM_GET_LV(5), 0);
             }
@@ -357,7 +357,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 128);
+                whosAroundMask = (whosAroundMask - 128);
                 SET_MSG_VAR(8, CMM_GET_LV(5), 0);
             }
         }
@@ -369,7 +369,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 32);
+                whosAroundMask = (whosAroundMask - 32);
 				SET_MSG_VAR(24, 8, 6);
                 SET_MSG_VAR(6, CMM_GET_LV(6), 0);
             }
@@ -384,7 +384,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 32);
+                whosAroundMask = (whosAroundMask - 32);
                 SET_MSG_VAR(6, CMM_GET_LV(6), 0);
             }
         }
@@ -396,7 +396,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 2);
+                whosAroundMask = (whosAroundMask - 2);
 				SET_MSG_VAR(25, 8, 6);
                 SET_MSG_VAR(2, CMM_GET_LV(7), 0);
             }
@@ -411,7 +411,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 2);
+                whosAroundMask = (whosAroundMask - 2);
                 SET_MSG_VAR(2, CMM_GET_LV(7), 0);
             }
         }
@@ -423,7 +423,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 64);
+                whosAroundMask = (whosAroundMask - 64);
 				SET_MSG_VAR(26, 8, 6);
                 SET_MSG_VAR(7, CMM_GET_LV(8), 0);
             }
@@ -438,7 +438,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 64);
+                whosAroundMask = (whosAroundMask - 64);
                 SET_MSG_VAR(7, CMM_GET_LV(8), 0);
             }
         }
@@ -450,7 +450,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 4);
+                whosAroundMask = (whosAroundMask - 4);
 				SET_MSG_VAR(20, 8, 6);
                 SET_MSG_VAR(3, CMM_GET_LV(9), 0);
             }
@@ -465,7 +465,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 4);
+                whosAroundMask = (whosAroundMask - 4);
                 SET_MSG_VAR(3, CMM_GET_LV(9), 0);
             }
         }
@@ -477,7 +477,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 8);
+                whosAroundMask = (whosAroundMask - 8);
 				SET_MSG_VAR(28, 8, 6);
                 SET_MSG_VAR(4, CMM_GET_LV(10), 0);
             }
@@ -489,7 +489,7 @@ void HangOut()
 		// {
 		//	var2 = 40;
 		//	var98 = 10;
-		//	gVar76 = (gVar76 - 8);
+		//	whosAroundMask = (whosAroundMask - 8);
 		//	SET_MSG_VAR(4, CMM_GET_LV(10), 0);
     	//	}
 
@@ -501,7 +501,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 8);
+                whosAroundMask = (whosAroundMask - 8);
                 SET_MSG_VAR(4, CMM_GET_LV(10), 0);
             }
         }
@@ -513,7 +513,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 1024);
+                whosAroundMask = (whosAroundMask - 1024);
 				SET_MSG_VAR(29, 8, 6);
                 SET_MSG_VAR(11, CMM_GET_LV(var43), 0);
             }
@@ -528,7 +528,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 1024);
+                whosAroundMask = (whosAroundMask - 1024);
                 SET_MSG_VAR(11, CMM_GET_LV(var43), 0);
             }
         }
@@ -540,7 +540,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 32768);
+                whosAroundMask = (whosAroundMask - 32768);
 				SET_MSG_VAR(21, 8, 6);
                 SET_MSG_VAR(16, CMM_GET_LV(14), 0);
             }
@@ -555,7 +555,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 32768);
+                whosAroundMask = (whosAroundMask - 32768);
                 SET_MSG_VAR(16, CMM_GET_LV(14), 0);
             }
         }
@@ -567,7 +567,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 16384);
+                whosAroundMask = (whosAroundMask - 16384);
 				SET_MSG_VAR(24, 8, 6);
                 SET_MSG_VAR(15, CMM_GET_LV(var48), 0);
             }
@@ -582,7 +582,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 16384);
+                whosAroundMask = (whosAroundMask - 16384);
                 SET_MSG_VAR(15, CMM_GET_LV(var48), 0);
             }
         }
@@ -594,7 +594,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 2048);
+                whosAroundMask = (whosAroundMask - 2048);
 				SET_MSG_VAR(31, 8, 6);
                 SET_MSG_VAR(12, CMM_GET_LV(18), 0);
             }
@@ -609,7 +609,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 2048);
+                whosAroundMask = (whosAroundMask - 2048);
                 SET_MSG_VAR(12, CMM_GET_LV(18), 0);
             }
         }
@@ -621,7 +621,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 16);
+                whosAroundMask = (whosAroundMask - 16);
 				SET_MSG_VAR(0, 8, 6);
                 SET_MSG_VAR(5, CMM_GET_LV(20), 0);
             }
@@ -636,7 +636,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 16);
+                whosAroundMask = (whosAroundMask - 16);
                 SET_MSG_VAR(5, CMM_GET_LV(20), 0);
             }
         }
@@ -645,7 +645,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 65536);
+                whosAroundMask = (whosAroundMask - 65536);
 				SET_MSG_VAR(23, 8, 6);
                 SET_MSG_VAR(17, CMM_GET_LV(21), 0);
             }
@@ -660,7 +660,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 65536);
+                whosAroundMask = (whosAroundMask - 65536);
                 SET_MSG_VAR(17, CMM_GET_LV(21), 0);
             }
             else
@@ -672,7 +672,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 131072);
+                whosAroundMask = (whosAroundMask - 131072);
 				SET_MSG_VAR(22, 8, 6);
                 SET_MSG_VAR(18, CMM_GET_LV(22), 0);
             }
@@ -687,7 +687,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 131072);
+                whosAroundMask = (whosAroundMask - 131072);
                 SET_MSG_VAR(18, CMM_GET_LV(22), 0);
             }
             else
@@ -702,7 +702,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 8192);
+                whosAroundMask = (whosAroundMask - 8192);
 				SET_MSG_VAR(30, 8, 6);
                 SET_MSG_VAR(14, CMM_GET_LV(23), 0);
             }
@@ -717,7 +717,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 8192);
+                whosAroundMask = (whosAroundMask - 8192);
                 SET_MSG_VAR(14, CMM_GET_LV(23), 0);
             }
         }
@@ -729,7 +729,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 262144);
+                whosAroundMask = (whosAroundMask - 262144);
 				SET_MSG_VAR(27, 8, 6);
                 SET_MSG_VAR(19, CMM_GET_LV(24), 0);
             }
@@ -744,7 +744,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 262144);
+                whosAroundMask = (whosAroundMask - 262144);
                 SET_MSG_VAR(19, CMM_GET_LV(24), 0);
             }
         }
@@ -756,7 +756,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 1);
+                whosAroundMask = (whosAroundMask - 1);
 				SET_MSG_VAR(26, 8, 6);
                 SET_MSG_VAR(1, CMM_GET_LV(25), 0);
             }
@@ -771,16 +771,16 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 1);
+                whosAroundMask = (whosAroundMask - 1);
                 SET_MSG_VAR(1, CMM_GET_LV(25), 0);
             }
         }
 
         MSG_WND_DSP();
         SEL_DEFKEY(14, 20);
-        FUNCTION_0006(gVar76);
+        FUNCTION_0006(whosAroundMask);
 
-        if (gVar76 == 524287)
+        if (whosAroundMask == 524287)
         {
             MSG(NO_ONE);
         }
@@ -1162,7 +1162,7 @@ void HangOut()
 		int var56;
 		int var51;
 		int var80;
-        int gVar76 = 524287;
+        int whosAroundMask = 524287;
         int fieldMajor;
         int fieldMinor;
 		var43 = EVT_FUNCTION_002A(0); // Rio
@@ -1183,7 +1183,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 1);
+                    whosAroundMask = (whosAroundMask - 1);
                     SET_MSG_VAR(1, CMM_GET_LV(2), 0);
                 }
             }
@@ -1195,7 +1195,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 2);
+                    whosAroundMask = (whosAroundMask - 2);
                     SET_MSG_VAR(2, CMM_GET_LV(3), 0);
                 }
             }
@@ -1207,7 +1207,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 4);
+                    whosAroundMask = (whosAroundMask - 4);
                     SET_MSG_VAR(3, CMM_GET_LV(4), 0);
                 }
             }
@@ -1219,7 +1219,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 8);
+                    whosAroundMask = (whosAroundMask - 8);
                     SET_MSG_VAR(4, CMM_GET_LV(5), 0);
                 }
             }
@@ -1231,7 +1231,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 16);
+                    whosAroundMask = (whosAroundMask - 16);
                     SET_MSG_VAR(5, CMM_GET_LV(6), 0);
                 }
             }
@@ -1243,7 +1243,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 32);
+                    whosAroundMask = (whosAroundMask - 32);
                     SET_MSG_VAR(6, CMM_GET_LV(7), 0);
                 }
             }
@@ -1255,7 +1255,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 64);
+                    whosAroundMask = (whosAroundMask - 64);
                     SET_MSG_VAR(7, CMM_GET_LV(8), 0);
                 }
             }
@@ -1267,7 +1267,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 262144);
+                    whosAroundMask = (whosAroundMask - 262144);
                     SET_MSG_VAR(20, CMM_GET_LV(var48), 0);
                 }
             }
@@ -1279,7 +1279,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 128);
+                    whosAroundMask = (whosAroundMask - 128);
                     SET_MSG_VAR(9, CMM_GET_LV(var43), 0);
                 }
             }
@@ -1288,7 +1288,7 @@ void HangOut()
             {
                 if (FUNCTION_0033() == 5)
                 {
-                    gVar76 = (gVar76 - 256);
+                    whosAroundMask = (whosAroundMask - 256);
                     SET_MSG_VAR(10, CMM_GET_LV(13), 0);
                 }
                 else
@@ -1303,7 +1303,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 512);
+                    whosAroundMask = (whosAroundMask - 512);
                     SET_MSG_VAR(11, CMM_GET_LV(var51), 0);
                 }
             }
@@ -1312,7 +1312,7 @@ void HangOut()
             {
                 if (FUNCTION_0033() == 5)
                 {
-                    gVar76 = (gVar76 - 1024);
+                    whosAroundMask = (whosAroundMask - 1024);
                     SET_MSG_VAR(12, CMM_GET_LV(var56), 0);
                 }
                 else
@@ -1327,7 +1327,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 2048);
+                    whosAroundMask = (whosAroundMask - 2048);
                     SET_MSG_VAR(13, CMM_GET_LV(18), 0);
                 }
             }
@@ -1339,7 +1339,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 4096);
+                    whosAroundMask = (whosAroundMask - 4096);
                     SET_MSG_VAR(0, 8, 6);
                     SET_MSG_VAR(14, CMM_GET_LV(20), 0);
                 }
@@ -1349,7 +1349,7 @@ void HangOut()
             {
                 if (FUNCTION_0033() == 5)
                 {
-                    gVar76 = (gVar76 - 8192);
+                    whosAroundMask = (whosAroundMask - 8192);
                     SET_MSG_VAR(15, CMM_GET_LV(21), 0);
                 }
                 else
@@ -1361,7 +1361,7 @@ void HangOut()
             {
                 if (FUNCTION_0033() == 5)
                 {
-                    gVar76 = (gVar76 - 16384);
+                    whosAroundMask = (whosAroundMask - 16384);
                     SET_MSG_VAR(16, CMM_GET_LV(22), 0);
                 }
                 else
@@ -1376,7 +1376,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 65536);
+                    whosAroundMask = (whosAroundMask - 65536);
                     SET_MSG_VAR(18, CMM_GET_LV(25), 0);
                 }
             }
@@ -1385,7 +1385,7 @@ void HangOut()
             {
                 if (FUNCTION_0033() == 5)
                 {
-                    gVar76 = (gVar76 -  131072 );
+                    whosAroundMask = (whosAroundMask -  131072 );
                     SET_MSG_VAR(30, 8, 6);
                     SET_MSG_VAR(19, CMM_GET_LV(27), 0);
                 }
@@ -1401,7 +1401,7 @@ void HangOut()
                 }
                 else
                 {
-                    gVar76 = (gVar76 - 32768);
+                    whosAroundMask = (whosAroundMask - 32768);
                     SET_MSG_VAR(17, CMM_GET_LV(var80), 0);
                     SET_MSG_VAR(29, 8, 6);
                 }
@@ -1415,7 +1415,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 1);
+                whosAroundMask = (whosAroundMask - 1);
 				SET_MSG_VAR(24, 8, 6);
                 SET_MSG_VAR(1, CMM_GET_LV(2), 0);
             }
@@ -1430,7 +1430,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 1);
+                whosAroundMask = (whosAroundMask - 1);
                 SET_MSG_VAR(1, CMM_GET_LV(2), 0);
             }
         }
@@ -1442,7 +1442,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 2);
+                whosAroundMask = (whosAroundMask - 2);
 				SET_MSG_VAR(21, 8, 6);
                 SET_MSG_VAR(2, CMM_GET_LV(3), 0);
             }
@@ -1457,7 +1457,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 2);
+                whosAroundMask = (whosAroundMask - 2);
                 SET_MSG_VAR(2, CMM_GET_LV(3), 0);
             }
         }
@@ -1469,7 +1469,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 4);
+                whosAroundMask = (whosAroundMask - 4);
 				SET_MSG_VAR(22, 8, 6);
                 SET_MSG_VAR(3, CMM_GET_LV(4), 0);
             }
@@ -1484,7 +1484,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 4);
+                whosAroundMask = (whosAroundMask - 4);
                 SET_MSG_VAR(3, CMM_GET_LV(4), 0);
             }
         }
@@ -1496,7 +1496,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 8);
+                whosAroundMask = (whosAroundMask - 8);
 				SET_MSG_VAR(23, 8, 6);
                 SET_MSG_VAR(4, CMM_GET_LV(5), 0);
             }
@@ -1511,7 +1511,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 8);
+                whosAroundMask = (whosAroundMask - 8);
                 SET_MSG_VAR(4, CMM_GET_LV(5), 0);
             }
         }
@@ -1523,7 +1523,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 16);
+                whosAroundMask = (whosAroundMask - 16);
 				SET_MSG_VAR(23, 8, 6);
                 SET_MSG_VAR(5, CMM_GET_LV(6), 0);
             }
@@ -1538,7 +1538,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 16);
+                whosAroundMask = (whosAroundMask - 16);
                 SET_MSG_VAR(5, CMM_GET_LV(6), 0);
             }
         }
@@ -1550,7 +1550,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 32);
+                whosAroundMask = (whosAroundMask - 32);
 				SET_MSG_VAR(21, 8, 6);
                 SET_MSG_VAR(6, CMM_GET_LV(7), 0);
             }
@@ -1565,7 +1565,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 32);
+                whosAroundMask = (whosAroundMask - 32);
                 SET_MSG_VAR(6, CMM_GET_LV(7), 0);
             }
         }
@@ -1577,7 +1577,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 64);
+                whosAroundMask = (whosAroundMask - 64);
 				SET_MSG_VAR(26, 8, 6);
                 SET_MSG_VAR(7, CMM_GET_LV(8), 0);
             }
@@ -1592,7 +1592,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 64);
+                whosAroundMask = (whosAroundMask - 64);
                 SET_MSG_VAR(7, CMM_GET_LV(8), 0);
             }
         }
@@ -1604,7 +1604,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 262144);
+                whosAroundMask = (whosAroundMask - 262144);
 				SET_MSG_VAR(25, 8, 6);
                 SET_MSG_VAR(20, CMM_GET_LV(var48), 0);
             }
@@ -1619,7 +1619,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 262144);
+                whosAroundMask = (whosAroundMask - 262144);
 				SET_MSG_VAR(20, CMM_GET_LV(var48), 0);
             }
         }
@@ -1631,7 +1631,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 128);
+                whosAroundMask = (whosAroundMask - 128);
 				SET_MSG_VAR(25, 8, 6);
                 SET_MSG_VAR(9, CMM_GET_LV(var43), 0);
             }
@@ -1646,7 +1646,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 128);
+                whosAroundMask = (whosAroundMask - 128);
                 SET_MSG_VAR(9, CMM_GET_LV(var43), 0);
             }
         }
@@ -1655,7 +1655,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 256);
+                whosAroundMask = (whosAroundMask - 256);
 				SET_MSG_VAR(21, 8, 6);
                 SET_MSG_VAR(10, CMM_GET_LV(13), 0);
             }
@@ -1670,7 +1670,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 256);
+                whosAroundMask = (whosAroundMask - 256);
                 SET_MSG_VAR(10, CMM_GET_LV(13), 0);
             }
             else
@@ -1685,7 +1685,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 512);
+                whosAroundMask = (whosAroundMask - 512);
                 SET_MSG_VAR(11, CMM_GET_LV(var51), 0);
             }
         }
@@ -1699,7 +1699,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 512);
+                whosAroundMask = (whosAroundMask - 512);
                 SET_MSG_VAR(11, CMM_GET_LV(var51), 0);
             }
         }
@@ -1708,7 +1708,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 1024);
+                whosAroundMask = (whosAroundMask - 1024);
 				SET_MSG_VAR(25, 8, 6);
                 SET_MSG_VAR(12, CMM_GET_LV(var56), 0);
             }
@@ -1723,7 +1723,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 1024);
+                whosAroundMask = (whosAroundMask - 1024);
                 SET_MSG_VAR(12, CMM_GET_LV(var56), 0);
             }
             else
@@ -1738,7 +1738,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 2048);
+                whosAroundMask = (whosAroundMask - 2048);
 				SET_MSG_VAR(27, 8, 6);
                 SET_MSG_VAR(13, CMM_GET_LV(18), 0);
             }
@@ -1753,7 +1753,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 2048);
+                whosAroundMask = (whosAroundMask - 2048);
                 SET_MSG_VAR(13, CMM_GET_LV(18), 0);
             }
         }
@@ -1765,7 +1765,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 4096);
+                whosAroundMask = (whosAroundMask - 4096);
 				SET_MSG_VAR(0, 8, 6);
                 SET_MSG_VAR(14, CMM_GET_LV(20), 0);
             }
@@ -1780,7 +1780,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 4096);
+                whosAroundMask = (whosAroundMask - 4096);
                 SET_MSG_VAR(14, CMM_GET_LV(20), 0);
             }
         }
@@ -1789,7 +1789,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 8192);
+                whosAroundMask = (whosAroundMask - 8192);
 				SET_MSG_VAR(23, 8, 6);
                 SET_MSG_VAR(15, CMM_GET_LV(21), 0);
             }
@@ -1804,7 +1804,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 8192);
+                whosAroundMask = (whosAroundMask - 8192);
                 SET_MSG_VAR(15, CMM_GET_LV(21), 0);
             }
             else
@@ -1816,7 +1816,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 16384);
+                whosAroundMask = (whosAroundMask - 16384);
 				SET_MSG_VAR(22, 8, 6);
                 SET_MSG_VAR(16, CMM_GET_LV(22), 0);
             }
@@ -1831,7 +1831,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 - 16384);
+                whosAroundMask = (whosAroundMask - 16384);
                 SET_MSG_VAR(16, CMM_GET_LV(22), 0);
             }
             else
@@ -1844,7 +1844,7 @@ void HangOut()
         {	
 			if ( FUNCTION_0033() != 5 && !BIT_CHK(3065))
 			{
-				gVar76 = (gVar76 - 32768);
+				whosAroundMask = (whosAroundMask - 32768);
 				SET_MSG_VAR(17, CMM_GET_LV(var80), 0);
 			}
 
@@ -1858,7 +1858,7 @@ void HangOut()
         {	
 			if ( FUNCTION_0033() != 5 && !BIT_CHK(3065))
 			{
-				gVar76 = (gVar76 - 32768);
+				whosAroundMask = (whosAroundMask - 32768);
 				SET_MSG_VAR(17, CMM_GET_LV(var80), 0);
 			}
 
@@ -1875,7 +1875,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 65536);
+                whosAroundMask = (whosAroundMask - 65536);
 				SET_MSG_VAR(26, 8, 6);
                 SET_MSG_VAR(18, CMM_GET_LV(25), 0);
             }
@@ -1888,7 +1888,7 @@ void HangOut()
             }
             else
             {
-                gVar76 = (gVar76 - 65536);
+                whosAroundMask = (whosAroundMask - 65536);
                 SET_MSG_VAR(18, CMM_GET_LV(25), 0);
             }
         }
@@ -1897,7 +1897,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 -  131072 );
+                whosAroundMask = (whosAroundMask -  131072 );
 				SET_MSG_VAR(30, 8, 6);
                 SET_MSG_VAR(19, CMM_GET_LV(27), 0);
             }
@@ -1912,7 +1912,7 @@ void HangOut()
         {
             if (FUNCTION_0033() == 5)
             {
-                gVar76 = (gVar76 -  131072);
+                whosAroundMask = (whosAroundMask -  131072);
                 SET_MSG_VAR(19, CMM_GET_LV(27), 0);
             }
             else
@@ -1922,9 +1922,9 @@ void HangOut()
 
         MSG_WND_DSP();
         SEL_DEFKEY(14, 19);
-        FUNCTION_0006(gVar76);
+        FUNCTION_0006(whosAroundMask);
 
-        if (gVar76 == 524287)
+        if (whosAroundMask == 524287)
         {
             MSG(NO_ONE);
         }
