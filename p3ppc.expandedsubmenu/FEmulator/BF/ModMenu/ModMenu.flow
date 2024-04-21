@@ -12,6 +12,8 @@ global int gEventMajor;
 global int gEventMinor;
 global int gMonth;
 global int gDay;
+global int gCount;
+global int gValue;
 global int unitId;
 global bool isPC;
 
@@ -574,18 +576,32 @@ void PlayerEditorDisplay()
 
 void CountEditorDisplay()
 {
+    int var54 = 0;
     while ( keepMenus )
     {
-        int count = SelectNumberPrompt( TimeTravel, 4 );
-        if ( count == -1 )
-            break;
-        int value = SelectNumberPrompt( TimeTravel2, 4 );
-        if ( value == -1 )
-            break;
-        SET_COUNT( count, value );
-        return;
+        SEL_DEFKEY( 14, 999 );
+        int selection = MSG_SELECT( ModMenuName, CountSelect, 0 );
+        switch ( selection )
+        {
+            case 0: // Enter Count
+                var54 = SelectNumberPrompt( CountDlg, 4 );
+                if ( var54 == -1 ) 
+                    break;
+            case 1: // Count Edit
+                SET_MSG_VAR( 1, var54, 0 );
+                SET_MSG_VAR( 2, GET_COUNT(var54), 0 );
+                int value = SelectNumberPrompt( CountDlg2, 4 );
+                if ( value == -1 )
+                    break;
+                SET_COUNT( var54, value );
+                return;
+            case 999: // Cancel
+                return;
+        }
     }
 }
+
+
 
 
 void SLinkDisplay()
