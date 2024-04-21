@@ -127,6 +127,16 @@
 [s]Time Travel[e]
 [s]Previous Page[e]
 
+[sel CountSelect]
+[s]Enter Count[e]
+[s]Edit Count Value[e]
+
+[msg CountDlg [Count Select]]
+[s]Choose the first 4 digits of[n]the count to load.[n][w][e]
+
+[msg CountDlg2 [Count Edit]]
+[s]Choose the last 4 digits of[n]the count to modify.[n]Current count value for [f 2 4 1] is [f 2 4 2][n][w][e]
+
 [msg PersonaAddPrompt [Add Persona]]
 [s]Input the ID of the Persona to add.[n](max. 3 digits)[w][e]
 
