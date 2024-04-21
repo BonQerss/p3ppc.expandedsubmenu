@@ -32,6 +32,15 @@
 
 ✅ Game Over Skip
 
+## TODOs
+
+Fix social link editing in Mod Menu.
+
+Integrate Brawler's traesto code into the square menu.
+
+Potentially add support for redoing Sunday hangouts, if declined, to Find a Friend.
+
+Finish adding square menu code to the rest of the fields.
 
 ## How can I contribute?
 

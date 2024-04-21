@@ -12,8 +12,6 @@ global int gEventMajor;
 global int gEventMinor;
 global int gMonth;
 global int gDay;
-global int gCount;
-global int gValue;
 global int unitId;
 global bool isPC;
 
@@ -576,7 +574,7 @@ void PlayerEditorDisplay()
 
 void CountEditorDisplay()
 {
-    int var54 = 0;
+    int var54 = 0; // Naming the var 'count' like I wanted to causes the code to not compile for some unknown reason. TODO: More research.
     while ( keepMenus )
     {
         SEL_DEFKEY( 14, 999 );
