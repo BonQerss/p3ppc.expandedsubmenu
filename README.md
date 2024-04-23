@@ -20,7 +20,7 @@
 
 ✅ Show the Clock
 
-🔲 Auto Healing
+✅ Auto Healing
 
 ✅ Organize Party
 
@@ -43,6 +43,8 @@ Potentially add support for redoing Sunday hangouts, if declined, to Find a Frie
 Finish adding square menu code to the rest of the fields.
 
 Change all bit flags and bit flag mentions to use in bounds bit flags.
+
+Add Mod Menu exclusive features to other existing mods ( Add all party members no matter what to Party Organize, Free healing to Call the Clock and Auto Healing )
 
 ## How can I contribute?
 

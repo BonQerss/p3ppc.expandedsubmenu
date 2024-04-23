@@ -7,7 +7,16 @@ bool ally_in_party(int id) {
 	return false;
 }
 
-int heal_mc() {
+void heal_mc() {
+	int maxhealth;
+	int maxsp;
+	int currenthealth;
+	int currentsp;
+	int SP_Lost;
+	int HPtoheal;
+	int nextsp;
+	int sethp;
+	int setsp;
 	maxhealth = GET_MAXHP( 1 );
 	maxsp = GET_MAXSP( 1 );
 	currenthealth = GET_HP( 1 );
@@ -32,7 +41,16 @@ int heal_mc() {
 }
 
 
-int heal_avail_party() {
+void heal_avail_party() {
+	int maxhealth;
+	int maxsp;
+	int currenthealth;
+	int currentsp;
+	int SP_Lost;
+	int HPtoheal;
+	int nextsp;
+	int sethp;
+	int setsp;
 	int cAllyID;
 	// loop through 2-9 for char bitflag ids
 	for (int i = 2; i < 10; i++) {
