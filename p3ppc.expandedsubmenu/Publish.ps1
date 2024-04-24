@@ -162,8 +162,8 @@ param (
     $UseScriptDirectory=$True,
 
     ## => User Config <= ## 
-    $ProjectPath = "Ryo.Reloaded.csproj",
-    $PackageName = "Ryo.Reloaded",
+    $ProjectPath = "p3ppc.expandedsubmenu/p3ppc.expandedsubmenu.csproj",
+    $PackageName = "p3ppc.expandedsubmenu",
     $PublishOutputDir = "Publish/ToUpload",
 
     ## => User: Delta Config
