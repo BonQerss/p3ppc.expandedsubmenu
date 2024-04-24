@@ -17,6 +17,8 @@ on:
   push:
     tags:
       - '*'
+    # Build on pushes to main.
+    branches: [ master ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
