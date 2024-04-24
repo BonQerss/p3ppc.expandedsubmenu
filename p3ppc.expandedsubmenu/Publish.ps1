@@ -162,7 +162,7 @@ param (
     $UseScriptDirectory=$True,
 
     ## => User Config <= ## 
-    $ProjectPath = "p3ppc.expandedsubmenu/p3ppc.expandedsubmenu.csproj",
+    $ProjectPath = "p3ppc.expandedsubmenu.csproj",
     $PackageName = "p3ppc.expandedsubmenu",
     $PublishOutputDir = "Publish/ToUpload",
 
