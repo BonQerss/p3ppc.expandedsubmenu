@@ -162,8 +162,8 @@ param (
     $UseScriptDirectory=$True,
 
     ## => User Config <= ## 
-    $ProjectPath = "p3ppc.expandedsubmenu/p3ppc.expandedsubmenu.csproj",
-    $PackageName = "p3ppc.expandedsubmenu",
+    $ProjectPath = "Ryo.Reloaded.csproj",
+    $PackageName = "Ryo.Reloaded",
     $PublishOutputDir = "Publish/ToUpload",
 
     ## => User: Delta Config
@@ -180,7 +180,7 @@ param (
 
     $GameBananaItemId = 333681, # From mod page URL.
 
-    $NuGetPackageId = "p3ppc.expandedsubmenu",
+    $NuGetPackageId = "Ryo.Reloaded",
     $NuGetFeedUrl = "http://packages.sewer56.moe:5000/v3/index.json",
     $NuGetAllowUnlisted = $False,
 
