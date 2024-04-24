@@ -1,6 +1,9 @@
 [msg WHO_HANG_WITH]
 [s]> Who would you like to hang out with?[w][e]
 
+[msg SeeWho]
+[s]Who do you want to see?[e]
+
 [sel LIST_OF_PEOPLE top]
 [s]Akinari (Rank [f 2 4 1][f 2 4 26])[e]
 [s]Mitsuru (Rank [f 2 4 2][f 2 4 25])[e]
