@@ -10,8 +10,6 @@ global int gFieldMajor;
 global int gFieldMinor;
 global int gEventMajor;
 global int gEventMinor;
-global int gMonth;
-global int gDay;
 global int unitId;
 global bool isPC;
 
