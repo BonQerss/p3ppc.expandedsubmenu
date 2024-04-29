@@ -77,7 +77,7 @@ void shortcut_select(int selection) {
         QuickTravelPlus();
     }
     else if (selection == 8) {
-        CALL_CALENDAR();;
+        CALL_CALENDAR();
     }
     else if (selection == 9) {
         HangOut();
@@ -124,7 +124,7 @@ int create_mall_mask() {
                 mask -= 127; // if in Club Escapade then it's clearly night time so all is unlocked.
                 break;
             case 9: // Back Alley (Empty)
-                if ( FUNCTION_0033 != 5 )
+                if ( FUNCTION_0033() != 5 )
                 {
                     mask -= 79;
                 }
@@ -134,7 +134,7 @@ int create_mall_mask() {
                 }
                 break;
             case 10: // Back Alley (Velvet Room)
-                if ( FUNCTION_0033 != 5 )
+                if ( FUNCTION_0033() != 5 )
                 {
                     mask -= 111;
                 }
