@@ -60,6 +60,10 @@ void mallQT()
 {
 }
 
+void mall_quick_travel()
+{
+}
+
 void schoolQT() {
     int schoolMaskP1 = 1264;
     int schoolMaskP2 = 527;
