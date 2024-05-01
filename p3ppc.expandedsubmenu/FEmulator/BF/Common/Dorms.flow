@@ -20,7 +20,15 @@ void dormitory_shortcut_hook() {
 
     SEL_DEFKEY(PadButton.Circle, 98); // Cancel button on ○
     SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
-    shortcut_select(MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask()));
+
+    if (BIT_CHK(5680))
+    {
+        ModMenuInit();
+    }
+    else {
+        OG_SM_CALL:
+        shortcut_select(MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask()));
+    }
 }
 
 void shortcut_select(int selection) {
@@ -239,7 +247,9 @@ int create_dorm_mask() {
         mask -= 0x400; // (0x1FFF - 0b0100_0000_0000) = 0b0001_1011_1111_1111
     }
     if (BIT_CHK(6326)) { // Save Anywhere
+        if ( !BIT_CHK(6321)) {
         mask -= 0x800; // (0x1FFF - 0b1000_0000_0000) = 0b0001_0111_1111_1111
+        }
     }
     if (BIT_CHK(6321)) { // Mod Menu
         mask -= 0x1000; // (0x1FFF - 0b0001_0000_0000_0000) = 0b0000_1111_1111_1111

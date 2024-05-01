@@ -589,3 +589,13 @@ int SelectOffOnPrompt( int promptMessageId )
     MSG_WND_CLS();
     return selection;
 }
+
+int Power(int number, int power)
+	{
+		int result = 1;
+		for (int j = 0; j < power; j++)
+		{
+			result *= number;
+		}
+		return result;
+	}

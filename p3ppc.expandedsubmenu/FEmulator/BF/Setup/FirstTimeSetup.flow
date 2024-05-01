@@ -137,6 +137,9 @@ void MenuOptions()
             else if (((selection != 8) || (selection != 9)) && (selection < 10)) {
                 int smSel = ToggleOption(ModMenu_About, 6321, selection); // mod menu about is 0, that would be any number + 0
                 if (smSel == 0) {
+                    if ( selection == 0 ) {
+                        ModMenuOptionsToggle();
+                    }
                     if (selection == 3) {
                         DungeonOptionsToggle();
                     }
@@ -205,6 +208,38 @@ void FindAFriendOptionsToggle()
                 BIT_ON(5678);
             else if (sel == 1)
                 BIT_OFF(5678);
+            MSG_WND_CLS();
+        }
+        else
+        {
+            done = true;
+        }
+    }
+}
+
+void ModMenuOptionsToggle()
+{
+    // Toggle options until done
+    bool done = false;
+    while (!done)
+    {
+        // Set message variables for menu options
+        SET_MSG_VAR(0, 576 + BIT_CHK(5680), 6); // First and foremost 
+        SET_MSG_VAR(1, 576 + BIT_CHK(6321), 6); // enable it or not
+        SEL_DEFKEY(PadButton.Circle, 2);
+        SEL_DEFKEY(PadButton.Square, 2);
+        // Toggle selection or read more about it
+        int selection = MSG_SELECT(ModMenuFirst_Text, ModMenuFirst, 0); 
+        if (selection == 0)
+        {
+            MSG_WND_DSP();
+            MSG(ShowModMenuFirst);
+            SEL_DEFKEY(14, 1);
+            int sel = SEL(ToggleMenu);
+            if (sel == 0)
+                BIT_ON(5680);
+            else if (sel == 1)
+                BIT_OFF(5680);
             MSG_WND_CLS();
         }
         else

@@ -22,8 +22,14 @@ void school_shortcut_hook() {
         MSG_WND_CLS();
         return;
     }
-
-    shortcut_select();
+    if (BIT_CHK(5680))
+    {
+        ModMenuInit();
+    }
+    else {
+        OG_SM_CALL:
+        shortcut_select();
+    }
 
     FUNCTION_003B();
 }

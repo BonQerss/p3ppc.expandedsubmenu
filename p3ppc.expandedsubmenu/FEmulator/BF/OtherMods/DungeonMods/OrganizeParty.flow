@@ -83,7 +83,7 @@ int get_avail_mask() {
 		}
 		// if party member has been unlocked & we don't
 		// have them in the party, the mask will show them
-		if (BIT_CHK(320 + i) && !ally_in_party(cAllyID)) {
+		if ((BIT_CHK(320 + i) || BIT_CHK(6321)) && !ally_in_party(cAllyID)) {
 			maskVal = (maskVal - get_ally_mask(cAllyID));
 		}
 	}

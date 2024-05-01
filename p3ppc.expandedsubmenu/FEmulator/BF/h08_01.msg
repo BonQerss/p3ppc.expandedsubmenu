@@ -1,8 +1,0 @@
-[sel MALL_SHORTCUTT top]
-[s]Tatsumi East Police Station[e]
-[s]Blue Beard Pharmacy[e]
-[s]Antique Shop[e]
-[s]Back Alley[e]
-[s]Town Map[e]
-[s]Social Links[e]
-[s]Cancel[e]

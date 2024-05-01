@@ -13,11 +13,18 @@ void mall_shortcut() {
 
     SEL_DEFKEY(PadButton.Circle, 98); // Cancel button on ○
     SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
-    shortcut_select(MSG_SELECT(FLD_ORDER, MALL_SHORTCUT_SEL, create_mall_mask()));
+    if (BIT_CHK(5680))
+    {
+        ModMenuInit();
+    }
+    else {
+        OG_SM_CALL:
+        shortcut_select(MSG_SELECT(FLD_ORDER, MALL_SHORTCUT_SEL, create_mall_mask()));
+    }
 }
 
 void shortcut_select(int selection) {
-    if (selection <= 5) {
+    if (selection <= 6) {
         FADE(FadeEffects.CircleWipe, 20);
         FUNCTION_000F();
         switch (selection) {
@@ -53,6 +60,10 @@ void shortcut_select(int selection) {
                 }
                 return;
             case 5:
+                FADE( 3, 20 );
+                CALL_FIELD( 8, 1, 1, 0 );
+                return;
+            case 6:
                 FUNCTION_0010( 1, 15, 255, 255, 255 );
                 FUNCTION_001E( 3, 8 );
                 BIT_ON( 3072 );
@@ -68,26 +79,26 @@ void shortcut_select(int selection) {
                 return;
         }
     }
-    else if (selection == 6) {
+    else if (selection == 7) {
         BIT_ON( 3091 );
         FADE( 3, 20 );
         FLD_SEL_EX( 1 );
     }
-    else if (selection == 7) {
+    else if (selection == 8) {
         QuickTravelPlus();
     }
-    else if (selection == 8) {
+    else if (selection == 9) {
         CALL_CALENDAR();
     }
-    else if (selection == 9) {
+    else if (selection == 10) {
         HangOut();
     }
-    else if (selection == 10) {
+    else if (selection == 11) {
         FADE(FadeEffects.FadeOut, 10);
         SAVE_MENU();
         FUNCTION_000D(0);
     }
-    else if (selection == 11) {
+    else if (selection == 12) {
         ModMenuInit();
     }
     else if (selection == 99) {
@@ -96,51 +107,68 @@ void shortcut_select(int selection) {
 }
 
 int create_mall_mask() {
-    int mask = 4095; // 0b111_1111_1111
+    int mask = 8191;
 
     if (!BIT_CHK(6322)) { // Quick Travel = OFF
         switch (CurFldMinor) {
             case 1:
                 if ( ( GET_DAY( 9, 5 ) && FCL_FUNCTION_001B() ) ) { // Club Escapade Full Moon Mission
-                    mask -= 8;
+                    mask -= Power( 2, 3 );
                 }
                 else if ( GET_DAY( 4, 22 ) && !BIT_CHK( 257 ) && (FUNCTION_0033() == 3 ) ) { // First Day with Junpei
-                    mask -= 1;
-                    mask -= 64;
+                    mask -= Power( 2, 0 );
+                    mask -= Power( 2, 7 );
                 }
                 else if ( CHK_DAYS_STARTEND( 3, 1, 3, 5 ) == 1 )
                 {
-                    mask -= 16;
-                    mask -= 64;
+                    mask -= Power( 2, 4 );
+                    mask -= Power( 2, 7 );
                 }
                 else if (FUNCTION_0033() == 5) { // Night Time..... duh.
-                    mask -= 127;
+                    mask -= Power( 2, 3 );
+                    mask -= Power( 2, 4 );
+                    mask -= Power( 2, 6 );
+                    mask -= Power( 2, 7 );
                 }
                 else { // Hide Club Escapade otherwise
-                    mask -= 119;
+                    mask -= Power( 2, 4 );
+                    mask -= Power( 2, 6 );
+                    mask -= Power( 2, 7 );
                 }
                 break;
             case 2:
-                mask -= 127; // if in Club Escapade then it's clearly night time so all is unlocked.
+                mask -= Power( 2, 3 );
+                mask -= Power( 2, 4 );
+                mask -= Power( 2, 5 );
+                mask -= Power( 2, 6 );
+                mask -= Power( 2, 7 ); // if in Club Escapade then it's clearly night time so all is unlocked.
                 break;
             case 9: // Back Alley (Empty)
                 if ( FUNCTION_0033() != 5 )
                 {
-                    mask -= 79;
+                    mask -= Power( 2, 5 );
+                    mask -= Power( 2, 7 );
                 }
                 else
                 {
-                    mask -= 71;
+                    mask -= Power( 2, 3 );
+                    mask -= Power( 2, 5 );
+                    mask -= Power( 2, 7 );
                 }
                 break;
             case 10: // Back Alley (Velvet Room)
                 if ( FUNCTION_0033() != 5 )
                 {
-                    mask -= 111;
+                    mask -= Power( 2, 5 );
+                    mask -= Power( 2, 6 );
+                    mask -= Power( 2, 7 );
                 }
                 else
                 {
-                    mask -= 103;
+                    mask -= Power( 2, 3 );
+                    mask -= Power( 2, 5 );
+                    mask -= Power( 2, 6 );
+                    mask -= Power( 2, 7 );
                 }
                 break;
             default:
@@ -148,23 +176,25 @@ int create_mall_mask() {
         }
     }
     else {
-        mask -= 128;
+        mask -= Power( 2, 8 );
         switch (CurFldMinor) {
             default:
                 break;
         }
     }
     if (BIT_CHK(6323)) { // View Calendar
-        mask -= 256; // (0x1FFF - 0b0010_0000_0000) = 0b0001_1101_1111_1111
+        mask -= Power( 2, 9 ); // (0x1FFF - 0b0010_0000_0000) = 0b0001_1101_1111_1111
     }
     if (BIT_CHK(6325)) { // Find a Friend
-        mask -= 512; // (0x1FFF - 0b0100_0000_0000) = 0b0001_1011_1111_1111
+        mask -= Power( 2, 10 ); // (0x1FFF - 0b0100_0000_0000) = 0b0001_1011_1111_1111
     }
     if (BIT_CHK(6326)) { // Save Anywhere
-        mask -= 1024; // (0x1FFF - 0b1000_0000_0000) = 0b0001_0111_1111_1111
+        if ( !BIT_CHK(6321)) {
+        mask -= Power( 2, 11 ); // (0x1FFF - 0b1000_0000_0000) = 0b0001_0111_1111_1111
+        }
     }
     if (BIT_CHK(6321)) { // Mod Menu
-        mask -= 2048; // (0x1FFF - 0b0001_0000_0000_0000) = 0b0000_1111_1111_1111
+        mask -= Power( 2, 12 ); // (0x1FFF - 0b0001_0000_0000_0000) = 0b0000_1111_1111_1111
     }
 
     return mask;

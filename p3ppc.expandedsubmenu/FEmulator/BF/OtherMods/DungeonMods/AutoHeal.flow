@@ -25,7 +25,12 @@ void heal_mc() {
 	HPtoheal = ( ( ( maxhealth - currenthealth ) / 4 ) * 0.20 );
 
 	SP_Lost = ( currentsp - HPtoheal );
-	if ( HPtoheal >= currentsp )
+
+	if ( BIT_CHK( 6321 ))
+	{
+		SET_HP( 1, maxhealth );
+	}
+	else if ( HPtoheal >= currentsp )
 	{
 		setsp = ( currentsp - currentsp );
 		sethp = ( currenthealth + ( currentsp * 4 ) );
@@ -70,7 +75,12 @@ void heal_avail_party() {
 			HPtoheal = ( ( ( maxhealth - currenthealth ) / 4 ) * 0.20 );
 
 			SP_Lost = ( currentsp - HPtoheal );
-			if ( HPtoheal >= currentsp )
+
+			if ( BIT_CHK( 6321 ))
+			{
+				SET_HP( cAllyID, maxhealth );
+			}
+			else if ( HPtoheal >= currentsp )
 			{
 				setsp = ( currentsp - currentsp );
 				sethp = ( currenthealth + ( currentsp * 4 ) );

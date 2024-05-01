@@ -169,3 +169,15 @@
 [n]calling the Clock will additionally require a 
 [n][f 2 4 2] or having Escape Route unlocked.[e]
 
+[msg ModMenuFirst_Text]
+[s]Mod Menu Options[e]
+
+[sel ModMenuFirst]
+[s]Mod Menu First: [f 2 4 0][e]
+[s]Done[e]
+
+[msg ShowModMenuFirst [Mod Menu (DniweTamp)]]
+[s]A tweak designed to match CSM. If "On", mod menu's 
+[n]options will be called first, delegating ESM
+[n]options to the OG Square Menu.[e]
+
