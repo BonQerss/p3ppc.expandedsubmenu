@@ -1,10 +1,8 @@
 import("../ModMenu/ModMenu.flow");
 import("../Setup/FirstTimeSetup.flow");
-import("../OtherMods/FindAFriend.flow");
-import("../OtherMods/QuickTravelPlus.flow");
-import("Shrine.msg");
+import("Tartarus.msg");
 
-void shrine_shortcut() {
+void tartarus_shortcut() {
     if (!BIT_CHK(6320)) {
         FirstTimeSetup();
     }
@@ -22,25 +20,28 @@ void shrine_shortcut() {
 void shortcut_select() {
     SEL_DEFKEY(PadButton.Circle, 98); // Back & Cancel
     SEL_DEFKEY(PadButton.Triangle, 99); // Triangle && Configure
-    int selection = MSG_SELECT(FLD_ORDER, TEMPLE_SHOTCUTSEL, create_shrine_mask());
+    int selection = MSG_SELECT(FLD_ORDER, TARTAROS_SHORTCUT, create_tartarus_mask());
     if (selection == 0) {
+        HIT_SCRIPT_03();
+    }
+    else if ( selection == 1) {
+        HIT_SCRIPT_02();
+    }
+    else if ( selection == 2 ) {
+        HIT_SCRIPT_01();
+    }
+    else if ( selection == 3 ) {
         HIT_SCRIPT_00();
     }
-    else if (selection == 1) {
-        QuickTravelPlus();
-    }
-    else if (selection == 2) {
+    else if (selection == 4) {
         CALL_CALENDAR();
     }
-    else if (selection == 3) {
-        HangOut();
-    }
-    else if (selection == 4) {
+    else if (selection == 5) {
         FADE(FadeEffects.FadeOut, 10);
         SAVE_MENU();
         FUNCTION_000D(0);
     }
-    else if (selection == 5) {
+    else if (selection == 6) {
         ModMenuInit();
     }
     else if (selection == 99) {
@@ -48,32 +49,30 @@ void shortcut_select() {
     }
 }
 
-int create_shrine_mask() {
-    int mask = MaskCalc( 6 )
+int create_tartarus_mask() {
 
-    if (!BIT_CHK(6322)) { // Quick Travel+ Off
-        mask -= Power( 2, 0 );
-    }
-    else {
-        mask -= Power( 2, 1 );
+    int mask = MaskCalc( 7 );
+
+    mask -= Power( 2, 0 );
+    mask -= Power( 2, 1 );
+    mask -= Power( 2, 3 );
+
+    if ( !BIT_CHK( 3373 ) )
+    {
+        mask -= Power( 2, 2 );
     }
 
     if (BIT_CHK(6323)) { // View Calendar
-        mask -= Power( 2, 2 ); 
-    }
-    if (BIT_CHK(6325)) { // Find a Friend
-        mask -= Power( 2, 3 ); 
+        mask -= Power( 2, 4 ); 
     }
     if (BIT_CHK(6326)) { // Save Anywhere
         if ( !BIT_CHK(6321)) {
-        mask -= Power( 2, 4 );  
+        mask -= Power( 2, 5 );  
         }
     }
     if (BIT_CHK(6321)) { // Mod Menu
-        mask -= Power( 2, 5 );
+        mask -= Power( 2, 6 );
     }
 
     return mask;
 }
-
-

@@ -1,15 +1,14 @@
-import( "ModMenu/ModMenu.flow" );
+import("Common/Tartarus.flow");
 import("OtherMods/DungeonMods/ClockAnywhere.flow");
 
 global bool isFieldBf;
 
 void f015_018_shortcut_hook() {
-    isFieldBf = false;
-    ModMenuInit();
+    tartarus_shortcut();
 }
 
 void CallOriginalSquareMenu() {
-    f015_018_shortcut_unhooked();
+    f015_018_shortcut();
 }
 
 // we hook the original clock function to use the ClockAnywhere reimplmentations

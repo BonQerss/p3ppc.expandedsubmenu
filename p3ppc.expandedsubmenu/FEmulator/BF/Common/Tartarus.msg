@@ -1,0 +1,8 @@
+[sel TARTAROS_SHORTCUT top]
+[s]Tartarus[e]
+[s]Velvet Room[e]
+[s]Teleporter[e]
+[s]Outside[e]
+[s]View calendar[e]
+[s]Save[e]
+[s]Mod Menu[e]
