@@ -591,11 +591,21 @@ int SelectOffOnPrompt( int promptMessageId )
 }
 
 int Power(int number, int power)
+{
+    int result = 1;
+    for (int j = 0; j < power; j++)
+    {
+        result *= number;
+    }
+    return result;
+}
+
+int MaskCalc(int numberIndexes)
+{
+    int result = 0;
+	for (int i = 0; i < numberIndexes; i++)
 	{
-		int result = 1;
-		for (int j = 0; j < power; j++)
-		{
-			result *= number;
-		}
-		return result;
-	}
+		result += Power(2, i);
+	}	
+    return result;	
+}

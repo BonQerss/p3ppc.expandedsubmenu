@@ -1,0 +1,79 @@
+import("../ModMenu/ModMenu.flow");
+import("../Setup/FirstTimeSetup.flow");
+import("../OtherMods/FindAFriend.flow");
+import("../OtherMods/QuickTravelPlus.flow");
+import("Shrine.msg");
+
+void shrine_shortcut() {
+    if (!BIT_CHK(6320)) {
+        FirstTimeSetup();
+    }
+
+    if (BIT_CHK(5680))
+    {
+        ModMenuInit();
+    }
+    else {
+        OG_SM_CALL:
+        shortcut_select();
+    }
+}
+
+void shortcut_select() {
+    SEL_DEFKEY(PadButton.Circle, 98); // Back & Cancel
+    SEL_DEFKEY(PadButton.Triangle, 99); // Triangle && Configure
+    int selection = MSG_SELECT(FLD_ORDER, TEMPLE_SHOTCUTSEL, create_shrine_mask());
+    if (selection == 0) {
+        HIT_SCRIPT_00();
+    }
+    else if (selection == 1) {
+        QuickTravelPlus();
+    }
+    else if (selection == 2) {
+        CALL_CALENDAR();
+    }
+    else if (selection == 3) {
+        HangOut();
+    }
+    else if (selection == 4) {
+        FADE(FadeEffects.FadeOut, 10);
+        SAVE_MENU();
+        FUNCTION_000D(0);
+    }
+    else if (selection == 5) {
+        ModMenuInit();
+    }
+    else if (selection == 99) {
+        MenuOptions();
+    }
+}
+
+int create_shrine_mask() {
+    int mask = MaskCalc( 6 )
+
+    if (!BIT_CHK(6322)) { // Quick Travel+ Off
+        mask -= Power( 2, 0 );
+    }
+    else {
+        mask -= Power( 2, 1 );
+    }
+
+    f (BIT_CHK(6323)) { // View Calendar
+        mask -= Power( 2, 2 ); 
+    }
+    if (BIT_CHK(6325)) { // Find a Friend
+        mask -= Power( 2, 3 ); 
+    }
+    if (BIT_CHK(6326)) { // Save Anywhere
+        if ( !BIT_CHK(6321)) {
+        mask -= Power( 2, 4 );  
+        }
+    }
+    if (BIT_CHK(6321)) { // Mod Menu
+        mask -= Power( 2, 5 );
+    }
+
+    return mask;
+}
+
+

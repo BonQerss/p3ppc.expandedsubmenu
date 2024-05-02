@@ -107,7 +107,7 @@ void shortcut_select(int selection) {
 }
 
 int create_mall_mask() {
-    int mask = 8191;
+    int mask = MaskCalc( 13 );
 
     if (!BIT_CHK(6322)) { // Quick Travel = OFF
         switch (CurFldMinor) {
@@ -183,18 +183,18 @@ int create_mall_mask() {
         }
     }
     if (BIT_CHK(6323)) { // View Calendar
-        mask -= Power( 2, 9 ); // (0x1FFF - 0b0010_0000_0000) = 0b0001_1101_1111_1111
+        mask -= Power( 2, 9 ); 
     }
     if (BIT_CHK(6325)) { // Find a Friend
-        mask -= Power( 2, 10 ); // (0x1FFF - 0b0100_0000_0000) = 0b0001_1011_1111_1111
+        mask -= Power( 2, 10 ); 
     }
     if (BIT_CHK(6326)) { // Save Anywhere
         if ( !BIT_CHK(6321)) {
-        mask -= Power( 2, 11 ); // (0x1FFF - 0b1000_0000_0000) = 0b0001_0111_1111_1111
+        mask -= Power( 2, 11 );  
         }
     }
     if (BIT_CHK(6321)) { // Mod Menu
-        mask -= Power( 2, 12 ); // (0x1FFF - 0b0001_0000_0000_0000) = 0b0000_1111_1111_1111
+        mask -= Power( 2, 12 );
     }
 
     return mask;

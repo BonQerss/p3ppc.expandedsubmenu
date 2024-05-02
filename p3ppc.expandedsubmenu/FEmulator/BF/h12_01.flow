@@ -1,15 +1,16 @@
 
-import( "ModMenu/ModMenu.flow" );
+import("Common/Shrine.flow");
+
 
 global bool isFieldBf;
 
 void f012_001_shortcut_hook()
 {
     isFieldBf = false;
-    ModMenuInit();
+    shrine_shortcut();
 }
 
 void CallOriginalSquareMenu()
 {
-    f012_001_shortcut_unhooked();
+    f012_001_shortcut();
 } 
