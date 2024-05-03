@@ -1,15 +1,16 @@
 
-import( "ModMenu/ModMenu.flow" );
+import("Common/StripMall.flow");
+
 
 global bool isFieldBf;
 
 void f009_001_shortcut_hook()
 {
     isFieldBf = false;
-    ModMenuInit();
+    stripmall_shortcut();
 }
 
 void CallOriginalSquareMenu()
 {
-    f009_001_shortcut_unhooked();
+    f009_001_shortcut();
 } 

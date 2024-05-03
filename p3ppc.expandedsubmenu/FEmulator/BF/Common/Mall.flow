@@ -28,7 +28,7 @@ void shortcut_select(int selection) {
         FADE(FadeEffects.CircleWipe, 20);
         FUNCTION_000F();
         switch (selection) {
-            case 0:
+            case 0: 
                 BIT_ON( 5127 );
                 CALL_WEAPON_SHOP();
                 BIT_OFF( 5127 );
@@ -40,15 +40,20 @@ void shortcut_select(int selection) {
                 BIT_OFF( 5127 );
                 CALL_FIELD( 8, 1, 8, 0 );
                 return;
-            case 2: 
-                CALL_FIELD(7, 4, 0, 0);
+            case 2: // Antique Shop
+                FADE( 3, 20 );
+                FUNCTION_001E( 3, 3 );
+                BIT_ON( 5127 );
+                CALL_TRADE_SHOP();
+                BIT_OFF( 5127 );
+                CALL_FIELD( 8, 1, 7, 0 );
                 return;
-            case 3:
+            case 3: // Club Escapade
                 FADE( 3, 20 );
                 FUNCTION_001E( 3, 3 );
                 CALL_FIELD( 8, 2, 0, 0 );
                 return;
-            case 4:
+            case 4: // Back Alley
                 if ( BIT_CHK( 29 ) && CHK_DAYS_STARTEND( 4, 22, 1, 31 ) )
                 {
                     FADE( 3, 20 );

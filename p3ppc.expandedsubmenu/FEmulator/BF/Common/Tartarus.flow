@@ -57,7 +57,7 @@ int create_tartarus_mask() {
     mask -= Power( 2, 1 );
     mask -= Power( 2, 3 );
 
-    if ( !BIT_CHK( 3373 ) )
+    if ( !BIT_CHK( 3373 ) ) // Tartarus Warp Tutorial
     {
         mask -= Power( 2, 2 );
     }
