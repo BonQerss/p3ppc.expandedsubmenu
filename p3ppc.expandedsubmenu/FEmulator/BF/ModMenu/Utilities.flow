@@ -5,8 +5,8 @@ int SelectDigit()
     keepMenus = true;
     while (keepMenus)
     {
-        SEL_DEFKEY(14, 999);
-        SEL_DEFKEY(12, 998);
+        SEL_DEFKEY(PadButton.Circle, 999);
+        SEL_DEFKEY(PadButton.Triangle, 998);
         if (isPC = true)
             SEL_DEFKEY(11, 5);
         else
@@ -26,7 +26,7 @@ int SelectDigit()
         }
         if (digit == 5)
         {
-            SEL_DEFKEY(14, 999);
+            SEL_DEFKEY(PadButton.Circle, 999);
             if (isPC = true)
                 SEL_DEFKEY(10, 5);
             else
@@ -39,7 +39,7 @@ int SelectDigit()
                 digit = -1; //exit
                 break;
             }
-            // If digit == 998 which can be done from the SEL_DEFKEY(12, 998), then here
+            // If digit == 998 which can be done from the SEL_DEFKEY(PadButton.Triangle, 998), then here
             // and only here does this loop ACTUALLY loop; because of that, we re-enable
             // keepMenus to preserve the original behaviour
             // TODO: is this actually intentional? If not then may be best to
