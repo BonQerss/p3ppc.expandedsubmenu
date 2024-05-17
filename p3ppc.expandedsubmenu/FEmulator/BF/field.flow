@@ -6,6 +6,8 @@ import("ModMenu/ModMenu.flow");
 import("Setup/FirstTimeSetup.flow");
 import("OtherMods/DungeonMods/OrganizeParty.flow");
 import("OtherMods/DungeonMods/ClockAnywhere.flow");
+import("OtherMods/DungeonMods/VRGameOverSkip.flow");
+import("OtherMods/DungeonMods/SelectFloor.flow");
 import("field.msg");
 
 // 
@@ -175,21 +177,20 @@ void tartaros_order_party_hook() {
     }
 
     if (!BIT_CHK(6321)) { // Mod Menu
-        orderMask += Power( 2, 10 );
+        orderMask += Power( 2, 9 );
     }
 
-    if ( !BIT_CHK( 6334 )) // Use Traesto Gems
+    if ( !BIT_CHK( 6333 )) // Select Floor
     {
-        orderMask += Power( 2, 8 );
-        SET_MSG_VAR( 0, GET_ITEM_NUM( 1313 ), 0 );
+        orderMask += Power( 2, 7 );
     }
     
     if (!BIT_CHK(6330)) { // Call the Clock
-        orderMask += Power( 2, 9 );
+        orderMask += Power( 2, 8 );
     }
     
     if (!BIT_CHK(6332)) { // Organize Party
-        orderMask += Power( 2, 7 );
+        orderMask += Power( 2, 6 );
     }
     
     SEL_DEFKEY(PadButton.Circle, 9); // Cancel button on ○
@@ -237,7 +238,7 @@ void tartaros_order_party_hook() {
         change_party();
     }
     else if ( orderChoice == 7 ) {
-        // traesto_return();
+        SelectFloor();
     }
     else if (orderChoice == 8) {
         try_call_clock();
@@ -271,16 +272,21 @@ void order_for_huka_hook() { // used when fuuka is unlocked + empty party + othe
         fuukaMask += 0x40; // 0b0100_0000
     }
     
+    if (!BIT_CHK( 6333 )) // Select Floor
+    {
+        fuukaMask += Power( 2, 3 );
+    }
+
     if (!BIT_CHK(6321)) { // Mod Menu
-        fuukaMask += 0x10; // 0b0001_0000
+        fuukaMask += Power( 2, 5 ); // 0b0001_0000
     }
     
     if (!BIT_CHK(6330)) { // Call the Clock
-        fuukaMask += 8; // 0b1000
+        fuukaMask += Power( 2, 4 ); // 0b1000
     }
     
     if (!BIT_CHK(6332)) { // Organize Party
-        fuukaMask += 4; // 0b0100
+        fuukaMask += Power( 2, 2 ); // 0b0100
     }
     
     SEL_DEFKEY(PadButton.Circle, 5); // Cancel button on ○
@@ -326,16 +332,23 @@ void order_for_huka_hook() { // used when fuuka is unlocked + empty party + othe
     else if (fuukaOrder == 3) {
         MSG_WND_CLS();
         FUNCTION_0065(0);
-        try_call_clock();
+        MSG_WND_DSP();
+        SelectFloor();
         return;
     }
     else if (fuukaOrder == 4) {
         MSG_WND_CLS();
         FUNCTION_0065(0);
+        try_call_clock();
+        return;
+    }
+    else if (fuukaOrder == 5) {
+        MSG_WND_CLS();
+        FUNCTION_0065(0);
         ModMenuInit();
         return;
     }
-    else if (fuukaOrder == 6) {
+    else if (fuukaOrder == 7) {
         debug_mode();
         return;
     }

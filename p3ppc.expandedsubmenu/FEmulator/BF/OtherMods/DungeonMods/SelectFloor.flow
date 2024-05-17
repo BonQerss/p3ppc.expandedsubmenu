@@ -1,0 +1,81 @@
+import("SelectFloor.msg");
+
+void SelectFloor()
+{
+    int FloorWarp;
+    int FloorWarpConfirm;
+    int WarpConfirm;
+    int TooHigh;
+    int Else;
+    int YesNoConfirm;
+
+    if (BIT_CHK(3123)) { // fuuka
+        FloorWarp = ItemPrompt_F;
+        FloorWarpConfirm = FloorConfirm_F;
+        WarpConfirm = WarpConfirm_F;
+        TooHigh = TooHigh_F;
+        Else = AnythingElse_F;
+        naviCutin = 6;
+        naviBup = naviCutin;
+        gVar97 = 4;
+    }
+    else {
+        FloorWarp = ItemPrompt_M;
+        FloorWarpConfirm = FloorConfirm_M;
+        WarpConfirm = WarpConfirm_M;
+        TooHigh = TooHigh_M;
+        Else = AnythingElse_M;
+        naviCutin = 4;
+        naviBup = naviCutin;
+        gVar97 = naviCutin;
+    }
+
+    if ( BIT_CHK( 4104 )) {
+        YesNoConfirm = ESCAPE_SEL_G;
+    }
+    else {
+        YesNoConfirm = ESCAPE_SEL;
+    }
+
+    TRYAGAIN:
+    int floor = 0;
+    FUNCTION_0064(0, 0, 0, naviCutin, 0, 0, 0);
+    floor = SelectNumberPrompt(FloorWarp, 3);
+    if ( pointsToAdd != -1 )
+    {
+        FUNCTION_0065(0);
+
+        FUNCTION_0064(0, 0, 0, naviCutin, 0, 0, 0);
+        SET_MSG_VAR(0, floor, 0);
+        MSG(FloorConfirm_F);
+        int YESNO = SEL(YesNoConfirm);
+
+        if (YESNO == 0) {
+            if (floor > GET_COUNT(8)) {
+                FUNCTION_0064(0, 0, 0, naviCutin, 2, 0, 0);
+                MSG(TooHigh);
+                FUNCTION_0065(0);
+                return;
+            } 
+            else {
+                MSG(WarpConfirm);
+                FUNCTION_0065(0);
+                FADE(3, 20);
+                FUNCTION_000F();
+                FCL_FUNCTION_0004(floor);
+            }
+        } 
+        else {  // Removed condition from else
+            FUNCTION_0064(0, 0, 0, naviCutin, 0, 0, 0);
+            MSG(Else);
+            int SEL = SEL(YesOrNo);  // Changed to a different variable name
+
+            if (SEL == 0) {
+                return;
+            } 
+            else {
+                goto TRYAGAIN;
+            }
+        }
+    }
+}
