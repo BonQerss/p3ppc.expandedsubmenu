@@ -48,3 +48,39 @@ void traesto_return()
         goto FUUKA_RESTART;
 	}
 }
+
+
+void msgDecider()
+{
+    if (BIT_CHK(3123)) { // fuuka
+        int EscapeMSG = HUKA_ORDER_ESCAPE;
+        int EscapeMSGUse = FUUKA_ESCAPE_TRAESTO;
+        int EscapeConfirm = HUKA_ORDER_ESCAPE_GO;
+        int EscapeConfirmUse = FUUKA_GO_TRAESTO;
+        int EscapeRestart = HUKA_ORDER_RESTART;
+        int NoItemsSad = FUUKA_NO_TRAESTO;
+        naviCutin = 6;
+        naviBup = naviCutin;
+        gVar97 = 4;
+    }
+    else {
+        int EscapeMSG = MITSURU_ORDER_ESCAPE;
+        int EscapeMSGUse = MITSURU_ESCAPE_TRAESTO;
+        int EscapeConfirm = MITSURU_GO_TRAESTO;
+        int EscapeConfirmUse = MITSURU_GO_TRAESTO;
+        int EscapeRestart = MITSURU_ORDER_RESTART;
+        int NoItemsSad = MITSURU_NO_TRAESTO; 
+        naviCutin = 4;
+        naviBup = naviCutin;
+        gVar97 = naviCutin;
+    }
+
+    if ( BIT_CHK( 4104 )) {
+        int EscapeSEL = ESCAPE_SEL_G;
+    }
+    else {
+        int EscapeSEL = ESCAPE_SEL;
+    }
+}
+
+

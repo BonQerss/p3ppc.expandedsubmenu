@@ -175,15 +175,21 @@ void tartaros_order_party_hook() {
     }
 
     if (!BIT_CHK(6321)) { // Mod Menu
-        orderMask += 0x100; // 0b0001_0000_0000
+        orderMask += Power( 2, 10 );
+    }
+
+    if ( !BIT_CHK( 6334 )) // Use Traesto Gems
+    {
+        orderMask += Power( 2, 8 );
+        SET_MSG_VAR( 0, GET_ITEM_NUM( 1313 ), 0 );
     }
     
     if (!BIT_CHK(6330)) { // Call the Clock
-        orderMask += 0x80; // 0b1000_0000
+        orderMask += Power( 2, 9 );
     }
     
     if (!BIT_CHK(6332)) { // Organize Party
-        orderMask += 0x40; // 0b0100_0000
+        orderMask += Power( 2, 7 );
     }
     
     SEL_DEFKEY(PadButton.Circle, 9); // Cancel button on ○
@@ -230,13 +236,17 @@ void tartaros_order_party_hook() {
         MSG_WND_DSP();
         change_party();
     }
-    else if (orderChoice == 7) {
-        try_call_clock();
+    else if ( orderChoice == 7 ) {
+        traesto_return();
     }
     else if (orderChoice == 8) {
+        try_call_clock();
+    }
+
+    else if (orderChoice == 9) {
         ModMenuInit();
     }
-    else if (orderChoice == 10) {
+    else if (orderChoice == 11) {
         debug_mode();
     }
     else if (orderChoice == 99) {

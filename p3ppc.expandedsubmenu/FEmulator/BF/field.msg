@@ -6,6 +6,7 @@
 [s]Request a specific BGM[e]
 [s]Ask Fuuka for something[e]
 [s]Change party[e]
+[s]Use Traesto Gems ( x[f 2 4 0] )[e]
 [s]Use the clock[e]
 [s]Mod Menu[e]
 [s]Cancel[e]

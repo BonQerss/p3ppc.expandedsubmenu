@@ -4,6 +4,9 @@
 [msg FUUKA_ESCAPE_TRAESTO [Fuuka]]
 [s]Okay. But, are you sure you want to[n]use a [f 2 5 3 13 0]?[n][w][e]
 
+[msg MITSURU_ORDER_ESCAPE [Mitsuru]]
+[s]Are you sure you'd like to return to[n]the entrance?[n][w][e]
+
 [msg MITSURU_ESCAPE_TRAESTO [Mitsuru]]
 [s]Do you want to use a [f 2 5 3 13 0] to go[n]back?[n][w][e]
 
