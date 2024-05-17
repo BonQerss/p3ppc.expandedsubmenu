@@ -237,7 +237,7 @@ void tartaros_order_party_hook() {
         change_party();
     }
     else if ( orderChoice == 7 ) {
-        traesto_return();
+        // traesto_return();
     }
     else if (orderChoice == 8) {
         try_call_clock();

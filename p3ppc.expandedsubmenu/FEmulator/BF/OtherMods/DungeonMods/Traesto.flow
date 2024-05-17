@@ -7,10 +7,10 @@ void traesto_return()
         SEL_DEFKEY(PadButton.Circle, 1);
         
         if (BIT_CHK(4104) || FLD_FUNCTION_0046()) {
-            fuukaOrder = SEL(ESCAPE_SEL);
+            int fuukaOrder = SEL(ESCAPE_SEL);
         }
         else {
-            fuukaOrder = SEL(ESCAPE_SEL_G);
+            int fuukaOrder = SEL(ESCAPE_SEL_G);
         }
         if (fuukaOrder == 0) {
             MSG(HUKA_ORDER_ESCAPE_GO);
@@ -30,10 +30,10 @@ void traesto_return()
         SEL_DEFKEY(PadButton.Circle, 1);
         
         if (BIT_CHK(4104) || FLD_FUNCTION_0046()) {
-            fuukaOrder = SEL(ESCAPE_SEL);
+            int fuukaOrder = SEL(ESCAPE_SEL);
         }
         else {
-            fuukaOrder = SEL(ESCAPE_SEL_G);
+            int fuukaOrder = SEL(ESCAPE_SEL_G);
         }
         if (fuukaOrder == 0) {
             MSG(HUKA_ORDER_ESCAPE_GO);
