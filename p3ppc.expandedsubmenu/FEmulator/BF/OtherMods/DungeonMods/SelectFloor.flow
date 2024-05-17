@@ -38,10 +38,10 @@ void SelectFloor()
     }
 
     TRYAGAIN:
-    int floor = 0;
     FUNCTION_0064(0, 0, 0, naviCutin, 0, 0, 0);
-    floor = SelectNumberPrompt(FloorWarp, 3);
-    if ( pointsToAdd != -1 )
+    int floor = SelectNumberPrompt( FloorWarp, 3 );
+    MSG_WND_DSP();
+    if ( floor != -1 )
     {
         FUNCTION_0065(0);
 
