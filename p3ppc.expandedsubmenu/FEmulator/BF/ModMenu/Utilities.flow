@@ -56,10 +56,8 @@ int SelectNumber( int digitCount )
             if ( i == 0 )
             {
                 number = -1;
-                break;
             }
-            else
-                break;
+            break;
         }
         else if ( digit == 998 )
         {
@@ -603,9 +601,9 @@ int Power(int number, int power)
 int MaskCalc(int numberIndexes)
 {
     int result = 0;
-	for (int i = 0; i < numberIndexes; i++)
-	{
-		result += Power(2, i);
-	}	
-    return result;	
+    for (int i = 0; i < numberIndexes; i++)
+    {
+        result += Power(2, i);
+    }
+    return result;
 }
