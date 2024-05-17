@@ -39,11 +39,8 @@
 [s]Alright. Do you need anything else?[n][w][e]
 
 [msg AnythingElse_M [Mitsuru]]
-[s]Is that all leader?[n][w][e]
+[s]Do you need anything else, leader?[n][w][e]
 
 [sel YesOrNo top]
 [s]Yes[e]
 [s]No[e]
-
-
-
