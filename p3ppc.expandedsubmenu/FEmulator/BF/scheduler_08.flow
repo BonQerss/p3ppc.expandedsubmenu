@@ -2,6 +2,6 @@ void every_morning_hook()
 {
     BIT_OFF(4792);
 
-    every_morning_unhooked()
+    every_morning_unhooked();
 }
 
