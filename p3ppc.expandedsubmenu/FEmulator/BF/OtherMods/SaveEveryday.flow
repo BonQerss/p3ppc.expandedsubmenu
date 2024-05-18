@@ -1,0 +1,22 @@
+import("SaveEveryday.msg");
+
+void SaveEveryday()
+{
+    if ( BIT_CHK(6327))
+    {
+        if ( !BIT_CHK( 4792 ))
+        {
+            MSG_WND_DSP();
+            MSG( SaveYesNo );
+            int SEL = SEL( YesNo );
+            if ( SEL == 0 )
+            {
+                MSG_WND_CLS();
+                FADE( 1, 10 );
+                SAVE_MENU();
+                FUNCTION_000D( 0 );
+            }
+            BIT_ON(4792);
+        }
+    }
+}

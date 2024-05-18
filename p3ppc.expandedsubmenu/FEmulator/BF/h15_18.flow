@@ -38,3 +38,10 @@ void HIT_SCRIPT_255_hook() {
         BattleTutorials();
     }
 }
+
+void f015_018_init_hook()
+{
+    SaveEveryday();
+
+    f015_018_init_unhooked();
+}

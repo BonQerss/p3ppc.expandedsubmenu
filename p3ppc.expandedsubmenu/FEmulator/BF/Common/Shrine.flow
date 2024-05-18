@@ -2,6 +2,7 @@ import("../ModMenu/ModMenu.flow");
 import("../Setup/FirstTimeSetup.flow");
 import("../OtherMods/FindAFriend.flow");
 import("../OtherMods/QuickTravelPlus.flow");
+import("../OtherMods/SaveEveryday.flow");
 import("Shrine.msg");
 
 void shrine_shortcut() {

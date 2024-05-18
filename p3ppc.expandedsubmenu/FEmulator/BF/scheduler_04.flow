@@ -40,3 +40,11 @@ void sdl04_06_PM_D_hook()
     }
 
 }
+
+void every_morning_hook()
+{
+    BIT_OFF(4792);
+
+    every_morning_unhooked()
+}
+

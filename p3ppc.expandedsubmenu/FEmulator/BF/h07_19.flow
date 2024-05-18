@@ -10,3 +10,10 @@ void f007_019_shortcut_hook() {
 void CallOriginalSquareMenu() {
     f007_019_shortcut();
 } 
+
+void f007_019_init_hook()
+{
+    SaveEveryday();
+
+    f007_019_init_unhooked();
+}

@@ -1,5 +1,6 @@
 import("../ModMenu/ModMenu.flow");
 import("../Setup/FirstTimeSetup.flow");
+import("../OtherMods/SaveEveryday.flow");
 import("Tartarus.msg");
 
 void tartarus_shortcut() {
