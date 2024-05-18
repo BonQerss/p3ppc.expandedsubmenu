@@ -156,7 +156,7 @@ void tartaros_order_party_hook() {
 
     // bit id (((0) + (1024)) + (2048)) + (993) = 4065
     if (!BIT_CHK(4065)) { // debug flag
-        orderMask += 0x400; // 0b0100_0000_0000
+        orderMask += Power(2, 11); // 0b0100_0000_0000
     }
 
     // bit id (((0) + (1024)) + (2048)) + (495) = 3567
@@ -193,7 +193,7 @@ void tartaros_order_party_hook() {
         orderMask += Power( 2, 6 );
     }
     
-    SEL_DEFKEY(PadButton.Circle, 9); // Cancel button on ○
+    SEL_DEFKEY(PadButton.Circle, 10); // Cancel button on ○
     SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
     FUNCTION_0006(orderMask);
     int orderChoice = SEL(ORDER_SEL);
@@ -269,7 +269,7 @@ void order_for_huka_hook() { // used when fuuka is unlocked + empty party + othe
 
     // bit id (((0) + (1024)) + (2048)) + (993) = 4065
     if (!BIT_CHK(4065)) { // hide debug option
-        fuukaMask += 0x40; // 0b0100_0000
+        fuukaMask += Power(2, 7); // 0b0100_0000
     }
     
     if (!BIT_CHK( 6333 )) // Select Floor
@@ -289,7 +289,7 @@ void order_for_huka_hook() { // used when fuuka is unlocked + empty party + othe
         fuukaMask += Power( 2, 2 ); // 0b0100
     }
     
-    SEL_DEFKEY(PadButton.Circle, 5); // Cancel button on ○
+    SEL_DEFKEY(PadButton.Circle, 6); // Cancel button on ○
     SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
     FUNCTION_0006(fuukaMask);
     int fuukaOrder = SEL(HUKA_OREDER_SEL);

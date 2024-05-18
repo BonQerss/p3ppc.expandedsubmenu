@@ -2,41 +2,49 @@ import( "Utilities.msg" );
 
 int SelectDigit()
 {
-    while ( keepMenus )
+    keepMenus = true;
+    while (keepMenus)
     {
-        SEL_DEFKEY( 14, 999 );
-        SEL_DEFKEY( 12, 998 );
+        SEL_DEFKEY(PadButton.Circle, 999);
+        SEL_DEFKEY(PadButton.Triangle, 998);
         if (isPC = true)
-            SEL_DEFKEY( 11, 5 );
+            SEL_DEFKEY(11, 5);
         else
-            SEL_DEFKEY( 9, 5 );
+            SEL_DEFKEY(9, 5);
         int digit = MSG_SELECT( ModMenuName, Select0to4Dialog, 0 );
-        if ( digit < 5 ) //0 through 4
+        keepMenus = false; // Prevents keepMenus from being enabled elsewhere when it shouldn't be
+        if (digit < 5) { // 0 through 4
             return digit;
-        else if ( digit == 999 )
+        }
+        else if (digit == 999)
         {
             return -1;
-            break;
         }
-        else if ( digit == 998 )
+        else if (digit == 998)
         {
             return 998;
         }
-        if ( digit == 5 )
+        if (digit == 5)
         {
-            SEL_DEFKEY( 14, 999 );
-        if (isPC = true)
-            SEL_DEFKEY( 10, 5 );
-        else
-            SEL_DEFKEY( 8, 5 );
-            digit = MSG_SELECT( ModMenuName, Select5to9Dialog, 0 ) + 5;
-            if ( digit < 10 )
-                return digit; //5 through 9 or back
+            SEL_DEFKEY(PadButton.Circle, 999);
+            if (isPC = true)
+                SEL_DEFKEY(10, 5);
+            else
+                SEL_DEFKEY(8, 5);
+            digit = MSG_SELECT(ModMenuName, Select5to9Dialog, 0) + 5;
+            if (digit < 10)
+                return digit; // 5 through 9 or back
             else if (digit == 999 + 5)
             {
                 digit = -1; //exit
                 break;
             }
+            // If digit == 998 which can be done from the SEL_DEFKEY(PadButton.Triangle, 998), then here
+            // and only here does this loop ACTUALLY loop; because of that, we re-enable
+            // keepMenus to preserve the original behaviour
+            // TODO: is this actually intentional? If not then may be best to
+            // make this function not a loop in the first place anyways
+            keepMenus = true;
         }
     }
     return -1;
@@ -56,10 +64,8 @@ int SelectNumber( int digitCount )
             if ( i == 0 )
             {
                 number = -1;
-                break;
             }
-            else
-                break;
+            break;
         }
         else if ( digit == 998 )
         {
@@ -603,9 +609,9 @@ int Power(int number, int power)
 int MaskCalc(int numberIndexes)
 {
     int result = 0;
-	for (int i = 0; i < numberIndexes; i++)
-	{
-		result += Power(2, i);
-	}	
-    return result;	
+    for (int i = 0; i < numberIndexes; i++)
+    {
+        result += Power(2, i);
+    }
+    return result;
 }

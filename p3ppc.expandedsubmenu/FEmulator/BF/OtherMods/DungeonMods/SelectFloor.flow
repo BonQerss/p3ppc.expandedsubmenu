@@ -39,26 +39,34 @@ void SelectFloor()
 
     TRYAGAIN:
     FUNCTION_0064(0, 0, 0, naviCutin, 0, 0, 0);
-    int floor = SelectNumberPrompt( FloorWarp, 3 );
-    MSG_WND_DSP();
-    if ( floor != -1 )
+    // TODO: For some reason sometimes the select box window will just disappear here
+    // for absolutely no reason; I have no clue why it happens and why it DOESN'T happen
+    // other times. My best guess is that the navi-cutin messes with things, but I don't know. @moddaman
+    int floor = SelectNumberPrompt(FloorWarp, 3);
+    // TODO: Tartarus floor 1 doesn't exist, and iirc is just f15_18; trying to call that
+    // floor will crash the game as a result. For now I've just made the code ignore
+    // trying to go there, but in the future we should just treat this as warping
+    // to that field the same way as using one of the warps to return to the entrance. @moddaman
+    if ((floor != -1) || (floor >= 2))
     {
-        FUNCTION_0065(0);
-
+        MSG_WND_DSP();
         FUNCTION_0064(0, 0, 0, naviCutin, 0, 0, 0);
         SET_MSG_VAR(0, floor, 0);
         MSG(FloorConfirm_F);
+        SEL_DEFKEY(PadButton.Circle, 1);
         int YESNO = SEL(YesNoConfirm);
 
         if (YESNO == 0) {
             if (floor > GET_COUNT(8)) {
                 FUNCTION_0064(0, 0, 0, naviCutin, 2, 0, 0);
                 MSG(TooHigh);
+                MSG_WND_CLS();
                 FUNCTION_0065(0);
                 return;
             } 
             else {
                 MSG(WarpConfirm);
+                MSG_WND_CLS();
                 FUNCTION_0065(0);
                 FADE(3, 20);
                 FUNCTION_000F();
@@ -68,14 +76,17 @@ void SelectFloor()
         else {  // Removed condition from else
             FUNCTION_0064(0, 0, 0, naviCutin, 0, 0, 0);
             MSG(Else);
-            int SEL = SEL(YesOrNo);  // Changed to a different variable name
-
-            if (SEL == 0) {
-                return;
+            SEL_DEFKEY(PadButton.Circle, 1);
+            if (!SEL(YesOrNo)) { // True only if SEL returns 0, else false
+                MSG_WND_CLS();
+                goto TRYAGAIN;
             } 
             else {
-                goto TRYAGAIN;
+                MSG_WND_CLS();
+                FUNCTION_0065(0);
+                return;
             }
         }
     }
+    FUNCTION_0065(0);
 }
