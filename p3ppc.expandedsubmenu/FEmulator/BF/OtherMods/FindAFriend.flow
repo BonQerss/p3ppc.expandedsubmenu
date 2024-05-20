@@ -12,16 +12,16 @@ void HangOut()
         var43 = EVT_FUNCTION_002A(0);
         var48 = EVT_FUNCTION_002A(1);
         int whosAroundMask = 524287;
-        int fieldMajor;
-        int fieldMinor;
+        int CurFieldMajor;
+        int CurFieldMinor;
 		int var5;
 		int var2;
 		int var98;
 		int var1;
 		int var6;
 		int var7;
-        fieldMajor = FLD_GET_MAJOR();
-        fieldMinor = FLD_GET_MINOR();
+        CurFieldMajor = FLD_GET_MAJOR();
+        CurFieldMinor = FLD_GET_MINOR();
 		
 		
 		if ( !BIT_CHK(5678) )
@@ -723,7 +723,7 @@ void HangOut()
         }
 
         if ((CMM_CHK_LVUP(24) == 1) && BIT_CHK(2007)) // Nozomi
-			{
+		{
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -733,10 +733,8 @@ void HangOut()
 				SET_MSG_VAR(27, 8, 6);
                 SET_MSG_VAR(19, CMM_GET_LV(24), 0);
             }
-			}
-		
-		
-		
+		}
+
 		else if ((CMM_CHK_LVUP(24) == 0) && BIT_CHK(2007) && CMM_GET_LV(24) != 0 && CMM_GET_LV(24) != 10) // Nozomi
         {
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
@@ -790,369 +788,174 @@ void HangOut()
             MSG(WHO_HANG_WITH);
             var17 = SEL(LIST_OF_PEOPLE);
 
-            if (var17 == 0) // Akinari
-            {
-                if (fieldMajor == 12 && fieldMinor == 1)
-                {
-                    MSG(NARI_NEARBY);
-                    goto AEGIS_END;
+            int fieldMajor = -1;
+            int fieldMinor = -1;
+            int callParam1 = -1;
+            int callParam2 = -1;
+            int conditionMet = -1;
+            int nearbyMsg = -1;
+
+            switch (var17) {
+                case 0: // Akinari
+                    fieldMajor = 12;
+                    fieldMinor = 1;
+                    callParam1 = 0;
+                    callParam2 = 0;
+                    nearbyMsg = NARI_NEARBY;
+                    break;
+                case 1: // Mitsuru
+                    fieldMajor = 6;
+                    fieldMinor = 7;
+                    callParam1 = 1;
+                    callParam2 = 0;
+                    nearbyMsg = MITS_NEARBY;
+                    break;
+            case 2: // Yuko
+                fieldMajor = 6;
+                fieldMinor = 4;
+                callParam1 = 3;
+                callParam2 = 0;
+                nearbyMsg = YUKO_NEARBY;
+                break;
+            case 3: // Chihiro
+                fieldMajor = 6;
+                fieldMinor = 4;
+                callParam1 = 3;
+                callParam2 = 0;
+                nearbyMsg = CHIH_NEARBY;
+                break;
+            case 4: // Bebe
+                if (CMM_GET_LV(20) == 0) {
+                    fieldMajor = 6;
+                    fieldMinor = 11;
+                    callParam1 = 0;
+                    callParam2 = 0;
+                } else {
+                    fieldMajor = 6;
+                    fieldMinor = 4;
+                    callParam1 = 3;
+                    callParam2 = 0;
                 }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(12, 1, 0, 0);
-                }
+                nearbyMsg = BEBE_NEARBY;
+                break;
+            case 5: // Fuuka
+                fieldMajor = 6;
+                fieldMinor = 4;
+                callParam1 = 2;
+                callParam2 = 0;
+                nearbyMsg = FUCK_NEARBY;
+                break;
+            case 6: // Aigis
+                fieldMajor = 6;
+                fieldMinor = 3;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = AIG_NEARBY;
+                break;
+            case 7: // Yukari
+                fieldMajor = 6;
+                fieldMinor = 3;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = YUK_NEARBY;
+                break;
+            case 8: // Hidetoshi
+                fieldMajor = 6;
+                fieldMinor = 4;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = HIDE_NEARBY;
+                break;
+            case 9: // Old Couple
+                fieldMajor = 9;
+                fieldMinor = 1;
+                callParam1 = 6;
+                callParam2 = 0;
+                nearbyMsg = BOOK_NEARBY;
+                break;
+            case 10: // Kazushi
+                fieldMajor = 6;
+                fieldMinor = 3;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = KAZ_NEARBY;
+                break;
+            case 11: // Maiko
+                fieldMajor = 12;
+                fieldMinor = 1;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = MAIK_NEARBY;
+                break;
+            case 12: // Kenji
+                fieldMajor = 6;
+                fieldMinor = 3;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = KEN_NEARBY;
+                break;
+            case 13: // Mamoru
+                fieldMajor = 9;
+                fieldMinor = 1;
+                callParam1 = 6;
+                callParam2 = 0;
+                nearbyMsg = MAMO_NEARBY;
+                break;
+            case 14: // Meisuke
+                fieldMajor = 6;
+                fieldMinor = 11;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = KEIS_NEARBY;
+                break;
+            case 15: // Maya
+                fieldMajor = 7;
+                fieldMinor = 19;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = MAYA_NEARBY;
+                break;
+            case 16: // Tanaka
+                fieldMajor = 8;
+                fieldMinor = 1;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = TANA_NEARBY;
+                break;
+            case 17: // Mutatsu
+                fieldMajor = 8;
+                fieldMinor = 2;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = MUTA_NEARBY;
+                break;
+            case 18: // Nozomi
+                fieldMajor = 8;
+                fieldMinor = 1;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = NOZO_NEARBY;
+                break;
+            case 19:
+                MSG_WND_CLS();
+                return;
+            default:
+                break;
             }
 
-            if (var17 == 1) // Mitsuru
-            {
-                if (fieldMajor == 6 && fieldMinor == 7)
-                {
-                    MSG(MITS_NEARBY);
+            if (fieldMajor != -1 && fieldMinor != -1) {
+                if (fieldMajor == CurFieldMajor && fieldMinor == CurFieldMinor) {
+                    MSG(nearbyMsg);
                     goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 7, 1, 0);
-                }
-            }
-
-            if (var17 == 2) // Yuko
-            {
-                if (fieldMajor == 6 && fieldMinor == 4)
-                {
-                    MSG(YUKO_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 4, 3, 0);
-                }
-            }
-
-            if (var17 == 3) // Chihiro
-			{
-                if (fieldMajor == 6 && fieldMinor == 4)
-                {
-                    MSG(CHIH_NEARBY);
-                    goto AEGIS_END;
-                }
-                // else if ((var5 == 10) || (var6 == 10) || (var7 == 10))
-                /// {
-                //	FUNCTION_0024( 25 );
-                //	WAIT( 10 );
-                //	FUNCTION_0024( 70 );
-                //	WAIT( 10 );
-                //	MSG(CHANGED_MIND_CHIH);
-                //	FUNCTION_0024( 319 );
-                //	WAIT( 10 );
-                //	FUNCTION_0024( 235 );
-                //	if (CMM_GET_LV(10) == 3)
-                //	{
-                //		BIT_ON(1813);
-                //		MSG_WND_CLS();
-                //		FADE( 3, 20 );
-                //		FUNCTION_000F();
-                //		CALL_EVENT( 850, 4 );
-                //		NEXT_TIME();
-                //	}
-                //	if (CMM_GET_LV(10) == 2)
-                //	{
-                //		BIT_ON(1813);
-                //		MSG_WND_CLS();
-                //		FADE( 3, 20 );
-                //		FUNCTION_000F();
-                //		CALL_EVENT( 850, 3 );
-                //		NEXT_TIME();
-                //	}
-                //	if (( CMM_GET_LV(10) == 5) || (CMM_GET_LV(10) == 6))
-                //	{
-                //		BIT_ON(1813);
-                //		MSG_WND_CLS();
-                //		FADE( 3, 20 );
-                //		FUNCTION_000F();
-                //		CALL_EVENT( 840, 31 );
-                //		NEXT_TIME();
-                //	}
-                else
-                {
+                } else {
                     MSG_WND_CLS();
                     FADE(3, 20);
                     FUNCTION_000F();
-                    CALL_FIELD(6, 4, 3, 0);
+                    CALL_FIELD(fieldMajor, fieldMinor, callParam1, callParam2);
                 }
-            }
-
-            if (var17 == 4) // Bebe
-            {
-                if (CMM_GET_LV(20) == 0)
-				{
-					if (fieldMajor == 6 && fieldMinor == 11)
-					{
-						MSG(BEBE_NEARBY);
-						goto AEGIS_END_0;
-					}
-					else
-					{
-						MSG_WND_CLS();
-						FADE(3, 20);
-						FUNCTION_000F();
-						CALL_FIELD(6, 11, 0, 0);
-					}
                 }
-                else if (fieldMajor == 6 && fieldMinor == 4)
-                {
-                    MSG(BEBE_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 4, 0, 0);
-                }
-            }
-
-            if (var17 == 5) // Fuuka
-            {
-                if (fieldMajor == 6 && fieldMinor == 4)
-                {
-                    MSG(FUCK_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 4, 2, 0);
-                }
-            }
-
-            if (var17 == 6) // Aigis
-            {
-                if (fieldMajor == 6 && fieldMinor == 3)
-                {
-                    MSG(AIG_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 3, 0, 0);
-                }
-            }
-
-            if (var17 == 7) // Yukari
-            {
-                if (fieldMajor == 6 && fieldMinor == 3)
-                {
-                    MSG(YUK_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 3, 0, 0);
-                }
-            }
-
-            if (var17 == 8) // Hidetoshi
-            {
-                if (fieldMajor == 6 && fieldMinor == 4)
-                {
-                    MSG(HIDE_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 4, 2, 0);
-                }
-            }
-
-            if (var17 == 9) // Old Couple
-            {
-                if (fieldMajor == 9 && fieldMinor == 1)
-                {
-                    MSG(BOOK_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(9, 1, 6, 0);
-                }
-            }
-
-            if (var17 == 10) // Kazushi
-            {
-                if (fieldMajor == 6 && fieldMinor == 3)
-                {
-                    MSG(KAZ_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 3, 0, 0);
-                }
-            }
-
-            if (var17 == 11) // Maiko
-            {
-                if (fieldMajor == 12 && fieldMinor == 1)
-                {
-                    MSG(MAIK_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(12, 1, 0, 0);
-                }
-            }
-
-            if (var17 == 12) // Kenji
-            {
-                if (fieldMajor == 6 && fieldMinor == 3)
-                {
-                    MSG(KEN_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 3, 0, 0);
-                }
-            }
-
-            if (var17 == 13) // Mamoru
-            {
-                if (fieldMajor == 9 && fieldMinor == 1)
-                {
-                    MSG(MAMO_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(9, 1, 6, 0);
-                }
-            }
-
-            if (var17 == 14) // Keisuke
-            {
-                if (fieldMajor == 6 && fieldMinor == 11)
-                {
-                    MSG(KEIS_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 11, 0, 0);
-                }
-            }
-
-            if (var17 == 15) // Maya
-            {
-                if (fieldMajor == 7 && fieldMinor == 19)
-                {
-                    MSG(MAYA_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(7, 19, 0, 0);
-                }
-            }
-
-            if (var17 == 16) // Tanaka
-            {
-                if (fieldMajor == 8 && fieldMinor == 1)
-                {
-                    MSG(TANA_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(8, 1, 0, 0);
-                }
-            }
-
-            if (var17 == 17) // Mutatsu
-            {
-                if (fieldMajor == 8 && fieldMinor == 2)
-                {
-                    MSG(MUTA_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(8, 2, 0, 0);
-                }
-            }
-
-            if (var17 == 18) // Nozomi
-            {
-                if (fieldMajor == 8 && fieldMinor == 1)
-                {
-                    MSG(NOZO_NEARBY);
-                    goto AEGIS_END;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(8, 1, 0, 0);
-                }
-            }
-
-            if (var17 == 19)
-            {
-				MSG_WND_CLS();
-                return;
-            }
         }
-    }
+        }
     else if (BIT_CHK(4103))
     {
     AEGIS_END_0:
@@ -1163,15 +966,15 @@ void HangOut()
 		int var51;
 		int var80;
         int whosAroundMask = 524287;
-        int fieldMajor;
-        int fieldMinor;
+        int CurFieldMajor;
+        int CurFieldMinor;
 		var43 = EVT_FUNCTION_002A(0); // Rio
         var48 = EVT_FUNCTION_002A(1); // Saori
 		var51 = EVT_FUNCTION_0023( 14); // Ryoji
 		var56 = EVT_FUNCTION_0023( 0x10 ); // Ken
 		var80 = EVT_FUNCTION_0023( 23 ); // Akihiko
-        fieldMajor = FLD_GET_MAJOR();
-        fieldMinor = FLD_GET_MINOR();
+        CurFieldMajor = FLD_GET_MAJOR();
+        CurFieldMinor = FLD_GET_MINOR();
 		
 		
 		if ( !BIT_CHK(5678) )
@@ -1930,369 +1733,187 @@ void HangOut()
         }
         else
         {
+            int fieldMajor = -1;
+            int fieldMinor = -1;
+            int callParam1 = -1;
+            int callParam2 = -1;
+            int conditionMet = -1;
+            int nearbyMsg = -1;
             MSG(WHO_HANG_WITH);
             var17 = SEL(LIST_OF_PEOPLE_F);
-
-            if (var17 == 0) // Junpei
-            {
-                if (fieldMajor == 6 && fieldMinor == 3)
-                {
-                    MSG(JUN_NEARBY);
-                    goto AEGIS_END_0;
+            switch (var17) {
+                case 0: // Junpei
+                    fieldMajor = 6;
+                    fieldMinor = 3;
+                    callParam1 = 0;
+                    callParam2 = 0;
+                    nearbyMsg = JUN_NEARBY;
+                    break;
+                case 1: // Hidetoshi
+                fieldMajor = 6;
+                fieldMinor = 4;
+                callParam1 = 2;
+                callParam2 = 0;
+                nearbyMsg = HIDE_NEARBY;
+                break;
+            case 2: // Old Couple
+                fieldMajor = 9;
+                fieldMinor = 1;
+                callParam1 = 6;
+                callParam2 = 0;
+                nearbyMsg = BOOK_NEARBY;
+                break;
+            case 3: // Yukari
+                fieldMajor = 6;
+                fieldMinor = 3;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = YUK_NEARBY;
+                break;
+            case 4: // Fuuka
+                fieldMajor = 6;
+                fieldMinor = 4;
+                callParam1 = 2;
+                callParam2 = 0;
+                nearbyMsg = FUCK_NEARBY;
+                break;
+            case 5: // Mitsuru
+                fieldMajor = 6;
+                fieldMinor = 7;
+                callParam1 = 1;
+                callParam2 = 0;
+                nearbyMsg = MITS_NEARBY;
+                break;
+            case 6: // Aigis
+                fieldMajor = 6;
+                fieldMinor = 3;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = AIG_NEARBY;
+                break;
+            case 7: // Rio
+                if (CMM_GET_LV(var43) == 0) {
+                    fieldMajor = 6;
+                    fieldMinor = 20;
+                    callParam1 = 0;
+                    callParam2 = 0;
+                } else {
+                    fieldMajor = 6;
+                    fieldMinor = 4;
+                    callParam1 = 3;
+                    callParam2 = 0;
                 }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 3, 0, 0);
+                nearbyMsg = RIO_NEARBY;
+                break;
+            case 8: // Koromaru
+                fieldMajor = 7;
+                fieldMinor = 2;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = KORO_NEARBY;
+                break;
+            case 9: // Ryoji
+                fieldMajor = 6;
+                fieldMinor = 3;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = RYOJ_NEARBY;
+                break;
+            case 10: // Ken
+                fieldMajor = 7;
+                fieldMinor = 2;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = KENCOOL_NEARBY;
+                break;
+            case 11: // Maiko
+                fieldMajor = 12;
+                fieldMinor = 1;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = MAIK_NEARBY;
+                break;
+            case 12: // Bebe
+                if (CMM_GET_LV(20) == 0) {
+                    fieldMajor = 6;
+                    fieldMinor = 11;
+                    callParam1 = 0;
+                    callParam2 = 0;
+                } else {
+                    fieldMajor = 6;
+                    fieldMinor = 4;
+                    callParam1 = 3;
+                    callParam2 = 0;
                 }
-            }
-
-            if (var17 == 1) // Hidetoshi
-            {
-                if (fieldMajor == 6 && fieldMinor == 4)
-                {
-                    MSG(HIDE_NEARBY);
-                    goto AEGIS_END_0;
+                nearbyMsg = BEBE_NEARBY;
+                break;
+            case 13: // Tanaka
+                fieldMajor = 8;
+                fieldMinor = 1;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = TANA_NEARBY;
+                break;
+            case 14: // Mutatsu
+                fieldMajor = 8;
+                fieldMinor = 2;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = MUTA_NEARBY;
+                break;
+            case 15: // Akihiko
+                fieldMajor = 6;
+                fieldMinor = 11;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = AKIH_NEARBY;
+                break;
+            case 16: // Akinari
+                fieldMajor = 12;
+                fieldMinor = 1;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = NARI_NEARBY;
+                break;
+            case 17: // Shinjiro
+                fieldMajor = 7;
+                fieldMinor = 2;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = GET_IN_THE_EVA_SHINJI;
+                break;
+            case 18: // Saori Library
+                if (BIT_CHK(1993)) {
+                    fieldMajor = 6;
+                    fieldMinor = 7;
+                    callParam1 = 1;
+                    callParam2 = 0;
+                } else if (BIT_CHK(1992)) {
+                    fieldMajor = 6;
+                    fieldMinor = 4;
+                    callParam1 = 3;
+                    callParam2 = 0;
                 }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 4, 2, 0);
-                }
-            }
-
-            if (var17 == 2) // Old Couple
-            {
-                if (fieldMajor == 9 && fieldMinor == 1)
-                {
-                    MSG(BOOK_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(9, 1, 6, 0);
-                }
-            }
-
-            if (var17 == 3) // Yukari
-            {
-                if (fieldMajor == 6 && fieldMinor == 3)
-                {
-                    MSG(YUK_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 3, 0, 0);
-                }
-            }
-
-            if (var17 == 4) // Fuuka
-            {
-                if (fieldMajor == 6 && fieldMinor == 4)
-                {
-                    MSG(FUCK_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 4, 2, 0);
-                }
-            }
-
-            if (var17 == 5) // Mitsuru
-            {
-                if (fieldMajor == 6 && fieldMinor == 7)
-                {
-                    MSG(MITS_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 7, 1, 0);
-                }
-            }
-
-            if (var17 == 6) // Aigis
-            {
-                if (fieldMajor == 6 && fieldMinor == 3)
-                {
-                    MSG(AIG_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 3, 0, 0);
-                }
-            }
-
-            if (var17 == 7) // Rio
-            {
-				if ( CMM_GET_LV(var43) == 0 )
-				{
-					if ( fieldMajor == 6 && fieldMinor == 20)
-					{
-						MSG(RIO_NEARBY);
-						goto AEGIS_END_0;
-					}
-					else
-					{
-						MSG_WND_CLS();
-						FADE(3, 20);
-						FUNCTION_000F();
-						CALL_FIELD(6, 20, 0, 0);
-					}
-				}
-					
-                else if (fieldMajor == 6 && fieldMinor == 4)
-                {
-                    MSG(RIO_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 4, 3, 0);
-                }
-            }
-
-            if (var17 == 8) // Koromaru
-            {
-                if (fieldMajor == 7 && fieldMinor == 2)
-                {
-                    MSG(KORO_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(7, 2, 0, 0);
-                }
-            }
-
-            if (var17 == 9) // Ryoji
-            {
-                if (fieldMajor == 6 && fieldMinor == 3)
-                {
-                    MSG(RYOJ_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();  
-					FADE(3, 20);                
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 3, 0, 0);
-                }
-            }
-
-            if (var17 == 10) // Ken
-            {
-                if (fieldMajor == 7 && fieldMinor == 2)
-                {
-                    MSG(KENCOOL_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(7, 2, 0, 0);
-                }
-            }
-
-            if (var17 == 11) // Maiko
-            {
-                if (fieldMajor == 12 && fieldMinor == 1)
-                {
-                    MSG(MAIK_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(12, 1, 0, 0);
-                }
-            }
-
-            if (var17 == 12) // Bebe
-            {
-				if (CMM_GET_LV(20) == 0)
-				{
-					if (fieldMajor == 6 && fieldMinor == 11)
-					{
-						MSG(BEBE_NEARBY);
-						goto AEGIS_END_0;
-					}
-					else
-					{
-						MSG_WND_CLS();
-						FADE(3, 20);
-						FUNCTION_000F();
-						CALL_FIELD(6, 11, 0, 0);
-					}
-                }
-					
-                if (fieldMajor == 6 && fieldMinor == 4)
-                {
-                    MSG(BEBE_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 4, 3, 0);
-                }
-            }
-
-            if (var17 == 13) // Tanaka
-            {
-                if (fieldMajor == 8 && fieldMinor == 1)
-                {
-                    MSG(TANA_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(8, 1, 0, 0);
-                }
-            }
-
-            if (var17 == 14) // Mutatsu
-            {
-                if (fieldMajor == 8 && fieldMinor == 2)
-                {
-                    MSG(MUTA_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(8, 2, 0, 0);
-                }
-            }
-
-            if (var17 == 15) // Akihiko
-            {
-                if (fieldMajor == 6 && fieldMinor == 11)
-                {
-                    MSG(AKIH_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 11, 0, 0);
-                }
-            }
-
-            if (var17 == 16) // Akinari
-            {
-                if (fieldMajor == 12 && fieldMinor == 1)
-                {
-                    MSG(NARI_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(12, 1, 0, 0);
-                }
-            }
-
-            if (var17 == 17) // Shinjiro
-            {
-                if (fieldMajor == 7 && fieldMinor == 2)
-                {
-                    MSG(GET_IN_THE_EVA_SHINJI);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(7, 2, 0, 0);
-                }
-            }
-
-            if (var17 == 18) // Saori Library
-            {
-				if ( BIT_CHK(1993) )
-				{
-					if (fieldMajor == 6 && fieldMinor == 7)
-                {
-                    MSG(SAOR_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 7, 1, 0);
-                }
-				}
-				if ( BIT_CHK(1992) )
-				{
-					if (fieldMajor == 6 && fieldMinor == 4)
-                {
-                    MSG(SAOR_NEARBY);
-                    goto AEGIS_END_0;
-                }
-                else
-                {
-					MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 4, 3, 0);
-                }
-				}
-
-            }
-
-            if (var17 == 19)
-            {
-				MSG_WND_CLS();
+                nearbyMsg = SAOR_NEARBY;
+                break;
+            case 19:
+                MSG_WND_CLS();
                 return;
+            default:
+                break;
+            }
+
+            if (fieldMajor != -1 && fieldMinor != -1) {
+                if (fieldMajor == CurFieldMajor && fieldMinor == CurFieldMinor) {
+                    MSG(nearbyMsg);
+                    goto AEGIS_END_0;
+                } else {
+                    MSG_WND_CLS();
+                    FADE(3, 20);
+                    FUNCTION_000F();
+                    CALL_FIELD(fieldMajor, fieldMinor, callParam1, callParam2);
+                }
             }
         }
-        }
+    }
 }
