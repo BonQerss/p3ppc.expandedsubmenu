@@ -796,20 +796,20 @@ void HangOut()
             int nearbyMsg = -1;
 
             switch (var17) {
-                case 0: // Akinari
-                    fieldMajor = 12;
-                    fieldMinor = 1;
-                    callParam1 = 0;
-                    callParam2 = 0;
-                    nearbyMsg = NARI_NEARBY;
-                    break;
-                case 1: // Mitsuru
-                    fieldMajor = 6;
-                    fieldMinor = 7;
-                    callParam1 = 1;
-                    callParam2 = 0;
-                    nearbyMsg = MITS_NEARBY;
-                    break;
+            case 0: // Akinari
+                fieldMajor = 12;
+                fieldMinor = 1;
+                callParam1 = 0;
+                callParam2 = 0;
+                nearbyMsg = NARI_NEARBY;
+                break;
+            case 1: // Mitsuru
+                fieldMajor = 6;
+                fieldMinor = 7;
+                callParam1 = 1;
+                callParam2 = 0;
+                nearbyMsg = MITS_NEARBY;
+                break;
             case 2: // Yuko
                 fieldMajor = 6;
                 fieldMinor = 4;

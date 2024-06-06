@@ -6,6 +6,7 @@ void SaveEveryday()
     {
         if ( !BIT_CHK( 4792 ))
         {
+            BIT_ON(4792);
             MSG_WND_DSP();
             MSG( SaveYesNo );
             int SEL = SEL( YesNo );
@@ -16,7 +17,6 @@ void SaveEveryday()
                 SAVE_MENU();
                 FUNCTION_000D( 0 );
             }
-            BIT_ON(4792);
         }
     }
 }
