@@ -35,7 +35,7 @@ int get_ally_mask(int id) {
 			return 16;
 		case PartyMember.Ken:
 			return 32;
-		case PartyMember.Shinjiro:
+		case PartyMember.ShinjiroMetis:
 			return 64;
 		case PartyMember.Koromaru:
 			return 128;
@@ -110,7 +110,7 @@ void member_add(int id) {
 		PARTY_IN(PartyMember.Ken);
 	}
 	else if (id == 6) { // Shinjiro
-		PARTY_IN(PartyMember.Shinjiro);
+		PARTY_IN(PartyMember.ShinjiroMetis);
 	}
 	else if (id == 7) { // Koromaru
 		PARTY_IN(PartyMember.Koromaru);
