@@ -72,6 +72,11 @@ namespace p3ppc.expandedsubmenu
 
             _bfEmulator.AddFile(flowFile, "field.flow");
             _bfEmulator.AddFile(flowFile, "scheduler_04.flow");
+
+            if (_modLoader.GetActiveMods().Any(x => x.Generic.ModId == "p3ppc.kotonecutscenes"))
+            {
+                _logger.WriteLine($"Found \"Kotone Cutscenes Project\", enabling compatibility mode.", System.Drawing.Color.Green);
+            }
         }
 
         #region Standard Overrides
