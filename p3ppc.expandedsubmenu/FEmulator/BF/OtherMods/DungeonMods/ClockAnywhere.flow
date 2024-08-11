@@ -171,10 +171,10 @@ void HealEveryone() {
     }
     // bit id (((0) + (1024)) + (2048)) + (30) = 3102
     if (BIT_CHK(3102)) {
-        allySP += GET_SP(PartyMember.ShinjiroMetis);
-        allyMaxSP += GET_MAXSP(PartyMember.ShinjiroMetis);
-        allyHP += GET_HP(PartyMember.ShinjiroMetis);
-        allyMaxHP += GET_MAXHP(PartyMember.ShinjiroMetis);
+        allySP += GET_SP(PartyMember.Shinjiro);
+        allyMaxSP += GET_MAXSP(PartyMember.Shinjiro);
+        allyHP += GET_HP(PartyMember.Shinjiro);
+        allyMaxHP += GET_MAXHP(PartyMember.Shinjiro);
     }
     // bit id (((0) + (1024)) + (2048)) + (31) = 3103
     if (BIT_CHK(3103)) {
