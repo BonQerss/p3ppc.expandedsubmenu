@@ -1,0 +1,44 @@
+[
+  {
+    "Name": "PadButton",
+    "Description": "This enum represents the buttons on the gamepad.",
+    "Members": [
+      {"Name":"Circle","Value":14},
+      {"Name":"Select","Value":0},
+      {"Name":"Start","Value":3},
+      {"Name":"Right","Value":5},
+      {"Name":"Left","Value":7},
+      {"Name":"L","Value":8,"#com":"Following numbers haven't been confirmed in P3F."},
+      {"Name":"R","Value":9},
+      {"Name":"Triangle","Value":12},
+      {"Name":"Square","Value":15}
+    ]
+  },
+  {
+    "Name": "FadeEffects",
+    "Description": "",
+    "Members": [
+      {"Name":"FadeOut","Value":1},
+      {"Name":"WipeFromLeft","Value":2},
+      {"Name":"CircleWipe","Value":3}
+    ]
+  },
+  {
+    "Name": "Month",
+    "Description": "This enum represents the different in-game months.",
+    "Members": [
+      {"Name":"January","Value":1},
+      {"Name":"February","Value":2},
+      {"Name":"March","Value":3},
+      {"Name":"April","Value":4},
+      {"Name":"May","Value":5},
+      {"Name":"June","Value":6},
+      {"Name":"July","Value":7},
+      {"Name":"August","Value":8},
+      {"Name":"September","Value":9},
+      {"Name":"October","Value":10},
+      {"Name":"November","Value":11},
+      {"Name":"December","Value":12}
+    ]
+  }
+]

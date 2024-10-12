@@ -4,6 +4,7 @@ using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
 using BF.File.Emulator;
 using BF.File.Emulator.Interfaces;
+using Reloaded.Mod.Interfaces.Internal;
 
 namespace p3ppc.expandedsubmenu
 {
@@ -71,11 +72,31 @@ namespace p3ppc.expandedsubmenu
             }
 
             _bfEmulator.AddFile(flowFile, "field.flow");
-            _bfEmulator.AddFile(flowFile, "scheduler_04.flow");
 
-            if (_modLoader.GetActiveMods().Any(x => x.Generic.ModId == "p3ppc.kotonecutscenes"))
+            // Check for p3ppc.kotonecutscenes. Add normal scheduler_04.bf if Kotone Cutscenes Project is not detected, add compatibility patch if it is! 
+            var mods = _modLoader.GetActiveMods();
+            if (mods.Any(x => x.Generic.ModId == "p3ppc.kotonecutscenes") == true)
             {
-                _logger.WriteLine($"Found \"Kotone Cutscenes Project\", enabling compatibility mode.", System.Drawing.Color.Green);
+                _logger.WriteLine("Found \"Kotone Cutscenes Project\", enabling compatibility mode.");
+                _bfEmulator.AddDirectory(Path.Combine(modDir, "BF", "KCP"));
+            }
+
+            else
+            {
+                _logger.WriteLine("\"Kotone Cutscenes Project\" not detected. (this is not an error!)");
+                _bfEmulator.AddDirectory(Path.Combine(modDir, "BF", "Stock"));
+                _modLoader.ModLoaded += ModLoaded;
+            }
+
+        }
+
+        private void ModLoaded(IModV1 mod, IModConfigV1 modConfig)
+        {
+            if (modConfig.ModId == "p3ppc.kotonecutscenes")
+            {
+                _logger.WriteLine("Found \"Kotone Cutscenes Project\", enabling compatibility mode.");
+                var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId);
+                _bfEmulator.AddDirectory(Path.Combine(modDir, "BF", "KCP"));
             }
         }
 
