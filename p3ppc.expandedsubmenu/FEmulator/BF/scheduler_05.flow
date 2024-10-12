@@ -1,6 +1,12 @@
+
+
+import("scheduler_05.msg");
+
 void every_morning_hook()
 {
     BIT_OFF(4792);
+    MSG_WND_DSP();
+    MSG(TESTTEST123);
 
     every_morning_unhooked();
 }

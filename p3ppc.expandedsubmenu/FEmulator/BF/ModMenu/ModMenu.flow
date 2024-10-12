@@ -563,7 +563,10 @@ void PlayerEditorDisplay()
             case 4: // Count Editor
                 CountEditorDisplay();
                 break;
-            case 5: // Next Page
+            case 5: // SLink Editor
+                SLinkDisplay();
+                break;
+            case 6: // Next Page
                 PlayerEditorDisplay2();
                 break;
         }
@@ -600,17 +603,91 @@ void CountEditorDisplay()
 
 
 
+void executeFunctions(int SLink, int first, int second, int third)
+{
+    switch(first)
+    {
+        case 0:
+            EVT_FUNCTION_000C(1, SLink);
+            break;
+        case 1:
+            EVT_FUNCTION_0007(SLink);
+            break;
+        case 2:
+            CMM_SET_LV(SLink, CMM_GET_LV(SLink) + 1, 9999);
+            break;
+    }
+    if (CMM_GET_LV(7) == 6) return;
+
+    switch(second)
+    {
+        case 0:
+            EVT_FUNCTION_000C(1, SLink);
+            break;
+        case 1:
+            EVT_FUNCTION_0007(SLink);
+            break;
+        case 2:
+            CMM_SET_LV(SLink, CMM_GET_LV(SLink) + 1, 9999);
+            break;
+    }
+    if (CMM_GET_LV(7) == 6) return;
+
+    switch(third)
+    {
+        case 0:
+            EVT_FUNCTION_000C(1, SLink);
+            break;
+        case 1:
+            EVT_FUNCTION_0007(SLink);
+            break;
+        case 2:
+            CMM_SET_LV(SLink, CMM_GET_LV(SLink) + 1, 9999);
+            break;
+    }
+}
+
 void SLinkDisplay()
 {
     int SLink = SelectSLink();
-    if ( SLink != -1 )
+    if (SLink != -1)
     {
-        EVT_FUNCTION_000C( 0, SLink ); // Setting to 0 or 1 does absolutely nothing that I can tell, setting to anything higher causes a game crash
-        CMM_SET_LV( SLink, ( CMM_GET_LV(SLink) + 1 ), 9999 ); // Unsure of what the 3rd param does, seemingly useless as the function is purely visual.
-        EVT_FUNCTION_0007( SLink ); // Actually handles setting the rank to be +1, cannot get it to advance any higher after that, TODO: More research.
+        // Iterate over all permutations
+        for (int p = 0; p < 6; ++p)
+        {
+            switch(p)
+            {
+                case 0:
+                    executeFunctions(SLink, 0, 1, 2);
+                    break;
+                case 1:
+                    executeFunctions(SLink, 0, 2, 1);
+                    break;
+                case 2:
+                    executeFunctions(SLink, 1, 0, 2);
+                    break;
+                case 3:
+                    executeFunctions(SLink, 1, 2, 0);
+                    break;
+                case 4:
+                    executeFunctions(SLink, 2, 0, 1);
+                    break;
+                case 5:
+                    executeFunctions(SLink, 2, 1, 0);
+                    break;
+            }
+            if (CMM_GET_LV(7) == 6)
+            {
+                SET_MSG_VAR(0, p, 0);
+                MSG_WND_DSP();
+                MSG(CURRENTPERM);
+                return;
+            }
+        }
     }
     return;
 }
+
 
 void PlayerEditorDisplay2()
 {

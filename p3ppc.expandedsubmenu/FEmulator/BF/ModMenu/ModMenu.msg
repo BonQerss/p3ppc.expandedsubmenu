@@ -27,6 +27,7 @@
 [s]Items[e]
 [s]Party Edit[e]
 [s]Count Edit[e]
+[s]Social Link Edit[e]
 [s]Next Page[e]
 
 [sel BattleSelect]
@@ -36,6 +37,9 @@
 
 [msg TAR_SEL1_Text]
 [s]Block Select[e]
+
+[msg CURRENTPERM]
+[s]Current permutation is [f 2 4 0][e]
 
 [msg TAR_SEL2_Text]
 [s]Battle Select[e]
