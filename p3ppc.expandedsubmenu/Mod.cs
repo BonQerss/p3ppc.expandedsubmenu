@@ -5,6 +5,7 @@ using Reloaded.Mod.Interfaces;
 using BF.File.Emulator;
 using BF.File.Emulator.Interfaces;
 using Reloaded.Mod.Interfaces.Internal;
+using System.Diagnostics;
 
 namespace p3ppc.expandedsubmenu
 {
@@ -53,6 +54,7 @@ namespace p3ppc.expandedsubmenu
             _owner = context.Owner;
             _configuration = context.Configuration;
             _modConfig = context.ModConfig;
+
 
             var bfEmulatorController = _modLoader.GetController<IBfEmulator>();
             if (bfEmulatorController == null || !bfEmulatorController.TryGetTarget(out _bfEmulator))
