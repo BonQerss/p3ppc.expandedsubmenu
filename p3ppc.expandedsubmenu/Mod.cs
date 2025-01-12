@@ -78,13 +78,21 @@ namespace p3ppc.expandedsubmenu
             if (mods.Any(x => x.Generic.ModId == "p3ppc.kotonecutscenes") == true)
             {
                 _logger.WriteLine("Found \"Kotone Cutscenes Project\", enabling compatibility mode.");
+                var schedulerFile = Path.Combine(modDir, "BF", "KCP", "scheduler_04.flow");
+
                 _bfEmulator.AddDirectory(Path.Combine(modDir, "BF", "KCP"));
+                _bfEmulator.AddFile(flowFile, schedulerFile);
             }
 
             else
             {
                 _logger.WriteLine("\"Kotone Cutscenes Project\" not detected. (this is not an error!)");
+                
+                var schedulerFile = Path.Combine(modDir, "BF", "Stock", "scheduler_04.flow");
+
                 _bfEmulator.AddDirectory(Path.Combine(modDir, "BF", "Stock"));
+
+                _bfEmulator.AddFile(flowFile, schedulerFile);
                 _modLoader.ModLoaded += ModLoaded;
             }
 

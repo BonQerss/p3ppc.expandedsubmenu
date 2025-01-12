@@ -2,21 +2,21 @@ import("FirstTimeSetup.msg");
 
 void TurnOnRecommended()
 {
-    BIT_ON(5678);  // Enable Spoiler-free find a friend
-    BIT_ON(5679);  // Enable Go Back Home Easily
-    BIT_ON(6320);  // Disable First Time Setup
-    BIT_OFF(6321); // Disable Mod Menu
-    BIT_ON(6322);  // Enable QuickTravelPlus
-    BIT_ON(6323);  // Enable MobileCalendar
-    BIT_ON(6324);  // Enable DungeonOptions
-    BIT_ON(6325);  // Enable Find a Friend
-    BIT_OFF(6326); // Disable Save Anywhere
-    BIT_OFF(6327); // Disable Save Everyday
-    BIT_ON(6330);  // Enable Call the Clock (DungeonOptions)
-    BIT_ON(6331);  // Enable Auto Healing(DungeonOptions)
-    BIT_ON(6332);  // Enable Organize Party (DungeonOptions)
-    BIT_ON(6333);  // Enable Floor Selection (DungeonOptions)
-    BIT_ON(6335);  // Enable Default Direct Commands
+    BIT_ON(498);  // Enable Spoiler-free find a friend
+    BIT_ON(499);  // Enable Go Back Home Easily
+    BIT_ON(506);  // Disable First Time Setup // 506
+    BIT_OFF(507); // Disable Mod Menu // 507
+    BIT_ON(508);  // Enable QuickTravelPlus // 508
+    BIT_ON(509);  // Enable MobileCalendar // 509
+    BIT_ON(510);  // Enable DungeonOptions
+    BIT_ON(511);  // Enable Find a Friend
+    BIT_OFF(512); // Disable Save Anywhere
+    BIT_OFF(513); // Disable Save Everyday
+    BIT_ON(516);  // Enable Call the Clock (DungeonOptions)
+    BIT_ON(517);  // Enable Auto Healing(DungeonOptions)
+    BIT_ON(518);  // Enable Organize Party (DungeonOptions)
+    BIT_ON(519);  // Enable Floor Selection (DungeonOptions)
+    BIT_ON(521);  // Enable Default Direct Commands
 }
 
 void FirstTimeSetup()
@@ -29,22 +29,22 @@ void FirstTimeSetup()
     // Set all menu option values to 0
     for (int i = 0; i < 8; i++)
     {
-        BIT_OFF(6321 + i);
+        BIT_OFF(507 + i);507
     }
 
     // Set second group of menu options to 0
     for (int i = 0; i < 3; i++)
     {
-        BIT_OFF(6340 + i);
+        BIT_OFF(526 + i);526
     }
 
     // Enable "Options" in menu for later configuration
-    BIT_ON(6329);
+    BIT_ON(515);515
 
     // Set all dungeon option values to 0
     for (int i = 0; i < 7; i++)
     {
-        BIT_OFF(6330 + i);
+        BIT_OFF(516 + i);516
     }
 
     TurnOnRecommended();
@@ -75,7 +75,7 @@ void MenuOptions()
     // either we remove this one and always call FirstTimeSetup
     // in those situations, or we remove those checks and call MenuOptions directly.
     // Considering FirstTimeSetup calls MenuOptions, the latter is probably best.
-    if (!BIT_CHK(6320))
+    if (!BIT_CHK(506)) // 506
     {
         FirstTimeSetup();
     }
@@ -90,10 +90,10 @@ void MenuOptions()
             // Set message variables
             for (int i = 0; i < 8; i++)
             {
-                SET_MSG_VAR(i, 576 + BIT_CHK(6321 + i), 6); // 0 or 1, no or yes
+                SET_MSG_VAR(i, 576 + BIT_CHK(507 + i), 6); // 0 or 1, no or yes // 507
             }
-            SET_MSG_VAR(8, 576 + BIT_CHK(6340), 6);
-            SET_MSG_VAR(9, 576 + BIT_CHK(5679), 6);
+            SET_MSG_VAR(8, 576 + BIT_CHK(526), 6); // 526
+            SET_MSG_VAR(9, 576 + BIT_CHK(499), 6); // 499
             SEL_DEFKEY(PadButton.Circle, 18);
             SEL_DEFKEY(PadButton.Square, 18);
 
@@ -129,13 +129,13 @@ void MenuOptions()
             // Toggle selection or read more about it
             int selection = MSG_SELECT(SquareMenuOptions_Text + pageNum, SquareMenuOptions, mask);
             if (selection == 8) {
-                ToggleOption(RemoveLunchtimeInvites_About, 6340, 0);
+                ToggleOption(RemoveLunchtimeInvites_About, 526, 0); // 526
             }
             else if (selection == 9) {
-                ToggleOption(GBHE_About, 5679, 0);
+                ToggleOption(GBHE_About, 499, 0); // 499
             }
             else if (((selection != 8) || (selection != 9)) && (selection < 10)) {
-                int smSel = ToggleOption(ModMenu_About, 6321, selection); // mod menu about is 0, that would be any number + 0
+                int smSel = ToggleOption(ModMenu_About, 507, selection); // mod menu about is 0, that would be any number + 0 // 507
                 if (smSel == 0) {
                     if ( selection == 0 ) {
                         ModMenuOptionsToggle();
@@ -149,10 +149,10 @@ void MenuOptions()
                 }
                 else if (smSel == 1) {
                     if (selection == 3) {
-                        BIT_OFF(6330);
-                        BIT_OFF(6331);
-                        BIT_OFF(6332);
-                        BIT_OFF(6333);
+                        BIT_OFF(516); // 516
+                        BIT_OFF(517); // 517
+                        BIT_OFF(518); // 518
+                        BIT_OFF(519); // 519
                     }
                     /*else if (selection == 9) { selection 9 is next page... what is this?
                         BIT_OFF(6350);
@@ -171,12 +171,12 @@ void MenuOptions()
                     MSG_WND_DSP();
                     MSG(OptionsWarning);
                 }
-                if (BIT_CHK(6321)) {
-                    if (!BIT_CHK(6372)) {
+                if (BIT_CHK(507)) { // 507
+                    if (!BIT_CHK(559)) { // 559
                         MSG_WND_DSP();
                         MSG(ModMenuWarning);
                         MSG(ModMenuWarning_2);
-                        BIT_ON(6372);
+                        BIT_ON(559); // 559
                     }
                 }
                 MSG_WND_CLS();
@@ -192,8 +192,8 @@ void FindAFriendOptionsToggle()
     while (!done)
     {
         // Set message variables for menu options
-        SET_MSG_VAR(0, 576 + BIT_CHK(5678), 6); // spoiler free mode
-        SET_MSG_VAR(1, 576 + BIT_CHK(6325), 6); // enable it or not
+        SET_MSG_VAR(0, 576 + BIT_CHK(498), 6); // spoiler free mode // 498
+        SET_MSG_VAR(1, 576 + BIT_CHK(511), 6); // enable it or not // 511
         SEL_DEFKEY(PadButton.Circle, 2);
         SEL_DEFKEY(PadButton.Square, 2);
         // Toggle selection or read more about it
@@ -205,9 +205,9 @@ void FindAFriendOptionsToggle()
             SEL_DEFKEY(14, 1);
             int sel = SEL(ToggleMenu);
             if (sel == 0)
-                BIT_ON(5678);
+                BIT_ON(498); // 498
             else if (sel == 1)
-                BIT_OFF(5678);
+                BIT_OFF(498); // 498
             MSG_WND_CLS();
         }
         else
@@ -224,8 +224,8 @@ void ModMenuOptionsToggle()
     while (!done)
     {
         // Set message variables for menu options
-        SET_MSG_VAR(0, 576 + BIT_CHK(5680), 6); // First and foremost 
-        SET_MSG_VAR(1, 576 + BIT_CHK(6321), 6); // enable it or not
+        SET_MSG_VAR(0, 576 + BIT_CHK(497), 6); // First and foremost // 497
+        SET_MSG_VAR(1, 576 + BIT_CHK(507), 6); // enable it or not // 507
         SEL_DEFKEY(PadButton.Circle, 2);
         SEL_DEFKEY(PadButton.Square, 2);
         // Toggle selection or read more about it
@@ -237,9 +237,9 @@ void ModMenuOptionsToggle()
             SEL_DEFKEY(14, 1);
             int sel = SEL(ToggleMenu);
             if (sel == 0)
-                BIT_ON(5680);
+                BIT_ON(497); // 497
             else if (sel == 1)
-                BIT_OFF(5680);
+                BIT_OFF(497); // 497
             MSG_WND_CLS();
         }
         else
@@ -254,7 +254,7 @@ void DungeonOptionsToggle() {
     while (true) {
         // Set message variables for menu options
         for (int i = 0; i < 7; i++) {
-            SET_MSG_VAR(i, 576 + BIT_CHK(6330 + i), 6);
+            SET_MSG_VAR(i, 576 + BIT_CHK(516 + i), 6); // 516
         }
         SEL_DEFKEY(PadButton.Circle, 7);
         SEL_DEFKEY(PadButton.Square, 7);
@@ -263,19 +263,19 @@ void DungeonOptionsToggle() {
         if (selection == 7) {
             break;
         }
-        bool optionSel = ToggleOption(ShowTheClock_About, 6330, selection); // message call (adv_sel), sel + flag
+        bool optionSel = ToggleOption(ShowTheClock_About, 516, selection); // message call (adv_sel), sel + flag // 516
         // TODO: Implement sub-options for other dungeon options if applicable
         // If call the clock was selected
         if (selection == 0) {
             // If call the clock was disabled, disable Traesto Gem flag
             if (optionSel == 1) {
-                BIT_OFF(6360);
+                BIT_OFF(536); // 536
             }
             else { // Ask to use Traesto Gem if call the clock was enabled
                 while (true) {
                     // If call the clock was turned on, show selection for
                     // whether calling the clock should use a traesto
-                    SET_MSG_VAR(0, 576 + BIT_CHK(6360), 6);
+                    SET_MSG_VAR(0, 576 + BIT_CHK(536), 6); // 536
                     SEL_DEFKEY(PadButton.Circle, 1);
                     SEL_DEFKEY(PadButton.Square, 1);
                     MSG_WND_DSP();
@@ -291,10 +291,10 @@ void DungeonOptionsToggle() {
                     SEL_DEFKEY(PadButton.Square, 2);
                     int traestoSel = SEL(ToggleMenu);
                     if (traestoSel == 0) {
-                        BIT_ON(6360);
+                        BIT_ON(536); // 536
                     }
                     else if (traestoSel == 1) {
-                        BIT_OFF(6360);
+                        BIT_OFF(536); // 536
                     }
                     MSG_WND_CLS();
                 }
