@@ -21,6 +21,8 @@ void TurnOnRecommended()
 
 void FirstTimeSetup()
 {
+    // Grab currently playing Tartarus Song to restore later due to bit flag nonsense
+    int restoreTarTar2 = GET_COUNT( 1 );
     // Introduction
     MSG_WND_DSP();
     FUNCTION_002D(SquareMenuConfig);
@@ -48,6 +50,9 @@ void FirstTimeSetup()
     }
 
     TurnOnRecommended();
+
+    // Restore currently playing Tartarus song here to avoid crashing when entering Tartarus after configuring.
+    SET_COUNT( 1, restoreTarTar2 );
 
     // Toggle options until done
     MenuOptions();
@@ -81,11 +86,9 @@ void MenuOptions()
     }
     else
     {
-		// Grab currently playing Tartarus song to restore later due to bit flag nonsense/
+		// Grab currently playing Tartarus song to restore later due to bit flag nonsense
         int restoreTarTar = GET_COUNT( 1 );
-        if ( restoreTarTar > 20000 ) { // Incredibly jank band-aid solution to the current problem
-            restoreTarTar = 0;
-        }
+        
         // Toggle options until done
         bool done = false;
         int pageNum = 0;
