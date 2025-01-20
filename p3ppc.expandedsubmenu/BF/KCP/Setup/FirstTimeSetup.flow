@@ -81,6 +81,8 @@ void MenuOptions()
     }
     else
     {
+        // Grab currently playing Tartarus song to restore later due to bit flag nonsense/
+        int restoreTarTar = GET_COUNT( 1 );
         // Toggle options until done
         bool done = false;
         int pageNum = 0;
@@ -180,6 +182,8 @@ void MenuOptions()
                     }
                 }
                 MSG_WND_CLS();
+                // Restore Tartarus song here due to bit flag nonsense
+                SET_COUNT( 1, restoreTarTar );
             }
         }
     }

@@ -41,9 +41,6 @@
 [s]Next[e]
 [s]Previous[e]
 
-[msg CURRENTCOUNT]
-[s]Current Count is [f 2 4 0][e]
-
 [msg OptionsWarning]
 [s]Access the Options Menu again by pressing
 [n]the [f 0 1 2]Command Menu button[f 0 1 0] from the top level

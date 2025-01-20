@@ -80,9 +80,12 @@ void MenuOptions()
         FirstTimeSetup();
     }
     else
-    {   
-        // Grab currently playing Tartarus song to restore later due to bit flag nonsense/
+    {
+		// Grab currently playing Tartarus song to restore later due to bit flag nonsense/
         int restoreTarTar = GET_COUNT( 1 );
+        if ( restoreTarTar > 20000 ) { // Incredibly jank band-aid solution to the current problem
+            restoreTarTar = 0;
+        }
         // Toggle options until done
         bool done = false;
         int pageNum = 0;
@@ -182,10 +185,7 @@ void MenuOptions()
                     }
                 }
                 MSG_WND_CLS();
-                MSG_WND_DSP();
-                SET_MSG_vAR( 0, restoreTarTar, 0 );
-                MSG( CURRENTCOUNT );
-                // Restore Tartarus song here due to bit flag nonsense
+				// Restore Tartarus song here due to bit flag nonsense
                 SET_COUNT( 1, restoreTarTar );
             }
         }
