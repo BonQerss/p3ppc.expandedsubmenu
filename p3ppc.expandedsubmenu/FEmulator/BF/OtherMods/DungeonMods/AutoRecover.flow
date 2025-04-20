@@ -1,0 +1,108 @@
+void auto_recover() {
+    int cAllyID;
+    for (int i = 2; i < 10; i++) // Iterate though all 10 party members
+    {
+        if (i >= 6) // Skip 6 or Fuuka, non playable navigator
+        {
+            cAllyID = (i + 1);
+        }
+        else 
+        {
+            cAllyID = i;
+        }
+        
+        if (BIT_CHK(320 + i) && ally_in_party(cAllyID)) // Check if party member is unlocked, check if ally is in party
+        {
+            int curYukariHP = GET_HP(cAllyID);
+            int YukariHP = GET_MAXHP(cAllyID);
+            int curYukariSP = GET_SP(cAllyID);
+            int YukariSP = GET_MAXSP(cAllyID);
+            
+            int HEALING_ITEMS[] = { 1024, 1025, 1026 }; // Store item ID list for healing items, least to greatest
+            int HEALING_AMOUNT[] = { 20, 30, 40 }; // Store healing values for those items
+            int NUM_ITEMS_HEAL = 3; // Number of values in both arrays
+            int SP_ITEMS[] = { 1050, 1051, 1052 };
+            int SP_AMOUNT[] = { 20, 30, 40 };
+            int NUM_ITEMS_SP = 3;
+            
+            if (curYukariHP < YukariHP) 
+            {
+                int YukaDif = YukariHP - curYukariHP;
+                
+                for (int j = 0; j < NUM_ITEMS; j++) 
+                {
+                    int ITEM_ID = HEALING_ITEMS[j];
+                    int HEALING_AMOUNT_NUM = HEALING_AMOUNT[j];
+                    int ITEM_COUNT = GET_ITEM_NUM(ITEM_ID); // Store number of items in variable for comparing
+                    
+                    while (YukaDif > 0 && ITEM_COUNT > 0) // Make sure you have items and that you actually need to hea;
+                    {
+                        int newHP = curYukariHP + HEALING_AMOUNT_NUM;
+    
+                        if (newHP > YukariHP) 
+                        {
+                            newHP = YukariHP;
+                        }
+                        
+                        SET_HP(cAllyID, newHP);
+                        SET_ITEM_NUM(ITEM_ID, ITEM_COUNT - 1); // Remove item from inventory
+                        
+                        YukaDif -= HEALING_AMOUNT_NUM;
+    
+                        if (YukaDif <= 0) // Overhealing protection / item waste protection
+                        {
+                            YukaDif = 0;
+                            break;
+                        }
+                        
+                        ITEM_COUNT = GET_ITEM_NUM(ITEM_ID); // Update item total
+                    }
+                    
+                    if (YukaDif == 0) // Stop running code if finished
+                    {
+                        break;
+                    }
+                }
+            }
+            if (curYukariSP < YukariSP) 
+            {
+                int YukaDif = YukariSP - curYukariSP;
+                
+                for (int j = 0; j < NUM_ITEMS_SP; j++) 
+                {
+                    int ITEM_ID = SP_ITEMS_ITEMS[j];
+                    int HEALING_AMOUNT_NUM = SP_AMOUNT_AMOUNT[j];
+                    int ITEM_COUNT = GET_ITEM_NUM(ITEM_ID); // Store number of items in variable for comparing
+                    
+                    while (YukaDif > 0 && ITEM_COUNT > 0) // Make sure you have items and that you actually need to hea;
+                    {
+                        int newSP = curYukariSP + HEALING_AMOUNT_NUM;
+    
+                        if (newSP > YukariSP) 
+                        {
+                            newSP = YukariSP;
+                        }
+                        
+                        SET_SP(cAllyID, newSP);
+                        SET_ITEM_NUM(ITEM_ID, ITEM_COUNT - 1); // Remove item from inventory
+                        
+                        YukaDif -= HEALING_AMOUNT_NUM;
+    
+                        if (YukaDif <= 0) // Overhealing protection / item waste protection
+                        {
+                            YukaDif = 0;
+                            break;
+                        }
+                        
+                        ITEM_COUNT = GET_ITEM_NUM(ITEM_ID); // Update item total
+                    }
+                    
+                    if (YukaDif == 0) // Stop running code if finished
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
