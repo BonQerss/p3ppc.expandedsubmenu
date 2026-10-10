@@ -2,315 +2,339 @@ import("FirstTimeSetup.msg");
 
 void TurnOnRecommended()
 {
-    BIT_ON(5678);  // Enable Spoiler-free find a friend
-    BIT_ON(5679);  // Enable Go Back Home Easily
-    BIT_ON(6320);  // Disable First Time Setup
-    BIT_OFF(6321); // Disable Mod Menu
-    BIT_ON(6322);  // Enable QuickTravelPlus
-    BIT_ON(6323);  // Enable MobileCalendar
-    BIT_ON(6324);  // Enable DungeonOptions
-    BIT_ON(6325);  // Enable Find a Friend
-    BIT_OFF(6326); // Disable Save Anywhere
-    BIT_OFF(6327); // Disable Save Everyday
-    BIT_ON(6330);  // Enable Call the Clock (DungeonOptions)
-    BIT_ON(6331);  // Enable Auto Healing(DungeonOptions)
-    BIT_ON(6332);  // Enable Organize Party (DungeonOptions)
-    BIT_ON(6333);  // Enable Floor Selection (DungeonOptions)
-    BIT_ON(6335);  // Enable Default Direct Commands
+    BIT_ON(5161);
+    BIT_ON(5162);
+    BIT_ON(5153);
+    BIT_OFF(5154);
+    BIT_ON(5155);
+    BIT_ON(5156);
+    BIT_ON(5157);
+    BIT_ON(5158);
+    BIT_OFF(5159);
+    BIT_OFF(5160);
+    BIT_OFF(5180);
+    BIT_ON(5165);
+    BIT_ON(5166);
+    BIT_ON(5167);
+    BIT_ON(5168);
+    BIT_OFF(5170);
+    BIT_OFF(5171);
+    BIT_ON(5178);
+    BIT_ON(5179);
 }
 
 void FirstTimeSetup()
 {
-    // Grab currently playing Tartarus Song to restore later due to bit flag nonsense
-    int restoreTarTar2 = GET_COUNT( 1 );
-    // Introduction
+    int restoreTarTar = GET_COUNT(1);
+
     MSG_WND_DSP();
     FUNCTION_002D(SquareMenuConfig);
     MSG_WND_CLS();
 
-    // Set all menu option values to 0
-    for (int i = 0; i < 8; i++)
+    int i = 0;
+
+    while (i < 8)
     {
-        BIT_OFF(6321 + i);
+        BIT_OFF(5154 + i);
+        i = i + 1;
     }
 
-    // Set second group of menu options to 0
-    for (int i = 0; i < 3; i++)
+    i = 0;
+    while (i < 3)
     {
-        BIT_OFF(6340 + i);
+        BIT_OFF(5172 + i);
+        i = i + 1;
     }
 
-    // Enable "Options" in menu for later configuration
-    BIT_ON(6329);
+    BIT_ON(5164);
 
-    // Set all dungeon option values to 0
-    for (int i = 0; i < 7; i++)
+    i = 0;
+    while (i < 7)
     {
-        BIT_OFF(6330 + i);
+        BIT_OFF(5165 + i);
+        i = i + 1;
     }
+
+    BIT_OFF(5178);
 
     TurnOnRecommended();
-
-    // Restore currently playing Tartarus song here to avoid crashing when entering Tartarus after configuring.
-    SET_COUNT( 1, restoreTarTar2 );
-
-    // Toggle options until done
+    SET_COUNT(1, restoreTarTar);
     MenuOptions();
 }
 
-int ToggleOption(int startMsg, int startFlag, int selection) {
+int ToggleOption(int startMsg, int startFlag, int selection)
+{
     MSG_WND_DSP();
-    MSG(startMsg + selection); // about section for each mod
+    MSG(startMsg + selection);
     SEL_DEFKEY(PadButton.Circle, 2);
     int sel = SEL(ToggleMenu);
     MSG_WND_CLS();
-    if (sel == 0) { // 0 == On
+
+    if (sel == 0)
         BIT_ON(startFlag + selection);
-    }
-    else if (sel == 1) { // 1 == Off
+    else if (sel == 1)
         BIT_OFF(startFlag + selection);
-    }
+
     return sel;
 }
 
 void MenuOptions()
 {
-    // First time setup for Custom Square Menu
-    // TODO: I've noticed redundant checks in other files...
-    // either we remove this one and always call FirstTimeSetup
-    // in those situations, or we remove those checks and call MenuOptions directly.
-    // Considering FirstTimeSetup calls MenuOptions, the latter is probably best.
-    if (!BIT_CHK(6320))
+    if (!BIT_CHK(5153))
     {
         FirstTimeSetup();
+        return;
     }
-    else
+
+    int restoreTarTar = GET_COUNT(1);
+    bool done = false;
+    int pageNum = 0;
+
+    while (!done)
     {
-		// Grab currently playing Tartarus song to restore later due to bit flag nonsense
-        int restoreTarTar = GET_COUNT( 1 );
-        
-        // Toggle options until done
-        bool done = false;
-        int pageNum = 0;
-        int mask = 0;
-        while (!done)
+        int i = 0;
+
+        while (i < 8)
         {
-            // Set message variables
-            for (int i = 0; i < 8; i++)
-            {
-                SET_MSG_VAR(i, 576 + BIT_CHK(6321 + i), 6); // 0 or 1, no or yes
-            }
-            SET_MSG_VAR(8, 576 + BIT_CHK(6340), 6);
-            SET_MSG_VAR(9, 576 + BIT_CHK(5679), 6);
-            SEL_DEFKEY(PadButton.Circle, 18);
-            SEL_DEFKEY(PadButton.Square, 18);
+            SET_MSG_VAR(i, 576 + BIT_CHK(5154 + i), 6);
+            i = i + 1;
+        }
 
-            if (!pageNum)
+        SET_MSG_VAR(8, 576 + BIT_CHK(5172), 6);
+        SET_MSG_VAR(9, 576 + BIT_CHK(5162), 6);
+
+        SEL_DEFKEY(PadButton.Circle, 18);
+        SEL_DEFKEY(PadButton.Square, 18);
+
+        int mask;
+        if (pageNum == 0)
+        {
+            mask = 3040;
+            if (!ModMenuShown())
             {
-                mask = 3040; // 0b1011_1110_0000
-                if(!ModMenuShown())
-                {
-                    // Hide mod menu option
-                    mask += 1;
-                    // Show save anywhere on first page
-                    mask -= 32; // 0b0010_0000
-                }
-                SEL_DEFKEY(10, 10);
-                SEL_DEFKEY(11, 10);
-                SEL_DEFKEY(PadButton.Right, 10);
-                SEL_DEFKEY(PadButton.Left, 10);
+                mask += 1;
+                mask -= 32;
             }
-            else
+            SEL_DEFKEY(PadButton.Right, 10);
+            SEL_DEFKEY(PadButton.Left, 10);
+        }
+        else
+        {
+            mask = 1055;
+            if (!ModMenuShown())
+                mask += 32;
+            SEL_DEFKEY(PadButton.Right, 11);
+            SEL_DEFKEY(PadButton.Left, 11);
+        }
+
+        int selection = MSG_SELECT(SquareMenuOptions_Text + pageNum, SquareMenuOptions, mask);
+
+        if (selection == 8)
+            ToggleOption(RemoveLunchtimeInvites_About, 5172, 0);
+        else if (selection == 9)
+            ToggleOption(GBHE_About, 5162, 0);
+        else if (selection < 8)
+        {
+            int state = ToggleOption(ModMenu_About, 5154, selection);
+
+            if (selection == 6)
             {
-                mask = 1055; // 0b0100_0001_1111
-                if(!ModMenuShown())
-                {
-                    // Hide save anywhere on second page
-                    mask += 32; // 0b0010_0000
-                }
-                SEL_DEFKEY(10, 11);
-                SEL_DEFKEY(11, 11);
-                SEL_DEFKEY(PadButton.Right, 11);
-                SEL_DEFKEY(PadButton.Left, 11);
+                if (state == 0) BIT_ON(5180);
+                else if (state == 1) BIT_OFF(5180);
             }
 
-            // Toggle selection or read more about it
-            int selection = MSG_SELECT(SquareMenuOptions_Text + pageNum, SquareMenuOptions, mask);
-            if (selection == 8) {
-                ToggleOption(RemoveLunchtimeInvites_About, 6340, 0);
+            if (state == 0)
+            {
+                if (selection == 0)
+                    ModMenuOptionsToggle();
+                else if (selection == 3)
+                    DungeonOptionsToggle();
+                else if (selection == 4)
+                    FindAFriendOptionsToggle();
             }
-            else if (selection == 9) {
-                ToggleOption(GBHE_About, 5679, 0);
-            }
-            else if (((selection != 8) || (selection != 9)) && (selection < 10)) {
-                int smSel = ToggleOption(ModMenu_About, 6321, selection); // mod menu about is 0, that would be any number + 0
-                if (smSel == 0) {
-                    if ( selection == 0 ) {
-                        ModMenuOptionsToggle();
-                    }
-                    if (selection == 3) {
-                        DungeonOptionsToggle();
-                    }
-                    else if (selection == 4) {
-                        FindAFriendOptionsToggle();
-                    }
-                }
-                else if (smSel == 1) {
-                    if (selection == 3) {
-                        BIT_OFF(6330);
-                        BIT_OFF(6331);
-                        BIT_OFF(6332);
-                        BIT_OFF(6333);
-                    }
-                    /*else if (selection == 9) { selection 9 is next page... what is this?
-                        BIT_OFF(6350);
-                        BIT_OFF(6351);
-                        BIT_OFF(6352);
-                        BIT_OFF(6353);
-                    }*/
-                }
-            }
-            else if (selection == 10 || selection == 11) {
-                pageNum = !pageNum;
-            }
-            else {
-                done = true;
-                if (!ModMenuEnabled()) {
-                    MSG_WND_DSP();
-                    MSG(OptionsWarning);
-                }
-                if (BIT_CHK(6321)) {
-                    if (!BIT_CHK(6372)) {
-                        MSG_WND_DSP();
-                        MSG(ModMenuWarning);
-                        MSG(ModMenuWarning_2);
-                        BIT_ON(6372);
-                    }
-                }
-                MSG_WND_CLS();
-				// Restore Tartarus song here due to bit flag nonsense
-                SET_COUNT( 1, restoreTarTar );
+            else if (selection == 3)
+            {
+                BIT_OFF(5165);
+                BIT_OFF(5166);
+                BIT_OFF(5167);
+                BIT_OFF(5168);
             }
         }
+        else if (selection == 10 || selection == 11)
+        {
+            if (pageNum == 0)
+                pageNum = 1;
+            else
+                pageNum = 0;
+        }
+        else
+            done = true;
     }
+
+    if (!ModMenuEnabled())
+    {
+        MSG_WND_DSP();
+        MSG(OptionsWarning);
+    }
+
+    if (BIT_CHK(5154) && !BIT_CHK(5176))
+    {
+        MSG_WND_DSP();
+        MSG(ModMenuWarning);
+        MSG(ModMenuWarning_2);
+        BIT_ON(5176);
+    }
+
+    MSG_WND_CLS();
+    SET_COUNT(1, restoreTarTar);
 }
 
 void FindAFriendOptionsToggle()
 {
-    // Toggle options until done
-    bool done = false;
-    while (!done)
+    while (true)
     {
-        // Set message variables for menu options
-        SET_MSG_VAR(0, 576 + BIT_CHK(5678), 6); // spoiler free mode
-        SET_MSG_VAR(1, 576 + BIT_CHK(6325), 6); // enable it or not
+        SET_MSG_VAR(0, 576 + BIT_CHK(5161), 6);
+        SET_MSG_VAR(1, 576 + BIT_CHK(5158), 6);
         SEL_DEFKEY(PadButton.Circle, 2);
         SEL_DEFKEY(PadButton.Square, 2);
-        // Toggle selection or read more about it
-        int selection = MSG_SELECT(FindAFriendOptions_Text, FindAFriendOptions, 0); 
-        if (selection == 0)
-        {
-            MSG_WND_DSP();
-            MSG(SPOILER_TOGGLE);
-            SEL_DEFKEY(14, 1);
-            int sel = SEL(ToggleMenu);
-            if (sel == 0)
-                BIT_ON(5678);
-            else if (sel == 1)
-                BIT_OFF(5678);
-            MSG_WND_CLS();
-        }
-        else
-        {
-            done = true;
-        }
+
+        int selection = MSG_SELECT(FindAFriendOptions_Text, FindAFriendOptions, 0);
+        if (selection != 0)
+            return;
+
+        MSG_WND_DSP();
+        MSG(SPOILER_TOGGLE);
+        SEL_DEFKEY(PadButton.Circle, 1);
+        int sel = SEL(ToggleMenu);
+
+        if (sel == 0)
+            BIT_ON(5161);
+        else if (sel == 1)
+            BIT_OFF(5161);
+
+        MSG_WND_CLS();
     }
 }
 
 void ModMenuOptionsToggle()
 {
-    // Toggle options until done
-    bool done = false;
-    while (!done)
+    while (true)
     {
-        // Set message variables for menu options
-        SET_MSG_VAR(0, 576 + BIT_CHK(5680), 6); // First and foremost 
-        SET_MSG_VAR(1, 576 + BIT_CHK(6321), 6); // enable it or not
+        SET_MSG_VAR(0, 576 + BIT_CHK(5163), 6);
+        SET_MSG_VAR(1, 576 + BIT_CHK(5154), 6);
         SEL_DEFKEY(PadButton.Circle, 2);
         SEL_DEFKEY(PadButton.Square, 2);
-        // Toggle selection or read more about it
-        int selection = MSG_SELECT(ModMenuFirst_Text, ModMenuFirst, 0); 
-        if (selection == 0)
+
+        int selection = MSG_SELECT(ModMenuFirst_Text, ModMenuFirst, 0);
+        if (selection != 0)
+            return;
+
+        MSG_WND_DSP();
+        MSG(ShowModMenuFirst);
+        SEL_DEFKEY(PadButton.Circle, 1);
+        int sel = SEL(ToggleMenu);
+
+        if (sel == 0)
+            BIT_ON(5163);
+        else if (sel == 1)
+            BIT_OFF(5163);
+
+        MSG_WND_CLS();
+    }
+}
+
+void DungeonOptionsToggle()
+{
+    int page = 0;
+
+    while (true)
+    {
+        SET_MSG_VAR(0, 576 + BIT_CHK(5165), 6);
+        SET_MSG_VAR(1, 576 + BIT_CHK(5166), 6);
+        SET_MSG_VAR(2, 576 + BIT_CHK(5167), 6);
+        SET_MSG_VAR(3, 576 + BIT_CHK(5168), 6);
+        SET_MSG_VAR(4, 576 + BIT_CHK(5169), 6);
+        SET_MSG_VAR(5, 576 + BIT_CHK(5171), 6);
+        SET_MSG_VAR(6, 576 + BIT_CHK(5170), 6);
+        SET_MSG_VAR(7, 576 + BIT_CHK(5178), 6);
+        SET_MSG_VAR(8, 576 + BIT_CHK(5179), 6);
+
+        SEL_DEFKEY(PadButton.Circle, 999);
+
+        int selection;
+
+        if (page == 0)
         {
-            MSG_WND_DSP();
-            MSG(ShowModMenuFirst);
-            SEL_DEFKEY(14, 1);
-            int sel = SEL(ToggleMenu);
-            if (sel == 0)
-                BIT_ON(5680);
-            else if (sel == 1)
-                BIT_OFF(5680);
-            MSG_WND_CLS();
+            SEL_DEFKEY(PadButton.R, 5);
+            selection = MSG_SELECT(DungeonOptions_Text, DungeonOptionsPage1, 0);
+
+            if (selection == 999 || selection == 6)
+                return;
+
+            if (selection == 5)
+            {
+                page = 1;
+                continue;
+            }
+
+            int state = ToggleOption(ShowTheClock_About, 5165, selection);
+
+            if (selection == 0)
+            {
+                if (state == 1)
+                    BIT_OFF(5175);
+                else if (state == 0)
+                    HealingClockOptions();
+            }
         }
         else
         {
-            done = true;
+            SEL_DEFKEY(PadButton.L, 4);
+            selection = MSG_SELECT(DungeonOptions_Text_2, DungeonOptionsPage2, 0);
+
+            if (selection == 999 || selection == 5)
+                return;
+
+            if (selection == 4)
+            {
+                page = 0;
+                continue;
+            }
+
+            if (selection == 0)
+                ToggleOption(DefaultDirectCommands_About, 5171, 0);
+            else if (selection == 1)
+                ToggleOption(GameOverSkip_About, 5170, 0);
+            else if (selection == 2)
+                ToggleOption(TartarusWarp_About, 5178, 0);
+            else if (selection == 3)
+                ToggleOption(RareChestWarning_About, 5179, 0);
         }
     }
 }
 
-void DungeonOptionsToggle() {
-    // Toggle options until done
-    while (true) {
-        // Set message variables for menu options
-        for (int i = 0; i < 7; i++) {
-            SET_MSG_VAR(i, 576 + BIT_CHK(6330 + i), 6);
-        }
-        SEL_DEFKEY(PadButton.Circle, 7);
-        SEL_DEFKEY(PadButton.Square, 7);
-        // Toggle selection or read more about it
-        int selection = MSG_SELECT(DungeonOptions_Text, DungeonOptions, 0);
-        if (selection == 7) {
-            break;
-        }
-        bool optionSel = ToggleOption(ShowTheClock_About, 6330, selection); // message call (adv_sel), sel + flag
-        // TODO: Implement sub-options for other dungeon options if applicable
-        // If call the clock was selected
-        if (selection == 0) {
-            // If call the clock was disabled, disable Traesto Gem flag
-            if (optionSel == 1) {
-                BIT_OFF(6360);
-            }
-            else { // Ask to use Traesto Gem if call the clock was enabled
-                while (true) {
-                    // If call the clock was turned on, show selection for
-                    // whether calling the clock should use a traesto
-                    SET_MSG_VAR(0, 576 + BIT_CHK(6360), 6);
-                    SEL_DEFKEY(PadButton.Circle, 1);
-                    SEL_DEFKEY(PadButton.Square, 1);
-                    MSG_WND_DSP();
-                    int clockSel = MSG_SELECT(ShowClockOptions_Text, ShowClockOptions, 0);
-                    // Back out, else toggle the option
-                    if (clockSel != 0) {
-                        break;
-                    }
-                    SET_MSG_VAR(2, 1313, 5);
-                    MSG_WND_DSP();
-                    MSG(ShowClock_Traesto);
-                    SEL_DEFKEY(PadButton.Circle, 2);
-                    SEL_DEFKEY(PadButton.Square, 2);
-                    int traestoSel = SEL(ToggleMenu);
-                    if (traestoSel == 0) {
-                        BIT_ON(6360);
-                    }
-                    else if (traestoSel == 1) {
-                        BIT_OFF(6360);
-                    }
-                    MSG_WND_CLS();
-                }
-            }
-        }
+void HealingClockOptions()
+{
+    while (true)
+    {
+        SET_MSG_VAR(0, 576 + BIT_CHK(5175), 6);
+        SEL_DEFKEY(PadButton.Circle, 1);
+        SEL_DEFKEY(PadButton.Square, 1);
+        int clockSel = MSG_SELECT(ShowClockOptions_Text, ShowClockOptions, 0);
+
+        if (clockSel != 0)
+            return;
+
+        SET_MSG_VAR(2, 1313, 5);
+        MSG_WND_DSP();
+        MSG(ShowClock_Traesto);
+        int traestoSel = SEL(ToggleMenu);
+
+        if (traestoSel == 0)
+            BIT_ON(5175);
+        else if (traestoSel == 1)
+            BIT_OFF(5175);
+
+        MSG_WND_CLS();
     }
 }
-
-

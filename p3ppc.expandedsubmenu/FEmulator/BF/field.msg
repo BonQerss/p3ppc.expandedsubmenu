@@ -9,6 +9,8 @@
 [s]Select Floor[e]
 [s]Use the clock[e]
 [s]Mod Menu[e]
+[s]Warp to Entrance[e]
+[s]Warp to Next Floor[e]
 [s]Cancel[e]
 [s]Debug[e]
 
@@ -19,6 +21,8 @@
 [s]Select Floor[e]
 [s]Use the clock[e]
 [s]Mod Menu[e]
+[s]Warp to Entrance[e]
+[s]Warp to Next Floor[e]
 [s]Cancel the request[e]
 [s]Debug[e]
 

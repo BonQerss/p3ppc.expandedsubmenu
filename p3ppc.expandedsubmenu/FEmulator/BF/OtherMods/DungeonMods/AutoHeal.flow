@@ -1,64 +1,50 @@
-bool ally_in_party(int id) {
-	for (int i = 0; i < 3; i++) {
-		if (FUNCTION_0042(i) == id) {
-			return true;
-		}
-	}
-	return false;
-}
-
-void heal_mc() {
-    int maxhealth = GET_MAXHP(1);
-    int maxsp = GET_MAXSP(1);
-    int currenthealth = GET_HP(1);
-    int currentsp = GET_SP(1);
-
-    int HPtoheal = ((maxhealth - currenthealth) / 4) * 0.20;
-    int SP_Lost = currentsp - HPtoheal;
-
-    if (BIT_CHK(6321)) {
-        SET_HP(1, maxhealth);
-	} 
-	else if (HPtoheal >= currentsp) {
-        SET_HP(1, currenthealth + (currentsp * 4));
-        SET_SP(1, 0);
-    } 
-	else {
-        SET_HP(1, maxhealth);
-        SET_SP(1, SP_Lost);
+bool ally_in_party(int id)
+{
+    int i = 0;
+    while (i < 3)
+    {
+        if (FUNCTION_0042(i) == id)
+            return true;
+        i = i + 1;
     }
+    return false;
 }
 
-void heal_avail_party() {
-	int cAllyID;
-	for (int i = 2; i < 10; i++) {
-		// adjust for actual character ids
-		if (i >= 6) {
-			cAllyID = (i + 1);
-		}
-		else {
-			cAllyID = i;
-		}
-        if (BIT_CHK(320 + i) && ally_in_party(cAllyID)) {
-            int maxhealth = GET_MAXHP(cAllyID);
-            int maxsp = GET_MAXSP(cAllyID);
-            int currenthealth = GET_HP(cAllyID);
-            int currentsp = GET_SP(cAllyID);
+void heal_one(int id)
+{
+    int missing = GET_MAXHP(id) - GET_HP(id);
+    if (missing <= 0)
+        return;
 
-            int HPtoheal = ((maxhealth - currenthealth) / 4) * 0.20;
-            int SP_Lost = currentsp - HPtoheal;
+    if (BIT_CHK(5154))
+    {
+        SET_HP(id, GET_MAXHP(id));
+        return;
+    }
 
-            if (BIT_CHK(6321)) {
-                SET_HP(cAllyID, maxhealth);
-            } 
-			else if (HPtoheal >= currentsp) {
-                SET_HP(cAllyID, currenthealth + (currentsp * 4));
-                SET_SP(cAllyID, 0);
-            } 
-			else {
-                SET_HP(cAllyID, maxhealth);
-                SET_SP(cAllyID, SP_Lost);
-            }
-        }
+    int cost = (missing + 3) / 4;
+    if (cost > GET_SP(id))
+        cost = GET_SP(id);
+
+    SET_HP(id, GET_HP(id) + (cost * 4));
+    if (GET_HP(id) > GET_MAXHP(id))
+        SET_HP(id, GET_MAXHP(id));
+
+    SET_SP(id, GET_SP(id) - cost);
+}
+
+void heal_mc()
+{
+    heal_one(1);
+}
+
+void heal_avail_party()
+{
+    int id = 2;
+    while (id <= 10)
+    {
+        if (id != 6 && ally_in_party(id))
+            heal_one(id);
+        id = id + 1;
     }
 }

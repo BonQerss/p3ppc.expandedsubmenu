@@ -1,0 +1,6 @@
+[sel YAKUSHIMA_ESM]
+[s]Beach[e]
+[s]Hotel[e]
+[s]Forest[e]
+[s]Mod Menu[e]
+[s]Back[e]

@@ -11,4 +11,4 @@
 [s]View calendar[e]
 [s]Spend time with...[e]
 [s]Save[e]
-[s]Mod Menu[e] 
+[s]Mod Menu[e]

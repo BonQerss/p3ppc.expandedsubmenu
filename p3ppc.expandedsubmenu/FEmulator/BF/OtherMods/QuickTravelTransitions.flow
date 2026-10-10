@@ -1,0 +1,51 @@
+void PlayTravelDoor()
+{
+    FUNCTION_001E(3, 2);
+    WAIT(6);
+}
+
+void PlayTravelStairs()
+{
+    FUNCTION_001E(3, 0);
+    WAIT(8);
+}
+
+void PlayTravelClassroomDoor()
+{
+    FUNCTION_001E(3, 1);
+    WAIT(6);
+}
+
+int SchoolStairCount(int minor)
+{
+    if (minor == 20) return 2;
+    if (minor == 11 || minor == 16 || minor == 4 || minor == 3 || minor == 5) return 1;
+    return 0;
+}
+
+void PlayQuickTravelTransition(int fromMajor, int fromMinor, int toMajor, int toMinor)
+{
+    int stairs;
+
+    if (fromMajor == 6)
+    {
+        if (fromMinor == 3) PlayTravelClassroomDoor();
+        else if (fromMinor != 2) PlayTravelDoor();
+
+        stairs = SchoolStairCount(fromMinor);
+        while (stairs > 0)
+        {
+            PlayTravelStairs();
+            stairs = stairs - 1;
+        }
+
+        if (toMajor != 6) PlayTravelDoor();
+    }
+    else if (fromMajor == 7 && fromMinor != 9)
+    {
+        PlayTravelDoor();
+    }
+
+    if (toMajor == 6 && fromMajor != 6) PlayTravelDoor();
+    else if (toMajor == 7 && fromMajor != 7) PlayTravelDoor();
+}

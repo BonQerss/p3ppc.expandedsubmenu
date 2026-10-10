@@ -1,0 +1,5 @@
+[sel KYOTO_ESM]
+[s]Station[e]
+[s]Inn[e]
+[s]Shrine[e]
+[s]Back[e]

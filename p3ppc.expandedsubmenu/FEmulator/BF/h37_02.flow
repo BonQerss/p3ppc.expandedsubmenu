@@ -1,15 +1,28 @@
-
-import( "ModMenu/ModMenu.flow" );
+import("ModMenu/ModMenu.flow");
+import("Setup/FirstTimeSetup.flow");
 
 global bool isFieldBf;
 
 void f037_002_shortcut_hook()
 {
     isFieldBf = false;
-    ModMenuInit();
+
+    if (!BIT_CHK(5153))
+    {
+        FirstTimeSetup();
+        return;
+    }
+
+    if (BIT_CHK(5154))
+    {
+        ModMenuInit();
+        return;
+    }
+
+    f037_002_shortcut_unhooked();
 }
 
 void CallOriginalSquareMenu()
 {
     f037_002_shortcut_unhooked();
-} 
+}

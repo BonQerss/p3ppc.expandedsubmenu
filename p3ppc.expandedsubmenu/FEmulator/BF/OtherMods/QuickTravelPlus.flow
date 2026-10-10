@@ -1,296 +1,346 @@
 import("QuickTravelPlus.msg");
+import("QuickTravelTransitions.flow");
+import("TravelCore.flow");
+
 int CurFldMajor;
 int CurFldMinor;
 
-void QuickTravelPlus() {
+int HideMenuOption(int mask, int index, int total)
+{
+    return mask + Power(2, total - index - 1);
+}
+
+bool IsNight()
+{
+    return FUNCTION_0033() == 5;
+}
+
+bool IsDarkHour()
+{
+    return FUNCTION_0033() == 0;
+}
+
+bool CanUseNormalTownTravel()
+{
+    return !IsDarkHour() && !FCL_FUNCTION_001B();
+}
+
+bool CanTravelSchool()
+{
+    return CanUseNormalTownTravel() && !IsNight() && FUNCTION_0032() != 0 && !BIT_CHK(3680);
+}
+
+bool CanTravelDorm()
+{
+    return CanUseNormalTownTravel();
+}
+
+bool CanTravelMall()
+{
+    return CanUseNormalTownTravel();
+}
+
+bool CanTravelStripMall()
+{
+    if (!CanUseNormalTownTravel())
+        return false;
+
+    if (IsNight())
+        return BIT_CHK(5177);
+
+    return true;
+}
+
+bool CanTravelStation()
+{
+    return CanUseNormalTownTravel() && !IsNight();
+}
+
+bool CanTravelShrine()
+{
+    return CanUseNormalTownTravel() && !IsNight();
+}
+
+bool CanDirectRoomFromOutside()
+{
+    if (!BIT_CHK(5162))
+        return false;
+
+    if (FUNCTION_0033() != 3)
+        return false;
+
+    if (GET_DAY(4, 22) && !BIT_CHK(257))
+        return false;
+
+    return true;
+}
+
+bool CanEnterClubEscapade()
+{
+    return IsNight() || FUNCTION_0030() == 3;
+}
+
+void WarpField(int major, int minor, int p1, int p2)
+{
+    MSG_WND_CLS();
+
+    if (CurFldMajor == major)
+    {
+        FADE(FadeEffects.CircleWipe, 20);
+        FUNCTION_000F();
+        PlayQuickTravelTransition(CurFldMajor, CurFldMinor, major, minor);
+        CALL_FIELD(major, minor, p1, p2);
+        return;
+    }
+
+    BeginSafeFieldWarp(major);
+    PlayQuickTravelTransition(CurFldMajor, CurFldMinor, major, minor);
+    CALL_FIELD(major, minor, p1, p2);
+    FinishSafeFieldWarp(major);
+}
+
+void WarpVelvetRoom()
+{
+    MSG_WND_CLS();
+
+    if (CurFldMajor != 8)
+        PrepareTownFieldState(8);
+
+    FUNCTION_0010(1, 15, 255, 255, 255);
+    FUNCTION_000F();
+    FUNCTION_001E(3, 8);
+    BIT_ON(3072);
+
+    if (BIT_CHK(312))
+        CALL_FIELD(8, 18, 0, 0);
+    else
+        CALL_FIELD(8, 17, 0, 0);
+
+    if (CurFldMajor != 8)
+        FinishSafeFieldWarp(8);
+}
+
+void QuickTravelPlus()
+{
     CurFldMajor = FLD_GET_MAJOR();
     CurFldMinor = FLD_GET_MINOR();
-    
-    // TODO: Some of these fields normally hide the option
-    // to travel to specific locations if the story mandates
-    // only going to one place within the area; we'll need to figure
-    // out how to properly account for this so that the player doesn't
-    // potentially put themself somewhere they aren't supposed to be, which
-    // in the worst case could lead to softlocks/broken save files
 
-    if (CurFldMajor == 6) { // Gekkoukan High
+    if (CurFldMajor == 6)
         schoolQT();
-    }
-    else if (CurFldMajor == 8) { // Paulownia Mall
+    else if (CurFldMajor == 7)
+        dormQT();
+    else if (CurFldMajor == 8)
         mallQT();
-    }
-    else if (CurFldMajor == 9) { // Strip Mall
-        stripmallQT();
-    }
-    else if (CurFldMajor == 10) { // Port Island Station
+    else if (CurFldMajor == 9)
+        stripQT();
+    else if (CurFldMajor == 10)
         stationQT();
-    }
-    else if (CurFldMajor == 12) { // Shrine
+    else if (CurFldMajor == 12)
         shrineQT();
+    else
+        ElseWhere();
+}
+
+void schoolQT()
+{
+    int mask = 0;
+
+    if (CurFldMinor == 1) mask = HideMenuOption(mask, 0, 11);
+    else if (CurFldMinor == 7) mask = HideMenuOption(mask, 1, 11);
+    else if (CurFldMinor == 11) mask = HideMenuOption(mask, 2, 11);
+    else if (CurFldMinor == 16) mask = HideMenuOption(mask, 3, 11);
+    else if (CurFldMinor == 20) mask = HideMenuOption(mask, 4, 11);
+    else if (CurFldMinor == 4) mask = HideMenuOption(mask, 5, 11);
+    else if (CurFldMinor == 3) mask = HideMenuOption(mask, 6, 11);
+    else if (CurFldMinor == 5) mask = HideMenuOption(mask, 7, 11);
+    else if (CurFldMinor == 2) mask = HideMenuOption(mask, 8, 11);
+
+    SEL_DEFKEY(PadButton.Circle, 10);
+    int selection = MSG_SELECT(QuickTravelPlus_Text, SCHOOL_QTSEL, mask);
+
+    if (selection == 0) WarpField(6, 1, 1, 0);
+    else if (selection == 1) WarpField(6, 7, 1, 0);
+    else if (selection == 2) WarpField(6, 11, 1, 0);
+    else if (selection == 3) WarpField(6, 16, 1, 0);
+    else if (selection == 4) WarpField(6, 20, 0, 0);
+    else if (selection == 5) WarpField(6, 4, 2, 0);
+    else if (selection == 6) WarpField(6, 3, 0, 0);
+    else if (selection == 7) WarpField(6, 5, 0, 0);
+    else if (selection == 8) WarpField(6, 2, 0, 0);
+    else if (selection == 9) ElseWhere();
+    else MSG_WND_CLS();
+}
+
+void schoolExternalQT()
+{
+    SEL_DEFKEY(PadButton.Circle, 2);
+    int selection = MSG_SELECT(QuickTravelPlus_Text, SCHOOL_EXTERNAL_QTSEL, 0);
+
+    if (selection == 0) WarpField(6, 2, 0, 0);
+    else if (selection == 1) ElseWhere();
+    else MSG_WND_CLS();
+}
+
+void dormQT()
+{
+    int mask = 0;
+
+    if (CurFldMinor == 2) mask = HideMenuOption(mask, 0, 9);
+    else if (CurFldMinor == 3) mask = HideMenuOption(mask, 1, 9);
+    else if (CurFldMinor == 4) mask = HideMenuOption(mask, 2, 9);
+    else if (CurFldMinor == 5) mask = HideMenuOption(mask, 3, 9);
+    else if (CurFldMinor == 6) mask = HideMenuOption(mask, 4, 9);
+    else if (CurFldMinor == 19 || CurFldMinor == 20) mask = HideMenuOption(mask, 5, 9);
+    else if (CurFldMinor == 9) mask = HideMenuOption(mask, 6, 9);
+
+    SEL_DEFKEY(PadButton.Circle, 8);
+    int selection = MSG_SELECT(QuickTravelPlus_Text, DORMITORY_QTSEL, mask);
+
+    if (selection == 0) WarpField(7, 2, 1, 0);
+    else if (selection == 1) WarpField(7, 3, 0, 0);
+    else if (selection == 2) WarpField(7, 4, 0, 0);
+    else if (selection == 3) WarpField(7, 5, 0, 0);
+    else if (selection == 4) WarpField(7, 6, 0, 0);
+    else if (selection == 5)
+    {
+        if (BIT_CHK(4104)) WarpField(7, 19, 0, 0);
+        else WarpField(7, 20, 0, 0);
     }
-    else if (CurFldMajor == 14) { // Godaiga
-        godaigaQT();
+    else if (selection == 6) WarpField(7, 9, 0, 0);
+    else if (selection == 7) ElseWhere();
+    else MSG_WND_CLS();
+}
+
+void dormExternalQT()
+{
+    if (CanDirectRoomFromOutside())
+    {
+        SEL_DEFKEY(PadButton.Circle, 3);
+        int selection = MSG_SELECT(QuickTravelPlus_Text, DORMITORY_EXTERNAL_GBHE_QTSEL, 0);
+
+        if (selection == 0) WarpField(7, 9, 0, 0);
+        else if (selection == 1)
+        {
+            if (BIT_CHK(4104)) WarpField(7, 19, 0, 0);
+            else WarpField(7, 20, 0, 0);
+        }
+        else if (selection == 2) ElseWhere();
+        else MSG_WND_CLS();
+        return;
     }
-    else if (CurFldMajor == 15) { // Tartarus
-        tartarusQT();
-    }
-}
 
-void stripmallQT()
-{
-}
+    SEL_DEFKEY(PadButton.Circle, 2);
+    int selection = MSG_SELECT(QuickTravelPlus_Text, DORMITORY_EXTERNAL_QTSEL, 0);
 
-void stationQT()
-{
-}
-
-void shrineQT()
-{
-}
-
-void godaigaQT()
-{
-}
-
-void tartarusQT()
-{
+    if (selection == 0) WarpField(7, 9, 0, 0);
+    else if (selection == 1) ElseWhere();
+    else MSG_WND_CLS();
 }
 
 void mallQT()
 {
+    int mask = 0;
+
+    if (CurFldMajor == 8)
+    {
+        if (CurFldMinor == 1) mask = HideMenuOption(mask, 0, 6);
+        else if (CurFldMinor == 2) mask = HideMenuOption(mask, 1, 6);
+        else if (CurFldMinor == 9 || CurFldMinor == 10) mask = HideMenuOption(mask, 2, 6);
+        else if (CurFldMinor == 17 || CurFldMinor == 18) mask = HideMenuOption(mask, 3, 6);
+    }
+
+    if (!CanEnterClubEscapade())
+        mask = HideMenuOption(mask, 1, 6);
+
+    SEL_DEFKEY(PadButton.Circle, 5);
+    int selection = MSG_SELECT(QuickTravelPlus_Text, MALL_QTSEL, mask);
+
+    if (selection == 0) WarpField(8, 1, 0, 0);
+    else if (selection == 1) WarpField(8, 2, 0, 0);
+    else if (selection == 2)
+    {
+        if (BIT_CHK(29) && CHK_DAYS_STARTEND(4, 22, 1, 31)) WarpField(8, 10, 1, 0);
+        else WarpField(8, 9, 0, 0);
+    }
+    else if (selection == 3) WarpVelvetRoom();
+    else if (selection == 4) ElseWhere();
+    else MSG_WND_CLS();
 }
 
-void mall_quick_travel()
+void stripQT()
 {
+    int mask = 0;
+
+    if (CurFldMajor == 9)
+    {
+        if (CurFldMinor == 1 || CurFldMinor == 9) mask = HideMenuOption(mask, 0, 5);
+        else if (CurFldMinor == 8) mask = HideMenuOption(mask, 1, 5);
+        else if (CurFldMinor == 2) mask = HideMenuOption(mask, 2, 5);
+    }
+
+    SEL_DEFKEY(PadButton.Circle, 4);
+    int selection = MSG_SELECT(QuickTravelPlus_Text, SHOP_QTSEL, mask);
+
+    if (selection == 0) WarpField(9, 1, 0, 0);
+    else if (selection == 1) WarpField(9, 8, 0, 0);
+    else if (selection == 2) WarpField(9, 2, 0, 0);
+    else if (selection == 3) ElseWhere();
+    else MSG_WND_CLS();
 }
 
-void schoolQT() {
-    int schoolMaskP1 = 1264;
-    int schoolMaskP2 = 527;
+void stationQT()
+{
+    int mask = 0;
 
-    switch (CurFldMinor) {
-        case 1:
-            schoolMaskP1 = schoolMaskP1 + 1;
-            break;
-        case 2:
-            break;
-        case 3:
-            schoolMaskP2 = schoolMaskP2 + 64;
-            break;
-        case 4:
-            schoolMaskP2 = schoolMaskP2 + 32;
-            break;
-        case 5:
-            schoolMaskP2 = schoolMaskP2 + 128;
-            break;
-        case 7:
-            schoolMaskP1 = schoolMaskP1 + 2;
-            break;
-        case 11:
-            schoolMaskP1 = schoolMaskP1 + 4;
-            break;
-        case 16:
-            schoolMaskP1 = schoolMaskP1 + 8;
-            break;
-        case 20:
-            schoolMaskP2 = schoolMaskP2 + 16;
-            break;
+    if (CurFldMajor == 10)
+    {
+        if (CurFldMinor == 1) mask = HideMenuOption(mask, 0, 4);
+        else if (CurFldMinor == 2) mask = HideMenuOption(mask, 1, 4);
     }
-    schoolBack:
-    SEL_DEFKEY(PadButton.Circle, 12);
-    int school = MSG_SELECT(QuickTravelPlus_Text, SCHOOL_QTSEL, schoolMaskP1);
 
-    switch (school) {
-        case 0:
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(6, 1, 1, 0);
-            break;
-        case 1:
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(6, 7, 1, 0);
-            break;
-        case 2:
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(6, 11, 1, 0);
-            break;
-        case 3:
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(6, 0x10, 1, 0);
-            break;
-        case 4:
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(6, 20, 0, 0);
-            break;
-        case 5:
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(6, 4, 2, 0);
-            break;
-        case 6:
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(6, 3, 0, 0);
-            break;
-        case 7:
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(6, 5, 0, 0);
-            break;
-        case 8:
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(6, 2, 1, 0);
-            break;
-        case 9:
-            SEL_DEFKEY(PadButton.Circle, 12);
-            int school2 = MSG_SELECT(QuickTravelPlus_Text, SCHOOL_QTSEL, schoolMaskP2);
-            switch (school2) {
-                case 0:
-                    FADE(FadeEffects.CircleWipe, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 1, 1, 0);
-                    break;
-                case 1:
-                    FADE(FadeEffects.CircleWipe, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 7, 1, 0);
-                    break;
-                case 2:
-                    FADE(FadeEffects.CircleWipe, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 11, 1, 0);
-                    break;
-                case 3:
-                    FADE(FadeEffects.CircleWipe, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 0x10, 1, 0);
-                    break;
-                case 4:
-                    FADE(FadeEffects.CircleWipe, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 20, 0, 0);
-                    break;
-                case 5:
-                    FADE(FadeEffects.CircleWipe, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 4, 2, 0);
-                    break;
-                case 6:
-                    FADE(FadeEffects.CircleWipe, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 3, 0, 0);
-                    break;
-                case 7:
-                    FADE(FadeEffects.CircleWipe, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 5, 0, 0);
-                    break;
-                case 8:
-                    FADE(FadeEffects.CircleWipe, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(6, 2, 1, 0);
-                    break;
-                case 9:
-                    break;
-                case 10:
-                    goto schoolBack;
-                case 11:
-                    ElseWhere();
-                    break;
-                case 12:
-                    MSG_WND_CLS();
-                    return;
-            }
-        case 10:
-            break;
-        case 11: 
-                ElseWhere();
-                break;
-        case 12:
-                MSG_WND_CLS();
-                return;
-    }
+    SEL_DEFKEY(PadButton.Circle, 3);
+    int selection = MSG_SELECT(QuickTravelPlus_Text, STATION_QTSEL, mask);
+
+    if (selection == 0) WarpField(10, 1, 0, 0);
+    else if (selection == 1) WarpField(10, 2, 0, 0);
+    else if (selection == 2) ElseWhere();
+    else MSG_WND_CLS();
 }
 
-void ElseWhere() {
-    int dayTime = FUNCTION_0033();
+void shrineQT()
+{
+    int mask = 0;
 
-    int mapMask = 0;
+    if (CurFldMajor == 12 && CurFldMinor == 1)
+        mask = HideMenuOption(mask, 0, 3);
 
-    switch (CurFldMajor) {
-        case 0: // School
-            mapMask = mapMask + 1;
-            break;
-        case 1: // Dorm
-            mapMask = mapMask + 2;
-            break;
-        case 2: // Paulownia Mall
-            mapMask = mapMask + 4;
-            break;
-        case 3: // Strip Mall
-            mapMask = mapMask + 8;
-            break;
-        case 4: // Port Island Station
-            mapMask = mapMask + 16;
-            break;
-        case 5: // Shrine
-            mapMask = mapMask + 32;
-            break;
-    }
+    SEL_DEFKEY(PadButton.Circle, 2);
+    int selection = MSG_SELECT(QuickTravelPlus_Text, TEMPLE_QTSEL, mask);
 
-    switch (dayTime) {
-        case 0:
-            mapMask = mapMask + 0;
-            break;
-        case 3:
-            mapMask = mapMask + 1;
-            break;
-        case 5:
-            mapMask = mapMask + 58;
-            break;
-    }
+    if (selection == 0) WarpField(12, 1, 0, 0);
+    else if (selection == 1) ElseWhere();
+    else MSG_WND_CLS();
+}
+
+void ElseWhere()
+{
+    int mask = 0;
+
+    if (!CanTravelSchool() || CurFldMajor == 6) mask = HideMenuOption(mask, 0, 7);
+    if (!CanTravelMall() || CurFldMajor == 8) mask = HideMenuOption(mask, 1, 7);
+    if (!CanTravelStation() || CurFldMajor == 10) mask = HideMenuOption(mask, 2, 7);
+    if (!CanTravelStripMall() || CurFldMajor == 9) mask = HideMenuOption(mask, 3, 7);
+    if (!CanTravelShrine() || CurFldMajor == 12) mask = HideMenuOption(mask, 4, 7);
+    if (!CanTravelDorm() || CurFldMajor == 7) mask = HideMenuOption(mask, 5, 7);
 
     SEL_DEFKEY(PadButton.Circle, 6);
-    int map = MSG_SELECT(QuickTravelPlus_Text, MAP_QTSEL, mapMask);
+    int selection = MSG_SELECT(QuickTravelPlus_Text, MAP_QTSEL, mask);
 
-    switch (map) {
-        case 0: // School
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(6, 2, 1, 0);
-            break;
-        case 1: // Dorm
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(7, 9, 1, 0);
-            break;
-        case 2: // Paulownia Mall
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(8, 1, 1, 0);
-            break;
-        case 3: // Strip Mall
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(9, 1, 1, 0);
-            break;
-        case 4: // Port Island Station
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(10, 1, 1, 0);
-            break;
-        case 5: // Shrine
-            FADE(FadeEffects.CircleWipe, 20);
-            FUNCTION_000F();
-            CALL_FIELD(12, 1, 1, 0);
-            break;
-        case 6: // Cancel
-            MSG_WND_CLS();
-            return;
-    }
+    if (selection == 0) schoolExternalQT();
+    else if (selection == 1) mallQT();
+    else if (selection == 2) stationQT();
+    else if (selection == 3) stripQT();
+    else if (selection == 4) WarpField(12, 1, 0, 0);
+    else if (selection == 5) dormExternalQT();
+    else MSG_WND_CLS();
 }

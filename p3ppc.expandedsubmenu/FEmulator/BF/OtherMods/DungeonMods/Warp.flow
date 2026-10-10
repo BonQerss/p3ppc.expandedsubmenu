@@ -1,0 +1,108 @@
+import("Warp.msg");
+
+int GuardianFlagForFloor(int floor)
+{
+    if (floor == 5) return 3562;
+    if (floor == 10) return 3536;
+    if (floor == 14) return 3537;
+    if (floor == 25) return 3538;
+    if (floor == 36) return 3539;
+    if (floor == 47) return 3540;
+    if (floor == 59) return 3541;
+    if (floor == 72) return 3542;
+    if (floor == 85) return 3543;
+    if (floor == 98) return 3544;
+    if (floor == 110) return 3545;
+    if (floor == 122) return 3546;
+    if (floor == 135) return 3547;
+    if (floor == 146) return 3548;
+    if (floor == 160) return 3549;
+    if (floor == 171) return 3550;
+    if (floor == 180) return 3551;
+    if (floor == 190) return 3552;
+    if (floor == 201) return 3553;
+    if (floor == 211) return 3554;
+    if (floor == 220) return 3555;
+    if (floor == 228) return 3556;
+    if (floor == 236) return 3557;
+    if (floor == 244) return 3558;
+    if (floor == 252) return 3559;
+    return -1;
+}
+
+bool IsTartarusFloor()
+{
+    int floor = FLD_FUNCTION_0004();
+    return floor >= 2 && floor <= 263;
+}
+
+bool GuardianAllowsNextFloor()
+{
+    int flag = GuardianFlagForFloor(FLD_FUNCTION_0004());
+    return flag == -1 || BIT_CHK(flag);
+}
+
+bool CurrentGuardianIsCleared()
+{
+    int flag = GuardianFlagForFloor(FLD_FUNCTION_0004());
+    return flag != -1 && BIT_CHK(flag);
+}
+
+bool StairsAreDiscovered()
+{
+    return IsTartarusFloor() && BIT_CHK(5182);
+}
+
+bool CanWarpNextFloor()
+{
+    return BIT_CHK(5178) && StairsAreDiscovered() && GuardianAllowsNextFloor();
+}
+
+void WarpEntrance()
+{
+    if (!BIT_CHK(5178) || !IsTartarusFloor())
+        return;
+
+    BIT_OFF(5182);
+    MSG_WND_CLS();
+    return_to_entrance();
+}
+
+void WarpNextFloor()
+{
+    if (!CanWarpNextFloor())
+        return;
+
+    BIT_OFF(5182);
+    MSG_WND_CLS();
+    leave_member_partyout();
+    item_transfer_all();
+    FADE(3, 20);
+    FUNCTION_000F();
+    heal_wave();
+    call_next_level();
+}
+
+void tartaros_upstair_hook()
+{
+    BIT_ON(5182);
+    tartaros_upstair_unhooked();
+}
+
+void party_find_stair_hook()
+{
+    BIT_ON(5182);
+    party_find_stair_unhooked();
+}
+
+void return_to_entrance_hook()
+{
+    BIT_OFF(5182);
+    return_to_entrance_unhooked();
+}
+
+void call_next_level_hook()
+{
+    BIT_OFF(5182);
+    call_next_level_unhooked();
+}

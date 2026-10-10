@@ -2,18 +2,19 @@ import("Common/School.flow");
 
 global bool isFieldBf;
 
-void f006_003_shortcut_hook() {
+void f006_003_shortcut_hook()
+{
     isFieldBf = false;
     f006_003_shortcut_unhooked();
 }
 
-void CallOriginalSquareMenu() {
+void CallOriginalSquareMenu()
+{
     f006_003_shortcut();
 }
 
 void f006_003_init_hook()
 {
     SaveEveryday();
-
     f006_003_init_unhooked();
 }

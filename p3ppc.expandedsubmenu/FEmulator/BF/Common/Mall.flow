@@ -5,202 +5,226 @@ import("../OtherMods/QuickTravelPlus.flow");
 import("../OtherMods/SaveEveryday.flow");
 import("Mall.msg");
 
-void mall_shortcut() {
-    if (!BIT_CHK(6320)) {
+void mall_shortcut()
+{
+    if (!BIT_CHK(5153))
+    {
         FirstTimeSetup();
     }
 
-    CurFldMinor = FLD_GET_MINOR(); // defined by QuickTravelPlus.flow
+    CurFldMinor = FLD_GET_MINOR();
 
-    SEL_DEFKEY(PadButton.Circle, 98); // Cancel button on ○
-    SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
-    if (BIT_CHK(5680))
+    SEL_DEFKEY(PadButton.Circle, 98);
+    SEL_DEFKEY(PadButton.Triangle, 99);
+
+    if (BIT_CHK(5163) && BIT_CHK(5154) && !gQMenuNormalSquare)
     {
         ModMenuInit();
+        return;
     }
-    else {
-        OG_SM_CALL:
-        shortcut_select(MSG_SELECT(FLD_ORDER, MALL_SHORTCUT_SEL, create_mall_mask()));
-    }
+
+    shortcut_select(MSG_SELECT(FLD_ORDER, MALL_SHORTCUT_SEL, create_mall_mask()));
 }
 
-void shortcut_select(int selection) {
-    if (selection <= 6) {
+void shortcut_select(int selection)
+{
+    if (selection <= 6)
+    {
         FADE(FadeEffects.CircleWipe, 20);
         FUNCTION_000F();
-        switch (selection) {
-            case 0: 
-                BIT_ON( 5127 );
+
+        switch (selection)
+        {
+            case 0:
+                BIT_ON(5127);
                 CALL_WEAPON_SHOP();
-                BIT_OFF( 5127 );
-                CALL_FIELD( 8, 1, 4, 0 );
+                BIT_OFF(5127);
+                CALL_FIELD(8, 1, 4, 0);
                 return;
-            case 1: // Pharmacy
-                BIT_ON( 5127 );
+            case 1:
+                BIT_ON(5127);
                 CALL_ITEM_SHOP();
-                BIT_OFF( 5127 );
-                CALL_FIELD( 8, 1, 8, 0 );
+                BIT_OFF(5127);
+                CALL_FIELD(8, 1, 8, 0);
                 return;
-            case 2: // Antique Shop
-                FADE( 3, 20 );
-                FUNCTION_001E( 3, 3 );
-                BIT_ON( 5127 );
+            case 2:
+                FADE(3, 20);
+                FUNCTION_001E(3, 3);
+                BIT_ON(5127);
                 CALL_TRADE_SHOP();
-                BIT_OFF( 5127 );
-                CALL_FIELD( 8, 1, 7, 0 );
+                BIT_OFF(5127);
+                CALL_FIELD(8, 1, 7, 0);
                 return;
-            case 3: // Club Escapade
-                FADE( 3, 20 );
-                FUNCTION_001E( 3, 3 );
-                CALL_FIELD( 8, 2, 0, 0 );
+            case 3:
+                FADE(3, 20);
+                FUNCTION_001E(3, 3);
+                CALL_FIELD(8, 2, 0, 0);
                 return;
-            case 4: // Back Alley
-                if ( BIT_CHK( 29 ) && CHK_DAYS_STARTEND( 4, 22, 1, 31 ) )
+            case 4:
+                if (BIT_CHK(29) && CHK_DAYS_STARTEND(4, 22, 1, 31))
                 {
-                    FADE( 3, 20 );
-                    CALL_FIELD( 8, 10, 1, 0 );
+                    FADE(3, 20);
+                    CALL_FIELD(8, 10, 1, 0);
                 }
-                else {
-                    FADE( 3, 20 );
-                    CALL_FIELD( 8, 9, 0, 0 );
+                else
+                {
+                    FADE(3, 20);
+                    CALL_FIELD(8, 9, 0, 0);
                 }
                 return;
             case 5:
-                FADE( 3, 20 );
-                CALL_FIELD( 8, 1, 1, 0 );
+                FADE(3, 20);
+                CALL_FIELD(8, 1, 1, 0);
                 return;
             case 6:
-                FUNCTION_0010( 1, 15, 255, 255, 255 );
-                FUNCTION_001E( 3, 8 );
-                BIT_ON( 3072 );
-                
-                if ( BIT_CHK( 312 ) )
+                FUNCTION_0010(1, 15, 255, 255, 255);
+                FUNCTION_001E(3, 8);
+                BIT_ON(3072);
+
+                if (BIT_CHK(312))
                 {
-                    CALL_FIELD( 8, 18, 0, 0 );
+                    CALL_FIELD(8, 18, 0, 0);
                 }
-                else 
+                else
                 {
-                    CALL_FIELD( 8, 17, 0, 0 );
+                    CALL_FIELD(8, 17, 0, 0);
                 }
                 return;
         }
     }
-    else if (selection == 7) {
-        BIT_ON( 3091 );
-        FADE( 3, 20 );
-        FLD_SEL_EX( 1 );
+    else if (selection == 7)
+    {
+        BIT_ON(3091);
+        FADE(3, 20);
+        FLD_SEL_EX(1);
     }
-    else if (selection == 8) {
+    else if (selection == 8)
+    {
         QuickTravelPlus();
     }
-    else if (selection == 9) {
+    else if (selection == 9)
+    {
         CALL_CALENDAR();
     }
-    else if (selection == 10) {
+    else if (selection == 10)
+    {
         HangOut();
     }
-    else if (selection == 11) {
+    else if (selection == 11)
+    {
         FADE(FadeEffects.FadeOut, 10);
         SAVE_MENU();
         FUNCTION_000D(0);
     }
-    else if (selection == 12) {
+    else if (selection == 12)
+    {
         ModMenuInit();
     }
-    else if (selection == 99) {
+    else if (selection == 99)
+    {
         MenuOptions();
     }
 }
 
-int create_mall_mask() {
-    int mask = MaskCalc( 13 );
+int create_mall_mask()
+{
+    int mask = MaskCalc(13);
 
-    if (!BIT_CHK(6322)) { // Quick Travel = OFF
-        switch (CurFldMinor) {
+    if (!BIT_CHK(5155))
+    {
+        switch (CurFldMinor)
+        {
             case 1:
-                if ( ( GET_DAY( 9, 5 ) && FCL_FUNCTION_001B() ) ) { // Club Escapade Full Moon Mission
-                    mask -= Power( 2, 3 );
-                }
-                else if ( GET_DAY( 4, 22 ) && !BIT_CHK( 257 ) && (FUNCTION_0033() == 3 ) ) { // First Day with Junpei
-                    mask -= Power( 2, 0 );
-                    mask -= Power( 2, 7 );
-                }
-                else if ( CHK_DAYS_STARTEND( 3, 1, 3, 5 ) == 1 )
+                if (GET_DAY(9, 5) && FCL_FUNCTION_001B())
                 {
-                    mask -= Power( 2, 4 );
-                    mask -= Power( 2, 7 );
+                    mask = mask - Power(2, 3);
                 }
-                else if (FUNCTION_0033() == 5) { // Night Time..... duh.
-                    mask -= Power( 2, 3 );
-                    mask -= Power( 2, 4 );
-                    mask -= Power( 2, 6 );
-                    mask -= Power( 2, 7 );
+                else if (GET_DAY(4, 22) && !BIT_CHK(257) && (FUNCTION_0033() == 3))
+                {
+                    mask = mask - Power(2, 0);
+                    mask = mask - Power(2, 7);
                 }
-                else { // Hide Club Escapade otherwise
-                    mask -= Power( 2, 4 );
-                    mask -= Power( 2, 6 );
-                    mask -= Power( 2, 7 );
+                else if (CHK_DAYS_STARTEND(3, 1, 3, 5) == 1)
+                {
+                    mask = mask - Power(2, 4);
+                    mask = mask - Power(2, 7);
+                }
+                else if (FUNCTION_0033() == 5)
+                {
+                    mask = mask - Power(2, 3);
+                    mask = mask - Power(2, 4);
+                    mask = mask - Power(2, 6);
+                    mask = mask - Power(2, 7);
+                }
+                else
+                {
+                    mask = mask - Power(2, 4);
+                    mask = mask - Power(2, 6);
+                    mask = mask - Power(2, 7);
                 }
                 break;
             case 2:
-                mask -= Power( 2, 3 );
-                mask -= Power( 2, 4 );
-                mask -= Power( 2, 5 );
-                mask -= Power( 2, 6 );
-                mask -= Power( 2, 7 ); // if in Club Escapade then it's clearly night time so all is unlocked.
+                mask = mask - Power(2, 3);
+                mask = mask - Power(2, 4);
+                mask = mask - Power(2, 5);
+                mask = mask - Power(2, 6);
+                mask = mask - Power(2, 7);
                 break;
-            case 9: // Back Alley (Empty)
-                if ( FUNCTION_0033() != 5 )
+            case 9:
+                if (FUNCTION_0033() != 5)
                 {
-                    mask -= Power( 2, 5 );
-                    mask -= Power( 2, 7 );
+                    mask = mask - Power(2, 5);
+                    mask = mask - Power(2, 7);
                 }
                 else
                 {
-                    mask -= Power( 2, 3 );
-                    mask -= Power( 2, 5 );
-                    mask -= Power( 2, 7 );
+                    mask = mask - Power(2, 3);
+                    mask = mask - Power(2, 5);
+                    mask = mask - Power(2, 7);
                 }
                 break;
-            case 10: // Back Alley (Velvet Room)
-                if ( FUNCTION_0033() != 5 )
+            case 10:
+                if (FUNCTION_0033() != 5)
                 {
-                    mask -= Power( 2, 5 );
-                    mask -= Power( 2, 6 );
-                    mask -= Power( 2, 7 );
+                    mask = mask - Power(2, 5);
+                    mask = mask - Power(2, 6);
+                    mask = mask - Power(2, 7);
                 }
                 else
                 {
-                    mask -= Power( 2, 3 );
-                    mask -= Power( 2, 5 );
-                    mask -= Power( 2, 6 );
-                    mask -= Power( 2, 7 );
+                    mask = mask - Power(2, 3);
+                    mask = mask - Power(2, 5);
+                    mask = mask - Power(2, 6);
+                    mask = mask - Power(2, 7);
                 }
                 break;
             default:
                 break;
         }
     }
-    else {
-        mask -= Power( 2, 8 );
-        switch (CurFldMinor) {
-            default:
-                break;
-        }
+    else
+    {
+        mask = mask - Power(2, 8);
     }
-    if (BIT_CHK(6323)) { // View Calendar
-        mask -= Power( 2, 9 ); 
+
+    if (BIT_CHK(5156))
+    {
+        mask = mask - Power(2, 9);
     }
-    if (BIT_CHK(6325)) { // Find a Friend
-        mask -= Power( 2, 10 ); 
+
+    if (BIT_CHK(5158))
+    {
+        mask = mask - Power(2, 10);
     }
-    if (BIT_CHK(6326)) { // Save Anywhere
-        if ( !BIT_CHK(6321)) {
-        mask -= Power( 2, 11 );  
-        }
+
+    if (BIT_CHK(5159) && !BIT_CHK(5154))
+    {
+        mask = mask - Power(2, 11);
     }
-    if (BIT_CHK(6321)) { // Mod Menu
-        mask -= Power( 2, 12 );
+
+    if (BIT_CHK(5154))
+    {
+        mask = mask - Power(2, 12);
     }
 
     return mask;

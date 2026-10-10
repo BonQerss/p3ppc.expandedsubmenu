@@ -1,6 +1,4 @@
-
 import("Common/StripMall.flow");
-
 
 global bool isFieldBf;
 
@@ -12,5 +10,5 @@ void f009_001_shortcut_hook()
 
 void CallOriginalSquareMenu()
 {
-    f009_001_shortcut();
-} 
+    f009_001_shortcut_unhooked();
+}

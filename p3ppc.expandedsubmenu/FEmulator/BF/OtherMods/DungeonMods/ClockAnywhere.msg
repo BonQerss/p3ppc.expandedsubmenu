@@ -109,80 +109,30 @@
 [n]to raise your HP and SP, and to level
 [n]up your Personas to make them stronger.
 [n] 
-[n] 
-[n] 
-[n][w][e]
-[s]The Persona equipped at the end of a
+[n]The Persona equipped at the end of a
 [n]victorious battle will gain experience
 [n]and potentially level up.
-[n] 
-[n] 
-[n] 
 [n][w][e]
 [s]When a Persona levels up, not only do its
 [n]stats increase, it will sometimes learn
 [n]new skills.
-[n] 
-[n]To be effective in battle, it will need
-[n]to have a strong skill set.
 [n][w][e]
 [s]Personas which have already acquired all
 [n]of their skills, or Personas that are
 [n]not as strong as you'd like, can be
-[n]fused at the Velvet Room. Through fusion,
-[n]you can create new Personas.
-[n] 
-[n][w][e]
-[s]If you have a Social Link matching the
-[n]new Persona's arcana, the new Persona
-[n]will gain bonus experience and rise to
-[n]a higher level than predicted.
-[n] 
-[n] 
-[n][w][e]
-[s]Raising your Social Links as high as
-[n]you can before fusion will allow you
-[n]to fuse Personas at their strongest.
-[n] 
-[n] 
-[n] 
+[n]fused at the Velvet Room.
 [n][w][e]
 
 [msg SYS_TUTORIAL_04]
 [s]Be careful of occasions when the
 [n]layout of Tartarus changes, and of
 [n]your friends' health.
-[n] 
-[n] 
-[n] 
 [n][w][e]
 [s]When the layout changes, there is a
 [n]high likelihood of finding more
 [n]treasure chests, rare Shadows, and
-[n]other unusual effects. These effects
-[n]will disappear once you ascend to
-[n]a new floor.
+[n]other unusual effects.
 [n][w][e]
 [s]The various states of health are Good,
 [n]Great, Tired, and Sick.
-[n][w][e]
-[s]"Great" will enhance your effectiveness
-[n]in battle, making it the best time to
-[n]fight in Tartarus.
-[n]However, "Tired" and "Sick" will make
-[n]you weak and put you at a disadvantage.
-[n][w][e]
-[s]If you fight too much in Tartarus, you
-[n]will be Tired the next day. Staying
-[n]Tired may sometimes cause your
-[n]condition to worsen into Sick.
-[n] 
-[n] 
-[n][w][e]
-[s]At these times, be sure to cut your
-[n]exploration short or do something to
-[n]alleviate the exhaustion.
-[n] 
-[n]Make sure that you are at your best
-[n]during important battles.
 [n][w][e]

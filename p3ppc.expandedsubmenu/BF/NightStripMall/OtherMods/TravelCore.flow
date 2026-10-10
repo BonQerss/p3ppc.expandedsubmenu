@@ -1,0 +1,46 @@
+int TownMapIndexForMajor(int major)
+{
+    if (major == 6) return 0;
+    if (major == 8) return 1;
+    if (major == 10) return 2;
+    if (major == 9) return 3;
+    if (major == 12) return 4;
+    if (major == 7) return 5;
+    return -1;
+}
+
+void PrepareTownFieldState(int major)
+{
+    int mapIndex = TownMapIndexForMajor(major);
+
+    if (mapIndex == -1)
+        return;
+
+    BIT_OFF(3090);
+    BIT_OFF(3091);
+    BIT_OFF(3092);
+    BIT_OFF(3093);
+    FLD_FUNCTION_0057(mapIndex);
+    FLD_FUNCTION_005A();
+    WAIT(10);
+}
+
+void BeginSafeFieldWarp(int major)
+{
+    PrepareTownFieldState(major);
+    FADE(3, 20);
+    FUNCTION_000F();
+}
+
+void FinishSafeFieldWarp(int major)
+{
+    if (TownMapIndexForMajor(major) != -1)
+        FLD_FUNCTION_0059();
+}
+
+void SafeCallField(int major, int minor, int p1, int p2)
+{
+    BeginSafeFieldWarp(major);
+    CALL_FIELD(major, minor, p1, p2);
+    FinishSafeFieldWarp(major);
+}

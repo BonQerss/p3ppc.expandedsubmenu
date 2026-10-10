@@ -1,0 +1,8 @@
+import("../ModMenu/ModMenu.flow");
+import("Yakushima.msg");
+void yakushima_expanded_shortcut()
+{
+    if (!BIT_CHK(5154)) { CallOriginalSquareMenu(); return; }
+    SEL_DEFKEY(PadButton.Circle, 4); int sel = SEL(YAKUSHIMA_ESM);
+    if (sel == 0) CALL_FIELD(33,1,0,0); else if (sel == 1) CALL_FIELD(33,2,0,0); else if (sel == 2) CALL_FIELD(33,3,0,0); else if (sel == 3) ModMenuInit();
+}

@@ -1,4 +1,5 @@
 import( "FindAFriend.msg" );
+import("TravelCore.flow");
 
 // Procedure Index: 27
 void HangOut()
@@ -24,10 +25,9 @@ void HangOut()
         CurFieldMinor = FLD_GET_MINOR();
 		
 		
-		if ( !BIT_CHK(5678) )
+		if ( !BIT_CHK(5161) )
 		{
-			if ((CMM_GET_LV(2) == 0) && BIT_CHK(1985) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) ) // Kenji
-			{
+			if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5)) && ((CMM_GET_LV(2) == 0) && BIT_CHK(1985) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) )) { // Kenji
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -38,8 +38,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(3) == 0) && BIT_CHK(1986) && CHK_DAYS_STARTEND( 4, 27, 1, 23 ) ) // Hidetoshi
-			{
+			if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((CMM_GET_LV(3) == 0) && BIT_CHK(1986) && CHK_DAYS_STARTEND( 4, 27, 1, 23 ) )) { // Hidetoshi
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -50,8 +49,7 @@ void HangOut()
             }
 			}
 			
-			if ( ( CMM_GET_LV(4) == 0) && BIT_CHK(1987) && CHK_DAYS_STARTEND( 4, 25, 1, 23 ) ) // Old Couple
-			{
+			if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ( ( CMM_GET_LV(4) == 0) && BIT_CHK(1987) && CHK_DAYS_STARTEND( 4, 25, 1, 23 ) )) { // Old Couple
             if (FUNCTION_0033() == 5)
             {
             }
@@ -62,8 +60,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(5) == 0) && BIT_CHK(1988) && CHK_DAYS_STARTEND( 7, 28, 1, 23 ) ) // Yukari
-			{
+			if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(5) == 0) && BIT_CHK(1988) && CHK_DAYS_STARTEND( 7, 28, 1, 23 ) )) { // Yukari
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -74,8 +71,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(6) == 0) && BIT_CHK(1989) && CMM_GET_LV(var48) >= 1 ) // Fuuka
-			{
+			if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(6) == 0) && BIT_CHK(1989) && CMM_GET_LV(var48) >= 1 )) { // Fuuka
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -86,8 +82,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(7) == 0) && BIT_CHK(1990) && CHK_DAYS_STARTEND( 11, 21, 1, 23 ) ) // Mitsuru
-			{
+			if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(7) == 0) && BIT_CHK(1990) && CHK_DAYS_STARTEND( 11, 21, 1, 23 ) )) { // Mitsuru
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -98,8 +93,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(8) == 1) && BIT_CHK(1991) && CHK_DAYS_STARTEND( 12, 30, 1, 23 ) ) // Aigis
-			{
+			if ((FUNCTION_0032() != 0) && ((CMM_GET_LV(8) == 0) && BIT_CHK(1991) && CHK_DAYS_STARTEND( 12, 30, 1, 23 ) )) { // Aigis
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -110,8 +104,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(9) == 0) && BIT_CHK(1992) && CHK_DAYS_STARTEND( 4, 28, 1, 23 ) && CMM_GET_LV(var43) == 3 ) // Yuko
-			{
+			if (((FUNCTION_0032() == 3) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(9) == 0) && BIT_CHK(1992) && CHK_DAYS_STARTEND( 4, 28, 1, 23 ) && CMM_GET_LV(var43) == 3 )) { // Yuko
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -122,8 +115,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(10) == 0) && BIT_CHK(1993) && CHK_DAYS_STARTEND( 5, 28, 1, 23 ) ) // Chihiro
-			{
+			if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(10) == 0) && BIT_CHK(1993) && CHK_DAYS_STARTEND( 5, 28, 1, 23 ) )) { // Chihiro
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -134,8 +126,7 @@ void HangOut()
             }
 			}
 			
-			if (((CMM_GET_LV(var43) == 0) && BIT_CHK(1994) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) )  || ((CMM_GET_LV(var43) == 0) && BIT_CHK(1995) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) ) || ((CMM_GET_LV(var43) == 0) && BIT_CHK(1996) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) ) ) // Kazushi
-			{
+			if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5)) && (((CMM_GET_LV(var43) == 0) && BIT_CHK(1994) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) )  || ((CMM_GET_LV(var43) == 0) && BIT_CHK(1995) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) ) || ((CMM_GET_LV(var43) == 0) && BIT_CHK(1996) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) ) )) { // Kazushi
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -158,8 +149,7 @@ void HangOut()
             }
 			}
 			
-			if (((CMM_GET_LV(var48) == 0) && BIT_CHK(1998) && CHK_DAYS_STARTEND( 6, 17, 1, 23 ) ) || ((CMM_GET_LV(var48) == 0) && BIT_CHK(1999) && CHK_DAYS_STARTEND( 6, 17, 1, 23 ) ) || ((CMM_GET_LV(var48) == 0) && BIT_CHK(2000) && CHK_DAYS_STARTEND( 6, 17, 1, 23 ) ) ) // Keisuke
-			{
+			if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4)) && (((CMM_GET_LV(var48) == 0) && BIT_CHK(1998) && CHK_DAYS_STARTEND( 6, 17, 1, 23 ) ) || ((CMM_GET_LV(var48) == 0) && BIT_CHK(1999) && CHK_DAYS_STARTEND( 6, 17, 1, 23 ) ) || ((CMM_GET_LV(var48) == 0) && BIT_CHK(2000) && CHK_DAYS_STARTEND( 6, 17, 1, 23 ) ) )) { // Keisuke
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -170,8 +160,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(18) == 0) && BIT_CHK(2001) && CHK_DAYS_STARTEND( 5, 9, 1, 23 ) )  // Maiko
-			{
+			if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(18) == 0) && BIT_CHK(2001) && CHK_DAYS_STARTEND( 5, 9, 1, 23 ) )) { // Maiko
             if (FUNCTION_0033() == 5)
             {
             }
@@ -182,8 +171,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(20) == 0) && BIT_CHK(2003) && CHK_DAYS_STARTEND( 5, 29, 1, 23 ) ) // Bebe
-			{
+			if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((CMM_GET_LV(20) == 0) && BIT_CHK(2003) && CHK_DAYS_STARTEND( 5, 29, 1, 23 ) )) { // Bebe
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -194,8 +182,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(21) == 0) && BIT_CHK(2004) && CHK_DAYS_STARTEND( 6, 23, 1, 23 ) )  // Tanaka
-			{
+			if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(21) == 0) && BIT_CHK(2004) && CHK_DAYS_STARTEND( 6, 23, 1, 23 ) )) { // Tanaka
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 65536);
@@ -206,8 +193,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(22) == 0) && BIT_CHK(2005) && CMM_GET_LV((9) == 4 ) || ((CMM_GET_LV(22) == 0) && BIT_CHK(2005) && CMM_GET_LV((var43) == 3 ) ) ) // Mutatsu
-			{
+			if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(22) == 0) && BIT_CHK(2005) && CMM_GET_LV(9) == 4 || ((CMM_GET_LV(22) == 0) && BIT_CHK(2005) && CMM_GET_LV(var43) == 3 ) )) { // Mutatsu
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 131072);
@@ -218,8 +204,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(23) == 0) && BIT_CHK(2006) && CHK_DAYS_STARTEND( 8, 9, 1, 23 ) )  // Mamoru
-			{
+			if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((CMM_GET_LV(23) == 0) && BIT_CHK(2006) && CHK_DAYS_STARTEND( 8, 9, 1, 23 ) )) { // Mamoru
             if (FUNCTION_0033() == 5)
             {
             }
@@ -230,9 +215,8 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(24) == 0) && BIT_CHK(2007) && CHK_DAYS_STARTEND( 9, 7, 1, 23 ) ) // Nozomi
-			{
-            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+			if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 1) || (FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(24) == 0) && BIT_CHK(2007) && CHK_DAYS_STARTEND( 9, 7, 1, 23 ) )) { // Nozomi
+            if (FUNCTION_0033() == 5)
             {
             }
             else
@@ -242,8 +226,7 @@ void HangOut()
             }
 			}
 			
-			if ((CMM_GET_LV(25) == 0) && BIT_CHK(2008) && CHK_DAYS_STARTEND( 8, 8, 1, 23 ) ) // Akinari
-			{
+			if (((FUNCTION_0032() == 0)) && ((CMM_GET_LV(25) == 0) && BIT_CHK(2008) && CHK_DAYS_STARTEND( 8, 8, 1, 23 ) )) { // Akinari
             if (FUNCTION_0033() == 5)
             {
             }
@@ -256,8 +239,7 @@ void HangOut()
 			
 		}
 
-        if ((CMM_CHK_LVUP(2) == 1) && BIT_CHK(1985)) // Kenji
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(2) == 1) && BIT_CHK(1985))) { // Kenji
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -269,8 +251,7 @@ void HangOut()
             }
         }
 		
-		else if ((CMM_CHK_LVUP(2) == 0 ) && BIT_CHK(1985) && CMM_GET_LV(2) != 0 && CMM_GET_LV(2) != 10)  // Kenji
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(2) == 0 ) && BIT_CHK(1985) && CMM_GET_LV(2) != 0 && CMM_GET_LV(2) != 10)) { // Kenji
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -281,8 +262,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(3) == 1) && BIT_CHK(1986)) // Hidetoshi
-        {
+        if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(3) == 1) && BIT_CHK(1986))) { // Hidetoshi
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -296,8 +276,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(3) == 0) && BIT_CHK(1986) && CMM_GET_LV(3) != 0 && CMM_GET_LV(3) != 10)  // Hidetoshi
-        {
+		else if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(3) == 0) && BIT_CHK(1986) && CMM_GET_LV(3) != 0 && CMM_GET_LV(3) != 10)) { // Hidetoshi
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -308,8 +287,7 @@ void HangOut()
             }
         }
 
-        if (( CMM_CHK_LVUP(4) == 1) && BIT_CHK(1987) ) // Old Couple
-        {
+        if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && (( EVT_FUNCTION_000F(4) == 1) && BIT_CHK(1987) )) { // Old Couple
             if (FUNCTION_0033() == 5)
             {
             }
@@ -323,8 +301,7 @@ void HangOut()
 		
 		
 		
-		else if ( ( CMM_CHK_LVUP(4) == 0) && BIT_CHK(1987) && CMM_GET_LV(4) != 0 && CMM_GET_LV(4) != 10 ) // Old Couple
-        {
+		else if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ( ( EVT_FUNCTION_000F(4) == 0) && BIT_CHK(1987) && CMM_GET_LV(4) != 0 && CMM_GET_LV(4) != 10 )) { // Old Couple
             if (FUNCTION_0033() == 5)
             {
             }
@@ -335,8 +312,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(5) == 1) && BIT_CHK(1988)) // Yukari
-        {
+        if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(5) == 1) && BIT_CHK(1988))) { // Yukari
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -350,8 +326,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(5) == 0) && BIT_CHK(1988) && CMM_GET_LV(5) != 0 && CMM_GET_LV(5) != 10)  // Yukari
-        {
+		else if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(5) == 0) && BIT_CHK(1988) && CMM_GET_LV(5) != 0 && CMM_GET_LV(5) != 10)) { // Yukari
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -362,8 +337,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(6) == 1) && BIT_CHK(1989)) // Fuuka
-        {
+        if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(6) == 1) && BIT_CHK(1989))) { // Fuuka
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -377,8 +351,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(6) == 0) && BIT_CHK(1989) && CMM_GET_LV(6) != 0 && CMM_GET_LV(6) != 10)  // Fuuka
-        {
+		else if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(6) == 0) && BIT_CHK(1989) && CMM_GET_LV(6) != 0 && CMM_GET_LV(6) != 10)) { // Fuuka
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -389,8 +362,7 @@ void HangOut()
             }
         }
 		
-        if ((CMM_CHK_LVUP(7) == 1) && BIT_CHK(1990)) // Mitsuru
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(7) == 1) && BIT_CHK(1990))) { // Mitsuru
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -404,8 +376,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(7) == 0) && BIT_CHK(1990) && CMM_GET_LV(7) != 0 && CMM_GET_LV(7) != 10)  // Mitsuru
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(7) == 0) && BIT_CHK(1990) && CMM_GET_LV(7) != 0 && CMM_GET_LV(7) != 10)) { // Mitsuru
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -416,8 +387,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(8) == 1) && BIT_CHK(1991)) // Aigis
-        {
+        if ((FUNCTION_0032() != 0) && ((EVT_FUNCTION_000F(8) == 1) && BIT_CHK(1991))) { // Aigis
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -431,8 +401,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(8) == 0) && BIT_CHK(1991) && CMM_GET_LV(8) != 0 && CMM_GET_LV(8) != 10)  // Aigis
-        {
+		else if ((FUNCTION_0032() != 0) && ((EVT_FUNCTION_000F(8) == 0) && BIT_CHK(1991) && CMM_GET_LV(8) != 0 && CMM_GET_LV(8) != 10)) { // Aigis
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -443,8 +412,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(9) == 1) && BIT_CHK(1992)) // Yuko
-        {
+        if (((FUNCTION_0032() == 3) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(9) == 1) && BIT_CHK(1992))) { // Yuko
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -458,8 +426,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(9) == 0) && BIT_CHK(1992) && CMM_GET_LV(9) != 0 && CMM_GET_LV(9) != 10)  // Yuko
-        {
+		else if (((FUNCTION_0032() == 3) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(9) == 0) && BIT_CHK(1992) && CMM_GET_LV(9) != 0 && CMM_GET_LV(9) != 10)) { // Yuko
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -470,8 +437,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(10) == 1) && BIT_CHK(1993)) // Chihiro
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(10) == 1) && BIT_CHK(1993))) { // Chihiro
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -494,8 +460,7 @@ void HangOut()
     	//	}
 
 		
-		else if ((CMM_CHK_LVUP(10) == 0) && BIT_CHK(1993) && CMM_GET_LV(10) != 0 && CMM_GET_LV(10) != 10) // Chihiro
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(10) == 0) && BIT_CHK(1993) && CMM_GET_LV(10) != 0 && CMM_GET_LV(10) != 10)) { // Chihiro
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -506,8 +471,7 @@ void HangOut()
             }
         }
 
-        if (((CMM_CHK_LVUP(var43) == 1) && BIT_CHK(1994)) || ((CMM_CHK_LVUP(var43) == 1) && BIT_CHK(1995)) || ((CMM_CHK_LVUP(var43) == 1) && BIT_CHK(1996))) // Kazushi
-        {
+        if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5)) && (((EVT_FUNCTION_000F(var43) == 1) && BIT_CHK(1994)) || ((EVT_FUNCTION_000F(var43) == 1) && BIT_CHK(1995)) || ((EVT_FUNCTION_000F(var43) == 1) && BIT_CHK(1996)))) { // Kazushi
 			if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -521,8 +485,7 @@ void HangOut()
 		
 		
 		
-		else if (((CMM_CHK_LVUP(var43) == 0) && BIT_CHK(1994) && CMM_GET_LV(var43) != 0 && CMM_GET_LV(var43) != 10)  || ((CMM_CHK_LVUP(var43) == 0) && BIT_CHK(1995) && CMM_GET_LV(var43) != 0 && CMM_GET_LV(var43) != 10)  || ((CMM_CHK_LVUP(var43) == 0) && BIT_CHK(1996) && CMM_GET_LV(var43) != 0 && CMM_GET_LV(var43) != 10) ) // Kazushi
-        {
+		else if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5)) && (((EVT_FUNCTION_000F(var43) == 0) && BIT_CHK(1994) && CMM_GET_LV(var43) != 0 && CMM_GET_LV(var43) != 10)  || ((EVT_FUNCTION_000F(var43) == 0) && BIT_CHK(1995) && CMM_GET_LV(var43) != 0 && CMM_GET_LV(var43) != 10)  || ((EVT_FUNCTION_000F(var43) == 0) && BIT_CHK(1996) && CMM_GET_LV(var43) != 0 && CMM_GET_LV(var43) != 10) )) { // Kazushi
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -533,7 +496,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(14) == 1) && BIT_CHK(1997)) // Maya
+        if ((EVT_FUNCTION_000F(14) == 1) && BIT_CHK(1997)) // Maya
         {
             if (FUNCTION_0033() == 5)
             {
@@ -548,7 +511,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(14) == 0) && BIT_CHK(1997) && CMM_GET_LV(14) != 0 && CMM_GET_LV(14) != 10)  // Maya
+		else if ((EVT_FUNCTION_000F(14) == 0) && BIT_CHK(1997) && CMM_GET_LV(14) != 0 && CMM_GET_LV(14) != 10)  // Maya
         {
             if (FUNCTION_0033() == 5)
             {
@@ -560,8 +523,7 @@ void HangOut()
             }
         }
 
-        if (((CMM_CHK_LVUP(var48) == 1) && BIT_CHK(1998)) || ((CMM_CHK_LVUP(var48) == 1) && BIT_CHK(1999)) || ((CMM_CHK_LVUP(var48) == 1) && BIT_CHK(2000))) // Keisuke
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4)) && (((EVT_FUNCTION_000F(var48) == 1) && BIT_CHK(1998)) || ((EVT_FUNCTION_000F(var48) == 1) && BIT_CHK(1999)) || ((EVT_FUNCTION_000F(var48) == 1) && BIT_CHK(2000)))) { // Keisuke
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -575,8 +537,7 @@ void HangOut()
 		
 		
 		
-		else if (((CMM_CHK_LVUP(var48) == 0) && BIT_CHK(1998) && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10)  || ((CMM_CHK_LVUP(var48) == 0) && BIT_CHK(1999) && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10)  || ((CMM_CHK_LVUP(var48) == 1) && BIT_CHK(2000) && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10) ) // Keisuke
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4)) && (((EVT_FUNCTION_000F(var48) == 0) && BIT_CHK(1998) && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10)  || ((EVT_FUNCTION_000F(var48) == 0) && BIT_CHK(1999) && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10)  || ((EVT_FUNCTION_000F(var48) == 1) && BIT_CHK(2000) && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10) )) { // Keisuke
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -587,8 +548,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(18) == 1) && BIT_CHK(2001)) // Maiko
-        {
+        if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(18) == 1) && BIT_CHK(2001))) { // Maiko
             if (FUNCTION_0033() == 5)
             {
             }
@@ -602,8 +562,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(18) == 0) && BIT_CHK(2001) && CMM_GET_LV(18) != 0 && CMM_GET_LV(18) != 10) // Maiko
-        {
+		else if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(18) == 0) && BIT_CHK(2001) && CMM_GET_LV(18) != 0 && CMM_GET_LV(18) != 10)) { // Maiko
             if (FUNCTION_0033() == 5)
             {
             }
@@ -614,8 +573,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(20) == 1) && BIT_CHK(2003)) // Bebe
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(20) == 1) && BIT_CHK(2003))) { // Bebe
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -629,8 +587,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(20) == 0) && BIT_CHK(2003) && CMM_GET_LV(20) != 0 && CMM_GET_LV(20) != 10)  // Bebe
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(20) == 0) && BIT_CHK(2003) && CMM_GET_LV(20) != 0 && CMM_GET_LV(20) != 10)) { // Bebe
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -641,8 +598,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(21) == 1) && BIT_CHK(2004)) // Tanaka
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(21) == 1) && BIT_CHK(2004))) { // Tanaka
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 65536);
@@ -656,8 +612,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(21) == 0) && BIT_CHK(2004) && CMM_GET_LV(21) != 0 && CMM_GET_LV(21) != 10)  // Tanaka
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(21) == 0) && BIT_CHK(2004) && CMM_GET_LV(21) != 0 && CMM_GET_LV(21) != 10)) { // Tanaka
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 65536);
@@ -668,8 +623,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(22) == 1) && BIT_CHK(2005)) // Mutatsu
-        {
+        if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(22) == 1) && BIT_CHK(2005))) { // Mutatsu
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 131072);
@@ -683,8 +637,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(22) == 0) && BIT_CHK(2005) && CMM_GET_LV(22) != 0 && CMM_GET_LV(22) != 10)  // Mutatsu
-        {
+		else if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(22) == 0) && BIT_CHK(2005) && CMM_GET_LV(22) != 0 && CMM_GET_LV(22) != 10)) { // Mutatsu
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 131072);
@@ -695,8 +648,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(23) == 1) && BIT_CHK(2006)) // Mamoru
-        {
+        if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(23) == 1) && BIT_CHK(2006))) { // Mamoru
             if (FUNCTION_0033() == 5)
             {
             }
@@ -710,8 +662,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(23) == 0) && BIT_CHK(2006) && CMM_GET_LV(23) != 0 && CMM_GET_LV(23) != 10) // Mamoru
-        {
+		else if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(23) == 0) && BIT_CHK(2006) && CMM_GET_LV(23) != 0 && CMM_GET_LV(23) != 10)) { // Mamoru
             if (FUNCTION_0033() == 5)
             {
             }
@@ -722,9 +673,8 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(24) == 1) && BIT_CHK(2007)) // Nozomi
-		{
-            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+        if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 1) || (FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(24) == 1) && BIT_CHK(2007))) { // Nozomi
+            if (FUNCTION_0033() == 5)
             {
             }
             else
@@ -735,9 +685,8 @@ void HangOut()
             }
 		}
 
-		else if ((CMM_CHK_LVUP(24) == 0) && BIT_CHK(2007) && CMM_GET_LV(24) != 0 && CMM_GET_LV(24) != 10) // Nozomi
-        {
-            if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
+		else if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 1) || (FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(24) == 0) && BIT_CHK(2007) && CMM_GET_LV(24) != 0 && CMM_GET_LV(24) != 10)) { // Nozomi
+            if (FUNCTION_0033() == 5)
             {
             }
             else
@@ -747,8 +696,7 @@ void HangOut()
             }
         }
 		
-        if ((CMM_CHK_LVUP(25) == 1) && BIT_CHK(2008)) // Akinari
-        {
+        if (((FUNCTION_0032() == 0)) && ((EVT_FUNCTION_000F(25) == 1) && BIT_CHK(2008))) { // Akinari
             if (FUNCTION_0033() == 5)
             {
             }
@@ -762,8 +710,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(25) == 0) && BIT_CHK(2008) && CMM_GET_LV(25) != 0 && CMM_GET_LV(25) != 10) // Akinari
-        {
+		else if (((FUNCTION_0032() == 0)) && ((EVT_FUNCTION_000F(25) == 0) && BIT_CHK(2008) && CMM_GET_LV(25) != 0 && CMM_GET_LV(25) != 10)) { // Akinari
             if (FUNCTION_0033() == 5)
             {
             }
@@ -949,9 +896,7 @@ void HangOut()
                     goto AEGIS_END;
                 } else {
                     MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(fieldMajor, fieldMinor, callParam1, callParam2);
+                    SafeCallField(fieldMajor, fieldMinor, callParam1, callParam2);
                 }
                 }
         }
@@ -977,10 +922,9 @@ void HangOut()
         CurFieldMinor = FLD_GET_MINOR();
 		
 		
-		if ( !BIT_CHK(5678) )
+		if ( !BIT_CHK(5161) )
 		{
-            if ((CMM_GET_LV(2) == 0) && BIT_CHK(1985) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) ) // Junpei
-            {
+            if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4)) && ((CMM_GET_LV(2) == 0) && BIT_CHK(1985) && CHK_DAYS_STARTEND( 4, 23, 1, 23 ) )) { // Junpei
                 if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
                 {
                 }
@@ -991,8 +935,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(3) == 0) && BIT_CHK(1986) && CHK_DAYS_STARTEND( 4, 27, 1, 23 ) ) // Hidetoshi
-            {
+            if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((CMM_GET_LV(3) == 0) && BIT_CHK(1986) && CHK_DAYS_STARTEND( 4, 27, 1, 23 ) )) { // Hidetoshi
                 if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
                 {
                 }
@@ -1003,8 +946,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(4) == 0) && BIT_CHK(1987) && CHK_DAYS_STARTEND( 4, 25, 1, 23 ) ) // Old Couple
-            {
+            if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(4) == 0) && BIT_CHK(1987) && CHK_DAYS_STARTEND( 4, 25, 1, 23 ) )) { // Old Couple
                 if (FUNCTION_0033() == 5)
                 {
                 }
@@ -1015,8 +957,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(5) == 0) && BIT_CHK(1988) && CHK_DAYS_STARTEND( 7, 28, 1, 23 ) ) // Yukari
-            {
+            if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 5)) && ((CMM_GET_LV(5) == 0) && BIT_CHK(1988) && CHK_DAYS_STARTEND( 7, 28, 1, 23 ) )) { // Yukari
                 if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
                 {
                 }
@@ -1027,8 +968,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(6) == 0) && BIT_CHK(1989) && CHK_DAYS_STARTEND( 6, 15, 1, 23 ) )  // Fuuka
-            {
+            if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(6) == 0) && BIT_CHK(1989) && CHK_DAYS_STARTEND( 6, 15, 1, 23 ) )) { // Fuuka
                 if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
                 {
                 }
@@ -1039,8 +979,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(7) == 0) && BIT_CHK(1990) && CHK_DAYS_STARTEND( 11, 21, 1, 23 ) )  // Mitsuru
-            {
+            if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(7) == 0) && BIT_CHK(1990) && CHK_DAYS_STARTEND( 11, 21, 1, 23 ) )) { // Mitsuru
                 if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
                 {
                 }
@@ -1051,8 +990,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(8) == 0) && BIT_CHK(1991) && CHK_DAYS_STARTEND( 12, 30, 1, 23 ) ) // Aigis
-            {
+            if ((FUNCTION_0032() != 0) && ((CMM_GET_LV(8) == 0) && BIT_CHK(1991) && CHK_DAYS_STARTEND( 12, 30, 1, 23 ) )) { // Aigis
                 if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
                 {
                 }
@@ -1063,8 +1001,7 @@ void HangOut()
                 }
             }
             
-            if ((( CMM_GET_LV(var48) == 0) && BIT_CHK(1993) && CHK_DAYS_STARTEND( 5, 8, 1, 23 ) ) || ((CMM_GET_LV(var48) == 0) && BIT_CHK(1992) && CHK_DAYS_STARTEND( 5, 8, 1, 23 ) ))  // Saori Library
-            {
+            if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4)) && ((( CMM_GET_LV(var48) == 0) && BIT_CHK(1993) && CHK_DAYS_STARTEND( 5, 8, 1, 23 ) ) || ((CMM_GET_LV(var48) == 0) && BIT_CHK(1992) && CHK_DAYS_STARTEND( 5, 8, 1, 23 ) ))) { // Saori Library
                 if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
                 {
                 }
@@ -1075,8 +1012,7 @@ void HangOut()
                 }
             }
             
-            if (( CMM_GET_LV(var43) == 0 && BIT_CHK(1994) && CHK_DAYS_STARTEND( 4, 24, 1, 31 )) || ((CMM_GET_LV(var43) == 0) && BIT_CHK(1995) && CHK_DAYS_STARTEND( 4, 24, 1, 31 ) ))  // Rio
-            {
+            if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && (( CMM_GET_LV(var43) == 0 && BIT_CHK(1994) && CHK_DAYS_STARTEND( 4, 24, 1, 31 )) || ((CMM_GET_LV(var43) == 0) && BIT_CHK(1995) && CHK_DAYS_STARTEND( 4, 24, 1, 31 ) ))) { // Rio
                 if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
                 {
                 }
@@ -1087,8 +1023,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(13) == 0) && BIT_CHK(1996) && CHK_DAYS_STARTEND( 8, 15, 1, 31 ) ) // Koromaru
-            {
+            if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(13) == 0) && BIT_CHK(1996) && CHK_DAYS_STARTEND( 8, 15, 1, 31 ) )) { // Koromaru
                 if (FUNCTION_0033() == 5)
                 {
                     whosAroundMask = (whosAroundMask - 256);
@@ -1111,8 +1046,7 @@ void HangOut()
                 }
             }
             
-            if ((( CMM_GET_LV(var56) == 0) && BIT_CHK(1999) && CHK_DAYS_STARTEND( 9, 1, 1, 31 ) || ((CMM_GET_LV(var56) == 0) && BIT_CHK(2000) && CHK_DAYS_STARTEND( 9, 1, 1, 31 ) ) ) )// Ken
-            {
+            if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4)) && ((( CMM_GET_LV(var56) == 0) && BIT_CHK(1999) && CHK_DAYS_STARTEND( 9, 1, 1, 31 ) || ((CMM_GET_LV(var56) == 0) && BIT_CHK(2000) && CHK_DAYS_STARTEND( 9, 1, 1, 31 ) ) ) )) { // Ken
                 if (FUNCTION_0033() == 5)
                 {
                     whosAroundMask = (whosAroundMask - 1024);
@@ -1123,8 +1057,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(18) == 0) && BIT_CHK(2001) && CHK_DAYS_STARTEND( 5, 11, 1, 31 ) ) // Maiko
-            {
+            if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(18) == 0) && BIT_CHK(2001) && CHK_DAYS_STARTEND( 5, 11, 1, 31 ) )) { // Maiko
                 if (FUNCTION_0033() == 5)
                 {
                 }
@@ -1135,8 +1068,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(20) == 0) && BIT_CHK(2003) && CHK_DAYS_STARTEND( 5, 29, 1, 31 ) )  // Bebe
-            {
+            if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((CMM_GET_LV(20) == 0) && BIT_CHK(2003) && CHK_DAYS_STARTEND( 5, 29, 1, 31 ) )) { // Bebe
                 if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
                 {
                 }
@@ -1148,8 +1080,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(21) == 0) && BIT_CHK(2004) && CHK_DAYS_STARTEND( 6, 23, 1, 23 ) )  // Tanaka
-            {
+            if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(21) == 0) && BIT_CHK(2004) && CHK_DAYS_STARTEND( 6, 23, 1, 23 ) )) { // Tanaka
                 if (FUNCTION_0033() == 5)
                 {
                     whosAroundMask = (whosAroundMask - 8192);
@@ -1160,8 +1091,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(22) == 0) && BIT_CHK(2005) && CMM_GET_LV((9) == 4 ) || ((CMM_GET_LV(22) == 0) && BIT_CHK(2005) && CMM_GET_LV((var43) == 3 ) ) )  // Mutatsu
-            {
+            if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(22) == 0) && BIT_CHK(2005) && CMM_GET_LV(9) == 4 || ((CMM_GET_LV(22) == 0) && BIT_CHK(2005) && CMM_GET_LV(var43) == 3 ) )) { // Mutatsu
                 if (FUNCTION_0033() == 5)
                 {
                     whosAroundMask = (whosAroundMask - 16384);
@@ -1172,8 +1102,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(25) == 0) && BIT_CHK(2008) && CHK_DAYS_STARTEND( 8, 8, 1, 23 ) )  // Akinari
-            {
+            if (((FUNCTION_0032() == 0)) && ((CMM_GET_LV(25) == 0) && BIT_CHK(2008) && CHK_DAYS_STARTEND( 8, 8, 1, 23 ) )) { // Akinari
                 if (FUNCTION_0033() == 5)
                 {
                 }
@@ -1184,8 +1113,7 @@ void HangOut()
                 }
             }
             
-            if ((CMM_GET_LV(27) == 0) && BIT_CHK(2010) && CHK_DAYS_STARTEND( 9, 7, 1, 23 ) ) // Shinjiro
-            {
+            if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((CMM_GET_LV(27) == 0) && BIT_CHK(2010) && CHK_DAYS_STARTEND( 9, 7, 1, 23 ) )) { // Shinjiro
                 if (FUNCTION_0033() == 5)
                 {
                     whosAroundMask = (whosAroundMask -  131072 );
@@ -1197,8 +1125,7 @@ void HangOut()
                 }
             }
 
-            if (((CMM_GET_LV(var80) == 0) && BIT_CHK(2006) && CHK_DAYS_STARTEND( 5, 25, 1, 31 )) || ((CMM_GET_LV(var80) == 0) && BIT_CHK(2007) && CHK_DAYS_STARTEND( 5, 25, 1, 31 ) )) // Ryoji
-            {
+            if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 5)) && (((CMM_GET_LV(var80) == 0) && BIT_CHK(2006) && CHK_DAYS_STARTEND( 5, 25, 1, 31 )) || ((CMM_GET_LV(var80) == 0) && BIT_CHK(2007) && CHK_DAYS_STARTEND( 5, 25, 1, 31 ) ))) { // Ryoji
                 if ( ( FUNCTION_0033() == 5 ) || BIT_CHK(3065) )
                 {
                 }
@@ -1211,8 +1138,7 @@ void HangOut()
             }
 		}
 
-        if ((CMM_CHK_LVUP(2) == 1) && BIT_CHK(1985)) // Junpei
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4)) && ((EVT_FUNCTION_000F(2) == 1) && BIT_CHK(1985))) { // Junpei
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1226,8 +1152,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(2) == 0) && BIT_CHK(1985) && CMM_GET_LV(2) != 0 && CMM_GET_LV(2) != 10 ) // Junpei
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4)) && ((EVT_FUNCTION_000F(2) == 0) && BIT_CHK(1985) && CMM_GET_LV(2) != 0 && CMM_GET_LV(2) != 10 )) { // Junpei
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1238,8 +1163,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(3) == 1) && BIT_CHK(1986)) // Hidetoshi
-        {
+        if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(3) == 1) && BIT_CHK(1986))) { // Hidetoshi
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1253,8 +1177,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(3) == 0) && BIT_CHK(1986) && CMM_GET_LV(3) != 0 && CMM_GET_LV(3) != 10 )  // Hidetoshi
-        {
+		else if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(3) == 0) && BIT_CHK(1986) && CMM_GET_LV(3) != 0 && CMM_GET_LV(3) != 10 )) { // Hidetoshi
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1265,8 +1188,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(4) == 1) && BIT_CHK(1987)) // Old Couple
-        {
+        if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(4) == 1) && BIT_CHK(1987))) { // Old Couple
             if (FUNCTION_0033() == 5)
             {
             }
@@ -1280,8 +1202,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(4) == 0) && BIT_CHK(1987) && CMM_GET_LV(4) != 0 && CMM_GET_LV(4) != 10 ) // Old Couple
-        {
+		else if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(4) == 0) && BIT_CHK(1987) && CMM_GET_LV(4) != 0 && CMM_GET_LV(4) != 10 )) { // Old Couple
             if (FUNCTION_0033() == 5)
             {
             }
@@ -1292,8 +1213,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(5) == 1) && BIT_CHK(1988)) // Yukari
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(5) == 1) && BIT_CHK(1988))) { // Yukari
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1307,8 +1227,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(5) == 0) && BIT_CHK(1988) && CMM_GET_LV(5) != 0 && CMM_GET_LV(5) != 10 ) // Yukari
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(5) == 0) && BIT_CHK(1988) && CMM_GET_LV(5) != 0 && CMM_GET_LV(5) != 10 )) { // Yukari
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1319,8 +1238,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(6) == 1) && BIT_CHK(1989)) // Fuuka
-        {
+        if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(6) == 1) && BIT_CHK(1989))) { // Fuuka
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1334,8 +1252,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(6) == 0) && BIT_CHK(1989) && CMM_GET_LV(6) != 0 && CMM_GET_LV(6) != 10 ) // Fuuka
-        {
+		else if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(6) == 0) && BIT_CHK(1989) && CMM_GET_LV(6) != 0 && CMM_GET_LV(6) != 10 )) { // Fuuka
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1346,8 +1263,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(7) == 1) && BIT_CHK(1990)) // Mitsuru
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(7) == 1) && BIT_CHK(1990))) { // Mitsuru
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1361,8 +1277,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(7) == 0) && BIT_CHK(1990) && CMM_GET_LV(7) != 0 && CMM_GET_LV(7) != 10 ) // Mitsuru
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(7) == 0) && BIT_CHK(1990) && CMM_GET_LV(7) != 0 && CMM_GET_LV(7) != 10 )) { // Mitsuru
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1373,8 +1288,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(8) == 1) && BIT_CHK(1991)) // Aigis
-        {
+        if ((FUNCTION_0032() != 0) && ((EVT_FUNCTION_000F(8) == 1) && BIT_CHK(1991))) { // Aigis
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1388,8 +1302,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(8) == 0) && BIT_CHK(1991) && CMM_GET_LV(8) != 0 && CMM_GET_LV(8) != 10 ) // Aigis
-        {
+		else if ((FUNCTION_0032() != 0) && ((EVT_FUNCTION_000F(8) == 0) && BIT_CHK(1991) && CMM_GET_LV(8) != 0 && CMM_GET_LV(8) != 10 )) { // Aigis
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1400,8 +1313,7 @@ void HangOut()
             }
         }
 
-        if (((CMM_CHK_LVUP(var48) == 1) && BIT_CHK(1993) ) || ((CMM_CHK_LVUP(var48) == 1) && BIT_CHK(1992) ) ) // Saori Library
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4)) && (((EVT_FUNCTION_000F(var48) == 1) && BIT_CHK(1993) ) || ((EVT_FUNCTION_000F(var48) == 1) && BIT_CHK(1992) ) )) { // Saori Library
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1415,8 +1327,7 @@ void HangOut()
 		
 		
 		
-		else if (((CMM_CHK_LVUP(var48) == 0) && BIT_CHK(1993) && CMM_GET_LV(10) != 0 && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10 ) || ((CMM_CHK_LVUP(var48) == 0) && BIT_CHK(1992) && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10 )) // Saori Library
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4)) && (((EVT_FUNCTION_000F(var48) == 0) && BIT_CHK(1993) && CMM_GET_LV(10) != 0 && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10 ) || ((EVT_FUNCTION_000F(var48) == 0) && BIT_CHK(1992) && CMM_GET_LV(var48) != 0 && CMM_GET_LV(var48) != 10 ))) { // Saori Library
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1427,8 +1338,7 @@ void HangOut()
             }
         }
 
-        if (((CMM_CHK_LVUP(var43) == 1) && BIT_CHK(1994) ) || ((CMM_CHK_LVUP(var43) == 1) && BIT_CHK(1995) ) ) // Rio
-        {
+        if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && (((EVT_FUNCTION_000F(var43) == 1) && BIT_CHK(1994) ) || ((EVT_FUNCTION_000F(var43) == 1) && BIT_CHK(1995) ) )) { // Rio
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1442,8 +1352,7 @@ void HangOut()
 		
 		
 		
-		else if (((CMM_CHK_LVUP(var43) == 0) && BIT_CHK(1994) && CMM_GET_LV(var43) != 0 && CMM_GET_LV(11) != 10 ) || ((CMM_CHK_LVUP(var43) == 0) && BIT_CHK(1995) && CMM_GET_LV(var43) != 0 ) && CMM_GET_LV(var43) != 10 ) // Rio
-        {
+		else if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && (((EVT_FUNCTION_000F(var43) == 0) && BIT_CHK(1994) && CMM_GET_LV(var43) != 0 && CMM_GET_LV(11) != 10 ) || ((EVT_FUNCTION_000F(var43) == 0) && BIT_CHK(1995) && CMM_GET_LV(var43) != 0 ) && CMM_GET_LV(var43) != 10 )) { // Rio
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1454,8 +1363,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(13) == 1) && BIT_CHK(1996)) // Koromaru
-        {
+        if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(13) == 1) && BIT_CHK(1996))) { // Koromaru
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 256);
@@ -1469,8 +1377,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(13) == 0) && BIT_CHK(1996) && CMM_GET_LV(13) != 0 && CMM_GET_LV(13) != 10 ) // Koromaru
-        {
+		else if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(13) == 0) && BIT_CHK(1996) && CMM_GET_LV(13) != 0 && CMM_GET_LV(13) != 10 )) { // Koromaru
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 256);
@@ -1481,7 +1388,7 @@ void HangOut()
             }
         }
 
-        if (((CMM_CHK_LVUP(var51) == 1) && BIT_CHK(1997)) || ((CMM_CHK_LVUP(var51) == 1) && BIT_CHK(1998))) // Ryoji
+        if (((EVT_FUNCTION_000F(var51) == 1) && BIT_CHK(1997)) || ((EVT_FUNCTION_000F(var51) == 1) && BIT_CHK(1998))) // Ryoji
         {
             if (FUNCTION_0033() == 5)
             {
@@ -1495,7 +1402,7 @@ void HangOut()
 		
 		
 		
-		else if (((CMM_CHK_LVUP(var51) == 0) && BIT_CHK(1997) && CMM_GET_LV(14) != 0 && CMM_GET_LV(var51) != 10 ) || ((CMM_CHK_LVUP(var51) == 0) && BIT_CHK(1998) && CMM_GET_LV(var51) != 0 && CMM_GET_LV(var51) != 10 )) // Ryoji
+		else if (((EVT_FUNCTION_000F(var51) == 0) && BIT_CHK(1997) && CMM_GET_LV(14) != 0 && CMM_GET_LV(var51) != 10 ) || ((EVT_FUNCTION_000F(var51) == 0) && BIT_CHK(1998) && CMM_GET_LV(var51) != 0 && CMM_GET_LV(var51) != 10 )) // Ryoji
         {
             if (FUNCTION_0033() == 5)
             {
@@ -1507,8 +1414,7 @@ void HangOut()
             }
         }
 
-        if (((CMM_CHK_LVUP(var56) == 1) && BIT_CHK(1999)) || ((CMM_CHK_LVUP(var56) == 1) && BIT_CHK(2000))) // Ken
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4)) && (((EVT_FUNCTION_000F(var56) == 1) && BIT_CHK(1999)) || ((EVT_FUNCTION_000F(var56) == 1) && BIT_CHK(2000)))) { // Ken
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 1024);
@@ -1522,8 +1428,7 @@ void HangOut()
 		
 		
 		
-		else if (((CMM_CHK_LVUP(var56) == 0) && BIT_CHK(1999) && CMM_GET_LV(var56) != 0 && CMM_GET_LV(var56) != 10 ) || ((CMM_CHK_LVUP(var56) == 0) && BIT_CHK(2000) && CMM_GET_LV(var56) != 0 && CMM_GET_LV(var56) != 10 ) ) // Ken
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4)) && (((EVT_FUNCTION_000F(var56) == 0) && BIT_CHK(1999) && CMM_GET_LV(var56) != 0 && CMM_GET_LV(var56) != 10 ) || ((EVT_FUNCTION_000F(var56) == 0) && BIT_CHK(2000) && CMM_GET_LV(var56) != 0 && CMM_GET_LV(var56) != 10 ) )) { // Ken
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 1024);
@@ -1534,8 +1439,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(18) == 1) && BIT_CHK(2001)) // Maiko
-        {
+        if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(18) == 1) && BIT_CHK(2001))) { // Maiko
             if (FUNCTION_0033() == 5)
             {
             }
@@ -1549,8 +1453,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(18) == 0) && BIT_CHK(2001) && CMM_GET_LV(18) != 0 && CMM_GET_LV(18) != 10 ) // Maiko
-        {
+		else if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(18) == 0) && BIT_CHK(2001) && CMM_GET_LV(18) != 0 && CMM_GET_LV(18) != 10 )) { // Maiko
             if (FUNCTION_0033() == 5)
             {
             }
@@ -1561,8 +1464,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(20) == 1) && BIT_CHK(2003)) // Bebe
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(20) == 1) && BIT_CHK(2003))) { // Bebe
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1576,8 +1478,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(20) == 0) && BIT_CHK(2003) && CMM_GET_LV(20) != 0 && CMM_GET_LV(20) != 10 ) // Bebe
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5)) && ((EVT_FUNCTION_000F(20) == 0) && BIT_CHK(2003) && CMM_GET_LV(20) != 0 && CMM_GET_LV(20) != 10 )) { // Bebe
             if ( ( FUNCTION_0033() == 5) || BIT_CHK(3065) )
             {
             }
@@ -1588,8 +1489,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(21) == 1) && BIT_CHK(2004)) // Tanaka
-        {
+        if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(21) == 1) && BIT_CHK(2004))) { // Tanaka
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 8192);
@@ -1603,8 +1503,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(21) == 1) && BIT_CHK(2004) && CMM_GET_LV(21) != 0 && CMM_GET_LV(21) != 10 ) // Tanaka
-        {
+		else if (((FUNCTION_0032() == 2) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(21) == 1) && BIT_CHK(2004) && CMM_GET_LV(21) != 0 && CMM_GET_LV(21) != 10 )) { // Tanaka
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 8192);
@@ -1615,8 +1514,7 @@ void HangOut()
             }
         }
 
-        if ((CMM_CHK_LVUP(22) == 1) && BIT_CHK(2005)) // Mutatsu
-        {
+        if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(22) == 1) && BIT_CHK(2005))) { // Mutatsu
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 16384);
@@ -1630,8 +1528,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(22) == 0) && BIT_CHK(2005) && CMM_GET_LV(22) != 0 && CMM_GET_LV(22) != 10 ) // Mutatsu
-        {
+		else if (((FUNCTION_0032() == 0) || (FUNCTION_0032() == 4) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(22) == 0) && BIT_CHK(2005) && CMM_GET_LV(22) != 0 && CMM_GET_LV(22) != 10 )) { // Mutatsu
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask - 16384);
@@ -1643,7 +1540,7 @@ void HangOut()
         }
 		
 
-		if ( ( BIT_CHK(2006) && (CMM_CHK_LVUP(var80) == 1)) || (BIT_CHK(2007) && (CMM_CHK_LVUP(var80) == 1)) )
+		if ( ( BIT_CHK(2006) && (EVT_FUNCTION_000F(var80) == 1)) || (BIT_CHK(2007) && (EVT_FUNCTION_000F(var80) == 1)) )
         {	
 			if ( FUNCTION_0033() != 5 && !BIT_CHK(3065))
 			{
@@ -1651,28 +1548,26 @@ void HangOut()
 				SET_MSG_VAR(17, CMM_GET_LV(var80), 0);
 			}
 
-			if (CMM_CHK_LVUP(var80) == 1)
+			if (EVT_FUNCTION_000F(var80) == 1)
 			{
 				SET_MSG_VAR(29, 8, 6);
 			}
 		}
 
-        else if (( ( BIT_CHK(2006) && CMM_CHK_LVUP(var80) == 0 && CMM_GET_LV(var80) != 0 && CMM_GET_LV(var80) != 10) ) || ( ( BIT_CHK(2007) && CMM_CHK_LVUP(var80) == 0 && CMM_GET_LV(var80) != 0 && CMM_GET_LV(var80) != 10) ) ) // Akihiko
-        {	
+        else if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 5)) && (( ( BIT_CHK(2006) && EVT_FUNCTION_000F(var80) == 0 && CMM_GET_LV(var80) != 0 && CMM_GET_LV(var80) != 10) ) || ( ( BIT_CHK(2007) && EVT_FUNCTION_000F(var80) == 0 && CMM_GET_LV(var80) != 0 && CMM_GET_LV(var80) != 10) ) )) { // Akihiko
 			if ( FUNCTION_0033() != 5 && !BIT_CHK(3065))
 			{
 				whosAroundMask = (whosAroundMask - 32768);
 				SET_MSG_VAR(17, CMM_GET_LV(var80), 0);
 			}
 
-			if (CMM_CHK_LVUP(var80) == 1)
+			if (EVT_FUNCTION_000F(var80) == 1)
 			{
 				SET_MSG_VAR(29, 8, 6);
 			}
 		}
 
-        if ((CMM_CHK_LVUP(25) == 1) && BIT_CHK(2008)) // Akinari
-        {
+        if (((FUNCTION_0032() == 0)) && ((EVT_FUNCTION_000F(25) == 1) && BIT_CHK(2008))) { // Akinari
             if (FUNCTION_0033() == 5)
             {
             }
@@ -1684,8 +1579,7 @@ void HangOut()
             }
         }
 		
-		else if ((CMM_CHK_LVUP(25) == 0) && BIT_CHK(2008) && CMM_GET_LV(25) != 0 && CMM_GET_LV(25) != 10 )  // Akinari
-        {
+		else if (((FUNCTION_0032() == 0)) && ((EVT_FUNCTION_000F(25) == 0) && BIT_CHK(2008) && CMM_GET_LV(25) != 0 && CMM_GET_LV(25) != 10 )) { // Akinari
             if (FUNCTION_0033() == 5)
             {
             }
@@ -1696,8 +1590,7 @@ void HangOut()
             }
         }
 		
-        if ((CMM_CHK_LVUP(27) == 1) && BIT_CHK(2010)) // Shinjiro
-        {
+        if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(27) == 1) && BIT_CHK(2010))) { // Shinjiro
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask -  131072 );
@@ -1711,8 +1604,7 @@ void HangOut()
 		
 		
 		
-		else if ((CMM_CHK_LVUP(27) == 0) && BIT_CHK(2010) && CMM_GET_LV(27) != 0 && CMM_GET_LV(27) != 10 ) // Shinjiro
-        {
+		else if (((FUNCTION_0032() == 1) || (FUNCTION_0032() == 3) || (FUNCTION_0032() == 5) || (FUNCTION_0032() == 6)) && ((EVT_FUNCTION_000F(27) == 0) && BIT_CHK(2010) && CMM_GET_LV(27) != 0 && CMM_GET_LV(27) != 10 )) { // Shinjiro
             if (FUNCTION_0033() == 5)
             {
                 whosAroundMask = (whosAroundMask -  131072);
@@ -1909,9 +1801,7 @@ void HangOut()
                     goto AEGIS_END_0;
                 } else {
                     MSG_WND_CLS();
-                    FADE(3, 20);
-                    FUNCTION_000F();
-                    CALL_FIELD(fieldMajor, fieldMinor, callParam1, callParam2);
+                    SafeCallField(fieldMajor, fieldMinor, callParam1, callParam2);
                 }
             }
         }

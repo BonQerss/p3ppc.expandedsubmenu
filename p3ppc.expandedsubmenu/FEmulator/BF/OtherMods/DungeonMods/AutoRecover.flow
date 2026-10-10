@@ -1,108 +1,293 @@
-void auto_recover() {
-    int cAllyID;
-    for (int i = 2; i < 10; i++) // Iterate though all 10 party members
+import("AutoRecover.msg");
+
+bool recover_member(int id) { if (id == 1) return true; return ally_in_party(id); }
+int missing_hp(int id) { if (!recover_member(id)) return 0; return GET_MAXHP(id) - GET_HP(id); }
+int missing_sp(int id) { if (!recover_member(id)) return 0; return GET_MAXSP(id) - GET_SP(id); }
+
+void free_recover_party()
+{
+    int id = 1;
+
+    while (id <= 10)
     {
-        if (i >= 6) // Skip 6 or Fuuka, non playable navigator
+        if (id != 6 && recover_member(id))
         {
-            cAllyID = (i + 1);
+            SET_HP(id, GET_MAXHP(id));
+            SET_SP(id, GET_MAXSP(id));
         }
-        else 
-        {
-            cAllyID = i;
-        }
-        
-        if (BIT_CHK(320 + i) && ally_in_party(cAllyID)) // Check if party member is unlocked, check if ally is in party
-        {
-            int curYukariHP = GET_HP(cAllyID);
-            int YukariHP = GET_MAXHP(cAllyID);
-            int curYukariSP = GET_SP(cAllyID);
-            int YukariSP = GET_MAXSP(cAllyID);
-            
-            int HEALING_ITEMS[] = { 1024, 1025, 1026 }; // Store item ID list for healing items, least to greatest
-            int HEALING_AMOUNT[] = { 20, 30, 40 }; // Store healing values for those items
-            int NUM_ITEMS_HEAL = 3; // Number of values in both arrays
-            int SP_ITEMS[] = { 1050, 1051, 1052 };
-            int SP_AMOUNT[] = { 20, 30, 40 };
-            int NUM_ITEMS_SP = 3;
-            
-            if (curYukariHP < YukariHP) 
-            {
-                int YukaDif = YukariHP - curYukariHP;
-                
-                for (int j = 0; j < NUM_ITEMS; j++) 
-                {
-                    int ITEM_ID = HEALING_ITEMS[j];
-                    int HEALING_AMOUNT_NUM = HEALING_AMOUNT[j];
-                    int ITEM_COUNT = GET_ITEM_NUM(ITEM_ID); // Store number of items in variable for comparing
-                    
-                    while (YukaDif > 0 && ITEM_COUNT > 0) // Make sure you have items and that you actually need to hea;
-                    {
-                        int newHP = curYukariHP + HEALING_AMOUNT_NUM;
-    
-                        if (newHP > YukariHP) 
-                        {
-                            newHP = YukariHP;
-                        }
-                        
-                        SET_HP(cAllyID, newHP);
-                        SET_ITEM_NUM(ITEM_ID, ITEM_COUNT - 1); // Remove item from inventory
-                        
-                        YukaDif -= HEALING_AMOUNT_NUM;
-    
-                        if (YukaDif <= 0) // Overhealing protection / item waste protection
-                        {
-                            YukaDif = 0;
-                            break;
-                        }
-                        
-                        ITEM_COUNT = GET_ITEM_NUM(ITEM_ID); // Update item total
-                    }
-                    
-                    if (YukaDif == 0) // Stop running code if finished
-                    {
-                        break;
-                    }
-                }
-            }
-            if (curYukariSP < YukariSP) 
-            {
-                int YukaDif = YukariSP - curYukariSP;
-                
-                for (int j = 0; j < NUM_ITEMS_SP; j++) 
-                {
-                    int ITEM_ID = SP_ITEMS_ITEMS[j];
-                    int HEALING_AMOUNT_NUM = SP_AMOUNT_AMOUNT[j];
-                    int ITEM_COUNT = GET_ITEM_NUM(ITEM_ID); // Store number of items in variable for comparing
-                    
-                    while (YukaDif > 0 && ITEM_COUNT > 0) // Make sure you have items and that you actually need to hea;
-                    {
-                        int newSP = curYukariSP + HEALING_AMOUNT_NUM;
-    
-                        if (newSP > YukariSP) 
-                        {
-                            newSP = YukariSP;
-                        }
-                        
-                        SET_SP(cAllyID, newSP);
-                        SET_ITEM_NUM(ITEM_ID, ITEM_COUNT - 1); // Remove item from inventory
-                        
-                        YukaDif -= HEALING_AMOUNT_NUM;
-    
-                        if (YukaDif <= 0) // Overhealing protection / item waste protection
-                        {
-                            YukaDif = 0;
-                            break;
-                        }
-                        
-                        ITEM_COUNT = GET_ITEM_NUM(ITEM_ID); // Update item total
-                    }
-                    
-                    if (YukaDif == 0) // Stop running code if finished
-                    {
-                        break;
-                    }
-                }
-            }
-        }
+
+        id = id + 1;
     }
+}
+
+int sp_item(int index)
+{
+    if (index == 0) return 0x571;
+    if (index == 1) return 0x573;
+    if (index == 2) return 0x574;
+    if (index == 3) return 0x57C;
+    if (index == 4) return 0x504;
+    if (index == 5) return 0x505;
+    return -1;
+}
+
+int sp_amount(int index)
+{
+    if (index < 4) return 5;
+    if (index == 4) return 20;
+    if (index == 5) return 50;
+    return 0;
+}
+
+int hp_item(int index)
+{
+    if (index == 0) return 0x501;
+    if (index == 1) return 0x502;
+    if (index == 2) return 0x510;
+    return -1;
+}
+
+int hp_amount(int index)
+{
+    if (index == 0) return 50;
+    if (index == 1) return 100;
+    if (index == 2) return 200;
+    return 0;
+}
+
+int party_missing_hp()
+{
+    int total = 0;
+    int id = 1;
+
+    while (id <= 10)
+    {
+        if (id != 6 && recover_member(id))
+            total += missing_hp(id);
+
+        id = id + 1;
+    }
+
+    return total;
+}
+
+int party_heal_count(int amount)
+{
+    int casts = 0;
+    int id = 1;
+
+    while (id <= 10)
+    {
+        if (id != 6 && recover_member(id))
+        {
+            int hp = missing_hp(id);
+            if (hp > 0)
+            {
+                int need = (hp + amount - 1) / amount;
+                if (need > casts)
+                    casts = need;
+            }
+        }
+
+        id = id + 1;
+    }
+
+    return casts;
+}
+
+void apply_party_heal(int amount)
+{
+    int id = 1;
+
+    while (id <= 10)
+    {
+        if (id != 6 && recover_member(id))
+        {
+            int next = GET_HP(id) + amount;
+            if (next > GET_MAXHP(id))
+                next = GET_MAXHP(id);
+            SET_HP(id, next);
+        }
+
+        id = id + 1;
+    }
+}
+
+void use_yukari_healing()
+{
+    if (!ally_in_party(2)) return;
+    int level = GET_PLAYER_LV(2);
+    int amount = 0;
+    int cost = 0;
+    if (level >= 74) { amount = 9999; cost = 40; }
+    else if (level >= 65) { amount = 9999; cost = 30; }
+    else if (level >= 43) { amount = 180; cost = 16; }
+    else if (level >= 22) { amount = 80; cost = 8; }
+    if (amount == 0) return;
+    int casts = party_heal_count(amount);
+    while (casts > 0 && GET_SP(2) >= cost && party_missing_hp() > 0)
+    {
+        SET_SP(2, GET_SP(2) - cost);
+        apply_party_heal(amount);
+        casts = casts - 1;
+    }
+}
+
+void use_ken_healing()
+{
+    if (!ally_in_party(8)) return;
+    int level = GET_PLAYER_LV(8);
+    int amount = 0;
+    int cost = 0;
+    if (level >= 65) { amount = 9999; cost = 30; }
+    else if (level >= 51) { amount = 180; cost = 16; }
+    else if (level >= 37) { amount = 80; cost = 8; }
+    if (amount == 0) return;
+    int casts = party_heal_count(amount);
+    while (casts > 0 && GET_SP(8) >= cost && party_missing_hp() > 0)
+    {
+        SET_SP(8, GET_SP(8) - cost);
+        apply_party_heal(amount);
+        casts = casts - 1;
+    }
+}
+
+int count_needed(int missing, int amount)
+{
+    if (missing <= 0) return 0;
+    return (missing + amount - 1) / amount;
+}
+
+void auto_recover()
+{
+    if (BIT_CHK(5154)) { free_recover_party(); return; }
+
+    use_yukari_healing();
+    use_ken_healing();
+
+    int hpMissing = 0;
+    int spMissing = 0;
+    int itemPlan = 0;
+
+    int id = 1;
+
+    while (id <= 10)
+    {
+        if (id != 6 && recover_member(id))
+        {
+            hpMissing += missing_hp(id);
+            spMissing += missing_sp(id);
+        }
+
+        id = id + 1;
+    }
+
+    if (hpMissing == 0 && spMissing == 0) return;
+
+    id = 1;
+
+    while (id <= 10)
+    {
+        if (id != 6 && recover_member(id))
+        {
+            int hp = missing_hp(id);
+            int sp = missing_sp(id);
+            int j = 0;
+
+            while (j < 3 && hp > 0)
+            {
+                int item = hp_item(j);
+                int amount = hp_amount(j);
+                int use = count_needed(hp, amount);
+                if (use > GET_ITEM_NUM(item))
+                    use = GET_ITEM_NUM(item);
+                itemPlan += use;
+                hp -= use * amount;
+                j = j + 1;
+            }
+
+            j = 0;
+            while (j < 6 && sp > 0)
+            {
+                int item = sp_item(j);
+                int amount = sp_amount(j);
+                int use = count_needed(sp, amount);
+                if (use > GET_ITEM_NUM(item))
+                    use = GET_ITEM_NUM(item);
+                itemPlan += use;
+                sp -= use * amount;
+                j = j + 1;
+            }
+        }
+
+        id = id + 1;
+    }
+
+    SET_MSG_VAR(0, itemPlan, 0);
+    SET_MSG_VAR(1, hpMissing, 0);
+    SET_MSG_VAR(2, spMissing, 0);
+    MSG_WND_DSP();
+    MSG(RecoveryPlan);
+    SEL_DEFKEY(PadButton.Circle, 1);
+    if (SEL(RecoveryConfirm) != 0) { MSG_WND_CLS(); return; }
+    MSG_WND_CLS();
+
+    bool shortfall = false;
+    id = 1;
+
+    while (id <= 10)
+    {
+        if (id != 6 && recover_member(id))
+        {
+            int hp = missing_hp(id);
+            int sp = missing_sp(id);
+            int j = 0;
+
+            while (j < 3 && hp > 0)
+            {
+                int item = hp_item(j);
+                int amount = hp_amount(j);
+
+                while (hp > 0 && GET_ITEM_NUM(item) > 0)
+                {
+                    SET_ITEM_NUM(item, GET_ITEM_NUM(item) - 1);
+                    int next = GET_HP(id) + amount;
+                    if (next > GET_MAXHP(id))
+                        next = GET_MAXHP(id);
+                    SET_HP(id, next);
+                    hp = missing_hp(id);
+                }
+
+                j = j + 1;
+            }
+
+            j = 0;
+            while (j < 6 && sp > 0)
+            {
+                int item = sp_item(j);
+                int amount = sp_amount(j);
+
+                while (sp > 0 && GET_ITEM_NUM(item) > 0)
+                {
+                    SET_ITEM_NUM(item, GET_ITEM_NUM(item) - 1);
+                    int next = GET_SP(id) + amount;
+                    if (next > GET_MAXSP(id))
+                        next = GET_MAXSP(id);
+                    SET_SP(id, next);
+                    sp = missing_sp(id);
+                }
+
+                j = j + 1;
+            }
+
+            if (missing_hp(id) > 0 || missing_sp(id) > 0)
+                shortfall = true;
+        }
+
+        id = id + 1;
+    }
+
+    MSG_WND_DSP();
+    if (shortfall) MSG(RecoveryShort); else MSG(RecoveryDone);
+    MSG_WND_CLS();
 }

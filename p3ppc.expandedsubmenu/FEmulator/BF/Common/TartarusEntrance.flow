@@ -1,0 +1,67 @@
+import("../ModMenu/ModMenu.flow");
+import("../Setup/FirstTimeSetup.flow");
+import("../OtherMods/SaveEveryday.flow");
+import("../OtherMods/DungeonMods/ClockAnywhere.flow");
+import("TartarusEntrance.msg");
+
+bool VisionQuestAvailable()
+{
+    return BIT_CHK(3317) || BIT_CHK(5154);
+}
+
+void CallVisionQuest()
+{
+    if (!VisionQuestAvailable()) return;
+    MSG_WND_CLS();
+    FADE(3, 20);
+    FUNCTION_000F();
+    FUNCTION_001E(3, 8);
+    CALL_FIELD(15, 28, 0, 0);
+}
+
+void tartarus_shortcut()
+{
+    if (!BIT_CHK(5153)) FirstTimeSetup();
+    if (BIT_CHK(5163) && BIT_CHK(5154) && !gQMenuNormalSquare)
+    {
+        ModMenuInit();
+        return;
+    }
+
+    SEL_DEFKEY(PadButton.Circle, 98);
+    SEL_DEFKEY(PadButton.Triangle, 99);
+    int selection = MSG_SELECT(FLD_ORDER, TARTAROS_SHORTCUT, create_tartarus_mask());
+
+    if (selection == 0) HIT_SCRIPT_03();
+    else if (selection == 1) HIT_SCRIPT_02();
+    else if (selection == 2) HIT_SCRIPT_01();
+    else if (selection == 3) CallVisionQuest();
+    else if (selection == 4) HealingClock();
+    else if (selection == 5) CALL_CALENDAR();
+    else if (selection == 6)
+    {
+        FADE(FadeEffects.FadeOut, 10);
+        FUNCTION_000F();
+        SAVE_MENU();
+        FUNCTION_000D(0);
+        FUNCTION_000F();
+    }
+    else if (selection == 7) ModMenuInit();
+    else if (selection == 8) HIT_SCRIPT_00();
+    else if (selection == 99) MenuOptions();
+}
+
+int create_tartarus_mask()
+{
+    int mask = MaskCalc(9);
+    mask -= Power(2, 0);
+    mask -= Power(2, 1);
+    if (BIT_CHK(3373) || BIT_CHK(5154)) mask -= Power(2, 2);
+    if (VisionQuestAvailable()) mask -= Power(2, 3);
+    if (BIT_CHK(5165) || BIT_CHK(5154)) mask -= Power(2, 4);
+    if (BIT_CHK(5156)) mask -= Power(2, 5);
+    if (BIT_CHK(5159) || BIT_CHK(5154)) mask -= Power(2, 6);
+    if (BIT_CHK(5154)) mask -= Power(2, 7);
+    mask -= Power(2, 8);
+    return mask;
+}

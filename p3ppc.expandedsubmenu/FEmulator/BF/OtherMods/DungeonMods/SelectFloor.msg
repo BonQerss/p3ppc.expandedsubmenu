@@ -1,3 +1,6 @@
+[msg FloorSelectTitle]
+[s]Which floor?[e]
+
 [msg ItemPrompt_F [Fuuka]]
 [s]What floor would you like to[n]warp to?[w][e]
 

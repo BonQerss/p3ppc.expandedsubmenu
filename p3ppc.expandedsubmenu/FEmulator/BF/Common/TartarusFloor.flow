@@ -1,0 +1,18 @@
+import("../OtherMods/DungeonMods/Warp.flow");
+
+bool TartarusFloorWarpEnabled()
+{
+    return BIT_CHK(5178) && IsTartarusFloor();
+}
+
+void TartarusWarpEntrance()
+{
+    if (!TartarusFloorWarpEnabled()) return;
+    WarpEntrance();
+}
+
+void TartarusWarpNextFloor()
+{
+    if (!TartarusFloorWarpEnabled()) return;
+    WarpNextFloor();
+}

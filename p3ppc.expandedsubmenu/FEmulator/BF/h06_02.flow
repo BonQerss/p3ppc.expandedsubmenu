@@ -3,59 +3,81 @@ import("h06_02.msg");
 
 global bool isFieldBf;
 
-void f006_002_shortcut_hook() {
+void f006_002_shortcut_hook()
+{
     isFieldBf = false;
-    // bit id (((0) + (1024)) + (2048)) + (47) = 3119
-    // This bitflag is enabled when you're supposed to go to
-    // the police station with junpei to get the tutorial on
-    // using the shop there; as such we should not use QT+
-    // in this scenario (otherwise, it's fine)
-    if (BIT_CHK(3119)) {
-        int schoolMask = 0x3C; // 0b0011_1100
-        if (BIT_CHK(6323)) { // View Calendar
-            schoolMask -= 4; // 0b0100
+
+    if (BIT_CHK(3119))
+    {
+        if (!BIT_CHK(5153))
+        {
+            FirstTimeSetup();
         }
-        if (BIT_CHK(6325)) { // Find a Friend
-            schoolMask -= 8; // 0b1000
+
+        int schoolMask = 0x3C;
+
+        if (BIT_CHK(5156))
+        {
+            schoolMask = schoolMask - 4;
         }
-        if (BIT_CHK(6326) && !BIT_CHK(6321)) { // Save Anywhere (Mod Menu = OFF)
-            schoolMask -= 0x10; // 0b0001_0000
+
+        if (BIT_CHK(5158))
+        {
+            schoolMask = schoolMask - 8;
         }
-        if (BIT_CHK(6321)) { // Mod Menu
-            schoolMask -= 0x20; // 0b0010_0000
+
+        if (BIT_CHK(5159) && !BIT_CHK(5154))
+        {
+            schoolMask = schoolMask - 0x10;
         }
+
+        if (BIT_CHK(5154))
+        {
+            schoolMask = schoolMask - 0x20;
+        }
+
         SEL_DEFKEY(PadButton.Circle, 6);
         SEL_DEFKEY(PadButton.Triangle, 99);
         int schoolSel = MSG_SELECT(FLD_ORDER_02, SCHOOL_SHOTCUTSEL_02, schoolMask);
-        if (schoolSel == 0) {
+
+        if (schoolSel == 0)
+        {
             HIT_SCRIPT_01();
         }
-        else if (schoolSel == 1) {
+        else if (schoolSel == 1)
+        {
             HIT_SCRIPT_00();
         }
-        else if (schoolSel == 2) {
+        else if (schoolSel == 2)
+        {
             CALL_CALENDAR();
         }
-        else if (schoolSel == 3) {
+        else if (schoolSel == 3)
+        {
             HangOut();
         }
-        else if (schoolSel == 4) {
+        else if (schoolSel == 4)
+        {
             FADE(FadeEffects.FadeOut, 10);
             SAVE_MENU();
             FUNCTION_000D(0);
         }
-        else if (schoolSel == 5) {
+        else if (schoolSel == 5)
+        {
             ModMenuInit();
         }
-        else if (schoolSel == 99) {
+        else if (schoolSel == 99)
+        {
             MenuOptions();
         }
+
+        return;
     }
-    else {
-        school_shortcut();
-    }
+
+    school_shortcut();
 }
 
-void CallOriginalSquareMenu() {
+void CallOriginalSquareMenu()
+{
     f006_002_shortcut();
-} 
+}

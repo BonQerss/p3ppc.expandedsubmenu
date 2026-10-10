@@ -1,0 +1,44 @@
+import("../RareChest.flow");
+
+void tartaros_battle_check_hook()
+{
+    gVar36 = 0;
+    if ((gVar37 == 5) && BIT_CHK(3562)) gVar36 = 1;
+    else if ((gVar37 == 10) && BIT_CHK(3536)) gVar36 = 1;
+    else if ((gVar37 == 14) && BIT_CHK(3537)) gVar36 = 1;
+    else if ((gVar37 == 25) && BIT_CHK(3538)) gVar36 = 1;
+    else if ((gVar37 == 36) && BIT_CHK(3539)) gVar36 = 1;
+    else if ((gVar37 == 47) && BIT_CHK(3540)) gVar36 = 1;
+    else if ((gVar37 == 59) && BIT_CHK(3541)) gVar36 = 1;
+    else if ((gVar37 == 72) && BIT_CHK(3542)) gVar36 = 1;
+    else if ((gVar37 == 85) && BIT_CHK(3543)) gVar36 = 1;
+    else if ((gVar37 == 98) && BIT_CHK(3544)) gVar36 = 1;
+    else if ((gVar37 == 110) && BIT_CHK(3545)) gVar36 = 1;
+    else if ((gVar37 == 122) && BIT_CHK(3546)) gVar36 = 1;
+    else if ((gVar37 == 135) && BIT_CHK(3547)) gVar36 = 1;
+    else if ((gVar37 == 146) && BIT_CHK(3548)) gVar36 = 1;
+    else if ((gVar37 == 160) && BIT_CHK(3549)) gVar36 = 1;
+    else if ((gVar37 == 171) && BIT_CHK(3550)) gVar36 = 1;
+    else if ((gVar37 == 180) && BIT_CHK(3551)) gVar36 = 1;
+    else if ((gVar37 == 190) && BIT_CHK(3552)) gVar36 = 1;
+    else if ((gVar37 == 201) && BIT_CHK(3553)) gVar36 = 1;
+    else if ((gVar37 == 211) && BIT_CHK(3554)) gVar36 = 1;
+    else if ((gVar37 == 220) && BIT_CHK(3555)) gVar36 = 1;
+    else if ((gVar37 == 228) && BIT_CHK(3556)) gVar36 = 1;
+    else if ((gVar37 == 236) && BIT_CHK(3557)) gVar36 = 1;
+    else if ((gVar37 == 244) && BIT_CHK(3558)) gVar36 = 1;
+    else if ((gVar37 == 252) && BIT_CHK(3559)) gVar36 = 1;
+    RareChestWarning();
+}
+
+void tartaros_upstair_hook()
+{
+    BIT_ON(5182);
+    tartaros_upstair_unhooked();
+}
+
+void party_find_stair_hook()
+{
+    BIT_ON(5182);
+    party_find_stair_unhooked();
+}

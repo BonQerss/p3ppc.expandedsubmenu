@@ -8,7 +8,7 @@
       {"Name":"Start","Value":3},
       {"Name":"Right","Value":5},
       {"Name":"Left","Value":7},
-      {"Name":"L","Value":8,"#com":"Following numbers haven't been confirmed in P3F."},
+      {"Name":"L","Value":8},
       {"Name":"R","Value":9},
       {"Name":"Triangle","Value":12},
       {"Name":"Square","Value":15}

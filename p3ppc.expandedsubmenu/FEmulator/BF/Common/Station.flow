@@ -1,0 +1,53 @@
+import("../ModMenu/ModMenu.flow");
+import("../Setup/FirstTimeSetup.flow");
+import("../OtherMods/FindAFriend.flow");
+import("../OtherMods/QuickTravelPlus.flow");
+import("Station.msg");
+
+void station_shortcut()
+{
+    if (!BIT_CHK(5153))
+        FirstTimeSetup();
+
+    if (BIT_CHK(5163) && BIT_CHK(5154) && !gQMenuNormalSquare)
+    {
+        ModMenuInit();
+        return;
+    }
+
+    int mask = 0;
+    int minor = FLD_GET_MINOR();
+
+    if (minor == 1) mask = mask + Power(2, 0);
+    if (minor == 2) mask = mask + Power(2, 1);
+    if (!BIT_CHK(5155)) mask = mask + Power(2, 3);
+    if (!BIT_CHK(5156)) mask = mask + Power(2, 4);
+    if (!BIT_CHK(5158)) mask = mask + Power(2, 5);
+    if (!BIT_CHK(5159) && !BIT_CHK(5154)) mask = mask + Power(2, 6);
+    if (!BIT_CHK(5154)) mask = mask + Power(2, 7);
+
+    SEL_DEFKEY(PadButton.Circle, 8);
+    SEL_DEFKEY(PadButton.Triangle, 99);
+    int selection = MSG_SELECT(FLD_ORDER, STATION_SHORTCUT, mask);
+
+    if (selection == 0) SafeCallField(10, 1, 0, 0);
+    else if (selection == 1) SafeCallField(10, 2, 0, 0);
+    else if (selection == 2)
+    {
+        BIT_ON(3092);
+        FLD_SEL_EX(2);
+    }
+    else if (selection == 3) QuickTravelPlus();
+    else if (selection == 4) CALL_CALENDAR();
+    else if (selection == 5) HangOut();
+    else if (selection == 6)
+    {
+        FADE(1, 10);
+        FUNCTION_000F();
+        SAVE_MENU();
+        FUNCTION_000D(0);
+        FUNCTION_000F();
+    }
+    else if (selection == 7) ModMenuInit();
+    else if (selection == 99) MenuOptions();
+}

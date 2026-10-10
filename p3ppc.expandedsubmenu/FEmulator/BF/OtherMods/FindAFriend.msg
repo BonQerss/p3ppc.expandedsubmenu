@@ -56,82 +56,56 @@
 
 [msg JUN_NEARBY]
 [s]> Junpei is nearby.[n][w][e]
-
 [msg KAZ_NEARBY]
 [s]> Kazushi is nearby.[n][w][e]
-
 [msg YUK_NEARBY]
 [s]> Yukari is nearby.[n][w][e]
-
 [msg AIG_NEARBY]
 [s]> Aigis is nearby.[n][w][e]
-
 [msg KEN_NEARBY]
 [s]> Kenji is nearby.[n][w][e]
-
 [msg NARI_NEARBY]
 [s]> Akinari is nearby.[n][w][e]
-
 [msg MITS_NEARBY]
 [s]> Mitsuru is nearby.[n][w][e]
-
 [msg YUKO_NEARBY]
 [s]> Yuko is nearby.[n][w][e]
-
 [msg CHIH_NEARBY]
 [s]> Chihiro is nearby.[n][w][e]
-
 [msg BEBE_NEARBY]
 [s]> Bebe is nearby.[n][w][e]
-
 [msg FUCK_NEARBY]
 [s]> Fuuka is nearby.[n][w][e]
-
 [msg HIDE_NEARBY]
 [s]> Hidetoshi is nearby.[n][w][e]
-
 [msg BOOK_NEARBY]
 [s]> The book store is nearby.[n][w][e]
-
 [msg MAIK_NEARBY]
 [s]> Maiko is nearby.[n][w][e]
-
 [msg MAMO_NEARBY]
 [s]> Mamoru is nearby.[n][w][e]
-
 [msg KEIS_NEARBY]
 [s]> Keisuke is nearby.[n][w][e]
-
 [msg MAYA_NEARBY]
 [s]> Maya is nearby.[n][w][e]
-
 [msg TANA_NEARBY]
 [s]> Tanaka is nearby.[n][w][e]
-
 [msg MUTA_NEARBY]
 [s]> Mutatsu is nearby.[n][w][e]
-
 [msg NOZO_NEARBY]
 [s]> Nozomi is nearby.[n][w][e]
-
 [msg SAOR_NEARBY]
 [s]> Saori is nearby.[n][w][e]
-
 [msg RIO_NEARBY]
 [s]> Rio is nearby.[n][w][e]
-
 [msg KORO_NEARBY]
 [s]> Koromaru is nearby.[n][w][e]
-
 [msg RYOJ_NEARBY]
 [s]> Ryoji is nearby.[n][w][e]
-
 [msg KENCOOL_NEARBY]
 [s]> Ken is nearby.[n][w][e]
-
 [msg AKIH_NEARBY]
 [s]> Akihiko is nearby.[n][w][e]
-
 [msg GET_IN_THE_EVA_SHINJI]
 [s]> Shinjiro is nearby.[n][w][e]
 

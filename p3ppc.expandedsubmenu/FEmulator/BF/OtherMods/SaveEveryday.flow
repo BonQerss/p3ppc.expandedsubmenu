@@ -2,21 +2,31 @@ import("SaveEveryday.msg");
 
 void SaveEveryday()
 {
-    if ( BIT_CHK(6327))
+    if (!BIT_CHK(5160) || !BIT_CHK(5180))
+        return;
+
+    if (BIT_CHK(4792))
+        return;
+
+    int fieldMajor = FLD_GET_MAJOR();
+    int fieldMinor = FLD_GET_MINOR();
+
+    if (fieldMajor <= 0 || fieldMinor < 0)
+        return;
+
+    MSG_WND_DSP();
+    MSG(SaveYesNo);
+    int selection = SEL(YesNo);
+    MSG_WND_CLS();
+
+    BIT_ON(4792);
+
+    if (selection == 0)
     {
-        if ( !BIT_CHK( 4792 ))
-        {
-            BIT_ON(4792);
-            MSG_WND_DSP();
-            MSG( SaveYesNo );
-            int SEL = SEL( YesNo );
-            if ( SEL == 0 )
-            {
-                MSG_WND_CLS();
-                FADE( 1, 10 );
-                SAVE_MENU();
-                FUNCTION_000D( 0 );
-            }
-        }
+        FADE(1, 10);
+        FUNCTION_000F();
+        SAVE_MENU();
+        FUNCTION_000D(0);
+        FUNCTION_000F();
     }
 }

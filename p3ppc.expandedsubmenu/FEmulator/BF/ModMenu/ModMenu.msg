@@ -1,50 +1,204 @@
 [msg ModMenuName]
-[s]Amicitia Mod Menu[w][e]
+[s]Q Menu[e]
 
-[msg AboutMsg[About this menu]]
-[s]Created by [clr 1]DniweTamp[clr 0] using TGE's[n][clr 9]AtlusScriptCompiler[clr 0] tool.[w][e]
+[msg FavoritesName]
+[s]Number Favorites[e]
 
 [sel ModMenu]
-[s]Use original square function[e]
-[s]Player[e]
-[s]Battle Select[e]
-[s]Sound Test[e]
-[s]Field Select[e]
-[s]Next Page[e]
+[s]Square Menu[e]
+[s]Player Tools[e]
+[s]World Tools[e]
+[s]Battle Tools[e]
+[s]Debug Tools[e]
 
-[sel ModMenu2]
-[s]Event Select[e]
-[s]Facility[e]
-[s]Flags[e]
-[s]Font Test[e]
-[s]About[e]
-[s]Set up favorites[e]
-[s]Previous Page[e]
-
-[sel PlayerMenu]
-[s]Evolve party member persona[e]
+[sel PlayerToolsMenu]
+[s]Party Editor[e]
+[s]Social Link Editor[e]
 [s]Social Stats[e]
-[s]Items[e]
-[s]Party Edit[e]
-[s]Count Edit[e]
-[s]Social Link Edit[e]
-[s]Next Page[e]
+[s]Item Editor[e]
+[s]Max Money[e]
+[s]Free Recovery[e]
+[s]Set Protagonist Name[e]
+[s]Evolve Party Persona[e]
 
-[sel BattleSelect]
-[s]Manual Input[e]
-[s]Tartarus Guardian Select[e]
-[s]Boss Select[e]
+[sel WorldToolsMenu]
+[s]Field Loader[e]
+[s]Call Event[e]
+[s]Set Date[e]
+[s]Calendar[e]
+[s]Town Map[e]
 
-[msg TAR_SEL1_Text]
-[s]Block Select[e]
+[sel BattleToolsMenu]
+[s]Call Battle[e]
+[s]Guardian Battles[e]
+[s]Boss Battles[e]
+[s]Enable All Guardians[e]
+[s]Enable All Warps[e]
 
-[msg CURRENTPERM]
-[s]Current permutation is [f 2 4 0][e]
+[sel DebugToolsMenu]
+[s]Flag Editor[e]
+[s]Count Editor[e]
+[s]Achievements[e]
+[s]Facilities[e]
+[s]Number Favorites[e]
+[s]Sound Test[e]
 
-[msg TAR_SEL2_Text]
-[s]Battle Select[e]
+[sel PartyEditMenu]
+[s]Add Party Member[e]
+[s]Remove Party Member[e]
+[s]Set Tiredness[e]
 
-[sel BlockSelect]
+[sel SetTiredness]
+[s]Great[e]
+[s]Good[e]
+[s]Tired[e]
+
+[sel StatsMenu]
+[s]Academics[e]
+[s]Charm[e]
+[s]Courage[e]
+
+[sel CountSelect]
+[s]Select Count ID[e]
+[s]Set Count Value[e]
+
+[sel FieldSelectMenu]
+[s]Set Field ID[e]
+[s]Load 2D Field[e]
+[s]Load 3D Field[e]
+[s]Use Current Field ID[e]
+
+[sel EventSelectMenu]
+[s]Set Event ID[e]
+[s]Call Event[e]
+
+[sel DateMenu]
+[s]Enter Date[e]
+[s]Apply Date[e]
+
+[sel FacilityMenu]
+[s]Town Map[e]
+[s]Save Menu[e]
+[s]Persona Fusion[e]
+[s]Police Station[e]
+[s]Pharmacy[e]
+[s]Antique Shop[e]
+
+[sel FlagMenu]
+[s]Manual Flag Editor[e]
+[s]Add Party Unlock Flag[e]
+[s]Remove Party Unlock Flag[e]
+[s]Navigator[e]
+[s]Mass Flag Editor[e]
+
+[sel NaviMenu]
+[s][f 2 4 6][e]
+[s][f 2 4 4][e]
+[s]None[e]
+
+[sel FlagMassMenu]
+[s]Disable All Flags[e]
+[s]Enable All Flags[e]
+[s]Complete All Quests[e]
+[s]Enable All Guardians[e]
+[s]Enable All Warps[e]
+[s]Invert All Flags[e]
+[s]Modify Flag Range[e]
+
+[msg FreeHealDone]
+[s]All party members were fully restored.[e]
+
+[msg SocialLinkCurrent]
+[s]Social Link [f 2 4 1] is rank [f 2 4 2].[e]
+
+[msg SocialLinkChanged]
+[s]Social Link [f 2 4 1] is now rank [f 2 4 2].[e]
+
+[msg CommuPrompt]
+[s]Which rank?[n]Enter a value from 0 to 10.[e]
+
+[msg StatPrompt]
+[s]How many points should be added?[e]
+
+[msg ItemPrompt]
+[s]Enter the item ID.[e]
+
+[msg ItemPrompt2]
+[s]Enter the amount.[e]
+
+[msg ItemAdded]
+[s]Obtained [f 2 4 2] of [f 2 4 1].[e]
+
+[msg MoneyAdded]
+[s]Money was increased.[e]
+
+[msg CountDlg]
+[s]Which count ID?[n]Current selection: [f 2 4 1].[e]
+
+[msg CountDlg2]
+[s]Count [f 2 4 1] is [f 2 4 2].[n]Enter the new value.[e]
+
+[msg FieldDlg]
+[s]Field major?[n]Current field: [f 2 4 1], [f 2 4 2].[e]
+
+[msg FieldDlg2]
+[s]Field minor?[n]Current field: [f 2 4 1], [f 2 4 2].[e]
+
+[msg EventDlg]
+[s]Event major?[e]
+
+[msg EventDlg2]
+[s]Event minor?[e]
+
+[msg TimeTravel]
+[s]Which month?[e]
+
+[msg TimeTravel2]
+[s]Which day?[e]
+
+[msg EncounterPrompt]
+[s]Which encounter ID?[e]
+
+[msg SelectBgmDialog]
+[s]Which BGM ID?[e]
+
+[msg SelectFlagDialog]
+[s]Which flag ID?[e]
+
+[msg FlagOn]
+[s]Flag [f 2 4 1] was enabled.[e]
+
+[msg FlagOff]
+[s]Flag [f 2 4 1] was disabled.[e]
+
+[msg FlagCheckOn]
+[s]Flag [f 2 4 1] is on.[e]
+
+[msg FlagCheckOff]
+[s]Flag [f 2 4 1] is off.[e]
+
+[msg FlagRangePrompt]
+[s]First flag in the range?[e]
+
+[msg FlagRangePrompt2]
+[s]Last flag in the range?[e]
+
+[msg LoadCheckError]
+[s]Set the required ID first.[e]
+
+[msg GuardiansEnabled]
+[s]All Tartarus guardian-clear flags were enabled.[n]This can skip normal guardian progression.[e]
+
+[msg WarpsEnabled]
+[s]All known Tartarus warp-point flags were enabled.[n]This unlocks the normal warp destinations.[e]
+
+[msg GuardianBlockTitle]
+[s]Guardian Block[e]
+
+[msg GuardianBattleTitle]
+[s]Guardian Battle[e]
+
+[sel GuardianBlockMenu]
 [s]Block 1[e]
 [s]Block 2[e]
 [s]Block 3[e]
@@ -52,71 +206,68 @@
 [s]Block 5[e]
 [s]Block 6[e]
 
-[sel TarTarSelect_1]
+[sel GuardianBlock1]
 [s]Venus Eagle[e]
 [s]Dancing Hand[e]
 [s]Rampage Drive[e]
 
-[sel TarTarSelect_2]
+[sel GuardianBlock2]
 [s]Crying Table[e]
 [s]Change Relic[e]
 [s]Golden Beetles[e]
 [s]Intrepid Knight[e]
 [s]Furious Gigas[e]
 
-[sel TarTarSelect_3]
+[sel GuardianBlock3]
 [s]Fanatic Tower[e]
 [s]Magical Magus[e]
 [s]Neutral Dancer[e]
 
-[sel TarTarSelect_4]
+[sel GuardianBlock4]
 [s]Arcane Turrets[e]
 [s]Sleeping Table[e]
 [s]Hell Knights[e]
 [s]Mythical Gigas[e]
 
-[sel TarTarSelect_5]
+[sel GuardianBlock5]
 [s]Judgement Swords[e]
 [s]Stasis Giant[e]
 [s]Phantom King[e]
 [s]Royal Dancers[e]
 [s]Reckoning Dice[e]
 
-[sel TarTarSelect_6]
+[sel GuardianBlock6]
 [s]Noble Seeker[e]
 [s]Carnal Snakes[e]
 [s]World Balance[e]
 [s]Fierce Cyclops[e]
 [s]Jotun of Grief[e]
 
+[msg BossPage1Title]
+[s]Boss Battles (1/3)[e]
+[msg BossPage2Title]
+[s]Boss Battles (2/3)[e]
+[msg BossPage3Title]
+[s]Boss Battles (3/3)[e]
 
-[msg BOSS_SEL1_Text]
-[s]Boss Select (Page 1/3)[e]
-
-[msg BOSS_SEL2_Text]
-[s]Boss Select (Page 2/3)[e]
-
-[msg BOSS_SEL3_Text]
-[s]Boss Select (Page 3/3)[e]
-
-[sel BossSelect_1]
+[sel BossPage1]
 [s]Priestess[e]
-[s]Emperor/Empress[e]
+[s]Emperor / Empress[e]
 [s]Hierophant[e]
 [s]Lovers[e]
-[s]Chariot/Justice[e]
+[s]Chariot / Justice[e]
 [s]Hermit[e]
 [s]Next Page[e]
 
-[sel BossSelect_2]
-[s]Fortune/Strength[e]
-[s]Takaya/Jin[e]
+[sel BossPage2]
+[s]Fortune / Strength[e]
+[s]Takaya / Jin[e]
 [s]Hanged Man[e]
 [s]Chidori[e]
 [s]Next Page[e]
 [s]Previous Page[e]
 
-[sel BossSelect_3]
+[sel BossPage3]
 [s]Jin[e]
 [s]Takaya[e]
 [s]Nyx[e]
@@ -125,194 +276,109 @@
 [s]Margaret[e]
 [s]Previous Page[e]
 
-[sel PlayerMenu2]
-[s]Set Protagonist Name[e]
-[s]Max Money[e]
-[s]Time Travel[e]
+[msg AchievementWarning]
+[s]Unlock this achievement?[n]It normally cannot be disabled afterward.[n]Platform or leaderboard data may be affected.[e]
+
+[sel AchievementConfirm]
+[s]Unlock[e]
+[s]Back[e]
+
+[msg AchievementPage1Title]
+[s]Achievements (1/9)[e]
+
+[msg AchievementPage2Title]
+[s]Achievements (2/9)[e]
+
+[msg AchievementPage3Title]
+[s]Achievements (3/9)[e]
+
+[msg AchievementPage4Title]
+[s]Achievements (4/9)[e]
+
+[msg AchievementPage5Title]
+[s]Achievements (5/9)[e]
+
+[msg AchievementPage6Title]
+[s]Achievements (6/9)[e]
+
+[msg AchievementPage7Title]
+[s]Achievements (7/9)[e]
+
+[msg AchievementPage8Title]
+[s]Achievements (8/9)[e]
+
+[msg AchievementPage9Title]
+[s]Achievements (9/9)[e]
+
+[sel AchievementPage1]
+[s]A Cut Above[e]
+[s]The Other Self[e]
+[s]The Nose Doesnt Always Know[e]
+[s]Persona Memory Bank[e]
+[s]Next Page[e]
+[s]Back[e]
+
+[sel AchievementPage2]
+[s]Display of Adaptability[e]
+[s]Going Nova[e]
+[s]The Great Seal[e]
+[s]A New Persona User[e]
+[s]Next Page[e]
 [s]Previous Page[e]
 
-[sel CountSelect]
-[s]Enter Count[e]
-[s]Edit Count Value[e]
+[sel AchievementPage3]
+[s]The Strength of Our Hearts[e]
+[s]Social Butterfly[e]
+[s]Special Fusion Expert[e]
+[s]Moderate Bookkeeper[e]
+[s]Next Page[e]
+[s]Previous Page[e]
 
-[msg CountDlg [Count Select]]
-[s]Choose the first 4 digits of[n]the count to load.[n][w][e]
+[sel AchievementPage4]
+[s]Thorough Bookkeeper[e]
+[s]Compulsive Bookkeeper[e]
+[s]Advantage Mine[e]
+[s]That Special Someone[e]
+[s]Next Page[e]
+[s]Previous Page[e]
 
-[msg CountDlg2 [Count Edit]]
-[s]Choose the last 4 digits of[n]the count to modify.[n]Current count value for count [f 2 4 1] is [f 2 4 2][n][w][e]
+[sel AchievementPage5]
+[s]Flawless[e]
+[s]One Who Has Proven Their Power[e]
+[s]Gourmand[e]
+[s]The Reaper Becomes the Reaped[e]
+[s]Next Page[e]
+[s]Previous Page[e]
 
-[msg PersonaAddPrompt [Add Persona]]
-[s]Input the ID of the Persona to add.[n](max. 3 digits)[w][e]
+[sel AchievementPage6]
+[s]Big Eater[e]
+[s]Head of the Class[e]
+[s]Fashion Plate[e]
+[s]Who Wants to Be a Millionaire[e]
+[s]Next Page[e]
+[s]Previous Page[e]
 
-[msg SkillPrompt [Add Skill]]
-[s]Enter the ID of the skill to add.[n](max. 3 digits)[w][e]
+[sel AchievementPage7]
+[s]No Ambivalence[e]
+[s]Master of Shadow[e]
+[s]People Person[e]
+[s]A Pair of Wild Cards[e]
+[s]Next Page[e]
+[s]Previous Page[e]
 
-[sel StatsMenu]
-[s]Academics[e]
-[s]Charm[e]
-[s]Courage[e]
+[sel AchievementPage8]
+[s]A Perfect Job[e]
+[s]School Life[e]
+[s]SEES the Day[e]
+[s]The Path Was Closed[e]
+[s]Next Page[e]
+[s]Previous Page[e]
 
-[msg StatPrompt [Stats]]
-[s]Add how many points?[n](max. 2 digits)[w][e]
+[sel AchievementPage9]
+[s]To Live is to Oppose Death[e]
+[s]The Answer to Life[e]
+[s]The Journey[e]
+[s]Platinum[e]
+[s]Previous Page[e]
+[s]Back[e]
 
-[sel ItemMenu]
-[s]Melee Weapons[e]
-[s]Armor[e]
-[s]Boots[e]
-[s]Accessories[e]
-[s]Items[e]
-[s]Key Items[e]
-[s]Skill Cards[e]
-
-[msg ItemPrompt [Items]]
-[s]Enter the item ID you want.[n](max. 4 digits)[w][e]
-
-[msg ItemPrompt2 [Items]]
-[s]Enter how many items you want.[n](max. 2 digits)[w][e]
-
-[msg ItemAdded]
-[s]Obtained [f 2 4 2] of [f 2 4 1].[w][e]
-
-[msg CommuPrompt]
-[s]Set the Social Link level[n]you want to have.[w][e]
-
-[sel PartyEditMenu]
-[s]Add Party Members[e]
-[s]Remove Party Members[e]
-[s]Set Tiredness[e]
-
-[sel SetTiredness]
-[s]Great[e]
-[s]Good[e]
-[s]Tired[e]
-
-[msg MoneyAdded]
-[s]You received [clr 1]99999999[clr 0] yen.[w][e]
-
-[msg EncounterPrompt]
-[s]Set the number of the encounter[n]you want to fight (max. 3 digits).[w][e]
-
-[msg SelectBgmDialog]
-[s]Select a bgm to play (max. 5 digits).[w][e]
-
-[sel FieldSelect]
-[s]Enter Field ID[e]
-[s]Load Field[e]
-[s]Load 3D Field[e]
-
-[sel EventSelect]
-[s]Enter Event ID[e]
-[s]Load Event ID[e]
-
-[msg FontTest[The Font Guy]]
-[s]ABCDEFGHIJKLMNOPQRSTUVWXYZ[n]abcdefghijklmnopqrstuvwxyz[n][w][e]
-//[s]1234567890-_.:,;|!"#$%&/[n]()=?+*{}^\<>`~'@[w][e]
-
-[msg FieldDlg [Field Select]]
-[s]Choose the first 3 digits of[n]the field to load.[n]Current field: [f 2 4 1], [f 2 4 2].[n][w][e]
-
-[msg FieldDlg2 [Field Select]]
-[s]Choose the last 3 digits of[n]the field to load.[n]Current field: [f 2 4 1], [f 2 4 2].[n][w][e]
-
-[msg EventDlg [Event Select]]
-[s]Choose the first 3 digits of[n]the event to load.[n][w][e]
-
-[msg EventDlg2 [Event Select]]
-[s]Choose the last 3 digits of[n]the event to load.[n][w][e]
-
-[msg PRINTVAR]
-[s]> Current value for month is [f 2 4 0][n][w][e]
-[s]> Current value for day is [f 2 4 1][n][w][e]
-
-
-[sel TimeSelect]
-[s]Enter Date[e]
-[s]Load Date[e]
-
-[msg TimeTravel [Time Travel]]
-[s]Choose the first 2 digits of[n]the month to load.[n][w][e]
-
-[msg TimeTravel2 [Time Travel]]
-[s]Choose the last 2 digits of[n]the day to load.[n][w][e]
-
-[msg CountEdit [Count Edit]]
-[s]Choose the first 4 digits of[n]the count to load.[n][w][e]
-
-[msg CountEdit2 [Count Edit]]
-[s]Choose the last 4 digits of[n]the count value to modify.[n][w][e]
-
-[sel FacilityMenu]
-[s]Town map[e]
-[s]Save Menu[e]
-[s]Persona Fusion[e]
-
-[sel FlagMenu]
-[s]Manual Input[e]
-[s]Add Party Members[e]
-[s]Remove Party Members[e]
-[s]Navigator[e]
-[s]Mass Flag Editor[e]
-
-[msg SelectFlagDialog]
-[s]Select a flag to edit (max. 4 digits).[w][e]
-
-[msg FlagCheckOn]
-[s]Flag [f 2 4 1] is on.[w][e]
-
-[msg FlagCheckOff]
-[s]Flag [f 2 4 1] is off.[w][e]
-
-[msg FlagOn]
-[s]Flag [f 2 4 1] has been enabled.[w][e]
-
-[msg FlagOff]
-[s]Flag [f 2 4 1] has been disabled.[w][e]
-
-[sel NaviMenu]
-[s][f 2 4 6][e]
-[s][f 2 4 4][e]
-[s]None[e]
-
-[sel FlagMassEditor]
-[s]Disable all flags[e]
-[s]Enable all flags[e]
-[s]Complete all quests[e]
-[s]Enable all Tartarus guardians[e]
-[s]Enable all warps[e]
-[s]Swap enabled/disabled flags[e]
-[s]Toggle range of flags[e]
-
-[msg FlagRangePrompt]
-[s]Enter the start of the range to narrow down.[n](Max 4 digits, press Circle to end).[w][e]
-
-[msg FlagRangePrompt2]
-[s]Enter the end of the range to narrow down.[n](Max 4 digits, press Circle to end).[w][e]
-
-[msg ColorTest]
-[s]Colors: [clr 0]0 [clr 1]1 [clr 2]2 [clr 3]3 [clr 4]4 [clr 5]5 [clr 6]6 [clr 7]7 [clr 8]8 [clr 9]9[clr 10]10 [clr 11]11 [clr 12]12 [clr 13]13 [clr 14]14 [clr 15]15[n]
-[clr 16]16 [clr 17]17 [clr 18]18 [clr 19]19 [clr 20]20 [clr 21]21 [clr 22]22 [clr 23]23 [clr 24]24 [clr 25]25 [clr 26]26 [clr 27]27 [clr 28]28 [clr 29]29 [clr 30]30 [clr 31]31[w][e]
-
-[msg FavoritesName]
-[s]Press L/R to see other pages[w][e]
-
-[msg MSGVarTest]
-[s]Variable: [f 2 4 1][w][e]
-
-[msg LoadCheckError]
-[s]Set the required parameters[n]before attempting to load![w][e]
-
-[msg NotImplemented]
-[s]This feature is currently not implemented.[n][w][e]
-
-[msg UnstableFunc]
-[s]This feature is unstable on real hardware.[n]Do you still wish to use it?[n][w][e]
-
-[msg UnstableSC]
-[s]This feature is unstable and only designed[n]for small testing. Do you still[n]wish to proceed?[n][w][e]
-
-[sel YesNo]
-[s]Yes[e]
-[s]No[e]
-
-[msg MSGDummy]
-[s][w][e]

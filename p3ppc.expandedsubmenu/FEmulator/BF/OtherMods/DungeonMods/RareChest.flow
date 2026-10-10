@@ -1,0 +1,116 @@
+import("RareChest.msg");
+
+int rare_chest_slot_active(int slot)
+{
+    return BIT_CHK(993056 + slot * 3200);
+}
+
+void rare_chest_clear_current_pointer()
+{
+    int bitIndex = 0;
+rare_chest_clear_pointer_loop:
+    if (bitIndex < 64)
+    {
+        BIT_OFF(992736 + bitIndex);
+        bitIndex = bitIndex + 1;
+        goto rare_chest_clear_pointer_loop;
+    }
+}
+
+void rare_chest_point_current_to_slot(int slot)
+{
+    int bitIndex = 0;
+    int pointerLow;
+    int remainder;
+rare_chest_clear_pointer_low:
+    if (bitIndex < 32)
+    {
+        BIT_OFF(992736 + bitIndex);
+        bitIndex = bitIndex + 1;
+        goto rare_chest_clear_pointer_low;
+    }
+    BIT_ON(992736 + 32);
+    pointerLow = 0x433819E0 + slot * 0x190;
+    bitIndex = 0;
+rare_chest_rebuild_pointer_low:
+    if (bitIndex < 31)
+    {
+        remainder = pointerLow - pointerLow / 2 * 2;
+        if (remainder != 0) BIT_ON(992736 + bitIndex);
+        pointerLow = pointerLow / 2;
+        bitIndex = bitIndex + 1;
+        goto rare_chest_rebuild_pointer_low;
+    }
+}
+
+int rare_chest_exists()
+{
+    int slot = 0;
+    int rare;
+    rare_chest_clear_current_pointer();
+rare_chest_scan_loop:
+    if (slot < 32)
+    {
+        if (rare_chest_slot_active(slot))
+        {
+            rare_chest_point_current_to_slot(slot);
+            rare = FLD_FUNCTION_0027();
+            if (rare == 1)
+            {
+                rare_chest_clear_current_pointer();
+                return 1;
+            }
+        }
+        slot = slot + 1;
+        goto rare_chest_scan_loop;
+    }
+    rare_chest_clear_current_pointer();
+    return 0;
+}
+
+void rare_chest_show_warning()
+{
+    MSG_WND_DSP();
+    if (BIT_CHK(3567))
+    {
+        MSG(RARE_CHEST_WARNING_SYSTEM);
+    }
+    else if (BIT_CHK(3123))
+    {
+        NAVI_OPEN(0, 0, 0, 6, 2, 0, 0);
+        MSG(RARE_CHEST_WARNING_FUUKA);
+        NAVI_CLOSE(0);
+    }
+    else
+    {
+        NAVI_OPEN(0, 0, 0, 4, 2, 0, 0);
+        MSG(RARE_CHEST_WARNING_MITSURU);
+        NAVI_CLOSE(0);
+    }
+    MSG_WND_CLS();
+}
+
+void RareChestWarning()
+{
+    if (!BIT_CHK(5179) || BIT_CHK(5090)) return;
+    BIT_ON(5090);
+    if (rare_chest_exists()) rare_chest_show_warning();
+}
+
+int rare_chest_has_generated_slots()
+{
+    int slot = 0;
+rare_chest_find_slot_loop:
+    if (slot < 32)
+    {
+        if (rare_chest_slot_active(slot)) return 1;
+        slot = slot + 1;
+        goto rare_chest_find_slot_loop;
+    }
+    return 0;
+}
+
+void RareChestResetForNewFloor()
+{
+    if (!rare_chest_has_generated_slots()) BIT_OFF(5090);
+}

@@ -1,6 +1,4 @@
-
 import("Common/Shrine.flow");
-
 
 global bool isFieldBf;
 
@@ -12,12 +10,11 @@ void f012_001_shortcut_hook()
 
 void CallOriginalSquareMenu()
 {
-    f012_001_shortcut();
-} 
+    f012_001_shortcut_unhooked();
+}
 
 void f012_001_init_hook()
 {
     SaveEveryday();
-
     f012_001_init_unhooked();
 }

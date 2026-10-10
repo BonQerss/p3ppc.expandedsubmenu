@@ -2,18 +2,19 @@ import("Common/Dorms.flow");
 
 global bool isFieldBf;
 
-void f007_002_shortcut_hook() {
+void f007_002_shortcut_hook()
+{
     isFieldBf = false;
     f007_002_shortcut_unhooked();
 }
 
-void CallOriginalSquareMenu() {
+void CallOriginalSquareMenu()
+{
     f007_002_shortcut();
 }
 
 void f007_002_init_hook()
 {
     SaveEveryday();
-
     f007_002_init_unhooked();
 }

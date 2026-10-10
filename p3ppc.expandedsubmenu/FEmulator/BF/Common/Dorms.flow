@@ -5,38 +5,44 @@ import("../OtherMods/QuickTravelPlus.flow");
 import("../OtherMods/SaveEveryday.flow");
 import("Dorms.msg");
 
-void dormitory_shortcut_hook() {
-    if (!BIT_CHK(6320)) {
+void dormitory_shortcut_hook()
+{
+    if (!BIT_CHK(5153))
+    {
         FirstTimeSetup();
     }
 
-    if (GET_DAY(Month.April, 6) || GET_DAY(Month.April, 9)) {
+    if (GET_DAY(Month.April, 6) || GET_DAY(Month.April, 9))
+    {
         MSG_WND_DSP();
         MSG(FIRST_DAY);
         MSG_WND_CLS();
         return;
     }
-    
-    CurFldMinor = FLD_GET_MINOR(); // defined by QuickTravelPlus.flow
 
-    SEL_DEFKEY(PadButton.Circle, 98); // Cancel button on ○
-    SEL_DEFKEY(PadButton.Triangle, 99); // Configure menu on △
+    CurFldMinor = FLD_GET_MINOR();
 
-    if (BIT_CHK(5680))
+    SEL_DEFKEY(PadButton.Circle, 98);
+    SEL_DEFKEY(PadButton.Triangle, 99);
+
+    if (BIT_CHK(5163) && BIT_CHK(5154) && !gQMenuNormalSquare)
     {
         ModMenuInit();
+        return;
     }
-    else {
-        OG_SM_CALL:
-        shortcut_select(MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask()));
-    }
+
+    shortcut_select(MSG_SELECT(FLD_ORDER, DORMITORY_SHOTCUTSEL, create_dorm_mask()));
 }
 
-void shortcut_select(int selection) {
-    if (selection <= 4) {
+void shortcut_select(int selection)
+{
+    if (selection <= 4)
+    {
         FADE(FadeEffects.CircleWipe, 20);
         FUNCTION_000F();
-        switch (selection) {
+
+        switch (selection)
+        {
             case 0:
                 CALL_FIELD(7, 2, 1, 0);
                 return;
@@ -47,10 +53,12 @@ void shortcut_select(int selection) {
                 CALL_FIELD(7, 4, 0, 0);
                 return;
             case 3:
-                if (BIT_CHK(3592)) {
+                if (BIT_CHK(3592))
+                {
                     call_sees_event();
                 }
-                else {
+                else
+                {
                     CALL_FIELD(7, 5, 0, 0);
                 }
                 return;
@@ -59,39 +67,49 @@ void shortcut_select(int selection) {
                 return;
         }
     }
-    else if (selection == 5) {
+    else if (selection == 5)
+    {
         call_midnight_myroom();
     }
-    else if (selection == 6) {
+    else if (selection == 6)
+    {
         myroom_mybed();
     }
-    else if (selection == 7) {
+    else if (selection == 7)
+    {
         gVar140 = 0;
         goout_dormitory();
     }
-    else if (selection == 8) {
-        dorm_quick_travel();
+    else if (selection == 8)
+    {
+        QuickTravelPlus();
     }
-    else if (selection == 9) {
+    else if (selection == 9)
+    {
         CALL_CALENDAR();
     }
-    else if (selection == 10) {
+    else if (selection == 10)
+    {
         HangOut();
     }
-    else if (selection == 11) {
+    else if (selection == 11)
+    {
         FADE(FadeEffects.FadeOut, 10);
         SAVE_MENU();
         FUNCTION_000D(0);
     }
-    else if (selection == 12) {
+    else if (selection == 12)
+    {
         ModMenuInit();
     }
-    else if (selection == 99) {
+    else if (selection == 99)
+    {
         MenuOptions();
     }
 }
 
-void call_sees_event() {
+void call_sees_event()
+{
     BIT_OFF(3592);
     CALL_EVENT(129, 1);
     EVT_FUNCTION_0004(1);
@@ -105,47 +123,57 @@ void call_sees_event() {
     NEXT_TIME();
 }
 
-void dorm_quick_travel() {
+void dorm_quick_travel()
+{
     int qtMask = 0;
-    if (!BIT_CHK(3592)) {
-        // Hide Command Room if it hasn't been unlocked,
-        // it's March, or you're already in there
-        if (!BIT_CHK(21) || (FUNCTION_0030() == 3) || (CurFldMinor == 6)) {
-            qtMask += 0x10; // 0b0001_0000
+
+    if (!BIT_CHK(3592))
+    {
+        if (!BIT_CHK(21) || (FUNCTION_0030() == 3) || (CurFldMinor == 6))
+        {
+            qtMask = qtMask + 0x10;
         }
-        switch (CurFldMinor) {
+
+        switch (CurFldMinor)
+        {
             case 2:
-                qtMask += 1;
+                qtMask = qtMask + 1;
                 break;
             case 3:
-                qtMask += 2;
+                qtMask = qtMask + 2;
                 break;
             case 4:
-                qtMask += 4; // 0b0100
+                qtMask = qtMask + 4;
                 break;
             case 5:
-                qtMask += 8; // 0b1000
+                qtMask = qtMask + 8;
                 break;
             case 9:
-                qtMask += 0x40; // 0b0100_0000
+                qtMask = qtMask + 0x40;
                 break;
             case 19:
             case 20:
-                qtMask += 0x20; //0b0010_0000
+                qtMask = qtMask + 0x20;
                 break;
             default:
                 break;
         }
     }
-    else { // Player has to go to 4F to learn abt SEES
-        qtMask += 119; // 0b0111_0111
+    else
+    {
+        qtMask = qtMask + 119;
     }
+
     SEL_DEFKEY(PadButton.Circle, 8);
     int qtSel = MSG_SELECT(QuickTravelPlus_Text, DORMITORY_QTSEL, qtMask);
-    if (qtSel <= 4) {
+
+    if (qtSel <= 4)
+    {
         FADE(FadeEffects.CircleWipe, 20);
         FUNCTION_000F();
-        switch (qtSel) {
+
+        switch (qtSel)
+        {
             case 0:
                 CALL_FIELD(7, 2, 1, 0);
                 return;
@@ -156,10 +184,12 @@ void dorm_quick_travel() {
                 CALL_FIELD(7, 4, 0, 0);
                 return;
             case 3:
-                if (BIT_CHK(3592)) {
+                if (BIT_CHK(3592))
+                {
                     call_sees_event();
                 }
-                else {
+                else
+                {
                     CALL_FIELD(7, 5, 0, 0);
                 }
                 return;
@@ -168,92 +198,110 @@ void dorm_quick_travel() {
                 return;
         }
     }
-    else if (qtSel == 5) {
+    else if (qtSel == 5)
+    {
         call_midnight_myroom();
     }
-    else if (qtSel == 6) {
+    else if (qtSel == 6)
+    {
         gVar140 = 1;
         goout_dormitory();
     }
-    else if (qtSel == 7) {
+    else if (qtSel == 7)
+    {
         ElseWhere();
     }
 }
 
-int create_dorm_mask() {
-    int mask = 0x1FFF; // 0b0001_1111_1111_1111
+int create_dorm_mask()
+{
+    int mask = 0x1FFF;
 
-    if (!BIT_CHK(6322)) { // Quick Travel = OFF
-        switch (CurFldMinor) {
+    if (!BIT_CHK(5155))
+    {
+        switch (CurFldMinor)
+        {
             case 2:
-                if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
-                    mask -= 182; // (0x1FFF - 0b1011_0110) = 0b0001_1111_0100_1001
+                if (BIT_CHK(21) && (FUNCTION_0030() != 3))
+                {
+                    mask = mask - 182;
                 }
-                else if (BIT_CHK(3592)) {
-                    mask -= 136; // (0x1FFF - 0b1000_1000) = 0b0001_1111_0111_0111
+                else if (BIT_CHK(3592))
+                {
+                    mask = mask - 136;
                 }
-                else {
-                    mask -= 174; // (0x1FFF - 0b1010_1110) = 0b0001_1111_0101_0001
+                else
+                {
+                    mask = mask - 174;
                 }
                 break;
             case 3:
-                if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
-                    mask -= 181; // (0x1FFF - 0b1011_0101) = 0b0001_1111_0100_1010
+                if (BIT_CHK(21) && (FUNCTION_0030() != 3))
+                {
+                    mask = mask - 181;
                 }
-                else {
-                    mask -= 173; // (0x1FFF - 0b1010_1101) = 0b0001_1111_0101_0010
+                else
+                {
+                    mask = mask - 173;
                 }
                 break;
             case 4:
-                if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
-                    mask -= 179; // (0x1FFF - 0b1011_0011) = 0b0001_1111_0100_1100
+                if (BIT_CHK(21) && (FUNCTION_0030() != 3))
+                {
+                    mask = mask - 179;
                 }
-                else {
-                    mask -= 171; // (0x1FFF - 0b1010_1011) = 0b0001_1111_0101_0100
+                else
+                {
+                    mask = mask - 171;
                 }
                 break;
             case 5:
             case 6:
-                mask -= 167; // (0x1FFF - 0b1010_0111) = 0b0001_1111_0101_1000
+                mask = mask - 167;
                 break;
             case 19:
             case 20:
-                if (BIT_CHK(21) && (FUNCTION_0030() != 3)) {
-                    mask -= 213; // (0x1FFF - 0b1101_0101) = 0b0001_1111_0010_1010
+                if (BIT_CHK(21) && (FUNCTION_0030() != 3))
+                {
+                    mask = mask - 213;
                 }
-                else {
-                    mask -= 205; // (0x1FFF - 0b1100_1101) = 0b0001_1111_0011_0010
+                else
+                {
+                    mask = mask - 205;
                 }
                 break;
             default:
                 break;
         }
     }
-    else {
-        mask -= 0x100; // (0x1FFF - 0b0001_0000_0000) = 0b0001_1110_1111_1111
-        // If we're in the player's room, show the option to use the bed as well
-        switch (CurFldMinor) {
-            case 19:
-            case 20:
-                mask -= 0x40; // (0x1FFF - 0b0100_0000) = 0b0001_1110_1011_1111
-                break;
-            default:
-                break;
+    else
+    {
+        mask = mask - 0x100;
+
+        if ((CurFldMinor == 19) || (CurFldMinor == 20))
+        {
+            mask = mask - 0x40;
         }
     }
-    if (BIT_CHK(6323)) { // View Calendar
-        mask -= 0x200; // (0x1FFF - 0b0010_0000_0000) = 0b0001_1101_1111_1111
+
+    if (BIT_CHK(5156))
+    {
+        mask = mask - 0x200;
     }
-    if (BIT_CHK(6325)) { // Find a Friend
-        mask -= 0x400; // (0x1FFF - 0b0100_0000_0000) = 0b0001_1011_1111_1111
+
+    if (BIT_CHK(5158))
+    {
+        mask = mask - 0x400;
     }
-    if (BIT_CHK(6326)) { // Save Anywhere
-        if ( !BIT_CHK(6321)) {
-        mask -= 0x800; // (0x1FFF - 0b1000_0000_0000) = 0b0001_0111_1111_1111
-        }
+
+    if (BIT_CHK(5159) && !BIT_CHK(5154))
+    {
+        mask = mask - 0x800;
     }
-    if (BIT_CHK(6321)) { // Mod Menu
-        mask -= 0x1000; // (0x1FFF - 0b0001_0000_0000_0000) = 0b0000_1111_1111_1111
+
+    if (BIT_CHK(5154))
+    {
+        mask = mask - 0x1000;
     }
 
     return mask;

@@ -1,0 +1,9 @@
+import("../ModMenu/ModMenu.flow");
+import("Kyoto.msg");
+void kyoto_expanded_shortcut()
+{
+    if (BIT_CHK(5163) && BIT_CHK(5154) && !gQMenuNormalSquare) { ModMenuInit(); return; }
+    SEL_DEFKEY(PadButton.Circle, 3);
+    int sel = SEL(KYOTO_ESM);
+    if (sel == 0) CALL_FIELD(14,2,0,0); else if (sel == 1) CALL_FIELD(14,3,0,0); else if (sel == 2) CALL_FIELD(14,16,0,0);
+}
